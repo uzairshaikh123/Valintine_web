@@ -1,0 +1,178 @@
+.main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #240046;
+    max-height: 600px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 50px;
+    box-shadow: 7px 7px 10px 3px #24004628;
+    border: 1px solid green;
+    width: 20%;
+    margin: auto;
+    margin-top: 50px;
+   
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+  }
+  
+  /*checkbox to switch from sign up to login*/
+  #chk {
+    display: none;
+  }
+  
+  /*Login*/
+  .login {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .login label {
+    margin: 25% 0 5%;
+  }
+  
+  label {
+    color: #fff;
+    font-size: 2rem;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+  }
+  
+  .input {
+    width: 100%;
+    height: 40px;
+    background: #e0dede;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+  }
+  
+  /*Register*/
+  .register {
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(5%);
+    transition: .8s ease-in-out;
+  }
+  
+  .register label {
+    color: #573b8a;
+    transform: scale(.6);
+  }
+  
+  #chk:checked ~ .register {
+    transform: translateY(-60%);
+  }
+  
+  #chk:checked ~ .register label {
+    transform: scale(1);
+    margin: 10% 0 5%;
+  }
+  
+  #chk:checked ~ .login label {
+    transform: scale(.6);
+    margin: 5% 0 5%;
+  }   
+  /*Button*/
+  .form .loginbtn .registerbtn {
+    width: 85%;
+    height: 50px;
+    margin: 12px auto 10%;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s ease-in;
+   background: blue;
+  }
+  
+  .form button:hover {
+    background-color: #6d44b8;
+  }
+  .main button {
+    /* border: 1px solid black; */
+    background: blue;
+    color: white;
+    /* margin-right: 30px; */
+  }
+
+  @media all and (min-width: 1000px) and (max-width: 2250px) {
+    .main {
+        width: 30%;
+        max-height: 480px;
+        margin: auto;
+        padding: 10px;
+        /* min-height: 500px; */
+      }
+      .form .loginbtn .registerbtn {
+        width: 50%;
+      }
+      
+    
+    
+}
+/* style={{marginBottom:"20px",minHeight:"100%",width:"23%",cursor:"pointer"}} */
+@media all and (min-width: 675px) and (max-width: 1000px) {
+    
+      .main {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        max-height: 475px;
+        padding: 15px;
+        /* height: auto; */
+        /* min-heig/ht: 500px; */
+
+      }
+      .main button {
+        width: 80%;
+        
+      }
+      
+    
+
+}
+
+@media all and (min-width: 679px) and (max-width: 675px) {
+    .main {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        min-height: 555px;
+        /* height: auto; */
+        /* min-heig/ht: 500px; */
+
+      }
+}
+
+@media all and (min-width: 0px) and (max-width: 679px) {
+    .main {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        min-height: 435px;
+        height: 400px;
+        /* height: auto; */
+        /* min-heig/ht: 500px; */
+
+      }
+      .main button {
+        width: 80%;
+        
+      }
+
+}

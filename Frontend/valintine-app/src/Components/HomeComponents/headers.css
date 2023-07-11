@@ -1,0 +1,27 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#header{
+ /* border: 1px solid rgb(166, 161, 161); */
+ /* width: 90%;
+ height: 100px;
+ min-height: 100px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+  margin: auto;
+ margin-bottom: 5px; */
+}
+
+#header img{
+transition: 0.5s;
+height: 100%;
+cursor: pointer;
+
+
+}
+#header img:hover{
+    margin-top: -10px;
+}

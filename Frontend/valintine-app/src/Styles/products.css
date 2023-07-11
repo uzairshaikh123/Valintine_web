@@ -1,0 +1,27 @@
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: auto;
+    justify-content: center;
+}
+
+#filters{
+    display: flex;
+    /* max-height: 200px; */
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: 1px solid gray; */
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+#filter-cont{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid red; */
+    width: 100%;
+    flex-wrap: wrap;
+}
