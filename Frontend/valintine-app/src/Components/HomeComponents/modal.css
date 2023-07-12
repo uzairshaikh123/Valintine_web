@@ -1,0 +1,50 @@
+.cities-cont {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  width: 90%;
+  gap: 20px;
+}
+.city-modal {
+  /* border: 1px solid red; */
+}
+@media all and (min-width: 548px) and (max-width: 624px) {
+  .cities-cont {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: auto;
+    height: 50vh;
+    width: 50%;
+    margin: auto;
+  }
+  .cities {
+    width: 50%;
+  }
+  .city-modal {
+    width: 40%;
+    margin: auto;
+    padding: 50px;
+    border: 5px solid gray;
+  }
+}
+@media all and (min-width: 1px) and (max-width: 548px) {
+  .city-modal {
+    width: 30%;
+    padding: 100px;
+    border: 5px solid rgb(128, 128, 128);
+    text-align: center;
+  }
+  .cities-cont {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    overflow-y: auto;
+    overflow-y: auto;
+    height: 50vh;
+    width: 50%;
+    margin: auto;
+  }
+  #desc{
+    width: 50%;
+    margin: auto;
+  }
+}

@@ -39,6 +39,28 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+const handlenavigate =(e)=>{
+let v=(e.target.innerText);
+
+if(v=="Cart"){
+  return navigate("/cart")
+}else if (v=="Login"){
+  return navigate("/login")
+}else if(v=="About"){
+  return navigate("/about")
+}else if(v=="Contact"){
+  return navigate("/contact")
+}
+
+
+
+  return navigate("/login")
+
+
+}
+
+
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -48,8 +70,8 @@ export default function TemporaryDrawer() {
     >
       <List>
         {['Cart', 'Login', 'About', 'Contact'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+          <ListItem key={text} disablePadding onClick={handlenavigate}>
+            <ListItemButton onClick={handlenavigate}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>

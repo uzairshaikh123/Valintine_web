@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
+import { Divider } from '@mui/material';
+import './modal.css'
 const style = {
   position: 'absolute',
   top: '50%',
@@ -58,19 +59,21 @@ let mycity = sessionStorage.getItem("cityname") || "Location"
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        
+        
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box sx={style} className='city-modal'>
+          <Typography marginBottom={'30px'} id="modal-modal-title" variant="h6" component="h2">
             SELECT YOUR CITY
           </Typography>
           <hr />
-          <p>Find more than 3000 decorations, gifts and surprises!</p>
+          <p  id="desc" style={{textAlign:"center",marginTop:"10px"}}>Find more than 3000 decorations, gifts and surprises!</p>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <Box display={"flex"} flexWrap={"wrap"} gap={"20px"}>
+            <Box className={"cities-cont"}>
 
 {
     cities.map((city, index) => (
-        <div onClick={()=>handleClose(city.name)}  className='cities' style={{width:"100px",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",textAlign:"center",cursor:"pointer",padding:"5px"}} key={index}>
+        <div onClick={()=>handleClose(city.name)}  className='cities' style={{width:"100%",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",textAlign:"center",cursor:"pointer",padding:"5px"}} key={index}>
         <img style={{width:"50px",height:"50px"}}  src={city.img} alt={city.name} />
         <Typography>{city.name}</Typography>
       </div>

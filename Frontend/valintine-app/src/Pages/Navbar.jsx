@@ -42,12 +42,18 @@ const handlelogout =()=>{
     <div className="navbar">
       <div className="navbar-logo">
         <Link to={"/"}>
-        <img className='logo' style={{height:"50%",width:"50%",cursor:"pointer"}} src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png" alt="" />
+        <img className='logo' id={"comp-logo"} src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png" alt="" />
         </Link>
-        <div style={{display:"flex",border:"1px solid white",padding:"5px",width:"100%",borderRadius:"10px"}}>
+        <div id='search-cont' >
 
       <input type="text" className="navbar-search" placeholder="what you want to search" />
-     <img width={"10%"} style={{height:"10%",cursor:"pointer"}} src="https://img.icons8.com/?size=512&id=132&format=png" alt="" />
+     <img  id='glass' src="https://img.icons8.com/?size=512&id=132&format=png" alt="" />
+        </div>
+        <div id='search-mob'>
+<input type="text" className='search-mob-input' placeholder='what you want to search' />
+<button>
+  <img id='glass' src="https://img.icons8.com/?size=512&id=132&format=png" alt="" />
+</button>
         </div>
       </div>
       <div className="navbar-options">
