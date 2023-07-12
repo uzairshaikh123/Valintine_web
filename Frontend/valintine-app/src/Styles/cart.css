@@ -159,13 +159,15 @@
 }
 
 .cart-item>div:nth-child(1){
-  min-height: 150px;
-  min-width: 150px;
+  border: 1px solid rgb(30, 255, 0);
+  min-height: auto;
+  min-width: 100%;
+  padding: 20px;
 }
 .cart-item>div:nth-child(1)>img{
   width: 100%;
-  min-height: 100px;
-  min-width: 120px;
+  min-height: auto;
+  min-width: 80px;
   height: 100%;
   
 }

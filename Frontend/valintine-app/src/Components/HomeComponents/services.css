@@ -9,7 +9,7 @@ margin: auto;
 display: grid;
 grid-template-columns: repeat(2,1fr);
 align-content: center;
-gap: 20px;
+gap: 50px;
 
 }
 #services-cont-home>div{

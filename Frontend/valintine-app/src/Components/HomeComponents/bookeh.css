@@ -18,6 +18,7 @@
     width: 270px;
     margin-top: 20px;
     object-fit: cover;
+    /* margin: auto; */
     margin-left: 35px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
@@ -35,4 +36,24 @@
     font-family: sans-serif;
     min-height: 100px;
     padding: 10px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1224px) {
+    #bookeh-card{
+        width: 90%;
+    }
+    
+    
+}
+/* style={{marginBottom:"20px",minHeight:"100%",width:"23%",cursor:"pointer"}} */
+@media all and (min-width: 0px) and (max-width: 768px) {
+    
+    #bookeh-card{
+        width: 65%;
+        margin: auto;
+        height: 50%;
+    }
+
+    
+
 }

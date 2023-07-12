@@ -52,15 +52,22 @@ const Header = () => {
     autoPlaySpeed={1000}
     >
       <div>
-        <img style={{height:"110px",width:"110px"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/cake_icon_1_-_Copy-removebg-preview-min.png" alt="" />
+        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/cake_icon_1_-_Copy-removebg-preview-min.png" alt="" />
       </div>
       <div>
-        <img style={{height:"110px",width:"110px"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/Capture_flowers-removebg-preview__2_-removebg-preview-min.png" alt="" />
+        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/Capture_flowers-removebg-preview__2_-removebg-preview-min.png" alt="" />
 
       </div>
-        <img style={{height:"110px",width:"110px"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/candle-light-dinner-character_15624-160-removebg-preview-min.png" alt="" />
-        <img style={{height:"110px",width:"110px"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/balloon_decoration-removebg-preview-1-1-min.png" alt="" />
-        <img  style={{height:"110px",width:"110px"}} src="https://valentinesaga.com/wp-content/uploads/2023/04/gifts_icon_1-removebg-preview.png" alt="" />
+      <div>
+
+        <img style={{height:"35%",width:"37%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/candle-light-dinner-character_15624-160-removebg-preview-min.png" alt="" />
+      </div>
+      <div>
+        <img  style={{height:"30%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/04/gifts_icon_1-removebg-preview.png" alt="" />
+      </div>
+      <div>
+        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/balloon_decoration-removebg-preview-1-1-min.png" alt="" />
+      </div>
     </Carousel>
     </div>
   )

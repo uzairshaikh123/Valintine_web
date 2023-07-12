@@ -9,13 +9,14 @@ import Checkout from '../Pages/Checkout'
 import Auth from '../Pages/Auth'
 import Pagenotfound from '../Pages/PageNotFound'
 import SingleProductPage from '../Pages/SingleProduct'
+import Login from '../Pages/Login'
 const AllRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
-                <Route path="/login" element={<Auth/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/products" element={<Products/>}/>
                 <Route path="/products/:id" element={<SingleProductPage/>}/>
                 <Route path="/cart" element={<Cart/>}/>
