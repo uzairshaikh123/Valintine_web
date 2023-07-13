@@ -5,10 +5,10 @@
   padding: 7px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .navbar>div:nth-child(1){
-  border: 1px solid rgb(236, 230, 230);
+  /* border: 1px solid rgb(236, 230, 230); */
   width: 100%;
 
 }
@@ -54,7 +54,7 @@
   border-radius: 5px;
   min-width: 100px;
   width: 100%;
-  height: 50%;
+  height: 30%;
   /* border: 1px solid white; */
   align-items: center;
 }
@@ -64,14 +64,12 @@
   border: 1px solid white;
   width: 100%;
   align-items: center;
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 10px;
 
 }
 #search-cont>input{
   width: 100%;
- 
-  
 }
 .navbar-options .location {
   display: inline-block;
@@ -206,7 +204,7 @@
 }
 .search-cont {
   display: flex;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   padding: 5px;
   width: 100%;
   border-radius: 10px;
@@ -217,13 +215,12 @@
 /* style={{display:"flex",border:"1px solid white",padding:"5px",width:"100%",borderRadius:"10px"}} */
 @media all and (min-width: 0px) and (max-width: 770px) {
   #search-cont {
-    width: 100%;
-    min-width: 50%;
-    border: 1px solid red;
+  display: none;
   }
+  
   .navbar-search{
     width: 100%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
   }
 
   #glass{
@@ -249,7 +246,23 @@
   }
  #search-mob{
   display: flex;
+  border: 1px solid white;
+  margin: auto;
+  height:30px;
+  gap: 10px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 10px;
+
  }
+ #search-mob>input{
+  width: 80%;
+height: 50%;
+  }
+  #search-mob>img{
+width: 9%;
+height: 100%;
+  }
 }
 
 .navbar-menu {
@@ -265,4 +278,13 @@
   display: block;
 }
 
-
+@media all and (min-width:770px) and (max-width: 3300px) {
+  #search-cont {
+    border: 2px solid rgb(252, 255, 252);
+    width: 100%;
+    padding: 5px;
+    min-width: 100px;
+    /* border: 1px solid red; */
+  }
+  
+}

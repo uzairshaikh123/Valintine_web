@@ -49,9 +49,13 @@
 @media all and (min-width: 0px) and (max-width: 768px) {
     
     #bookeh-card{
+        /* padding: 10px; */
         width: 65%;
         margin: auto;
         height: 50%;
+    }
+    #bookeh-card>div:nth-child(1){
+        padding: 10px;
     }
 
     

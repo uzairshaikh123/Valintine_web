@@ -51,9 +51,9 @@ const handlelogout =()=>{
         </div>
         <div id='search-mob'>
 <input type="text" className='search-mob-input' placeholder='what you want to search' />
-<button>
-  <img id='glass' src="https://img.icons8.com/?size=512&id=132&format=png" alt="" />
-</button>
+
+  <img id='search-btn' src="https://img.icons8.com/?size=512&id=132&format=png" alt="" />
+
         </div>
       </div>
       <div className="navbar-options">

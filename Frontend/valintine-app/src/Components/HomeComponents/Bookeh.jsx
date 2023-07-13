@@ -617,6 +617,7 @@ const Bookeh = () => {
     swipeable={false}
     draggable={false}
     // showDots={true}
+    // customRightArrow={<CustomRightArrow />}
     responsive={responsive}
     autoPlay={true}
     infinite={true}

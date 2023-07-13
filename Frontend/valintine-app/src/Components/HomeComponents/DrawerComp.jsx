@@ -65,12 +65,14 @@ if(v=="Cart"){
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
+      backgroundColor={"pink"}
+      height={"100vh"}
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         {['Cart', 'Login', 'About', 'Contact'].map((text, index) => (
-          <ListItem key={text} disablePadding onClick={handlenavigate}>
+          <ListItem key={text} disablePadding onClick={handlenavigate} >
             <ListItemButton onClick={handlenavigate}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -81,7 +83,7 @@ if(v=="Cart"){
           </ListItem>
         ))}
       </List>
-      <img style={{height:"15%",width:"15%",cursor:"pointer",display:"block",margin:"auto"}} onClick={handlelogout} src="https://img.icons8.com/?size=512&id=j8vtslxN0LJo&format=png" alt="" />
+      <img style={{height:"5%",width:"15%",cursor:"pointer",display:"block",margin:"auto"}} onClick={handlelogout} src="https://img.icons8.com/?size=512&id=j8vtslxN0LJo&format=png" alt="" />
       <Divider />
       {/* <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (

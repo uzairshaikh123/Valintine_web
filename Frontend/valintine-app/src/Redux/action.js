@@ -37,3 +37,18 @@ return res
     })
 
 }
+
+export const handlegetproducts = (data) => (dispatch) => {
+
+    dispatch({type:types.LOADING})
+
+    return axios.post("http://localhost:8080/products/all",data).then((res)=>{
+
+    dispatch({type:types.GETPRODUCTS,payload:res.data})
+
+return res
+    }).catch(()=>{
+        return dispatch({type:types.ERROR})
+    })
+
+}

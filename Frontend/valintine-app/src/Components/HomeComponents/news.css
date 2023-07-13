@@ -21,8 +21,8 @@
 @media all and (min-width: 768px) and (max-width: 1224px) {
     #news-cont{
         display: grid;
-        grid-template-columns: repeat(2,1fr);
         /* flex-wrap: wrap; */
+        grid-template-columns: repeat(2,1fr);
     }
     
     
@@ -32,8 +32,15 @@
     
     #news-cont{
         display: grid;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(2,1fr);
+        justify-content: center;
+        /* border: 1px solid red; */
+
         /* flex-wrap: wrap; */
+    }
+    #news-cont>img{
+        width: 100%;
+        margin: auto;
     }
 
     
