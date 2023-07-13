@@ -126,7 +126,7 @@
     .remove{
       display: block;
       margin: auto;
-      border: 1px solid red;
+      /* border: 1px solid red; */
     }
     .checkout {
       height: auto;
@@ -141,7 +141,7 @@
     grid-template-columns: repeat(1,1fr);
     margin: auto;
     /* flex-wrap: wrap; */
-}
+}      
 .cart>div{
   width: 100%;
 }
@@ -159,7 +159,7 @@
 }
 
 .cart-item>div:nth-child(1){
-  border: 1px solid rgb(30, 255, 0);
+  /* border: 1px solid rgb(30, 255, 0); */
   min-height: auto;
   min-width: 100%;
   padding: 20px;

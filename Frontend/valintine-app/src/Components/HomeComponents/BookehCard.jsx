@@ -5,7 +5,10 @@ const BookehCard = ({img,name,desc,price,heading}) => {
   return (
     <>
     <div id='bookeh-card'>
+      <div>
+
 <img className='card-image' width={"100%"} src={img} alt="" />
+      </div>
 <div>
     <span>{desc}</span>
     <h3>{name}</h3>

@@ -28,11 +28,11 @@ const ProductCard = ({id, image, name, description, price, ratings }) => {
       <div className="card-body">
         <p className="card-description">{description}</p>
         <h2 className="card-title">{name}</h2>
-        <div className="card-footer">
+        <div style={{display:"flex",flexWrap:"wrap"}} className="card-footer">
           <div className="card-price">${price}</div>
           <div className="card-ratings">{ratings}-Reviews 8</div>
           <button className="share-button" onClick={handleShare}>
-            <img src="https://img.icons8.com/?size=1x&id=98959&format=png" alt="" />
+            <img style={{width:"50%",height:"50%"}} src="https://img.icons8.com/?size=1x&id=98959&format=png" alt="" />
           </button>
         </div>
       </div>

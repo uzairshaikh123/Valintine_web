@@ -53,11 +53,13 @@ function Cart() {
             </div>
           </div>
           <div className="quantity" style={{}}>
-            <button onClick={() => decreaseQuantity(item.id)}>-</button>
+            <button style={{borderRadius:"50%",display:"inline",backgroundColor:"#ce93d8",padding:"10px",cursor:"pointer"}} onClick={() => decreaseQuantity(item.id)}>-</button>
             <span>{item.quantity}</span>
-            <button onClick={() => increaseQuantity(item.id)}>+</button>
+            <button  style={{borderRadius:"50%",display:"inline",backgroundColor:"#ce93d8",padding:"10px",cursor:"pointer"}} onClick={() => increaseQuantity(item.id)}>+</button>
           </div>
-          <button className='remove' onClick={() => removeItem(item.id)}>Remove</button>
+          <div  className='remove' onClick={() => removeItem(item.id)}>
+            <img style={{height:"15%",width:"15%"}} src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png" alt="" />
+          </div>
         </div>
       ))}
           </div>
@@ -75,14 +77,14 @@ function Cart() {
         </div>
 
         <Link to="/checkout" style={{textDecoration:"none"}}>
-        <button>
+        <button style={{"padding":"10px",cursor:"pointer"}}>
           Proceed to Checkout
           </button>
     </Link>
 <div className='apply-cont' style={{width:"50%",margin:"auto",marginBottom:"50px",marginTop:"50px"}}>
   <p>Coupon Code</p>
   <input  type="text" placeholder='Enter your coupon code' />
-  <button className='apply-button' style={{marginTop:"20px"}}>Apply Coupon</button>
+  <button style={{"padding":"10px",cursor:"pointer",marginTop:"20px"}} className='apply-button'>Apply Coupon</button>
 </div>
 
 

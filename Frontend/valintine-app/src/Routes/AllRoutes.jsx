@@ -10,6 +10,7 @@ import Auth from '../Pages/Auth'
 import Pagenotfound from '../Pages/PageNotFound'
 import SingleProductPage from '../Pages/SingleProduct'
 import Login from '../Pages/Login'
+import AdminPanel from '../Pages/Admin'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ const AllRoutes = () => {
                 <Route path="/products/:id" element={<SingleProductPage/>}/>
                 <Route path="/cart" element={<Cart/>}/>
                 <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="/admin" element={<AdminPanel/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>
                 {/* <Route path="/register" element={<Register/>}/>
                 <Route path="/profile" element={<Profile/>}/>
