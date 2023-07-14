@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const AuthRouter = express.Router();
 const jwt = require("jsonwebtoken");
+const AuthMiddleware = require("../Middlewares/Auth.middleware");
+const AdminMiddleware = require("../Middlewares/Admin.middleware");
 
 
 
@@ -65,5 +67,47 @@ AuthRouter.post("/login", async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 });
+
+
+AuthRouter.delete("/delete/:id",AuthMiddleware,async (req,res)=>{
+  let id = req.params.id
+  try {
+      let deluser = await  AuthModel.findByIdAndDelete({_id:id})
+      res.status(200).send({"msg":"User Deleted",data:deluser})
+  } catch (error) {
+      res.status(500).send({"msg":error.message})
+      }
+
+})
+
+
+AuthRouter.get("/all",AdminMiddleware,async (req,res)=>{
+ 
+  try {
+      let alluser = await  AuthModel.find({})
+      res.status(200).send({"msg":"All Users",data:alluser})
+  } catch (error) {
+      res.status(500).send({"msg":error.message})
+      }
+
+})
+
+
+AuthRouter.patch('/update/address/:id', AuthMiddleware, async (req, res) => {
+
+  let id = req.params.id
+  try {
+      let updateduser = await  AuthModel.findByIdAndUpdate({_id:id},{address:req.body.address})
+      res.status(200).send({"msg":"User Address Updated",data:updateduser})
+  } catch (error) {
+      res.status(500).send({"msg":error.message})
+      }
+
+
+})
+
+
+
+
 
 module.exports = AuthRouter;
