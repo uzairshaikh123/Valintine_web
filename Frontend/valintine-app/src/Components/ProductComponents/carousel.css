@@ -1,0 +1,10 @@
+.slick-arrow.slick-prev {
+    background: black;
+  }
+  .slick-arrow.slick-next {
+    background: black;
+  }
+
+  .slick-prev:before,.slick-next:before {
+    color: red;
+  }

@@ -1,81 +1,73 @@
 import React, { useState } from "react";
 import "./login.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { CSSTransition } from "react-transition-group";
-import { useDispatch, useSelector } from 'react-redux'
-import { handleLogin, handleSignup } from '../Redux/action'
-import { Hearts } from  'react-loader-spinner'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { handleLogin, handleSignup } from "../Redux/action";
+import { Hearts } from "react-loader-spinner";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
   const [showLogin, setShowLogin] = useState(true);
-  const [username , setusername]=useState("")
-  const [email , setemail]=useState("")
-  const [password , setpassword]=useState("")
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const store = useSelector(store=>store)
-  console.log(store)
-  const {loading,error,token}=store
-  const handleregister=(e)=>{
-      e.preventDefault()
-  let obj={
-      name:username,
-      email:email,
-      password:password
-  }
-  console.log(obj);
-      dispatch(handleSignup(obj)).then((res)=>{
-          if(res.data.msg=="User created"){
-              Swal.fire(
-                  'Good job!',
-                  'Signup Successful',
-                  'success'
-                )
-                return navigate("/")
-          }else{
-              Swal.fire(
-                  'Error',
-                  "couldn't signup in",
-                  'error'
-                )
-  return navigate("/login")
-          }
-          
-      })
-      
-  }
+  const [username, setusername] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const store = useSelector((store) => store);
+  const { loading, error, token } = store;
+  const handleregister = (e) => {
+    e.preventDefault();
+    let obj = {
+      name: username,
+      email: email,
+      password: password,
+    };
   
-  
-  const handlelogin=(e)=>{
-  
-      e.preventDefault()
-      let obj={
-          email:email,
-          password:password
-      }
-      console.log(obj);
-          dispatch(handleLogin(obj)).then((res)=>{
-              if(res.data.msg=="User loggedIn Successfully"){
-                  Swal.fire(
-                      'Good job!',
-                      'You have successfully logged in',
-                      'success'
-                    )
-                    return navigate("/")
-              }else{
-                  Swal.fire(
-                      'Error',
-                      "couldn't log in",
-                      'error'
-                    )
+    dispatch(handleSignup(obj)).then((res) => {
+      // console.log(res.response.status);
+      if(res.status===200 || res.status===201){
+          Swal.fire(
+              'Good job!',
+              'Signup Successful',
+              'success'
+            )
+            return navigate("/")
+      }else{
+          Swal.fire(
+              'Enter valid Email or User Already Exists',
+              "couldn't signup",
+              'error'
+            )
       return navigate("/login")
-              }
-          })
-  }
+      }
+    });
+  };
+
+  const handlelogin = (e) => {
+    e.preventDefault();
+    let obj = {
+      email: email,
+      password: password,
+    };
   
-  if(token){
-      return <Navigate to="/" />
+    dispatch(handleLogin(obj))
+      .then((res) => {
+        if (res.status === 201) {
+          Swal.fire("Good job!", "You have successfully logged in", "success");
+          return navigate("/");
+        } else {
+          Swal.fire("Email or Password Wrong", "couldn't log in", "error");
+          return navigate("/login");
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  if (token) {
+    return <Navigate to="/" />;
   }
 
   const handleToggle = () => {
@@ -103,7 +95,7 @@ function Login() {
               />
             </div>
             <div className="form-group">
-            <label>Password</label>
+              <label>Password</label>
               <input
                 type="password"
                 value={password}
@@ -111,7 +103,9 @@ function Login() {
                 required
               />
             </div>
-            <button className="registerbtn" type="submit">Login</button>
+            <button className="registerbtn" type="submit">
+              Login
+            </button>
             <p className="toggle-text">
               Don't have an account?{" "}
               <span className="toggle-link" onClick={handleToggle}>
@@ -157,7 +151,9 @@ function Login() {
                 required
               />
             </div>
-            <button  className="registerbtn" type="submit">Register</button>
+            <button className="registerbtn" type="submit">
+              Register
+            </button>
             <p className="toggle-text">
               Already have an account?{" "}
               <span className="toggle-link" onClick={handleToggle}>

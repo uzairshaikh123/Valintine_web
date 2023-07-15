@@ -1,11 +1,10 @@
 const express = require('express');
 const CartModel = require('../Models/CartModel');
-// const CartModel = require('../Models/Cart.model');
-
+const AuthMiddleware = require('../Middlewares/Auth.middleware');
 const CartRoute = express.Router()
 
 
-CartRoute.get('/usercart/:id', async (req, res) => {
+CartRoute.get('/usercart/:id', AuthMiddleware,async (req, res) => {
     const id = req.params.id;
     try {
         let allproducts = await  CartModel.find({userID:id})
@@ -17,12 +16,20 @@ CartRoute.get('/usercart/:id', async (req, res) => {
 })
 
 
-CartRoute.post('/add', async (req, res) => {
+CartRoute.post('/add',AuthMiddleware, async (req, res) => {
 
     try {
-        let newproduct = new CartModel(req.body)
-        await newproduct.save()
-        res.status(200).send({"msg":"Product Added",data:newproduct})
+      let findproduct = await CartModel.findOne({_id:req.body._id})
+    //   console.log(findproduct)
+          if(findproduct){
+           return res.status(404).send({message: 'Product already exists'})
+          }
+          else{
+              let newproduct = new CartModel(req.body)
+              await newproduct.save()
+              res.status(200).send({"msg":"Product Added",data:newproduct})
+          }
+
     } catch (error) {
         res.status(500).send({"msg":error.message})
         }
@@ -32,7 +39,7 @@ CartRoute.post('/add', async (req, res) => {
 })
 
 
-CartRoute.patch('/update/:id', async (req, res) => {
+CartRoute.patch('/update/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
     console.log(id,req.body)
@@ -48,7 +55,7 @@ CartRoute.patch('/update/:id', async (req, res) => {
 })
 
 
-CartRoute.delete('/delete/:id', async (req, res) => {
+CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
     try {
@@ -60,7 +67,7 @@ CartRoute.delete('/delete/:id', async (req, res) => {
 
 
 })
-CartRoute.delete('/deleteall/:id', async (req, res) => {
+CartRoute.delete('/deleteall/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
     try {

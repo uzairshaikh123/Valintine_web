@@ -1,5 +1,7 @@
 const express = require('express');
 const AdminMiddleware = express.Router()
+const jwt = require("jsonwebtoken")
+
 
 AdminMiddleware.use((req,res,next)=>{
 
@@ -18,7 +20,7 @@ jwt.verify(token, 'adminuser', function(err, decoded) {
         next()
     }
   });
-        console.log(decoded)
+       
 
     
 } catch (error) {

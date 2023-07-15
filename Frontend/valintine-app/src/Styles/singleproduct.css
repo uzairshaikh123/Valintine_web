@@ -14,7 +14,29 @@
   border: 1px solid red;
   width: 50%;
 }
+#cart-buttons{
+  width: 100%;
+  margin: auto;
 
+}
+#cart-buttons>button{
+  border-radius: 8px;
+  width: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #c709e8;
+  color: white;
+  padding: 5px;
+  display: block;
+  border: none;
+  padding: 10px 15px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+#cart-buttons>button:hover{
+  
+  background: #6e0b80;
+}
 .image-container {
   width: 300px; /* Adjust according to your requirements */
   height: 300px; /* Adjust according to your requirements */
@@ -46,9 +68,12 @@
   width: 30%;
   height: auto;
 }
-
+.product-specifications{
+  width: 100%;
+}
 .product-details {
-  flex-basis: 100%;
+  /* flex-basis: 100%; */
+  width: 100%;
   margin-left: 20px;
   border: 1px solid green;
   padding: 15px;

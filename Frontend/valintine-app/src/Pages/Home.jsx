@@ -13,11 +13,12 @@ import Testimonials from '../Components/HomeComponents/testimonials'
 import News from '../Components/HomeComponents/News'
 import Links from '../Components/HomeComponents/Links'
 import Footer from '../Components/HomeComponents/Footer'
-
+const Cookies = require('js-cookie') 
 const Home = () => {
 
 let imgbig=[{img:"https://i.ibb.co/LgQxrzP/cherishx-partystore-courier.gif",id:1},{id:2,img:"https://deowgxgt4vwfe.cloudfront.net/website_static/img/cherishx-custom-decorations.gif"}]
 let smallimg=[{id:1,img:"https://valentinesaga.com/wp-content/uploads/2023/07/Candlelight-Diner-Banner-ValentineSaga.png"},{id:2,img:"https://valentinesaga.com/wp-content/uploads/2023/07/Flawers-Banner-With-Valentine-Saga-1.jpg"},{id:3,img:"https://valentinesaga.com/wp-content/uploads/2023/05/Flawers-and-Gift-Combo-Banner.png"},{id:4,img:"https://valentinesaga.com/wp-content/uploads/2023/05/Happy-Birthday-Banner-12321.png"}]
+console.log(Cookies.get('token')) 
 
 
 

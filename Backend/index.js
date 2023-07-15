@@ -5,6 +5,8 @@ const app = express()
 const cors = require('cors')
 const productRoute = require('./Routes/Product.route')
 const CartRoute = require('./Routes/Cart.route')
+const OrdersRoute = require('./Routes/Orders.route')
+const AdminRouter = require('./Routes/Admin.route')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -14,7 +16,8 @@ app.get('/', (req, res) => {
 app.use("/auth",AuthRouter)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
-app.use("/orders",CartRoute)
+app.use("/orders",OrdersRoute)
+app.use("/admin",AdminRouter)
 
 app.listen(8080, async () => {
     try {
