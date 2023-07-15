@@ -10,6 +10,7 @@ display: grid;
 grid-template-columns: repeat(2,1fr);
 align-content: center;
 gap: 50px;
+margin-top: 50px;
 
 }
 #services-cont-home>div{
@@ -21,6 +22,7 @@ gap: 50px;
     padding: 10px;
     height: auto;
     color: white;
+    margin-top: 20px;
     background: rgb(5, 169, 246);
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }

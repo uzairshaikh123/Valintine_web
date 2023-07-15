@@ -36,8 +36,18 @@ let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/
   {name:"Lucknow",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Lucknow_min.png",id:13},
   {name:"Chandigarh",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Chandigarh_min.png",id:14},
   {name:"Ahmedabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Ahmedabad_min.jpg",id:15},]
+let initial = true
+let mycity = sessionStorage.getItem("cityname") || ""
 
-  const [open, setOpen] = React.useState(true);
+
+if(mycity){
+initial=false
+}else{
+  initial=true
+}
+
+
+  const [open, setOpen] = React.useState(initial);
   const handleOpen = () => setOpen(true);
   const handleClose = (city) =>{ 
     
@@ -46,7 +56,6 @@ let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/
     setOpen(false)
   
   }
-let mycity = sessionStorage.getItem("cityname") || "Location"
   return (
     <div>
       <button  style={{padding:"10px",cursor:"pointer",backgroundColor:"aqua",border:"none",}} className='locationbtn navloc' onClick={handleOpen} 

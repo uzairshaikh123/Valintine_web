@@ -7,6 +7,7 @@ const initstate = {
   cart: [],
   products: [],
   token: localStorage.getItem("token") || "",
+  orders:[],
 };
 
 export const reducer = (state = initstate, { type, payload }) => {

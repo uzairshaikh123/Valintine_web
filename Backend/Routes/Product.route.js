@@ -1,10 +1,12 @@
 const express = require('express');
 const ProductModel = require('../Models/Product.model');
+const AdminMiddleware = require('../Middlewares/Admin.middleware');
+const AuthMiddleware = require('../Middlewares/Auth.middleware');
 
 const productRoute = express.Router()
 
 
-productRoute.get('/all', async (req, res) => {
+productRoute.get('/all', AuthMiddleware, async (req, res) => {
     try {
         let allproducts = await  ProductModel.find({})
         res.status(200).send({"msg":"All Products",data:allproducts})
@@ -15,7 +17,7 @@ productRoute.get('/all', async (req, res) => {
 })
 
 
-productRoute.post('/add', async (req, res) => {
+productRoute.post('/add', AdminMiddleware, async (req, res) => {
 
     try {
         let newproduct = new ProductModel(req.body)
@@ -30,7 +32,7 @@ productRoute.post('/add', async (req, res) => {
 })
 
 
-productRoute.patch('/update/:id', async (req, res) => {
+productRoute.patch('/update/:id', AdminMiddleware, async (req, res) => {
 
     let id = req.params.id
     console.log(id,req.body)
@@ -46,7 +48,7 @@ productRoute.patch('/update/:id', async (req, res) => {
 })
 
 
-productRoute.delete('/delete/:id', async (req, res) => {
+productRoute.delete('/delete/:id',AdminMiddleware, async (req, res) => {
 
     let id = req.params.id
     try {

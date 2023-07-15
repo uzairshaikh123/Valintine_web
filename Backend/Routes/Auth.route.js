@@ -20,7 +20,7 @@ console.log(req.body)
       let newuser = new AuthModel({ name, email, password });
       bcrypt.hash(password, saltRounds, async function (err, hash) {
         if (err) {
-          return res.status(500).json({ msg: "Internal server error" });
+          return res.status(500).json({ msg: "User Not registered" });
         } else {
           newuser.password = hash;
           await newuser.save();
@@ -59,7 +59,7 @@ AuthRouter.post("/login", async (req, res) => {
               token: jwt.sign({ data: user }, "authuser"),
             });
         } else {
-          return res.status(500).json({ msg: err.message });
+          return res.status(500).json({ msg: "email or password incorrect"});
         }
       });
     }
@@ -69,7 +69,7 @@ AuthRouter.post("/login", async (req, res) => {
 });
 
 
-AuthRouter.delete("/delete/:id",AuthMiddleware,async (req,res)=>{
+AuthRouter.delete("/delete/:id",AdminMiddleware,async (req,res)=>{
   let id = req.params.id
   try {
       let deluser = await  AuthModel.findByIdAndDelete({_id:id})
