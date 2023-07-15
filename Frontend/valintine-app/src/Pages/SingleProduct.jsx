@@ -38,7 +38,7 @@ useEffect(()=>{
   
 const handleaddtocart = ()=>{
 let obj={
-  ...product,userID,productID
+  ...product
 }
 console.log(product)
 
