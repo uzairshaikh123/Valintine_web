@@ -3,9 +3,9 @@ import ProductCard from "../Components/ProductComponents/ProductCard";
 import "../Styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import SliderComp from "../Components/ProductComponents/Slidercomp";
-import SelectSmall from "../Components/ProductComponents/SelectComp";
-import SortComp from "../Components/ProductComponents/SortComp";
+// import SliderComp from "../Components/ProductComponents/Slidercomp";
+// import SelectSmall from "../Components/ProductComponents/SelectComp";
+// import SortComp from "../Components/ProductComponents/SortComp";
 import { Hearts } from "react-loader-spinner";
 import { handlegetproducts } from "../Redux/action";
 const Products = () => {
@@ -78,6 +78,7 @@ const Products = () => {
           {products?.map((el) => {
             return (
               <ProductCard
+              key={el._id}
                 id={el._id}
                 image={el.image}
                 name={el.name}

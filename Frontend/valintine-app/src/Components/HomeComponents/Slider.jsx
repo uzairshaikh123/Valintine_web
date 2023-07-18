@@ -33,14 +33,14 @@ const responsive = {
     containerClass="carousel-container"
     >
     
-        <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+        <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
    
    
-        <img className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+        <img  className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
 
-         <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+         <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
 
-        <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+        <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
 
   </Carousel>
   )

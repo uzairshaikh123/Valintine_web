@@ -27,7 +27,7 @@ export default function TemporaryDrawer() {
     let t =sessionStorage.setItem('token',"")
     console.log("t",t)
     dispatch({type: 'logout'})
-  
+window.location.reload();
     return navigate("/login")
   }
 
@@ -42,16 +42,17 @@ export default function TemporaryDrawer() {
 const handlenavigate =(e)=>{
 let v=(e.target.innerText);
 
-if(v=="Cart"){
+if(v==="Cart"){
   return navigate("/cart")
-}else if (v=="Login"){
+}else if (v==="Login"){
   return navigate("/login")
-}else if(v=="About"){
+}else if(v==="About"){
   return navigate("/about")
-}else if(v=="Contact"){
+}else if(v==="Contact"){
   return navigate("/contact")
+}else if(v==="My Orders"){
+  return navigate("/orders")
 }
-
 
 
   return navigate("/login")
@@ -71,7 +72,7 @@ if(v=="Cart"){
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Cart', 'Login', 'About', 'Contact'].map((text, index) => (
+        {['Cart', 'Login', 'About', 'Contact','My Orders'].map((text, index) => (
           <ListItem key={text} disablePadding onClick={handlenavigate} >
             <ListItemButton onClick={handlenavigate}>
               <ListItemIcon>
@@ -102,7 +103,7 @@ if(v=="Cart"){
 
   return (
     <div>
-      {[ 'right'].map((anchor) => (
+      {[ 'left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
             <img style={{height:"40%",width:"40%"}} src="https://img.icons8.com/?size=512&id=OTxpMqWbm71F&format=png" alt="" />

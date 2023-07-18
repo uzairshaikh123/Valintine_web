@@ -16,6 +16,8 @@ function Login() {
   const navigate = useNavigate();
   const store = useSelector((store) => store);
   const { loading, error, token } = store;
+
+
   const handleregister = (e) => {
     e.preventDefault();
     let obj = {
@@ -53,6 +55,7 @@ function Login() {
   
     dispatch(handleLogin(obj))
       .then((res) => {
+        console.log(res.data)
         if (res.status === 201) {
           Swal.fire("Good job!", "You have successfully logged in", "success");
           return navigate("/");

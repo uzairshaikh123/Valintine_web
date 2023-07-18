@@ -29,13 +29,15 @@ const Header = () => {
     },
     mid_tablet: {
       breakpoint: { max: 750, min: 460 },
-      items: 2,
+      items: 3,
       slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 660, min: 0 },
-      items: 1,
-      slidesToSlide: 1 // optional, default to 1.
+      items: 3,
+      slidesToSlide: 1 ,
+      arrows:false
+      // optional, default to 1.
     }
   };
      

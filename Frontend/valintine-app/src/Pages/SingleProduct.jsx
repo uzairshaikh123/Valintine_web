@@ -5,9 +5,11 @@ import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { Hearts } from 'react-loader-spinner';
 import AsNavFor from '../Components/ProductComponents/Carousel';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { handlegetproducts } from '../Redux/action';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import { handleaddcartproduct, handlegetcartproducts, handlegetproducts } from '../Redux/action';
 import AboutProduct from '../Components/ProductComponents/AboutProduct';
+import Cookies from 'js-cookie';
 
 const SingleProductPage = () => {
 
@@ -34,13 +36,47 @@ useEffect(()=>{
   setproduct(findproduct)
 },[products])
 
-
-  
+const user = JSON.parse(sessionStorage.getItem("userdetails")) || {}
+  const navigate = useNavigate()
+  const token=sessionStorage.getItem("token") || ""
 const handleaddtocart = ()=>{
 let obj={
-  ...product
+  ...product[0],quantity:1,productID:product[0]._id,userID:user._id
 }
-console.log(product)
+// console.log(obj,user,product,product[0]._id)
+dispatch(handleaddcartproduct(obj)).then((res)=>{
+const user = JSON.parse(sessionStorage.getItem("userdetails"))
+  if(res.status===200){
+    toast.success('🤩 Product added to cart', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+    dispatch(handlegetcartproducts(user._id))
+    
+  }else{
+    toast.error('😔 Product Already Exist Or User not login', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+
+      if(token==="" || token===undefined){
+        return navigate("/login")
+      }
+  }
+
+})
 
 
 }
@@ -69,8 +105,7 @@ console.log(product)
     wrapperClass=""
     visible={true}
     />
-</div>:error?<>Error</>: <>
-<div className="product-page">
+</div>:<><div className="product-page">
       <div className="product-images">
         {/* <div className="main-image">
           <img className="zoom-effect" src={product.image} alt="Product" />
@@ -112,8 +147,8 @@ console.log(product)
           </ul>
         </div>
       </div>
-      
     </div>
+  
     <AboutProduct/>
     <div>
 <h1>Ratings</h1>

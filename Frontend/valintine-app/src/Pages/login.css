@@ -6,6 +6,7 @@
   padding: 10px;
   background: pink;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: auto;
 }
 
 .form-container {
@@ -15,7 +16,9 @@
   margin: 10px;
   min-height: 300px;
   max-width: 500px;
+  /* padding: 10px; */
   width: 100%;
+  height: auto;
 }
 label{
   text-align: left;

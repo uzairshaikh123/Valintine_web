@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "../Styles/admin.css";
+import AdminDash from "../Components/AdminComponents/AdminDash";
+import AdminUsers from "../Components/AdminComponents/AdminUsers";
+import AdminProducts from "../Components/AdminComponents/AdminProducts";
+import Customers from "../Components/AdminComponents/Customers";
+import AdminOrders from "../Components/AdminComponents/AdminOrders";
 
 function AdminPanel() {
   const [currentPage, setCurrentPage] = useState("dashboard");
@@ -19,15 +24,15 @@ function AdminPanel() {
             }`}
             onClick={() => handleMenuClick("dashboard")}
           >
-            Dashboard
+           Dashboard
           </li>
           <li
             className={`sidebar-menu-item ${
-              currentPage === "users" ? "active" : ""
+              currentPage === "customers" ? "active" : ""
             }`}
-            onClick={() => handleMenuClick("users")}
+            onClick={() => handleMenuClick("customers")}
           >
-            Users
+           Customers
           </li>
           <li
             className={`sidebar-menu-item ${
@@ -47,11 +52,11 @@ function AdminPanel() {
           </li>
           <li
             className={`sidebar-menu-item ${
-              currentPage === "settings" ? "active" : ""
+              currentPage === "users" ? "active" : ""
             }`}
-            onClick={() => handleMenuClick("settings")}
+            onClick={() => handleMenuClick("users")}
           >
-            Settings
+            Admin Users
           </li>
         </ul>
       </aside>
@@ -60,27 +65,27 @@ function AdminPanel() {
         {/* Render dynamic content based on the current page */}
         {currentPage === "dashboard" && (
           <div className="page-content">
-            <p>Welcome to the Dashboard page!</p>
+             <AdminDash/>
           </div>
         )}
         {currentPage === "users" && (
           <div className="page-content">
-            <p>This is the Users page.</p>
+            <AdminUsers/>
           </div>
         )}
         {currentPage === "products" && (
           <div className="page-content">
-            <p>Explore the Products page.</p>
+            <AdminProducts/>
           </div>
         )}
         {currentPage === "orders" && (
           <div className="page-content">
-            <p>Manage your Orders here.</p>
+           <AdminOrders/>
           </div>
         )}
-        {currentPage === "settings" && (
+        {currentPage === "customers" && (
           <div className="page-content">
-            <p>Adjust your settings on this page.</p>
+          <Customers/>
           </div>
         )}
       </main>

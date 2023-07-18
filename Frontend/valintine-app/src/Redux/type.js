@@ -1,8 +1,14 @@
 export const GETPRODUCTS = "getproducts";
 export const GETCARTPRODUCTS = "getcartproducts";
 export const ADDCARTPRODUCTS = "addcartproduct";
+export const DELETECARTPRODUCTS = "deletecartproduct";
+export const HANDLECARTQUANTITY = "handle/cart/product/quantity";
 export const LOGIN = "login";
 export const SIGNUP = "signup";
 export const LOADING = "loading";
 export const LOGOUT = "logout";
 export const ERROR = "error";
+export const ADDRESSUPDATE = "addressupdate";
+export const DELETE_ALLCARTPRODUCTS = "delete/allcart/products";
+export const ADD_ALLCARTPRODUCTS_TO_ORDERS = "add/allcartproducts/to/orders";
+export const GET_ALL_ORDERS = "get/allorders";

@@ -6,14 +6,18 @@
 }
 
 .carousel-container button{
-    max-width: 20px;
-    background: rgb(86, 84, 84);
+    max-width: 10px;
+    background: white;
     color: black;
-
 }
-
+.carousel-container button::before{
+    color: gray;
+    
+}
+.carousel-container button:hover{
+    background: white;
+}
 #bookeh-card{
-    /* border: 1px solid red; */
     height: auto;
     width: 270px;
     margin-top: 20px;

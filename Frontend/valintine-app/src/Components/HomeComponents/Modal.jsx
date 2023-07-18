@@ -57,7 +57,7 @@ initial=false
   
   }
   return (
-    <div>
+    <div className='modal-cont'>
       <button  style={{padding:"10px",cursor:"pointer",backgroundColor:"aqua",border:"none",}} className='locationbtn navloc' onClick={handleOpen} 
       >
         <img style={{width:"15%",height:"60%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />

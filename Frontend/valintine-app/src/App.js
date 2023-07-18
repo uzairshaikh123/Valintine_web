@@ -7,6 +7,9 @@ import Footer from "./Components/HomeComponents/Footer";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import AdminPanel from "./Pages/Admin";
+import { useDispatch, useSelector } from "react-redux";
+import { handlegetcartproducts } from "./Redux/action";
+
 // import handleOpe
 function App() {
   const Msg = ({ closeToast, toastProps }) => (
@@ -34,14 +37,26 @@ function App() {
       clearTimeout(popup);
     };
   }, []);
+const dispatch = useDispatch()
+const store = useSelector((store)=>store)
+const {cart} = store
+useEffect(()=>{
+let user = JSON.parse(sessionStorage.getItem("userdetails"));
+
+dispatch(handlegetcartproducts(user?._id))
+
+},[])
+
+
 
   return (
     <div className="App">
      
-      {admin && <Navbar />}
+      {admin && <Navbar cartcount={cart?.length} />}
       <AllRoutes />
-      <ToastContainer position="bottom-left" autoClose={5000} />
+      <ToastContainer />
       <Footer />
+    
     
     </div>
   );

@@ -1,6 +1,46 @@
 import React from 'react'
 import './payment.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { handleadd_allcart_products_toorders, handledelete_allcart_products } from '../../Redux/action'
+import { toast } from 'react-toastify'
 const Payment = () => {
+const dispatch = useDispatch()
+const store = useSelector(store=>store)
+const {cart}=store
+const user = JSON.parse(sessionStorage.getItem("userdetails"))
+  const handlecheckout =(e)=>{
+    e.preventDefault()
+    console.log(user._id)
+    dispatch(handleadd_allcart_products_toorders(cart)).then((res)=>{
+      if(res.status===200 || res.status==201){  
+        dispatch(handledelete_allcart_products(user._id)).then((res)=>{
+          if(res.status===200 || res.status===201){
+            toast.success('🤩 Your Order is Placed', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
+
+            
+          }
+        })
+      }
+  
+
+    })
+    
+
+
+  }
+
+
+
+
   return (
     <div className="modal">
     <form className="form">
@@ -77,7 +117,7 @@ const Payment = () => {
         </div>
         </div>
       </div>
-        <button className="purchase--btn">PAY NOW</button>
+        <button className="purchase--btn" onClick={handlecheckout}>PAY NOW</button>
     </form>
     </div>
   )

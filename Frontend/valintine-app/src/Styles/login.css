@@ -33,6 +33,7 @@
     border-radius: 15px;
     /* border: 1px solid red; */
     height: auto;
+    padding: 10px;
   }
   .cont>div{
     /* border: 1px solid red; */
@@ -49,6 +50,7 @@
 
     .form .sign-in{
 width: 200px;
+
     }
 
     
