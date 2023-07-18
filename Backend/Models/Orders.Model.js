@@ -17,7 +17,9 @@ const OrderSchema  =  mongoose.Schema({
     booked_dates: { type: Array, required: false },
     address: { type: String, required: false },
     quantity: { type: String, required: true },
-    status: { type: String, required: true }
+    status: { type: String, required: true },
+    userID: { type: String, required: true },
+    orderDate: { type: String, required: false },
 
 })
 

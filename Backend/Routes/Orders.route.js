@@ -9,6 +9,7 @@ const OrdersRoute = express.Router()
 
 OrdersRoute.get('/all/:id', AuthMiddleware, async (req, res) => {
     const id = req.params.id
+    console.log(id)
     try {
         let allproducts = await  OrdersModel.find({userID:id})
         res.status(200).send({"msg":"All Products",data:allproducts})
@@ -17,6 +18,8 @@ OrdersRoute.get('/all/:id', AuthMiddleware, async (req, res) => {
         }
 
 })
+
+
 OrdersRoute.get('/all', AdminMiddleware, async (req, res) => {
    
     try {
@@ -32,8 +35,8 @@ OrdersRoute.get('/all', AdminMiddleware, async (req, res) => {
 OrdersRoute.post('/add', AuthMiddleware, async (req, res) => {
 
     try {
-        let newproduct = new OrdersModel(req.body)
-        await newproduct.save()
+        let newproduct = await OrdersModel.insertMany(req.body)
+        
         res.status(200).send({"msg":"Product Added",data:newproduct})
     } catch (error) {
         res.status(500).send({"msg":error.message})

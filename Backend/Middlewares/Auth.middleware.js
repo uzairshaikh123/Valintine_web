@@ -5,13 +5,15 @@ var jwt = require('jsonwebtoken');
 
 AuthMiddleware.use((req,res,next)=>{
     let token = req.headers.authorization
+    console.log("req.body",req.body)
 
 try {
     jwt.verify(token, 'authuser', function(err, decoded) {
-        if (err) {
-            res.status(401).send({"msg": "Unauthorized"})
-        }else if (decoded){
+        // console.log("line 12",decoded,err)
+        if (decoded) {
             next()
+        }else if (err){
+            res.status(401).send({"msg": "Unauthorized"})
         }
       });
 } catch (error) {

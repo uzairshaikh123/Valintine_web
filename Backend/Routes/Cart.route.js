@@ -17,11 +17,12 @@ CartRoute.get('/usercart/:id', AuthMiddleware,async (req, res) => {
 
 
 CartRoute.post('/add',AuthMiddleware, async (req, res) => {
-
+console.log(req.body)
     try {
       let findproduct = await CartModel.findOne({_id:req.body._id})
     //   console.log(findproduct)
           if(findproduct){
+            console.log("error: product found")
            return res.status(404).send({message: 'Product already exists'})
           }
           else{
@@ -70,8 +71,9 @@ CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
 CartRoute.delete('/deleteall/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
+    console.log(id)
     try {
-        let delproduct = await  CartModel.findByIdAndDelete({userID:id})
+        let delproduct = await  CartModel.deleteMany({userID:id})
         res.status(200).send({"msg":"Product Deleted",data:delproduct})
     } catch (error) {
         res.status(500).send({"msg":error.message})

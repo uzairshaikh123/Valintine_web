@@ -98,7 +98,8 @@ AuthRouter.patch('/update/address/:id', AuthMiddleware, async (req, res) => {
   let id = req.params.id
   try {
       let updateduser = await  AuthModel.findByIdAndUpdate({_id:id},{address:req.body.address})
-      res.status(200).send({"msg":"User Address Updated",data:updateduser})
+      let user = await AuthModel.findOne({_id:id})
+      res.status(200).send({"msg":"User Address Updated",data:user})
   } catch (error) {
       res.status(500).send({"msg":error.message})
       }
