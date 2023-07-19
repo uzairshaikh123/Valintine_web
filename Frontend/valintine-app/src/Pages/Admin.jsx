@@ -75,7 +75,7 @@ function AdminPanel() {
         )}
         {currentPage === "products" && (
           <div className="page-content">
-            <AdminProducts/>
+            <AdminProducts />
           </div>
         )}
         {currentPage === "orders" && (

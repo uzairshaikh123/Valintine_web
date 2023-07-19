@@ -3,6 +3,7 @@ import './payment.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleadd_allcart_products_toorders, handledelete_allcart_products } from '../../Redux/action'
 import { toast } from 'react-toastify'
+import PaymentForm from './Pay'
 const Payment = () => {
 const dispatch = useDispatch()
 const store = useSelector(store=>store)
@@ -43,7 +44,7 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
 
   return (
     <div className="modal">
-    <form className="form">
+    {/* <form className="form">
       <div className="payment--options">
         <button name="paypal" type="button">
           <svg xmlSpace="preserve" viewBox="0 0 124 33" height="33px" width="124px" y="0px" x="0px" id="Layer_1" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnsBx="http://www.w3.org/2000/svg">
@@ -117,8 +118,9 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
         </div>
         </div>
       </div>
-        <button className="purchase--btn" onClick={handlecheckout}>PAY NOW</button>
-    </form>
+        {/* <button className="purchase--btn" onClick={handlecheckout}>PAY NOW</button> */}
+    {/* </form> */} 
+      <PaymentForm />
     </div>
   )
 }

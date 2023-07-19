@@ -13,6 +13,7 @@ import Login from '../Pages/Login'
 import AdminPanel from '../Pages/Admin'
 import PrivateRoute from './PrivateRoute'
 import OrdersPage from '../Pages/Orders'
+import AdminLogin from '../Pages/AdminLogin'
 
 const AllRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AllRoutes = () => {
                 }/>
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/admin" element={<AdminPanel/>}/>
+                <Route path="/adminlogin" element={<AdminLogin/>}/>
                 <Route path="/orders" element={<OrdersPage/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>
                 {/* <Route path="/register" element={<Register/>}/>

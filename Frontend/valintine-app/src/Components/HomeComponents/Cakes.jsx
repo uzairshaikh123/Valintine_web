@@ -621,7 +621,7 @@ const Cakes = () => {
     containerClass="carousel-container"
     autoPlay={true}
     infinite={true}
-    autoPlaySpeed={1000}
+    autoPlaySpeed={3000}
     >
     {bookeh.map((e)=>{
 

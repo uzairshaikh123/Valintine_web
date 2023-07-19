@@ -615,7 +615,7 @@ let walls=[
     autoPlay={true}
     containerClass="carousel-container"
     infinite={true}
-    autoPlaySpeed={1000}
+    autoPlaySpeed={3000}
     >
     {walls.map((e)=>{
 

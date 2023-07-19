@@ -1,8 +1,12 @@
 import React from 'react'
+import TableCompOrders from './TableCompOrders'
 
 const AdminOrders = () => {
   return (
-    <div>AdminOrders</div>
+    <div>
+      <h1>Orders</h1>
+      <TableCompOrders />
+    </div>
   )
 }
 

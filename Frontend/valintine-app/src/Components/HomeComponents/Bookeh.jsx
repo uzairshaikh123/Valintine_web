@@ -622,7 +622,7 @@ const Bookeh = () => {
     autoPlay={true}
     infinite={true}
     // centerMode={true}
-    autoPlaySpeed={1000}
+    autoPlaySpeed={3000}
     containerClass="carousel-container"
     >
     {bookeh.map((e)=>{

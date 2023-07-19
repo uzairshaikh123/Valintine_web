@@ -55,7 +55,7 @@ const PaginationButton = styled.button`
   cursor: pointer;
 `;
 
-const TableComp= () => {
+const TableCompOrders= () => {
   const itemsPerPage = 3; // Number of items to show per page
   const data = [
     { id: 1, name: "John Doe", age: 30, email: "john@example.com" },
@@ -104,6 +104,7 @@ console.log(products);
             <TableHeaderCell>Price</TableHeaderCell>
             <TableHeaderCell>Edit</TableHeaderCell>
             <TableHeaderCell>Delete</TableHeaderCell>
+            <TableHeaderCell>Share</TableHeaderCell>
           </TableRow>
         </TableHead>
         <tbody>
@@ -120,6 +121,9 @@ console.log(products);
               </TableCell>
               <TableCell>
                 <Button>DELETE</Button>
+              </TableCell>
+              <TableCell>
+                <Button>SHARE</Button>
               </TableCell>
             </TableRow>
           ))}
@@ -140,4 +144,4 @@ console.log(products);
   );
 };
 
-export default TableComp;
+export default TableCompOrders;

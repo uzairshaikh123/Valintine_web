@@ -51,7 +51,7 @@ const Header = () => {
     containerClass="carousel-container"
     autoPlay={true}
     infinite={true}
-    autoPlaySpeed={1000}
+    autoPlaySpeed={3000}
     >
       <div>
         <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/cake_icon_1_-_Copy-removebg-preview-min.png" alt="" />
