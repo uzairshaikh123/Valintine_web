@@ -12,3 +12,5 @@ export const ADDRESSUPDATE = "addressupdate";
 export const DELETE_ALLCARTPRODUCTS = "delete/allcart/products";
 export const ADD_ALLCARTPRODUCTS_TO_ORDERS = "add/allcartproducts/to/orders";
 export const GET_ALL_ORDERS = "get/allorders";
+export const GET_ALL_USERS = "get/allusers";
+export const ADD_REVIEWS = "add/reviews";

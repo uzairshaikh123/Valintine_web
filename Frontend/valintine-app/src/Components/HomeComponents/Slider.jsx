@@ -32,15 +32,22 @@ const responsive = {
     infinite={true}
     containerClass="carousel-container"
     >
-    
+         <div>
+
         <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+         </div>
    
-   
+   <div>
         <img  className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+   </div>
+   <div>
+          <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+   </div>
 
-         <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+<div>
 
         <img  className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+</div>
 
   </Carousel>
   )

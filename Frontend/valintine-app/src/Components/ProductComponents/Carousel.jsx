@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './carousel.css'
+import "./carousel.css";
 const AsNavFor = ({ image }) => {
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
@@ -34,7 +34,6 @@ const AsNavFor = ({ image }) => {
   const [product, setproduct] = useState([]);
   const store = useSelector((store) => store);
   const { error, loading, products } = store;
- 
 
   useEffect(() => {
     // Set up the nav1 and nav2 references after component mount
@@ -83,24 +82,25 @@ const AsNavFor = ({ image }) => {
       {/* <h4>Second Slider</h4> */}
       <Slider
         // {...settings2}
-        slidesToShow={3}
+        slidesToShow={4}
         dots={true}
         infinite={true}
         // vertical={false}
-        // adaptiveHeight={true}
+        adaptiveHeight={true}
         asNavFor={slider1.current}
         ref={slider2}
-          swipeToSlide={true}
-          focusOnSelect={true}
-          prevArrow={<PrevArrow />}
+        swipeToSlide={true}
+        focusOnSelect={true}
+        prevArrow={<PrevArrow />}
         nextArrow={<NextArrow />}
+        style={{ display: "flex" }}
       >
         {product[0]?.image?.map((el) => {
           return (
-            <div key={el}>
+            <div key={el} style={{ border: "1px solid red" }}>
               <img
                 style={{ cursor: "pointer" }}
-                width={"95%"}
+                width={"100%"}
                 src={el}
                 alt=""
               />

@@ -16,14 +16,16 @@ function AdminLogin() {
   const navigate = useNavigate();
   const store = useSelector((store) => store);
   const { loading, error, token } = store;
-
-
+  const [adminID, setadminID] =useState("")
+  const [adminPass,setadminPass]=useState("")
   const handleregister = (e) => {
     e.preventDefault();
     let obj = {
       name: username,
       email: email,
       password: password,
+      adminID: adminID,
+      adminpassword: adminPass
     };
   
     dispatch(handleSignup(obj)).then((res) => {

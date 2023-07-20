@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { handleaddcartproduct, handlegetcartproducts, handlegetproducts } from '../Redux/action';
 import AboutProduct from '../Components/ProductComponents/AboutProduct';
 import Cookies from 'js-cookie';
+import CustomizedRating from '../Components/ProductComponents/Ratings';
 
 const SingleProductPage = () => {
 
@@ -82,11 +83,6 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
 }
 
 
-
-
-
-
-
   return (
   loading?<div
   style={{
@@ -151,7 +147,10 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
   
     <AboutProduct/>
     <div>
-<h1>Ratings</h1>
+<h1 style={{marginTop:"20px"}}>Ratings</h1>
+
+<CustomizedRating reviews={product[0]?.reviews} />
+
 
     </div>
     </>

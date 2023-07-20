@@ -54,6 +54,9 @@ export const reducer = (state = initstate, { type, payload }) => {
     case types.GET_ALL_ORDERS: {
       return { ...state,error:false,loading:false,orders:payload};
     }
+    case types.GET_ALL_USERS: {
+      return { ...state,error:false,loading:false};
+    }
     default: {
       return { ...state };
     }
