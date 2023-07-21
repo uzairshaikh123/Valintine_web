@@ -3,7 +3,7 @@ import { useNavigate ,Navigate} from 'react-router-dom'
 
 const PrivateRouteAdmin = ({children}) => {
 
-const admin = JSON.parse(sessionStorage.getItem("admindetails")) || ""
+const admin = sessionStorage.getItem("admin_token") || ""
 const navigate = useNavigate()
 // console.log(user)
 if(!admin){

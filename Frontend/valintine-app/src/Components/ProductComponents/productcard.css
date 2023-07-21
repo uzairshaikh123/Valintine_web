@@ -1,116 +1,123 @@
 .card {
-    width: 100%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 5px;
-    transition: 0.5s ease-in-out;
-    /* min-height: 450px; */
-    text-decoration: none;
-   
-    font-size: 15px;
-   height: 95%;
-  
-    /* border: 1px solid red; */
-  }
-  .card:hover {
-    transform: scale(1.1);
-  }
-  .card-header {
-    
-    position: relative;
-  }
-  
-  .card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    transition: 0.5s;
-  }
-  .card-image:hover{
-    transform: scale(1);
-  }
-  .heart {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .heart.liked {
-    background-color: #ff0000;
-    border-color: #ff0000;
-  }
-  
-  .card-body {
-    padding: 16px;
-    font-size: 15px;
-  }
-  
-  .card-title {
-    font-size: 15px;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 8px;
-  }
-  
-  .card-description {
-    color: #666;
-    margin-bottom: 8px;
-    font-weight: 600;
-    text-align: left;
-  }
-  
-  .card-footer {
-    display: flex;
-    align-items: center;
-   /* border: 1px solid red; */
-  }
-  
-  .share:hover{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  transition: 0.5s ease-in-out;
+  /* min-height: 450px; */
+  text-decoration: none;
+
+  font-size: 15px;
+  max-height: 500px;
+  line-height: 20px;
+  margin-top: 10px;
+  /* border: 1px solid red; */
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card-header {
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  /* height: 200px; */
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: 0.5s;
+}
+.card-image:hover {
+  transform: scale(1);
+}
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  /* border: 2px solid #ccc; */
+  cursor: pointer;
+}
+
+.heart.liked {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.card-body {
+  padding: 16px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 20px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+/* .share:hover{
     background: pink;
     padding: 5px;
-  }
-  .card-price {
-    flex-grow: 1;
-   font-size: 15px;
-    font-weight: bold;
-  }
-  
-  #card-ratings {
-    display: flex;
-    text-align: start;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  
-  #card-ratings>div{
-    /* border: 1pxolid red; */
-  }
-  
-  .share-button {
-    /* padding: 8px 16px; */
-    color: #fff;
-    /* background-color: #333; */
-    border: none;
-    border-radius: 4px;
-    width: 100px;
-    cursor: pointer;
-  }
-  
-  .share-button:hover {
+  } */
+.card-price {
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#card-ratings {
+  display: flex;
+  text-align: start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+#card-ratings > div {
+  /* border: 1pxolid red; */
+}
+
+.share-button {
+  /* padding: 8px 16px; */
+  color: #fff;
+  /* background-color: #333; */
+  border: none;
+  border-radius: 4px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.share-button:hover {
   color: red;
-  }
+}
 
+@media all and (min-width: 0px) and (max-width:789px) {
+  
 
-
+.card{
+  min-height: 350px;
+  font-size: 5px;
+}
   
-  
-  
+}

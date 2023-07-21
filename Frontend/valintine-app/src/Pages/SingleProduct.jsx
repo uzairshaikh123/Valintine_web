@@ -11,7 +11,9 @@ import { handleaddcartproduct, handlegetcartproducts, handlegetproducts } from '
 import AboutProduct from '../Components/ProductComponents/AboutProduct';
 import Cookies from 'js-cookie';
 import CustomizedRating from '../Components/ProductComponents/Ratings';
-
+import { Input } from '@mui/material';
+import BasicDateTimePicker, { DatePickerComp } from '../Components/ProductComponents/DatePicker';
+import PlayerComponent from '../Components/ProductComponents/VideoPlayer';
 const SingleProductPage = () => {
 
   const store = useSelector(store=>store)
@@ -109,18 +111,37 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
         {/* <div className="related-images"> */}
   
         <AsNavFor image={product[0]?.image} />
+        <div style={{width:"100%",height:"300px",border:"1px solid red"}}>
+
+        </div>
           {/* {product.related_images.slice(1).map((image, index) => (
             <img src={image} />
           ))}
         </div> */}
       </div>
       <div className="product-details">
+        <div id='prod_det'>
         <h1 className="product-title">{product[0]?.name}</h1>
-        <h1 className="product-title">Category : {product[0]?.category.toUpperCase()}</h1>
-        <div className="product-price">₹{product[0]?.price}</div>
+        <h6 className="product-title">Category : {product[0]?.category.toUpperCase()}</h6>
         <p className="product-description">{product[0]?.description}</p>
+
+        </div>
+<div className='date-cont'>
+        <div className="product-price">₹{product[0]?.price}/{product[0]?.category}</div>
+        <div style={{width:"100%",border:"1px solid gray",display:"flex",alignItems:"center"}}>
+        <i class='bx bxs-location-plus' ></i>
+<input type={"number"} placeholder='Enter Pincode' style={{outline:"none"}}/>
+        </div>
+<div style={{marginTop:"10px",marginBottom:"10px"}}>
+<DatePickerComp />
+
+</div>
+<div id='cart-buttons' >
+<button style={{marginBottom:"20px"}} onClick={handleaddtocart}>{product[0]?.category=="candle_light"?"Buy Now.":"Add to Cart"}</button>
+</div>
+</div>
         <table className="product-specifications"  style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"25px",lineHeight:"30px"}}>
-            <h2 style={{textAlign:"start",marginBottom:"20px"}}>Product Details</h2>
+            <h3 style={{textAlign:"start",marginBottom:"20px"}}>Product Details</h3>
           <tbody>
             {product[0]?.prod_details?.map((spec, index) => (
               <tr key={index}>
@@ -130,13 +151,19 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
             ))}
           </tbody>
         </table>
-<div id='cart-buttons'>
-<button onClick={handleaddtocart}>Add to Cart</button>
+
+
+
+<div id='video-player'>
+<PlayerComponent VIDEO_PATH = {"https://youtu.be/0BIaDVnYp2A"} />
 </div>
 
-        <div className="product-highlights" style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"25px",lineHeight:"30px"}}>
-          <h2 style={{textAlign:"start",marginBottom:"20px"}}>Product Description:</h2>
-          <ul>
+<div>
+
+</div>
+        <div className="product-highlights" style={{border:"1px solid red", boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"20px"}}>
+          <h3 style={{textAlign:"start"}}>Product Description:</h3>
+          <ul style={{padding:"25px"}}>
             {product[0]?.description?.map((highlight, index) => (
               <li key={index}>{highlight}</li>
             ))}

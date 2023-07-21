@@ -8,6 +8,7 @@ const initstate = {
   products: [],
   token: sessionStorage.getItem("token") || "",
   orders:[],
+  admin_token:sessionStorage.getItem("admin_token") || "",
 };
 
 export const reducer = (state = initstate, { type, payload }) => {
@@ -56,6 +57,15 @@ export const reducer = (state = initstate, { type, payload }) => {
     }
     case types.GET_ALL_USERS: {
       return { ...state,error:false,loading:false};
+    }
+    case types.ADMIN_LOGIN: {
+      return { ...state,error:false,loading:false,admin_token:payload};
+    }
+    case types.ADMIN_REGISTER: {
+      return { ...state,error:false,loading:false,admin_token:payload};
+    }
+    case types.ERASE_ADMIN_TOKEN: {
+      return { ...state,error:false,loading:false,admin_token:""};
     }
     default: {
       return { ...state };

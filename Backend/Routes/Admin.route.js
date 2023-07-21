@@ -9,6 +9,7 @@ require("dotenv").config()
 
 AdminRouter.post("/register", async (req, res) => {
   let { name, email, password, adminID, adminPass } = req.body;
+  console.log("user",req.body)
   if (adminID == process.env.adminemail && adminPass == process.env.adminpass) {
     try {
       let existingUser = await AdminModel.findOne({ email });
@@ -42,7 +43,7 @@ AdminRouter.post("/login", async (req, res) => {
   let { email, password } = req.body;
   try {
     let user = await AdminModel.findOne({ email });
-
+console.log("user",user)
     if (!user) {
       return res.status(400).send({ message: "User not found" });
     }

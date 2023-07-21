@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./productcard.css";
 import { Link } from "react-router-dom";
-
-const ProductCard = ({
+import "./productcard.css"
+const WishListCard = ({
   id,
   image,
   name,
@@ -53,6 +53,9 @@ const ProductCard = ({
                 <div>
                   <h5 style={{color:"black"}}>{ratings}-Reviews 8</h5>
                 </div>
+                <div>
+                    <button>Add To cart</button>
+                </div>
                 {/* <div>
                  
                     <img 
@@ -73,4 +76,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default WishListCard;

@@ -1,11 +1,11 @@
 import React from 'react'
-
+import './aboutprod.css'
 const AboutProduct = () => {
   return (
-    <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",justifyContent:"center"}}>
+    <div id='about-prod'>
         <div>
-        <div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"100%",margin:"auto",marginTop:"50px"}}>
-<h2 style={{textAlign:"start",marginBottom:"5px",padding:"10px"}}>Why ❤️ ValintineSaga ?</h2>
+        <div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px"}}>
+<h3>Why ❤️ ValintineSaga ?</h3>
         <ul style={{padding:"25px"}}>
           <li style={{textAlign:"start",marginBottom:"10px"}}>👍 Trusted Platform - More than 1,000 celebrations every month</li>
           <li style={{textAlign:"start",marginBottom:"10px"}}>👍 Professional Team - Follows all Safety Measures & Sanitisation Requirements</li>
@@ -16,7 +16,7 @@ const AboutProduct = () => {
         </div>
         </div>
 <div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px"}}>
-<h2 style={{textAlign:"start",marginBottom:"5px"}}>Cancelation Policy</h2>
+<h3>Cancelation Policy</h3>
         <ul style={{padding:"25px"}}>
           <li style={{textAlign:"start",marginBottom:"10px"}}>Refunds for experiences to be availed in the next 72 hours will be done only in ValentineSaga Wallet.</li>
           <li style={{textAlign:"start",marginBottom:"10px"}}>Less than 24 hours before an experience: Cancellation with NO Refund. 24 hours to 2 days before an experience: Cancellation with 95% Refund in ValentineSaga Wallet.</li>

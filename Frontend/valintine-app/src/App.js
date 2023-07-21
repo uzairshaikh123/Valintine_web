@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminPanel from "./Pages/Admin";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "./Redux/action";
+import Whatsapp from "./Components/HomeComponents/Whatsapp";
 
 // import handleOpe
 function App() {
@@ -24,10 +25,15 @@ function App() {
       <button onClick={closeToast}>Close</button>
     </div>
   );
-  const [admin,setadmin]=useState(true)
+  
+  const store = useSelector((store)=>store)
+  const {cart,admin_token} = store
+  // const admin_token = sessionStorage.getItem('admin_token') || ""
+  const [admin,setadmin]=useState("")
   const notify = () => {
     toast(<Msg />);
   };
+  // console.log(admin_token)
 
   useEffect(() => {
     let popup = setTimeout(() => {
@@ -37,25 +43,33 @@ function App() {
       clearTimeout(popup);
     };
   }, []);
-const dispatch = useDispatch()
-const store = useSelector((store)=>store)
-const {cart} = store
-useEffect(()=>{
-let user = JSON.parse(sessionStorage.getItem("userdetails"));
-
-dispatch(handlegetcartproducts(user?._id))
-
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    let user = JSON.parse(sessionStorage.getItem("userdetails"));
+    
+    dispatch(handlegetcartproducts(user?._id))
+    
 },[])
 
 
 
+useEffect(()=>{
+
+    setadmin(admin_token)
+
+},[admin_token])
+
+// console.log(admin)
+
   return (
     <div className="App">
      
-      {admin && <Navbar cartcount={cart?.length} />}
+      {admin.length==0 && <Navbar cartcount={cart?.length} />}
+      {admin.length==0 && <Whatsapp />}
       <AllRoutes />
+      
       <ToastContainer />
-      <Footer />
+{admin.length==0 &&  <Footer />}
     
     
     </div>

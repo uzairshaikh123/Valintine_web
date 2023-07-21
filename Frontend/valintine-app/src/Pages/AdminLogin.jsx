@@ -3,7 +3,12 @@ import "./login.css";
 import Swal from "sweetalert2";
 import { CSSTransition } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
-import { handleLogin, handleSignup } from "../Redux/action";
+import {
+  handleLogin,
+  handleSignup,
+  handle_admin_login,
+  handle_admin_register,
+} from "../Redux/action";
 import { Hearts } from "react-loader-spinner";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -16,34 +21,31 @@ function AdminLogin() {
   const navigate = useNavigate();
   const store = useSelector((store) => store);
   const { loading, error, token } = store;
-  const [adminID, setadminID] =useState("")
-  const [adminPass,setadminPass]=useState("")
+  const [adminID, setadminID] = useState("ravi@gmail.com");
+  const [adminPass, setadminPass] = useState("ravi");
   const handleregister = (e) => {
+   
     e.preventDefault();
     let obj = {
       name: username,
       email: email,
       password: password,
       adminID: adminID,
-      adminpassword: adminPass
+      adminPass: adminPass,
     };
-  
-    dispatch(handleSignup(obj)).then((res) => {
+
+    dispatch(handle_admin_register(obj)).then((res) => {
       // console.log(res.response.status);
-      if(res.status===200 || res.status===201){
-          Swal.fire(
-              'Good job!',
-              'Signup Successful',
-              'success'
-            )
-            return navigate("/")
-      }else{
-          Swal.fire(
-              'Enter valid Email or User Already Exists',
-              "couldn't signup",
-              'error'
-            )
-      return navigate("/adminlogin")
+      if (res.status === 200 || res.status === 201) {
+        Swal.fire("Good job!", "Signup Successful", "success");
+        return navigate("/admin");
+      } else {
+        Swal.fire(
+          "Enter valid Email or User Already Exists",
+          "couldn't signup",
+          "error"
+        );
+        return navigate("/adminlogin");
       }
     });
   };
@@ -54,13 +56,13 @@ function AdminLogin() {
       email: email,
       password: password,
     };
-  
-    dispatch(handleLogin(obj))
+
+    dispatch(handle_admin_login(obj))
       .then((res) => {
-        console.log(res.data)
+        
         if (res.status === 201) {
           Swal.fire("Good job!", "You have successfully logged in", "success");
-          return navigate("/");
+          return navigate("/admin");
         } else {
           Swal.fire("Email or Password Wrong", "couldn't log in", "error");
           return navigate("/adminlogin");
@@ -71,9 +73,9 @@ function AdminLogin() {
       });
   };
 
-//   if (token) {
-//     return <Navigate to="/" />;
-//   }
+  //   if (token) {
+  //     return <Navigate to="/" />;
+  //   }
 
   const handleToggle = () => {
     setShowLogin(!showLogin);
@@ -160,8 +162,8 @@ function AdminLogin() {
               <label>Admin Email:</label>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
+                value={adminID}
+                onChange={(e) => setadminID(e.target.value)}
                 required
               />
             </div>
@@ -169,8 +171,8 @@ function AdminLogin() {
               <label>Admin Password:</label>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
+                value={adminPass}
+                onChange={(e) => setadminPass(e.target.value)}
                 required
               />
             </div>

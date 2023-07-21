@@ -15,6 +15,7 @@ const ProductSchema = mongoose.Schema({
   description: { type: Array, required: true },
   delivery_info: { type: Array, required: true },
   booked_dates: { type: Array, required: false },
+  pincodes: { type: Array, required: true },
 });
 
 const ProductModel = mongoose.model("products", ProductSchema);

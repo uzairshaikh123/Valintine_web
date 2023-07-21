@@ -252,6 +252,26 @@ export const handle_get_allorders = (id) => (dispatch) => {
       return err;
     });
 };
+export const handle_get_allorders_byorders = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/orders/all`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.GET_ALL_ORDERS_BY_ADMIN ,payload:res.data.data});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
 export const handle_add_reviews = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
@@ -272,14 +292,14 @@ export const handle_add_reviews = (id,data) => (dispatch) => {
       return err;
     });
 };
-export const handle_get_all_users = (id,data) => (dispatch) => {
+export const handle_get_all_users = () => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .patch(`${process.env.REACT_APP_Backend_url}/auth/all`,{
+    .get(`${process.env.REACT_APP_Backend_url}/auth/all`,{
       headers: {
         "Content-Type": "application/json",
-        authorization: sessionStorage.getItem("token"),
+        authorization: sessionStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -291,6 +311,51 @@ export const handle_get_all_users = (id,data) => (dispatch) => {
       dispatch({ type: types.ERROR });
       return err;
     });
+};
+export const handle_admin_login = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`${process.env.REACT_APP_Backend_url}/admin/login`,data,{
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      sessionStorage.setItem("admin_token",res.data.token)
+      dispatch({ type: types.ADMIN_LOGIN ,payload:res.data.token});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_admin_register = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`${process.env.REACT_APP_Backend_url}/admin/register`,data,{
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      sessionStorage.setItem("admin_token",JSON.stringify(res.data.token))
+      dispatch({ type: types.ADMIN_REGISTER ,payload:res.data.token});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_erase_admin_token = () => (dispatch) => {
+   sessionStorage.setItem('admin_token',"")
+  dispatch({type:types.ERASE_ADMIN_TOKEN})
+
 };
 
 

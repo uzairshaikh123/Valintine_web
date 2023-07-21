@@ -46,6 +46,20 @@ productRoute.patch('/update/:id', AdminMiddleware, async (req, res) => {
 
 
 })
+productRoute.patch('/update/reviews/:id', AuthMiddleware, async (req, res) => {
+
+    let id = req.params.id
+
+    try {
+
+        let updatedproduct = await  ProductModel.findByIdAndUpdate({_id:id},req.body)
+        res.status(200).send({"msg":"Product Updated",data:updatedproduct})
+    } catch (error) {
+        res.status(500).send({"msg":error.message})
+        }
+
+
+})
 
 
 productRoute.delete('/delete/:id',AdminMiddleware, async (req, res) => {

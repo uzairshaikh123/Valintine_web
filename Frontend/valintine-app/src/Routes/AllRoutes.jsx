@@ -14,6 +14,10 @@ import AdminPanel from '../Pages/Admin'
 import PrivateRoute from './PrivateRoute'
 import OrdersPage from '../Pages/Orders'
 import AdminLogin from '../Pages/AdminLogin'
+import MainAdmin from '../Components/AdminComponents/MainAdmin'
+import PrivateRouteAdmin from './PrivateRouteAdmin'
+import Blogs from '../Pages/Blogs'
+import Wishlist from '../Pages/Wishlist'
 
 const AllRoutes = () => {
   return (
@@ -32,9 +36,16 @@ const AllRoutes = () => {
                
                 }/>
                 <Route path="/checkout" element={<Checkout/>}/>
-                <Route path="/admin" element={<AdminPanel/>}/>
+                <Route path="/wishlist" element={<Wishlist/>}/>
+                <Route path="/admin" element={
+                <PrivateRouteAdmin>
+                <MainAdmin/>
+                </PrivateRouteAdmin>
+                
+                }/>
                 <Route path="/adminlogin" element={<AdminLogin/>}/>
                 <Route path="/orders" element={<OrdersPage/>}/>
+                <Route path="/blogs" element={<Blogs/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>
                 {/* <Route path="/register" element={<Register/>}/>
                 <Route path="/profile" element={<Profile/>}/>
