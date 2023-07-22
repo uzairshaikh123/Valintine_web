@@ -252,7 +252,7 @@ export const handle_get_allorders = (id) => (dispatch) => {
       return err;
     });
 };
-export const handle_get_allorders_byorders = (id) => (dispatch) => {
+export const handle_get_allorders_byadmin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
@@ -358,4 +358,25 @@ export const handle_erase_admin_token = () => (dispatch) => {
 
 };
 
+
+export const handle_get_all_blogs = () => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/auth/all`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.GET_ALL_ORDERS ,payload:res.data.data});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
 

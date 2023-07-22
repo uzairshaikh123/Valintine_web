@@ -8,6 +8,14 @@ const CartRoute = require('./Routes/Cart.route')
 const OrdersRoute = require('./Routes/Orders.route')
 const AdminRouter = require('./Routes/Admin.route')
 const PaymentRouter = require('./Routes/payment')
+var http = require('http'),
+    fs = require('fs'),
+    ccav = require('./Routes/ccutils.js'),
+    qs = require('querystring'),
+    ccavReqHandler = require('./Routes/ccRequestHandler.js'),
+    ccavResHandler = require('./Routes/ccResponseHanlder.js');
+const RequestHandler = require('./Routes/ccRequestHandler.js')
+const ResponseHandler = require('./Routes/ccResponseHanlder.js')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -19,7 +27,16 @@ app.use("/products",productRoute)
 app.use("/cart",CartRoute)
 app.use("/orders",OrdersRoute)
 app.use("/admin",AdminRouter)
-app.use("/payment",PaymentRouter)
+// app.use("/payment",PaymentRouter)
+
+// app.post('/ccavRequestHandler', function (request, response){
+// 	ccavReqHandler.postReq(request, response);
+// });
+
+
+// app.post('/ccavResponseHandler', function (request, response){
+//         ccavResHandler.postRes(request, response);
+// });
 
 app.listen(8080, async () => {
     try {

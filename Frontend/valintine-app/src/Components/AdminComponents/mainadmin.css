@@ -465,6 +465,11 @@ body {
 	border-radius: 50%;
 	object-fit: cover;
 }
+#content main .table-data .order table thead{
+	border: 1px solid red;
+	display: table-header-group;
+
+}
 #content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
 }

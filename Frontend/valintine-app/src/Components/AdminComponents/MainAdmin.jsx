@@ -1,38 +1,24 @@
 import React, { useEffect, useState } from "react";
 
 import "./mainadmin.css";
-import { handle_get_all_users, handlegetproducts } from "../../Redux/action";
+import { handle_get_all_blogs, handle_get_all_users, handle_get_allorders, handle_get_allorders_byadmin, handlegetproducts } from "../../Redux/action";
 import { useDispatch } from "react-redux";
+import Customers from "./Customers";
+import AdminOrders from "./AdminOrders";
+import AdminProducts from "./AdminProducts";
+import AdminDash from "./AdminDash";
 const MainAdmin = () => {
   const dispatch = useDispatch();
+  const [users,setusers] = useState([])
+  const [customers,setcustomers] = useState([])
+  const [products,setproducts] = useState([])
+  const [orders,setorders] = useState([])
+  const [blogs,setblogs] = useState([])
   const [active_title, setactivetitle] = useState("Dashboard");
   const handle_Component = (e) => {
     console.log(e)
     let val = e.target.innerText;
     setactivetitle(e.target.innerText);
-    console.log(val)
-    if (val === "Customers") {
-      dispatch(handle_get_all_users()).then((res) => {
-          console.log(res.data);
-        });
-    } else if (val === "Products") {
-       
-        dispatch(handlegetproducts()).then((res) => {
-        console.log(res.data);
-    });
-} else if (val === "Orders") {
-        
-        dispatch(handlegetproducts()).then((res) => {
-            console.log(res.data);
-        });
-    }
-    else if (val === "Blogs") {
-        
-        
-      dispatch(handlegetproducts()).then((res) => {
-        console.log(res.data);
-      });
-    }
   };
 
   useEffect(() => {
@@ -249,7 +235,11 @@ const MainAdmin = () => {
             </li>
           </ul>
                          }
-          <div class="table-data">
+
+{active_title==="Customers"?<Customers/>:active_title==="Orders"?<AdminOrders/>:active_title==="Products"?<AdminProducts/>:<AdminDash />}
+
+
+          {/* <div class="table-data">
             <div class="order">
               <div class="head">
                 <h3>All {active_title}</h3>
@@ -260,11 +250,12 @@ const MainAdmin = () => {
                 <thead>
                   <tr>
                     <th>User</th>
-                    <th>Date Order</th>
-                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
+
+
+                  {}
                   <tr>
                     <td>
                       <img src="img/people.png" />
@@ -275,49 +266,10 @@ const MainAdmin = () => {
                       <span class="status completed">Completed</span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <img src="img/people.png" />
-                      <p>John Doe</p>
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status pending">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="img/people.png" />
-                      <p>John Doe</p>
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status process">Process</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="img/people.png" />
-                      <p>John Doe</p>
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status pending">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="img/people.png" />
-                      <p>John Doe</p>
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status completed">Completed</span>
-                    </td>
-                  </tr>
+               
                 </tbody>
               </table>
-            </div>
+            </div> */}
             {/* <div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
@@ -347,7 +299,7 @@ const MainAdmin = () => {
 						</li>
 					</ul>
 				</div> */}
-          </div>
+          {/* </div> */}
         </main>
       </section>
     </>

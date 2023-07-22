@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handlegetproducts } from "../../Redux/action";
 import { Button } from "@mui/material";
+import EditModal from "../AdminComponents/ProductEditModal";
 
 const TableContainer = styled.div`
   max-width: 600px;
@@ -55,7 +56,7 @@ const PaginationButton = styled.button`
   cursor: pointer;
 `;
 
-const TableComp= () => {
+const TableCompProducts= () => {
   const itemsPerPage = 3; // Number of items to show per page
   const data = [
     { id: 1, name: "John Doe", age: 30, email: "john@example.com" },
@@ -91,19 +92,19 @@ console.log(products);
 
 
 
+let keys = ["image", "id", "name", "city","Price","Edit","Delete"];
 
 
   return (
-    <TableContainer style={{minWidth:"90%",border:"1px solid red"}}>
+    <TableContainer style={{minWidth:"100%"}}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeaderCell>Image</TableHeaderCell>
-            <TableHeaderCell>ID</TableHeaderCell>
-            <TableHeaderCell>Name</TableHeaderCell>
-            <TableHeaderCell>Price</TableHeaderCell>
-            <TableHeaderCell>Edit</TableHeaderCell>
-            <TableHeaderCell>Delete</TableHeaderCell>
+          {  keys.map((el)=>{
+
+return <TableHeaderCell>{el}</TableHeaderCell>
+})
+}
           </TableRow>
         </TableHead>
         <tbody>
@@ -112,11 +113,12 @@ console.log(products);
                <TableCell>
                <img style={{height:"50%",width:"50%"}} src={item.image[0]} alt="" /> 
                 </TableCell>
-              <TableCell>{item.name}.splice(0,10)</TableCell>
                <TableCell>{item._id}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.city}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>
-                <Button>EDIT</Button>
+                <EditModal id={item?._id}/>
               </TableCell>
               <TableCell>
                 <Button>DELETE</Button>
@@ -140,4 +142,4 @@ console.log(products);
   );
 };
 
-export default TableComp;
+export default TableCompProducts;
