@@ -10,6 +10,7 @@ const store = useSelector(store=>store)
 const {cart}=store
 const user = JSON.parse(sessionStorage.getItem("userdetails"))
   const handlecheckout =(e)=>{
+    
     e.preventDefault()
     console.log(user._id)
     dispatch(handleadd_allcart_products_toorders(cart)).then((res)=>{

@@ -130,7 +130,7 @@ return acc
 
   return (
    cart?.length>0?<>
-      <div style={{ background: "pink" }}>
+      <div style={{ background: "#f7f9fc" }}>
         <h2 style={{ borderBottom: "2px solid white", display: "inline" }}>
           Cart
         </h2>

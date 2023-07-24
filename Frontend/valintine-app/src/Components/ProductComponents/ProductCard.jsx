@@ -28,26 +28,26 @@ const ProductCard = ({
     <div className="card">
       <div className="card-header">
         <Link to={`/products/${id}`}>
-          <img className="card-image" src={image[0]} alt={name} />
+          <img src={image[0]} alt={name} />
         </Link>
         <div className={`heart ${isLiked ? "liked" : ""}`} onClick={handleLike}>
-          <img src="https://img.icons8.com/?size=1x&id=87&format=png" alt="" />
+          <img style={{position:"absolute",top:"0px"}}  src="https://img.icons8.com/?size=1x&id=87&format=png" alt="" />
         </div>
       </div>
       <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>
         <div className="card-body">
-          <h4 className="card-description">{description[0].slice(0,20)}...</h4>
-          <h5 className="card-title">{name.slice(0,15)}...</h5>
+          <h4 className="card-description">{category.toUpperCase()}</h4>
+          <p className="card-title">{name.slice(0,15).toUpperCase()}...</p>
           <div
             style={{ display: "flex", flexWrap: "wrap" }}
             className="card-footer"
           >
             <div className="card-price">
               <div>
-                <h3 style={{fontSize:"15px",textAlign:"start"}}>
+                <p style={{fontSize:"15px",textAlign:"start"}}>
                   {multiple_price.length ? "" : "₹"}
                   {price}
-                </h3>
+                </p>
               </div>
               <div id="card-ratings">
                 <div>

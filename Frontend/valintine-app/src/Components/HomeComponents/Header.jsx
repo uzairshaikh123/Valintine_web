@@ -55,35 +55,35 @@ const Header = () => {
     autoPlaySpeed={3000}
     >
     <Link to={"/products?category=cake"} style={{textDecoration:"none",color:"black"}}>
-    <div style={{minHeight:"150px"}} className='headers-div'>
+    <div  className='headers-div'>
         <img style={{height:"35%",width:"30%",cursor:"pointer"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/cake_icon_1_-_Copy-removebg-preview-min.png" alt="" />
         <p>Cake</p>
       </div>
     </Link>  
 
     <Link to="/products?category=flowers" style={{textDecoration:"none",color:"black"}}>
-      <div style={{minHeight:"150px"}} className='headers-div' >
+      <div className='headers-div' >
         <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/Capture_flowers-removebg-preview__2_-removebg-preview-min.png" alt="" />
           <p>Flowers</p>
       </div>
     </Link>
 
     <Link to={"/products?category=candle_light"} style={{textDecoration:"none",color:"black"}}>
-      <div style={{minHeight:"150px"}} className='headers-div' >
+      <div  className='headers-div' >
         <img style={{height:"35%",width:"37%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/candle-light-dinner-character_15624-160-removebg-preview-min.png" alt="" />
  <p>Candle Light Dinner</p>
       </div>
     </Link>
 
     <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div style={{minHeight:"150px"}} className='headers-div' >
+      <div  className='headers-div' >
         <img  style={{height:"30%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/04/gifts_icon_1-removebg-preview.png" alt="" />
         <p>Gifts</p>
       </div>
     </Link>
 
     <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div className='headers-div'  style={{minHeight:"150px"}}>
+      <div className='headers-div'  >
         <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/balloon_decoration-removebg-preview-1-1-min.png" alt="" />
         <p>Decoration</p>
       </div>

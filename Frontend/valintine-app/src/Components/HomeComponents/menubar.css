@@ -46,3 +46,16 @@
     display: block;
     opacity: 1;
 }
+
+@media all and (min-width: 0px) and (max-width: 1300px) {
+    
+  .dropdown{
+    display: none;
+  }
+  #menubar {
+    display: none;
+
+  }
+  
+
+}

@@ -30,9 +30,9 @@ const handlesavaddress=()=>{
    const total = sessionStorage.getItem("total_price")
   return (
     <>
-    <div  style={{background:"pink"}}>
+    <div  style={{background:"#f7f9fc"}}>
       <h2 style={{borderBottom:"2px solid white",display:"inline"}}>Checkout</h2>
-    <div className='checkout-cont'>
+    {/* <div className='checkout-cont'>
       {show && <AddressPage handlesavaddress={handlesavaddress} />}
       {show===false && <div style={{OverflowY:"auto",minWidth:"50%",padding:"20px",margin:"auto",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",height:"inherit",display:"flex",flexDirection:"column",alignItem:"center",borderRadius:"10px",justifyContent:"center",width:"40%",backgroundColor:"white",textAlign:"start"}} >
         <h3 style={{textAlign:"start"}}>Summary</h3>
@@ -43,13 +43,13 @@ const handlesavaddress=()=>{
           return <p>Cart Items : {el.name}</p>
         })}
         <button onClick={handleeditaddress} style={{display:"block",margin:"auto",fontSize:"20px",cursor:"pointer",padding:"5px 20px",background:"blue",color:"white",border:"none",borderRadius:"10px"}}>Edit</button>
-        </div>}
+        </div>} */}
     
      
 <Payment/>
 
       
-    </div>
+    {/* </div> */}
     </div>
     <Links/>
     </>

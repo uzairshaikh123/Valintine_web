@@ -37,7 +37,7 @@ dispatch(handle_erase_admin_token())
 
         <Slider/>
         {/*  */}
-        <div style={{backgroundColor:"#f78da7"}}>
+        <div style={{backgroundColor:"#f7f9fc"}}>
 
         <Celebrate img={imgbig}/>
         <Celeb2 img={smallimg}/>

@@ -1,5 +1,5 @@
 .cart {
-    background-color: pink;
+    background-color: #f7f9fc;
     padding: 20px;
     margin-top: 50px;
     display: grid;
@@ -92,7 +92,7 @@
 
 
   ::-webkit-scrollbar {
-    width: 20px;
+    width: 10px;
   }
   
   /* Track */
@@ -103,7 +103,7 @@
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: pink; 
+    background: #c5dbfc; 
     border-radius: 10px;
   }
   

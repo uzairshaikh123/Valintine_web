@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { handlegetproducts } from '../../Redux/action';
+import { Hearts } from 'react-loader-spinner';
 
 
 
@@ -45,7 +46,7 @@ const Bookeh = () => {
       };
 
 const store = useSelector(store=>store)
-const {products} = store
+const {products,loading} = store
 const [bookeh ,setbookeh] = useState([])
 const dispatch = useDispatch()
 useEffect(()=>{
@@ -645,10 +646,20 @@ dispatch(handlegetproducts()).then((res)=>{
     autoPlaySpeed={3000}
     containerClass="carousel-container"
     >
-    {bookeh?.map((e)=>{
+    {loading==false?bookeh?.map((e)=>{
 
         return <BookehCard id={e._id} heading={heading} img={e.image[0]} multiple_price={e.multiple_price} name={e.name} desc={e.category.toUpperCase()} price={e.price} />
-    })}
+    }):<div style={{height:"100%",width:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <Hearts
+    height="80"
+    width="80"
+    color="red"
+    ariaLabel="hearts-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    visible={true}
+    />
+      </div>}
   </Carousel>
     </div>
   )

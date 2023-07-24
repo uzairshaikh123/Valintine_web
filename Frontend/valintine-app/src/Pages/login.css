@@ -4,13 +4,13 @@
   align-items: center;
   height: 100vh;
   padding: 10px;
-  background: pink;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #f7f9fc;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   height: auto;
 }
 
 .form-container {
-  background: white;
+  background: #f7f9fc;
   padding: 20px;
   border-radius: 10px;
   margin: 10px;
