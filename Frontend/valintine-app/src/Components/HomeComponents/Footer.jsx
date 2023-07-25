@@ -17,7 +17,7 @@ function Footer() {
           </ul>
         </div>
         <div className="footer-section">
-          <h3>About</h3>
+          <h5>About</h5>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
@@ -26,7 +26,7 @@ function Footer() {
          
         </div>
         <div className="footer-section">
-          <h3>Contact</h3>
+          <h5>Contact</h5>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
@@ -34,7 +34,7 @@ function Footer() {
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
         </div>
         <div className="footer-section">
-          <h3>Subscribe</h3>
+          <h5>Subscribe</h5>
           <p>Get updates and exclusive offers!</p>
           <form className="subscribe-form">
             <input type="email" placeholder="Enter your email" />
