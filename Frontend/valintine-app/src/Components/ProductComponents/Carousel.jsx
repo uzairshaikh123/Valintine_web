@@ -48,10 +48,10 @@ const AsNavFor = ({ image }) => {
     setproduct(findproduct);
   }, [products]);
 
-  console.log("asnav", product[0]?.image);
+  // console.log("asnav", product[0]?.image);
 
   return (
-    <div style={{ width: "100%", overflow: "hidden", height: "auto" }}>
+    <div style={{ width: "100%", overflow: "hidden", height: "auto"}}>
       <Slider
         slidesToShow={1}
         swipeToSlide={true}
@@ -59,9 +59,11 @@ const AsNavFor = ({ image }) => {
         asNavFor={slider2.current}
         ref={slider1}
         dots={true}
+        arrows={true}
         infinite={true}
-        prevArrow={<PrevArrow />}
-        nextArrow={<NextArrow />}
+        className="slick_carousel"
+        // prevArrow={<PrevArrow />}
+        // nextArrow={<NextArrow />}
         // {...settings}
         vertical={false}
         // adaptiveHeight={true}
@@ -82,17 +84,19 @@ const AsNavFor = ({ image }) => {
       {/* <h4>Second Slider</h4> */}
       <Slider
         // {...settings2}
-        slidesToShow={4}
+        slidesToShow={3}
         dots={true}
+        arrows={true}
         infinite={true}
         // vertical={false}
         adaptiveHeight={true}
         asNavFor={slider1.current}
         ref={slider2}
+        className="slick_carousel"
         swipeToSlide={true}
         focusOnSelect={true}
-        prevArrow={<PrevArrow />}
-        nextArrow={<NextArrow />}
+        // prevArrow={<PrevArrow />}
+        // nextArrow={<NextArrow />}
         style={{ display: "flex" }}
       >
         {product[0]?.image?.map((el) => {

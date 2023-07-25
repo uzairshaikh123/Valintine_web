@@ -121,9 +121,9 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
       </div>
       <div className="product-details">
         <div id='prod_det'>
-        <h1 className="product-title">{product[0]?.name}</h1>
-        <h6 className="product-title">Category : {product[0]?.category.toUpperCase()}</h6>
-        <p className="product-description">{product[0]?.description}</p>
+        <p className="product-title">{product[0]?.name}</p>
+        <h4 >Category : {product[0]?.category.toUpperCase()}</h4>
+        <p>{product[0]?.description}</p>
 
         </div>
 <div className='date-cont'>

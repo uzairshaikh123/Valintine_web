@@ -31,7 +31,7 @@ function App() {
   // const admin_token = sessionStorage.getItem('admin_token') || ""
   const [admin,setadmin]=useState("")
   const notify = () => {
-    toast(<Msg />);
+    toast(<Msg />,{position: "bottom-left"});
   };
   // console.log(admin_token)
 

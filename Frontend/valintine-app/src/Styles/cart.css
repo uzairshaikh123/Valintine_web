@@ -109,7 +109,7 @@
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(221, 155, 166); 
+    background: #b2c3dd; 
     cursor: all-scroll;
   }
   @media all and (min-width: 490px) and (max-width: 1224px) {

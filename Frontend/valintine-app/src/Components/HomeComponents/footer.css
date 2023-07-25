@@ -1,8 +1,8 @@
 .footer {
-    background: linear-gradient(45deg, #ff9a9e, pink,rgb(249, 108, 108), #fdb7f4);
+    background: linear-gradient(45deg, #d9e6f9, #d9e6f9,rgb(166, 230, 250), #eceef0);
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
-    color: #fff;
+    color: #272727;
     padding: 40px 0;
     margin-top: 50px;
   }
