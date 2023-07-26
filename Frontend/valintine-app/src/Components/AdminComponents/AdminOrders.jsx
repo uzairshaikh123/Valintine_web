@@ -3,6 +3,7 @@ import TableCompOrders from './TableCompOrders'
 import './mainadmin.css'
 import Orders from '../Tables/OrdersTable'
 const AdminOrders = () => {
+
   return (
     <div>
       <h1>Orders</h1>

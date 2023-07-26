@@ -67,6 +67,21 @@ export const reducer = (state = initstate, { type, payload }) => {
     case types.ERASE_ADMIN_TOKEN: {
       return { ...state,error:false,loading:false,admin_token:""};
     }
+    case types.HANDLE_ADD_PRODUCT: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_DELETE_PRODUCT: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_EDIT_PRODUCT: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_DELETE_USER: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_UPDATE_ORDERS: {
+      return { ...state,error:false,loading:false};
+    }
     default: {
       return { ...state };
     }

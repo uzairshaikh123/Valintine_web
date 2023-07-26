@@ -53,7 +53,7 @@ export const handlegetproducts = () => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
 
       dispatch({ type: types.GETPRODUCTS, payload: res.data.data });
 
@@ -371,6 +371,113 @@ export const handle_get_all_blogs = () => (dispatch) => {
     })
     .then((res) => {
       dispatch({ type: types.GET_ALL_ORDERS ,payload:res.data.data});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_add_product_by_admin = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`${process.env.REACT_APP_Backend_url}/products/add`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_ADD_PRODUCT});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+
+export const handle_delete_product_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .delete(`${process.env.REACT_APP_Backend_url}/products/delete/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_DELETE_PRODUCT});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+
+export const handle_edit_product_by_admin = (id,data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .patch(`${process.env.REACT_APP_Backend_url}/products/update/${id}`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_EDIT_PRODUCT});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_delete_users_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .delete(`${process.env.REACT_APP_Backend_url}/auth/delete/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_DELETE_USER});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_edit_orders_by_admin = (id,data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .patch(`${process.env.REACT_APP_Backend_url}/orders/update/${id}`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_UPDATE_ORDERS});
       return res;
     })
     .catch((err) => {

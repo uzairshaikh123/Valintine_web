@@ -47,10 +47,10 @@ OrdersRoute.post('/add', AuthMiddleware, async (req, res) => {
 })
 
 
-OrdersRoute.patch('/update/:id',AuthMiddleware, async (req, res) => {
+OrdersRoute.patch('/update/:id',AdminMiddleware, async (req, res) => {
 
     let id = req.params.id
-    console.log(id,req.body)
+    
     try {
 
         let updatedproduct = await  OrdersModel.findByIdAndUpdate({_id:id},req.body)
