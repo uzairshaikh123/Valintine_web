@@ -2,20 +2,23 @@
 
 .product-page {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 20px;
   /* border: 1px solid red; */
   text-align: start;
   background-color:#f7f9fc ;
 }
+.product-page div{
+  background: white;
+}
 .product-page>div:nth-child(1){
   /* border: 1px solid rgb(0, 255, 21); */
   height: 100%;
-  width: 50%;
+  width: 35%;
 }
 .product-page>div:nth-child(2){
   /* border: 1px solid red; */
-  width: 50%;
+  width: 60%;
 }
 #cart-buttons{
   width: 100%;

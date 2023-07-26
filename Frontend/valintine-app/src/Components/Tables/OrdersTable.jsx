@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_get_allorders_byadmin, handlegetproducts } from "../../Redux/action";
-import { Button } from "@mui/material";
+import { handle_edit_orders_by_admin, handle_get_allorders_byadmin, handlegetproducts } from "../../Redux/action";
+import { Button, Select } from "@mui/material";
 import EditModal from "../AdminComponents/ProductEditModal";
-
+import './Orders.css'
 const TableContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
@@ -93,7 +93,17 @@ const Orders= () => {
     
   },[])
 
+const handle_status_change=(id,data,val)=>{
+  data={...data,status:val}
+dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
+  if(res.status==200 || res.status==201){
+    alert("Status changed")
+  }else{
+    alert("error")
+  }
+})
 
+}
 
 
 
@@ -118,11 +128,17 @@ const Orders= () => {
                 </TableCell>
                <TableCell>{item._id}</TableCell>
               <TableCell>{item.name}</TableCell>
-              <TableCell>{item.date}NA</TableCell>
-              <TableCell>{item?.address}NA</TableCell>
+              <TableCell>{item.date?item.date:"NA"}</TableCell>
+              <TableCell>{item?.address?item?.address:"NA"}</TableCell>
               
               <TableCell>
-               <EditModal/>
+               <select placeholder="Update Status Here" onChange={(e)=>handle_status_change(item._id,item,e.target.value)}>
+                
+                <option disabled={true} value="Update Status Here">Select One</option>
+                <option value="Pending">Pending</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancel">Cancel</option>
+               </select>
               </TableCell>
               <TableCell>
                 <Button>

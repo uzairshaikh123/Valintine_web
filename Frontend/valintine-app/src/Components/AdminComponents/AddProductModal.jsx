@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { handlegetproducts } from "../../Redux/action";
+import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/action";
 import { MdDelete } from "react-icons/md";
 
 const style = {
@@ -12,7 +12,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 600,
   bgcolor: "background.paper",
   p: 4,
 };
@@ -21,9 +21,6 @@ export default function AddProductModal({ id }) {
   let handleOpen = () => setOpen(true);
   let [open, setOpen] = useState(false);
   let handleClose = () => setOpen(false);
-  let [name, setname] = useState("");
-  let [category, setcategory] = useState("");
-  let [city, setcity] = useState("");
   let [price, setprice] = useState("");
   let [images, setimages] = useState([1]);
   let [Proddetails, setProddetails] = useState([1]);
@@ -31,7 +28,7 @@ export default function AddProductModal({ id }) {
   let [Multiple_price, setMultiple_price] = useState([1]);
   let [addons, setaddons] = useState([1]);
   let [Delivery_info, setDelivery_info] = useState([1]);
-  let [pincode, setpincode] = useState([1]);
+  const dispatch = useDispatch()
 
   const handleImages = (i) => {
     if (i >= 0) {
@@ -67,58 +64,101 @@ export default function AddProductModal({ id }) {
 let urls = document.querySelectorAll(".urls")
 let imgurls=[]
 for(let i = 0; i < urls.length; i++) {
-  imgurls.push(urls[i].value);
+  imgurls?.push(urls[i]?.value);
 }
 
 
-let desc = document.querySelectorAll(".urls")
+let desc = document.querySelectorAll(".description")
 let description=[]
 for(let i = 0; i < desc.length; i++) {
-  description.push(desc[i].value);
+  description?.push(desc[i]?.value);
 }
 
 
-let prod_details = document.querySelectorAll(".urls")
+let prod_details = document.querySelectorAll(".prod_det")
 let product_details=[]
 for(let i = 0; i < prod_details.length; i++) {
-  product_details.push(prod_details[i].value);
+  product_details?.push(prod_details[i]?.value);
 }
 
 
 let  delivery_info= document.querySelectorAll(".delivery_info")
 let Delivery_info=[]
 for(let i = 0; i < prod_details.length; i++) {
-  Delivery_info.push(delivery_info[i].value);
+  Delivery_info?.push(delivery_info[i]?.value);
 }
 // {addons:[{name:"",price:"",description:"",image:""}]}
 let  addons_name= document.querySelectorAll(".addons-name")
 let  addons_desc= document.querySelectorAll(".addons-desc")
 let  addons_img= document.querySelectorAll(".addons-img")
 let  addons_price= document.querySelectorAll(".addons-price")
+
 let Addons=[]
-for(let i = 0; i < addons.length; i++) {
-  Addons.push(addons[i].value);
+for(let i = 0; i <addons.length; i++) {
+
+  Addons.push({name:addons_name[i].value,price:addons_price[i].value,desc:addons_desc[i].value,img:addons_img[i].value})
 }
 
+for(let i = 0; i < Addons.length; i++){
+if(Addons[i].name=="" || Addons[i].price=="" || Addons[i].desc=="" || Addons[i].img=="" ){
+  Addons=[]
+  break 
+}
+}
+
+
+
+
+let  multiple_price_weight= document.querySelectorAll(".multiple_Price_weight")
+let multiple_price_price = document.querySelectorAll(".multiple_Price_price")
+
+let multiple_price_arr=[]
+for(let i = 0; i <Multiple_price.length; i++) {
+
+  multiple_price_arr?.push({weight:multiple_price_weight[i].value,price:multiple_price_price[i].value})
+}
+for(let i = 0; i < multiple_price_arr.length; i++){
+  if(multiple_price_arr[i].weight=="" || multiple_price_arr[i].price==""){
+    multiple_price_arr=[]
+    break 
+  }
+  }
+
+
+const name = document.querySelector("#name").value || ""
+const city = document.querySelector("#city").value || ""
+const category = document.querySelector("#category").value || ""
+const pincodes = document.querySelector("#pincodes").value || ""
+const price = document.querySelector("#price").value || ""
+
+
     let obj = {
-      name,
-      category,
-      price,
-      city,
-      images:imgurls,
-      Proddetails,
-      Desc,
-      Multiple_price,
-      addons,
-      Delivery_info,
-      pincode,
+      name:name,
+      category:category,
+      price:price,
+      city:city,
+      image:imgurls,
+      prod_details:product_details,
+      description:description,
+      multiple_price:multiple_price_arr,
+      addons:Addons,
+      delivery_info:Delivery_info,
+      pincodes:pincodes?.split(","),
     };
 
-    console.log(obj);
+    dispatch(handle_add_product_by_admin(obj)).then((res)=>{
+      if(res.status==200 || res.status==201){
+
+        alert("Product added successfully")
+      }else{
+        alert("error")
+
+      }
+    })
   };
 
   return (
-    <div>
+    <div >
       <Button
         onClick={handleOpen}
         style={{
@@ -136,29 +176,32 @@ for(let i = 0; i < addons.length; i++) {
         Add Product
       </Button>
       <Modal
+     
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+       
       >
-        <Box sx={style}>
+        <Box sx={style} >
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Product
           </Typography>
           <hr />
-          <Box style={{ height: "80vh", overflowY: "auto", marginTop: "20px" }}>
+          <Box style={{ height: "80vh", overflowY: "auto", marginTop: "20px"}}>
             <form action="">
               <label htmlFor="">Name</label>
-              <input type="text" placeholder="Enter Name of Product" />
+              <input type="text" id="name" placeholder="Enter Name of Product" />
 
               <label htmlFor="">Category</label>
-              <input type="text" placeholder="Enter Name of Category" />
+              <input type="text" id="category" placeholder="Enter Name of Category" />
               <label htmlFor="">Images</label>
               {images?.map((el, i) => {
                 return (
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input className="urls" type="text" placeholder="Enter url of Image" />
                     <MdDelete
+                    color="#3498db"
                       onClick={() => handleImages(i)}
                       size={"30px"}
                       cursor={"pointer"}
@@ -168,16 +211,16 @@ for(let i = 0; i < addons.length; i++) {
               })}
               <Button onClick={handleImages}>Add More Rows</Button>
               <label htmlFor="">Price</label>
-              <input type="text" placeholder="Enter Price of Product" />
+              <input type="text" className="price" id="price" placeholder="Enter Price of Product" />
               <label htmlFor="">City</label>
-              <input type="text" placeholder="Enter Name of City" />
+              <input type="text" id="city" placeholder="Enter Name of City" />
               <label htmlFor="">Multiple_price</label>
               {Multiple_price.map(() => {
                 return (
                   <div style={{ display: "flex", marginTop: "5px" }}>
-                    <input className="priceof_multiple-price"  type="text" placeholder="Enter Name of Price" />
-                    <input className="weightof_multiple-price"  type="text" placeholder="Enter Name of Weight" />
-                    <MdDelete size={"50px"} cursor={"pointer"} />
+                    <input className="multiple_Price_weight"  type="text" placeholder="Enter Name of Weight" />
+                    <input className="multiple_Price_price"  type="text" placeholder="Enter Name of Price" />
+                    <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                   </div>
                 );
               })}
@@ -186,12 +229,16 @@ for(let i = 0; i < addons.length; i++) {
               <label htmlFor="">Addons</label>
               {addons.map(() => {
                 return (
-                  <div style={{ display: "flex", marginTop: "5px" }}>
-                    <input className="addons-name" type="text" placeholder="Enter Name of Addons" />
-                    <input className="addons-desc" type="text" placeholder="Enter Name of Addons" />
-                    <input className="addons-img" type="text" placeholder="Enter Name of Addons" />
-                    <input className="addons-price" type="text" placeholder="Enter Name of Addons" />
-                    <MdDelete size={"30px"} cursor={"pointer"} />
+                  <div style={{ marginTop: "5px" }}>
+                    <input style={{ marginTop: "5px" }} className="addons-name" type="text" placeholder="Enter Name of Addon" />
+                    <br />
+                    <input style={{ marginTop: "5px" }} className="addons-desc" type="text" placeholder="Enter Description
+                   of Addon" />
+                    <br />
+                    <input style={{ marginTop: "5px" }} className="addons-img" type="text" placeholder="Enter Image url  of Addon" />
+                    <br />
+                    <input style={{ marginTop: "5px" }} className="addons-price" type="text" placeholder="Enter Price of Addon" />
+                    <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
                 );
               })}
@@ -202,14 +249,17 @@ for(let i = 0; i < addons.length; i++) {
                 return (
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input
-                    className="proddetails"
+                    className="prod_det"
                       type="text"
                       placeholder="Enter Name of Prod_details"
                     />
-                    <MdDelete size={"30px"} cursor={"pointer"} />
+                    <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
                 );
               })}
+              
+
+
               <Button onClick={handleProd_details}>Add more Rows</Button>
 
               <label htmlFor="">Description</label>
@@ -222,7 +272,7 @@ for(let i = 0; i < addons.length; i++) {
                  
                       placeholder={`Enter Line ${i + 1} Description`}
                     />
-                    <MdDelete size={"30px"} cursor={"pointer"} />
+                    <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
                 );
               })}
@@ -237,14 +287,14 @@ for(let i = 0; i < addons.length; i++) {
                       type="text"
                       placeholder={`Enter Line ${i + 1} of Delivery_info`}
                     />
-                    <MdDelete size={"30px"} cursor={"pointer"} />
+                    <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
                 );
               })}
               <Button onClick={handle_delivery_info}>Add more Rows</Button>
 
               <label htmlFor="">Pincodes</label>
-              <input type="text" placeholder="Enter Name of Pincodes" />
+              <input id="pincodes" type="text" placeholder="Enter Name of Pincodes" />
               <br />
 
               <button

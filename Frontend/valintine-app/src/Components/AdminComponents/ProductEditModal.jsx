@@ -18,29 +18,32 @@ const style = {
   p: 4,
 };
 
-export default function EditModal({id}) {
+export default function EditModal({id,products}) {
   const [open, setOpen] = React.useState(false);
   const [product , setproduct] = React.useState([])
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch()
 const store = useSelector(store=>store)
-const {loading,error,products}=store
+// const {loading,error,products}=store
 
-React.useEffect(()=>{
-dispatch(handlegetproducts())
-},[])
+// React.useEffect(()=>{
+// dispatch(handlegetproducts())
+// },[])
 
 
   React.useEffect(()=>{
-    let findproduct = products.filter((el)=>{
+    let findproduct = products?.filter((el)=>{
       return el._id===id
     })
-    setproduct(findproduct[0])
+    if(findproduct?.length){
+
+      setproduct(findproduct[0])
+    }
   },[products])
 
 
-// console.log(product,id)
+console.log(product,id)
   return (
     <div>
       <Button onClick={handleOpen}>Edit</Button>
@@ -56,7 +59,7 @@ dispatch(handlegetproducts())
           </Typography>
           <div style={{height:"80vh",overflowY:"auto"}}>
 
-          <label htmlFor="">Name</label>
+    <label htmlFor="">Name</label>
     <input type="text" placeholder='Enter Name of Product' defaultValue={product?.name} />
     <label htmlFor="">category</label>
     <input type="text" placeholder='Enter Name of Product' defaultValue={product?.category} />

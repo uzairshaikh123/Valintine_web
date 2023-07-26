@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handlegetproducts } from "../../Redux/action";
+import { handle_delete_product_by_admin, handlegetproducts } from "../../Redux/action";
 import { Button } from "@mui/material";
 import EditModal from "../AdminComponents/ProductEditModal";
 
@@ -79,7 +79,15 @@ const TableCompProducts= () => {
     return data.slice(startIndex, endIndex);
   };
 
-
+ const handle_delete_product=(id)=>{
+dispatch(handle_delete_product_by_admin(id)).then((res)=>{
+  if(res.status ==200 || res.status ==201) {
+    alert("Product deleted successfully")
+  }else{
+    alert("error")
+  }
+})
+ }
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, products } = store;
@@ -118,10 +126,10 @@ return <TableHeaderCell>{el}</TableHeaderCell>
               <TableCell>{item.city}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>
-                <EditModal id={item?._id}/>
+                <EditModal id={item?._id} products={products}/>
               </TableCell>
               <TableCell>
-                <Button>DELETE</Button>
+                <Button onClick={()=>handle_delete_product(item._id)}>DELETE</Button>
               </TableCell>
             </TableRow>
           ))}

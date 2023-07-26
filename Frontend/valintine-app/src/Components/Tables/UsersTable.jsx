@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_get_all_users, handlegetproducts } from "../../Redux/action";
+import { handle_delete_users_by_admin, handle_get_all_users, handlegetproducts } from "../../Redux/action";
 import { Button } from "@mui/material";
 
 const TableContainer = styled.div`
@@ -82,20 +82,28 @@ const TableCompUsers= () => {
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const [users,setusers] =useState([])
-  const { loading, error, products } = store;
+  // const { loading, error, products } = store;
 
 
   useEffect(() => {
     dispatch(handle_get_all_users()).then((res)=>{
-        setusers(res.data.data)
+        setusers(res?.data?.data)
     })
   }, []);
-console.log(products);
+
 
 
 let keys = ["image","id", "name", "email", "address", "total_visits", "total_orders","Delete"];
 
-
+const handle_delete_users=(id) => {
+  dispatch(handle_delete_users_by_admin(id)).then((res)=>{
+   if(res.status ==200 || res.status==201){
+    alert("user deleted")
+   }else{
+    alert("error")
+   }
+  })
+}
 
   return (
     <TableContainer style={{minWidth:"100%"}}>
@@ -122,7 +130,7 @@ return <TableHeaderCell>{el}</TableHeaderCell>
               <TableCell>{0}</TableCell>
               <TableCell>{0}</TableCell>
               <TableCell>
-                <Button>DELETE</Button>
+                <Button onClick={()=>handle_delete_users(item._id)}>DELETE</Button>
               </TableCell>
             </TableRow>
           ))}
