@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { Hearts } from 'react-loader-spinner';
 import AsNavFor from '../Components/ProductComponents/Carousel';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import { handleaddcartproduct, handlegetcartproducts, handlegetproducts } from '../Redux/action';
 import AboutProduct from '../Components/ProductComponents/AboutProduct';
@@ -122,25 +122,82 @@ const user = JSON.parse(sessionStorage.getItem("userdetails"))
       <div className="product-details">
         <div id='prod_det'>
         <p className="product-title">{product[0]?.name}</p>
-        <h4 >Category : {product[0]?.category.toUpperCase()}</h4>
-        <p>{product[0]?.description}</p>
+        {/* <h4 >Category : {product[0]?.category.toUpperCase()}</h4> */}
+        {/* <p>{product[0]?.description}</p> */}
 
+<div>
+        <div className="product-price">₹ {product[0]?.price}/{product[0]?.category }  
+        <span style={{fontSize:"10px"}}>{  }Inclusive of all taxes</span></div>
+        <div>
+          <ul style={{padding:"20px"}}>
+
+        {product[0]?.prod_details?.map((spec, index) => (
+         index<=3 &&  <li key={index}>
+                <li style={{listStyle:"initial",color:"gray"}}>{spec}</li>
+                {/* <td>{spec.value}</td> */}
+              </li>
+            ))}
+           <a href="
+           ">
+            Read More
+            </a> 
+            </ul>
+            <div style={{marginTop:"5px",marginBottom:"20px",padding:"10px"}}>
+<p style={{marginTop:"5px",marginBottom:"20px"}}>
+Weight : Serving Info
+</p>
+
+<div style={{display:"flex",gap:"10px"}}>
+
+{product[0]?.multiple_price?.map((spec, index) => (
+  <button className={"weight-buttons active"} >{spec?.weight} kg</button> ))}
+  </div>
+
+
+            </div>
         </div>
-<div className='date-cont'>
-        <div className="product-price">₹{product[0]?.price}/{product[0]?.category}</div>
+        <div style={{display:"flex"}}>
+          <div>
+            <input type="checkbox" />
+            <span>Eggless</span>
+          </div>
+          <div>
+            <input type="checkbox" />
+            <span>Heart Shape</span>
+          </div>
+        </div>
+        <div style={{marginTop:"20px",marginBottom:"20px"}}>
+          <input type="text" placeholder='Product Message'/>
+        </div>
         <div style={{width:"100%",border:"1px solid gray",display:"flex",alignItems:"center"}}>
         <i class='bx bxs-location-plus' ></i>
 <input type={"number"} placeholder='Enter Pincode' style={{outline:"none"}}/>
         </div>
-<div style={{marginTop:"10px",marginBottom:"10px"}}>
+<div style={{marginTop:"10px",marginBottom:"10px",minWidth:'100%'}}>
 <DatePickerComp />
 
 </div>
 <div id='cart-buttons' >
-<button style={{marginBottom:"20px"}} onClick={handleaddtocart}>{product[0]?.category=="candle_light"?"Buy Now.":"Add to Cart"}</button>
+   <button style={{marginBottom:"20px"}} onClick={handleaddtocart}>
+   <Link to={"/cart"} style={{color:"white"}}>Add to Cart</Link></button>
+<button style={{marginBottom:"20px"}} onClick={handleaddtocart}>Buy Now</button>
+
+ 
 </div>
+
+<div>
+ <p>Offers</p>
+ <div id='offers-cont'>
+  <div className={"offerbox"}>
+
+<img src="https://assets.winni.in/groot/2023/04/mobikwik/coupon-three.png" alt="" />
+<p>Get upto ₹750 Cashback on paying via Mobikwik</p>
+  </div>
+ </div>
 </div>
-        <table className="product-specifications"  style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"25px",lineHeight:"30px"}}>
+        </div>
+</div>
+        <table className="product-specifications"  style={{marginTop:"20px",boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"25px",lineHeight:"30px"}}>
             <h3 style={{textAlign:"start",marginBottom:"20px"}}>Product Details</h3>
           <tbody>
             {product[0]?.prod_details?.map((spec, index) => (

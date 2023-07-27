@@ -16,6 +16,8 @@ const ProductSchema = mongoose.Schema({
   delivery_info: { type: Array, required: true },
   booked_dates: { type: Array, required: false },
   pincodes: { type: Array, required: true },
+  Product_category: { type: Array, required: false },
+  offers: { type: Array, required: false },
 });
 
 const ProductModel = mongoose.model("products", ProductSchema);

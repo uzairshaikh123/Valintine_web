@@ -132,9 +132,9 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
               <TableCell>{item?.address?item?.address:"NA"}</TableCell>
               
               <TableCell>
-               <select placeholder="Update Status Here" onChange={(e)=>handle_status_change(item._id,item,e.target.value)}>
+               <select placeholder="Update Status Here" onInput={(e)=>handle_status_change(item._id,item,e.target.value)}>
                 
-                <option disabled={true} value="Update Status Here">Select One</option>
+                <option value="Update Status Here">Select One</option>
                 <option value="Pending">Pending</option>
                 <option value="Delivered">Delivered</option>
                 <option value="Cancel">Cancel</option>

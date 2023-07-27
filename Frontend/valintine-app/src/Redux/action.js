@@ -470,7 +470,7 @@ export const handle_edit_orders_by_admin = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .patch(`${process.env.REACT_APP_Backend_url}/orders/update/${id}`,data,{
+    .patch(`http://localhost:8080/orders/update/${id}`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
