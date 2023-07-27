@@ -54,7 +54,7 @@ const[ candle_light, setcandle_light] =useState([])
 useEffect(()=>{
 
 dispatch(handlegetproducts()).then((res)=>{
-  let filterdata = res.data.data.filter((el)=>{
+  let filterdata = res?.data.data?.filter((el)=>{
     return el.category==="candle_light"
 
   })

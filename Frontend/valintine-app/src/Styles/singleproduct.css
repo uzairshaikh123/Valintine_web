@@ -23,11 +23,43 @@
 #cart-buttons{
   width: 100%;
   margin: auto;
+  display: flex;
+
+}
+
+#offers-cont{
+border: 1px solid rgb(20, 20, 20);
+border-radius: 10px;
+height: auto;
+width:100%;
+padding: 20px;
+}
+.offerbox{
+display: flex;
+justify-content: space-between;
+
+}
+
+.weight-buttons{
+  border:1px solid gray;
+  padding:5px 20px;
+  border-radius:5px;
+  cursor:pointer;
+
+
+}
+.weight-buttons.active{
+  background: rgb(243, 80, 142);
+  color: white;
+
+}
+.weight-buttons:hover{
+  border:1px solid rgb(243, 80, 142);
 
 }
 #cart-buttons>button{
   border-radius: 8px;
-  width: 50%;
+  width: 45%;
   font-size: 20px;
   cursor: pointer;
   background-color: #c709e8;
@@ -86,13 +118,14 @@
 }
 
 .product-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .product-price {
-  font-size: 18px;
+  font-size: 34px;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 
