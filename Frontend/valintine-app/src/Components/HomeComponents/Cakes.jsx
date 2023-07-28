@@ -73,7 +73,7 @@ dispatch(handlegetproducts()).then((res)=>{
     // showDots={true}
     responsive={responsive}
     containerClass="carousel-container"
-    autoPlay={true}
+    // autoPlay={true}
     infinite={true}
     autoPlaySpeed={3000}
     >

@@ -31,7 +31,7 @@ const ProductCard = ({
           <img src={image[0]} alt={name} />
         </Link>
         <div className={`heart ${isLiked ? "liked" : ""}`} onClick={handleLike}>
-          <img style={{position:"absolute",top:"0px"}}  src="https://img.icons8.com/?size=1x&id=87&format=png" alt="" />
+          <img  src="https://img.icons8.com/?size=1x&id=87&format=png" alt="" />
         </div>
       </div>
       <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>

@@ -25,7 +25,7 @@ const Products = () => {
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>
         All Experience
       </h1>
-      <hr />
+      {/* <hr /> */}
 
       <div id="filters">
         {/* <h1>filters</h1> */}

@@ -1,8 +1,8 @@
 #products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
-  row-gap: 10px;
+  /* column-gap: 20px;
+  row-gap: 10px; */
   width: 100%;
   /* line-height: 20px; */
 }

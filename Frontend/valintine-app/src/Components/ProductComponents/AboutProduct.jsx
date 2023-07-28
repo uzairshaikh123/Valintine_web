@@ -4,7 +4,7 @@ const AboutProduct = () => {
   return (
     <div id='about-prod'>
         <div>
-        <div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px"}}>
+        <div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px",background:"white"}}>
 <h3>Why ❤️ ValintineSaga ?</h3>
         <ul style={{padding:"25px"}}>
           <li style={{textAlign:"start",marginBottom:"10px"}}>👍 Trusted Platform - More than 1,000 celebrations every month</li>
@@ -15,7 +15,7 @@ const AboutProduct = () => {
 
         </div>
         </div>
-<div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px"}}>
+<div style={{boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',height:"auto",padding:"10px",maxWidth:"90%",margin:"auto",marginTop:"50px",background:"white"}}>
 <h3>Cancelation Policy</h3>
         <ul style={{padding:"25px"}}>
           <li style={{textAlign:"start",marginBottom:"10px"}}>Refunds for experiences to be availed in the next 72 hours will be done only in ValentineSaga Wallet.</li>
