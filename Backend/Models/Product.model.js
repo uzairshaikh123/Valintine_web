@@ -18,6 +18,7 @@ const ProductSchema = mongoose.Schema({
   pincodes: { type: Array, required: true },
   Product_category: { type: Array, required: false },
   offers: { type: Array, required: false },
+  slots:{ type: Array, required: false}
 });
 
 const ProductModel = mongoose.model("products", ProductSchema);
