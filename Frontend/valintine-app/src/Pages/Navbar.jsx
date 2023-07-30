@@ -71,7 +71,8 @@ function Navbar({ cartcount }) {
           <img
             className="logo"
             id={"comp-logo"}
-            src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png"
+            // src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png"
+           src="https://valentinesaga.com/wp-content/uploads/2023/06/ValentineSaga-Logo.png"
             alt=""
           />
         </Link>
