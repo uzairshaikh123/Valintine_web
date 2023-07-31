@@ -33,8 +33,10 @@ const responsive = {
     infinite={true}
     containerClass="carousel-container"
     >
-         <div>
-
+       
+   
+   
+   <div>
         <img   className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" />
          </div>
    
