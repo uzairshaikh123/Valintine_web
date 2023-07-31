@@ -10,6 +10,8 @@
 
   /* border: 1px solid red; */
   /* margin-right: 10px; */
+  margin-top: 20px;
+
 
 }
 .city-modal {
@@ -54,4 +56,24 @@
     width: 50%;
     margin: auto;
   }
+  .modal-cont{
+    margin-top: -32px;
+  }
+}
+
+
+
+@media screen and (min-width: 550px){
+  .modal-cont{
+    margin-top: -48px;
+  }
+  
+  
+}
+
+@media screen and (min-width: 960px) {
+  .modal-cont{
+    margin-top: 0px;
+  }
+  
 }

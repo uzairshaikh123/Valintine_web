@@ -132,6 +132,9 @@
       height: auto;
    
     }
+    .cart-prod-name{
+      font-size: 0.8rem;
+    }
     
 }
 /* style={{marginBottom:"20px",minHeight:"100%",width:"23%",cursor:"pointer"}} */

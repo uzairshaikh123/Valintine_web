@@ -49,7 +49,7 @@ const Header = () => {
     draggable={false}
     // showDots={true}
     responsive={responsive}
-    containerClass="carousel-container"
+    containerClass="carousel-container abc"
     autoPlay={true}
     infinite={true}
     autoPlaySpeed={3000}

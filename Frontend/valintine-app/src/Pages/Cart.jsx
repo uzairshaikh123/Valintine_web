@@ -138,14 +138,14 @@ return acc
           <div style={{ height: "400px", overflowY: "auto" }}>
             {cart.map((item) => (
               <div className="cart-item" key={item.id}>
-                <div style={{ display: "flex", gap: "50px" }}>
+                <div style={{ display: "flex", gap: "5px" }}>
                   <img
                     style={{ height: "25%", width: "25%" }}
                     src={item.image[0]}
                     alt=""
                   />
                   <div style={{ marginTop: "15px" }}>
-                    <h3 style={{ maxWidth: "100%", minWidth: "100%" }}>
+                    <h3 className="cart-prod-name">
                       {" "}
                       {item.name}
                     </h3>
