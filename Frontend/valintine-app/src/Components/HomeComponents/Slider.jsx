@@ -33,21 +33,23 @@ const responsive = {
     infinite={true}
     containerClass="carousel-container"
     >
-         <div>
-
-        <img   className='slider' src={""} alt="" />
+       
+   
+   
+   <div>
+        <img   className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" />
          </div>
    
    <div>
-        <img  className='slider' src="" alt="" />
+        <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/baloon.jpg" alt="" />
    </div>
    <div>
-          <img  className='slider' src="" alt="" />
+          <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/unnamed.jpg" alt="" />
    </div>
 
 <div>
 
-        <img  className='slider' src={""} alt="" />
+        <img  className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/birthday.jpg"} alt="" />
 </div>
 
   </Carousel>
