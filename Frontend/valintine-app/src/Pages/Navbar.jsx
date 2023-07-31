@@ -14,6 +14,7 @@ import TemporaryDrawer from "../Components/HomeComponents/DrawerComp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "../Redux/action";
+import logo from './logo3.png'
 function Navbar({ cartcount }) {
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -71,8 +72,10 @@ function Navbar({ cartcount }) {
           <img
             className="logo"
             id={"comp-logo"}
+            style={{width:"140px", height:"48px"}}
             // src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png"
-           src="https://valentinesaga.com/wp-content/uploads/2023/06/ValentineSaga-Logo.png"
+          //  src="https://valentinesaga.com/wp-content/uploads/2023/06/ValentineSaga-Logo.png"
+           src={logo}
             alt=""
           />
         </Link>

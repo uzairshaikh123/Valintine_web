@@ -33,7 +33,7 @@ function Footer() {
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
           <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
         </div>
-        <div className="footer-section">
+        <div className="footer-section footer-section-last">
           <h5>Subscribe</h5>
           <p>Get updates and exclusive offers!</p>
           <form className="subscribe-form">

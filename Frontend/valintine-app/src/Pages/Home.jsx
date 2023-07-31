@@ -17,6 +17,8 @@ import MenuBar from '../Components/HomeComponents/MenuBar'
 import { useDispatch } from 'react-redux'
 import { handle_erase_admin_token } from '../Redux/action'
 import Whatsapp from '../Components/HomeComponents/Whatsapp'
+import Categories from '../Components/HomeComponents/Categories'
+import Categories2 from '../Components/HomeComponents/Categories2'
 const Cookies = require('js-cookie') 
 const Home = () => {
 
@@ -38,7 +40,8 @@ dispatch(handle_erase_admin_token())
         <Slider/>
         {/*  */}
         <div style={{backgroundColor:"#f7f9fc"}}>
-
+<Categories />
+<Categories2 />
         <Celebrate img={imgbig}/>
         <Celeb2 img={smallimg}/>
         <Bookeh/>

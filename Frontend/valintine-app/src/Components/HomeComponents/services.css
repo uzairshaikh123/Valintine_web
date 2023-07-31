@@ -1,85 +1,47 @@
 *{
+
     margin: 0px;
     padding: 0px;
 }
-
-#services-cont-home{
-width: 90%;
+.service-cont1{
+height: auto;
+width: 80%;
+font-size: 0.8rem;
 margin: auto;
-display: grid;
-grid-template-columns: repeat(2,1fr);
-align-content: center;
-gap: 10px;
-margin-top: 50px;
+margin-top: 15px;
+}
+.service-cont2{
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+font-size: 0.8rem;
 
 }
 
-
-
-#services-cont-home>div{
-    line-height: 20px;
-    width: 100%;
-    /* border: 1px solid red; */
-    border-radius: 10px;
-    /* padding: 15px 5px; */
-    height: auto;
-    font-size: 15px;
-    margin-top: 20px;
-    /* height: 200px; */
-    color: white;
-    background: rgb(5, 169, 246);
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    /* max-height: 150px; */
+#service-img1{
+    height: 50%;
+    width: 14%;
 }
 
-#services-cont-home>div>img{
-    width:10%;
-    height: 30%;
-}
-
-#services-cont-home>div:hover{
-    transition: 0.5s;
-    transform: scale(1.05);
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+#service-img2{
+    height: 50%;
+    width: 14%; 
 }
 
 @media all and (min-width: 768px) and (max-width: 1224px) {
-    #services-cont-home{
-        display: flex;
-        /* grid-template-columns: repeat(1,1fr); */
-        margin: auto;
-        flex-direction: column;
-        justify-content: center;
-        /* margin-right: 10px; */
-
-        /* margin-top: 10px; */
-        /* flex-wrap: wrap; */
-    }
-  
+ .service-cont1{
+    font-size: 1.2rem;
+ }
+ .service-cont2{
+    font-size: 1.2rem;
+ }
     
 }
-/* style={{marginBottom:"20px",minHeight:"100%",width:"23%",cursor:"pointer"}} */
+
+
 @media all and (min-width: 0px) and (max-width: 768px) {
     
-    #services-cont-home{
-        display: flex;
-        /* grid-template-columns:; */
-        /* margin-right: 10px; */
-        margin: auto;
-        flex-direction: column;
-        height: auto;
-        justify-content: center;
-        /* flex-wrap: wrap; */
-    }
-    #services-cont-home>div{
-        height: auto;
-        font-size: 15px;
-    }
-    #services-cont-home>div>img{
-        width:30%;
-        height: 30%;
-    }
+    
 
     
 

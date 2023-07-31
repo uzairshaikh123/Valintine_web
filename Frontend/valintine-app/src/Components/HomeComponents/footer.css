@@ -69,12 +69,19 @@
   @media all and (min-width: 768px) and (max-width: 1224px) {
     .footer-container{
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(3,1fr);
         /* flex-wrap: wrap; */
     }
     .subscribe-form{
       display: flex;
       flex-direction: column;
+    }
+    .footer-section > h3 > img{
+      margin: auto;
+      display: block;
+    }
+    .footer-section-last{
+      grid-column: 2 / 3;
     }
     
 }
@@ -93,6 +100,10 @@
     }
     .subscribe-form button{
       width: 80%;
+    }
+    .footer-section > h3 > img{
+      margin: auto;
+      display: block;
     }
     
 

@@ -21,6 +21,16 @@ border: 1px solid red;
 
 }
 
+.carousel-container-2{
+    margin-top: 10px;
+    height: auto;
+}
+
+
+.slider-container{
+    height: 120%;
+}
+
 
 @media all and (min-width: 768px) and (max-width: 1224px) {
     .slider{
@@ -56,6 +66,9 @@ border: 1px solid red;
         background: red;
     }
     
+    .carousel-container-2{
+        height: auto;
+    }
     
 
 }

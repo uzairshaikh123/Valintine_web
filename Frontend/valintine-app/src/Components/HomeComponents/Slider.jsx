@@ -31,23 +31,24 @@ const responsive = {
     responsive={responsive}
     autoPlay={true}
     infinite={true}
-    containerClass="carousel-container"
+    containerClass="carousel-container carousel-container-2"
+    // containerClass="carousel-container"
     >
        
    
    
-   <div>
+   <div  className='slider-container'>
         <img   className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" />
          </div>
    
-   <div>
+   <div className='slider-container'>
         <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/baloon.jpg" alt="" />
    </div>
-   <div>
+   <div className='slider-container'>
           <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/unnamed.jpg" alt="" />
    </div>
 
-<div>
+<div className='slider-container'>
 
         <img  className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/birthday.jpg"} alt="" />
 </div>

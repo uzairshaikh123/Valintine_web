@@ -20,6 +20,7 @@ import { MdContacts} from 'react-icons/md';
 import { TbLogout} from 'react-icons/tb';
 import { BiSolidContact} from 'react-icons/bi';
 import { FaUserCheck} from 'react-icons/fa';
+import "./hamburger.css"
 export default function TemporaryDrawer() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -115,7 +116,7 @@ let iconarr = [<FaShoppingCart />,<RiLoginCircleFill />,<AiOutlineExclamationCir
       {[ 'left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <img style={{height:"40%",width:"60%"}} src="https://img.icons8.com/?size=512&id=OTxpMqWbm71F&format=png" alt="" />
+            <img className='hamburger' src="https://img.icons8.com/?size=512&id=3096&format=png" alt="" />
           </Button>
           <Drawer
             anchor={anchor}
