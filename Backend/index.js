@@ -16,6 +16,7 @@ var http = require('http'),
     ccavResHandler = require('./Routes/ccResponseHanlder.js');
 const RequestHandler = require('./Routes/ccRequestHandler.js')
 const ResponseHandler = require('./Routes/ccResponseHanlder.js')
+const AwsRouter = require('./Routes/AwsRoute')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -27,6 +28,7 @@ app.use("/products",productRoute)
 app.use("/cart",CartRoute)
 app.use("/orders",OrdersRoute)
 app.use("/admin",AdminRouter)
+app.use("/aws",AwsRouter)
 // app.use("/payment",PaymentRouter)
 
 // app.post('/ccavRequestHandler', function (request, response){
