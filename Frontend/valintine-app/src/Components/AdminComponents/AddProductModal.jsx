@@ -12,7 +12,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: 800,
   bgcolor: "background.paper",
   p: 4,
 };
@@ -28,6 +28,9 @@ export default function AddProductModal({ id }) {
   let [Multiple_price, setMultiple_price] = useState([1]);
   let [addons, setaddons] = useState([1]);
   let [Delivery_info, setDelivery_info] = useState([1]);
+  let [Product_category, setProduct_category] = useState([1]);
+  let [offers, setoffers] = useState([1]);
+  let [slots, setslots] = useState([1]);
   const dispatch = useDispatch()
 
   const handleImages = (i) => {
@@ -56,6 +59,12 @@ export default function AddProductModal({ id }) {
   const handle_delivery_info = (i) => {
     setDelivery_info([...Delivery_info, Delivery_info.length + 1]);
   };
+  const handle_prod_cat = (i) => {
+    setProduct_category([...Product_category, Product_category.length + 1]);
+  };
+  const handle_offers = (i) => {
+    setoffers([...offers, offers.length + 1]);
+  };
 
   const handleadd = (e) => {
     e.preventDefault()
@@ -82,6 +91,7 @@ for(let i = 0; i < prod_details.length; i++) {
 }
 
 
+
 let  delivery_info= document.querySelectorAll(".delivery_info")
 let Delivery_info=[]
 for(let i = 0; i < prod_details.length; i++) {
@@ -95,9 +105,28 @@ let  addons_price= document.querySelectorAll(".addons-price")
 
 let Addons=[]
 for(let i = 0; i <addons.length; i++) {
-
+  
   Addons.push({name:addons_name[i].value,price:addons_price[i].value,desc:addons_desc[i].value,img:addons_img[i].value})
 }
+let  offer_desc= document.querySelectorAll(".prod_offer_desc")
+let  offer_image= document.querySelectorAll(".prod_offer_image")
+let  offer_terms= document.querySelectorAll(".prod_offer_terms")
+
+let Offers=[]
+for(let i = 0; i <addons.length; i++) {
+  
+  Offers.push({terms:offer_terms[i].value,price:addons_price[i].value,desc:offer_desc[i].value,img:offer_image[i].value})
+}
+
+let  prod_cat_price= document.querySelectorAll(".prod_cat_price")
+let  prod_cat_name= document.querySelectorAll(".prod_cat_name")
+
+let Product_category=[]
+for(let i = 0; i <prod_cat_name.length;i++) {
+
+  Product_category.push({name:prod_cat_name[i].value,price:prod_cat_price[i].value})
+}
+
 
 for(let i = 0; i < Addons.length; i++){
 if(Addons[i].name=="" || Addons[i].price=="" || Addons[i].desc=="" || Addons[i].img=="" ){
@@ -144,17 +173,18 @@ const price = document.querySelector("#price").value || ""
       addons:Addons,
       delivery_info:Delivery_info,
       pincodes:pincodes?.split(","),
+      Product_category,Offers
     };
+console.log(obj)
+    // dispatch(handle_add_product_by_admin(obj)).then((res)=>{
+    //   if(res.status==200 || res.status==201){
 
-    dispatch(handle_add_product_by_admin(obj)).then((res)=>{
-      if(res.status==200 || res.status==201){
+    //     alert("Product added successfully")
+    //   }else{
+    //     alert("error")
 
-        alert("Product added successfully")
-      }else{
-        alert("error")
-
-      }
-    })
+    //   }
+    // })
   };
 
   return (
@@ -199,7 +229,7 @@ const price = document.querySelector("#price").value || ""
               {images?.map((el, i) => {
                 return (
                   <div style={{ display: "flex", marginTop: "5px" }}>
-                    <input className="urls" type="text" placeholder="Enter url of Image" />
+                    <input className="urls" type="file" placeholder="Enter url of Image" />
                     <MdDelete
                     color="#3498db"
                       onClick={() => handleImages(i)}
@@ -235,7 +265,7 @@ const price = document.querySelector("#price").value || ""
                     <input style={{ marginTop: "5px" }} className="addons-desc" type="text" placeholder="Enter Description
                    of Addon" />
                     <br />
-                    <input style={{ marginTop: "5px" }} className="addons-img" type="text" placeholder="Enter Image url  of Addon" />
+                    <input style={{ marginTop: "5px" }} className="addons-img" type="file" placeholder="Enter Image url  of Addon" />
                     <br />
                     <input style={{ marginTop: "5px" }} className="addons-price" type="text" placeholder="Enter Price of Addon" />
                     <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
@@ -261,6 +291,54 @@ const price = document.querySelector("#price").value || ""
 
 
               <Button onClick={handleProd_details}>Add more Rows</Button>
+              <label htmlFor="">Product Offers</label>
+              {offers.map(() => {
+                return (
+                  <div style={{ display: "flex", marginTop: "5px" }}>
+                    <input
+                    className="prod_offer_desc"
+                      type="text"
+                      placeholder="Enter Offer Description"
+                    />
+                    <input
+                    className="prod_offer_image"
+                      type="file"
+                      placeholder="Enter Offer Image Url"
+                    />
+                    <input
+                    className="prod_offer_terms"
+                      type="text"
+                      placeholder="Enter Offer Terms"
+                    />
+                    <MdDelete color="#3498db" size={"70px"} cursor={"pointer"} />
+                  </div>
+                );
+              })}
+              
+              <Button onClick={handle_offers}>Add more Rows</Button>
+
+              <label htmlFor="">Product category</label>
+              {Product_category.map(() => {
+                return (
+                  <div style={{ display: "flex", marginTop: "5px" }}>
+                    <input
+                    className="prod_cat_name"
+                      type="text"
+                      placeholder="Enter Product Category Name"
+                    />
+                    <input
+                    className="prod_cat_price"
+                      type="text"
+                      placeholder="Enter Product Category Price"
+                    />
+                    <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
+                  </div>
+                );
+              })}
+              
+
+
+              <Button onClick={handle_prod_cat}>Add more Rows</Button>
 
               <label htmlFor="">Description</label>
               {Desc.map((el, i) => {

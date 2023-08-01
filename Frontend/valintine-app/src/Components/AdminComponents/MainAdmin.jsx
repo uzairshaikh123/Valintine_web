@@ -7,6 +7,8 @@ import Customers from "./Customers";
 import AdminOrders from "./AdminOrders";
 import AdminProducts from "./AdminProducts";
 import AdminDash from "./AdminDash";
+import Sliders from "./Sliders";
+import Testimonilas from "./Testimonilas";
 const MainAdmin = () => {
   const dispatch = useDispatch();
   const [users,setusers] = useState([])
@@ -14,6 +16,10 @@ const MainAdmin = () => {
   const [products,setproducts] = useState([])
   const [orders,setorders] = useState([])
   const [blogs,setblogs] = useState([])
+  const [sliders,setsliders] = useState([])
+  const [testimonials,settestimonials] = useState([])
+
+
   const [active_title, setactivetitle] = useState("Dashboard");
   const handle_Component = (e) => {
     console.log(e)
@@ -142,7 +148,13 @@ const MainAdmin = () => {
           <li>
             <a href="#">
               <i class="bx bxs-group"></i>
-              <span onClick={handle_Component} class="text">Team</span>
+              <span onClick={handle_Component} class="text">Sliders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bxs-group"></i>
+              <span onClick={handle_Component} class="text">Testimonials</span>
             </a>
           </li>
         </ul>
@@ -236,7 +248,8 @@ const MainAdmin = () => {
           </ul>
                          }
 
-{active_title==="Customers"?<Customers/>:active_title==="Orders"?<AdminOrders/>:active_title==="Products"?<AdminProducts/>:<AdminDash />}
+{active_title==="Testimonials"?<Testimonilas/>:active_title==="Sliders"?<Sliders/>:active_title==="Customers"?<Customers/>:active_title==="Orders"?<AdminOrders/>:active_title==="Products"?<AdminProducts/>:<AdminDash />}
+
 
 
           {/* <div class="table-data">

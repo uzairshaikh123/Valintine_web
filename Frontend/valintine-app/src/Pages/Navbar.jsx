@@ -75,7 +75,7 @@ function Navbar({ cartcount }) {
             style={{width:"140px", height:"48px"}}
             // src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png"
           //  src="https://valentinesaga.com/wp-content/uploads/2023/06/ValentineSaga-Logo.png"
-           src={logo}
+           src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
             alt=""
           />
         </Link>

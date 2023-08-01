@@ -52,6 +52,7 @@ const dispatch = useDispatch()
 useEffect(()=>{
 
 dispatch(handlegetproducts()).then((res)=>{
+  console.log(res)
   let filterdata = res?.data.data?.filter((el)=>{
     return el.category==="cake"
 

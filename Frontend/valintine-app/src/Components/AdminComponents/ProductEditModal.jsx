@@ -11,7 +11,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 800,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -64,7 +64,10 @@ console.log(product,id)
     <label htmlFor="">category</label>
     <input type="text" placeholder='Enter Name of Product' defaultValue={product?.category} />
     <label htmlFor="">image</label>
-    {/* <input type="text" placeholder='Enter Name of Product' defaultValue={product?.image[0]} /> */}
+    {product?.image?.map((el)=>{
+      return <input  type="text" placeholder='Edit url of Product' defaultValue={el}/>
+    })}
+    {/* <input defaultValue={product?.image[0]} /> */}
     <label htmlFor="">price</label>
     <input type="text" placeholder='Enter Name of Product' defaultValue={product?.price}  />
     <label htmlFor="">city</label>

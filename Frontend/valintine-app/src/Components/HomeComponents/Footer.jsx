@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-container">
       <div className="footer-section">
           <h3>
-            <img style={{width:"80%",height:"100%"}} src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png" alt="" />
+            <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
           </h3>
           <p>Let's Connect With Us</p>
           <ul>

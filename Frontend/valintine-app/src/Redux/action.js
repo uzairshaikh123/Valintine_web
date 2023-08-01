@@ -7,6 +7,7 @@ export const handleLogin = (data) => (dispatch) => {
 
   return axios
     .post(`${process.env.REACT_APP_Backend_url}/auth/login`, data)
+
     .then((res) => {
       // console.log(res);
       Cookies.set("token", res.data.token);
@@ -43,6 +44,7 @@ export const handleSignup = (data) => (dispatch) => {
 };
 
 export const handlegetproducts = () => (dispatch) => {
+
   dispatch({ type: types.LOADING });
 // console.log(process.env.REACT_APP_Backend_url)
   return axios
