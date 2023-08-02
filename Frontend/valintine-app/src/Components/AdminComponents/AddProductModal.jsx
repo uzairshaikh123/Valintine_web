@@ -1,11 +1,8 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/action";
 import { MdDelete } from "react-icons/md";
+import { Box, Button, Modal, Text } from "@chakra-ui/react";
 
 const style = {
   position: "absolute",
@@ -214,9 +211,9 @@ console.log(obj)
        
       >
         <Box sx={style} >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Text id="modal-modal-title" variant="h6" component="h2">
             Add Product
-          </Typography>
+          </Text>
           <hr />
           <Box style={{ height: "80vh", overflowY: "auto", marginTop: "20px"}}>
             <form action="">

@@ -78,7 +78,7 @@ const Products = () => {
           {products?.map((el) => {
             return (
               <ProductCard
-              key={el._id}
+                key={el._id}
                 id={el._id}
                 image={el.image}
                 name={el.name}

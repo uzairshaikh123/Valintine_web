@@ -1,26 +1,18 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { Divider } from '@mui/material';
 import './modal.css'
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  height:"auto",
-  transform: 'translate(-50%, -50%)',
-  width: 540,
-  bgcolor: 'background.paper',
-//   border: '2px solid #000',
-  boxShadow: 24,
-  overflow:"auto",
-  p: 4,
-};
+import { Box, Button, Modal, Text, useDisclosure } from '@chakra-ui/react';
+import {
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 
 export default function BasicModal({name}) {
-
+  console.log("ok")
+  const { isOpen, onClose ,onOpen} = useDisclosure()
 let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
   {name:"Jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},
   {name:"Bangalore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Bangalore_Icon-min.png",id:3},
@@ -46,54 +38,64 @@ initial=false
   initial=true
 }
 
-
-  const [open, setOpen] = React.useState(initial);
-  const handleOpen = () => setOpen(true);
+  
   const handleClose = (city) =>{ 
     
     sessionStorage.setItem("cityname",city)
     
-    setOpen(false)
+    onClose()
   
   }
   return (
     <div className='modal-cont'>
-      <button  style={{padding:"10px",cursor:"pointer",backgroundColor:"aqua",border:"none",}} className='locationbtn navloc' onClick={handleOpen} 
+      <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"aqua",border:"none"}} className='locationbtn navloc'  onClick={onOpen}
       >
-        <img style={{width:"15%",height:"60%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
-        {mycity}</button>
-      <Modal
-      style={{transition:"0.5s"}}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        
-        
+        <img style={{width:"25%",height:"60%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
+        {mycity}</Button>
+        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
       >
-        <Box sx={style} className='city-modal'>
-          <Typography marginBottom={'30px'} id="modal-modal-title" variant="h6" component="h2">
+
+<ModalOverlay />
+        <ModalContent >
+          {/* <ModalHeader>Modal Title</ModalHeader> */}
+          <ModalCloseButton />
+          <ModalBody className='modal-body'>
+          <Box className='city-modal'>
+          <Text marginBottom={'30px'} id="modal-modal-title" variant="h6" component="h2">
             SELECT YOUR CITY
-          </Typography>
+          </Text>
           <hr />
           <p  id="desc" style={{textAlign:"center",marginTop:"10px"}}>Find more than 3000 decorations, gifts and surprises!</p>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Text id="modal-modal-description" sx={{ mt: 2 }}>
             <Box className={"cities-cont"}>
 
 {
     cities.map((city, index) => (
-        <div onClick={()=>handleClose(city.name)}  className='cities' style={{width:"100%",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",textAlign:"center",cursor:"pointer",padding:"5px"}} key={index}>
-        <img style={{width:"50px",height:"50px"}}  src={city.img} alt={city.name} />
-        <Typography>{city.name}</Typography>
+        <div onClick={()=>handleClose(city.name)} className='cities'  key={index}>
+        <img className='modal-img' src={city.img} alt={city.name} />
+        <Text>{city.name}</Text>
       </div>
     ))
     
 }
     </Box>
         <hr style={{marginTop:"40px"}} />
-          </Typography>
+          </Text>
         </Box>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+
+
+        
       </Modal>
     </div>
   );
 }
+

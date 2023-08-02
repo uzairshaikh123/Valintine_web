@@ -20,7 +20,6 @@ import {
 import AboutProduct from "../Components/ProductComponents/AboutProduct";
 import Cookies from "js-cookie";
 import CustomizedRating from "../Components/ProductComponents/Ratings";
-import { Input } from "@mui/material";
 import BasicDateTimePicker, {
   DatePickerComp,
 } from "../Components/ProductComponents/DatePicker";

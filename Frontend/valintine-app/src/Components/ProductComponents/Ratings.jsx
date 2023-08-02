@@ -1,22 +1,10 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import Typography from '@mui/material/Typography';
-import { Input } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { handlegetproducts } from '../../Redux/action';
 import './ratings.css'
-const StyledRating = styled(Rating)({
-  '& .MuiRating-iconFilled': {
-    color: '#ff6d75',
-  },
-  '& .MuiRating-iconHover': {
-    color: '#ff3d47',
-  },
-});
+import { Box, Input, Text } from '@chakra-ui/react';
 
 export default function CustomizedRating({reviews}) {
     const [message ,setmessage ] = React.useState("")
@@ -52,20 +40,7 @@ console.log(reviews);
       }}
       
     >
-      <Typography component="legend">Rate this Product</Typography>
-      <StyledRating
-      style={{margin:"auto"}}
-        name="customized-color"
-        defaultValue={2}
-        // value={3}
-        onClick={
-            handleRatings
-        }
-        getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-        precision={0.5}
-        icon={<FavoriteIcon fontSize="inherit" />}
-        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-      />
+      <Text component="legend">Rate this Product</Text>
       <Input style={{width:"50%",margin:"auto"}} placeholder='write something' onChange={handlemessage}/>
       <button onClick={handleaddratings} style={{width:"50%",display:"block",margin:"auto",background:"pink",color:"white",padding:"5px",marginTop:"15px",border:"none",cursor:"pointer",fontSize:"20px"}}>Add</button>
 

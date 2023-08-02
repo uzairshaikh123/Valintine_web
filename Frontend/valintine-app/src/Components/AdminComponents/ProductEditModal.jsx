@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { handlegetproducts } from '../../Redux/action';
+import { Button, Modal, Text } from '@chakra-ui/react';
 
 const style = {
   position: 'absolute',
@@ -54,9 +52,9 @@ console.log(product,id)
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Text id="modal-modal-title" variant="h6" component="h2">
             Edit Product
-          </Typography>
+          </Text>
           <div style={{height:"80vh",overflowY:"auto"}}>
 
     <label htmlFor="">Name</label>

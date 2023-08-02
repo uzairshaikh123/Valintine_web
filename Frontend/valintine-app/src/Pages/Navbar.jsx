@@ -1,34 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/navbar.css";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { pink } from "@mui/material/colors";
 import BasicModal from "../Components/HomeComponents/Modal";
 import TemporaryDrawer from "../Components/HomeComponents/DrawerComp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
+import { Button, IconButton, Menu, MenuItem } from "@chakra-ui/react";
 function Navbar({ cartcount }) {
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      // right: -3,
-      // top: 13,
-      // border: `2px solid ${theme.palette.background.paper}`,
-      // padding: '0 4px',
-    },
-  }));
+ 
 
   const store = useSelector((store) => store);
   const { token, cart } = store;
   const dispatch = useDispatch();
-  const color = pink[500];
+  // const color = pink[500];
   const [menuOpen, setMenuOpen] = useState(false);
   const [open, close] = useState(true);
   const navigate = useNavigate();
@@ -57,8 +43,7 @@ function Navbar({ cartcount }) {
   };
 
   useEffect(() => {
-    // const user = JSON.parse(sessionStorage.getItem("userdetails"));
-    // dispatch(handlegetcartproducts(user._id));
+
     setitems(cart?.length);
   }, [cart]);
   console.log(cartcount);
@@ -73,8 +58,6 @@ function Navbar({ cartcount }) {
             className="logo"
             id={"comp-logo"}
             style={{width:"140px", height:"48px"}}
-            // src="https://valentinesaga.com/wp-content/uploads/2023/07/ValentineSaga-Logo-4-min.png"
-          //  src="https://valentinesaga.com/wp-content/uploads/2023/06/ValentineSaga-Logo.png"
            src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
             alt=""
           />
@@ -126,12 +109,12 @@ function Navbar({ cartcount }) {
                 alignItems: "center",
               }}
             >
-              <StyledBadge
+              {/* <StyledBadge
                 badgeContent={cartcount || cart?.length}
                 color="secondary"
-              >
-                <ShoppingCartIcon />
-              </StyledBadge>
+              > */}
+                {/* <ShoppingCartIcon /> */}
+              {/* </StyledBadge> */}
             </IconButton>
           </a>
         </Link>
