@@ -2,58 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handlegetproducts } from "../../Redux/action";
-import { Button } from "@mui/material";
-
-const TableContainer = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-`;
-
-const TableHead = styled.thead`
-  background-color: #007bff;
-  color: #fff;
-`;
-
-const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-`;
-
-const TableCell = styled.td`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const TableHeaderCell = styled.th`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const PaginationButton = styled.button`
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: ${(props) => (props.active ? "#007bff" : "#f2f2f2")};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
+import { Button, Table, TableContainer } from "@chakra-ui/react";
 
 const TableCompOrders= () => {
   const itemsPerPage = 3; // Number of items to show per page
@@ -96,7 +45,7 @@ console.log(products);
   return (
     <TableContainer style={{minWidth:"90%",border:"1px solid red"}}>
       <Table>
-        <TableHead>
+        {/* <TableHead>
           <TableRow>
             <TableHeaderCell>Image</TableHeaderCell>
             <TableHeaderCell>ID</TableHeaderCell>
@@ -105,9 +54,9 @@ console.log(products);
             <TableHeaderCell>Edit</TableHeaderCell>
             <TableHeaderCell>Delete</TableHeaderCell>
             <TableHeaderCell>Share</TableHeaderCell>
-          </TableRow>
-        </TableHead>
-        <tbody>
+          </TableRow> */}
+        {/* </TableHead> */}
+        {/* <tbody>
           {products?.map((item) => (
             <TableRow key={item._id}>
                <TableCell>
@@ -127,7 +76,7 @@ console.log(products);
               </TableCell>
             </TableRow>
           ))}
-        </tbody>
+        </tbody> */}
       </Table>
       {/* <Pagination>
         {products?.map((_, index) => (

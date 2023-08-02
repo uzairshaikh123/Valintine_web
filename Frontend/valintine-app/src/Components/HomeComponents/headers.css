@@ -4,7 +4,9 @@
 }
 
 #header{
- /* border: 1px solid rgb(166, 161, 161); */
+ /* border: 1px solid rgb(197, 26, 26); */
+ width: 100%;
+ margin: auto;
  /* width: 90%;
  height: 100px;
  min-height: 100px;
@@ -14,11 +16,18 @@
   margin: auto;
  margin-bottom: 5px; */
 }
-
-.headers-div img{ 
+.headers-div{
+/* border: 1px solid red; */
+height: auto;
+align-items: center;
+}
+.headers-div>img{ 
 transition: 0.5s ease-in-out;
 height: 100%;
 cursor: pointer;
+display: block;
+margin: auto;
+width: 100%;
 border:"1px solid green"
 
 }

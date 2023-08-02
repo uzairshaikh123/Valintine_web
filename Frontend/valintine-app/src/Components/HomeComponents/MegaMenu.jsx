@@ -1,49 +1,18 @@
-import React from 'react'
-import "./headers.css"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { Link } from 'react-router-dom';
-const Header = () => {
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1124 },
-      items: 6,
-      slidesToSlide: 1 ,
-      // optional, default to 1.
-    },
-    desktop2: {
-      breakpoint: { max: 1650, min: 1480 },
-      items: 5,
-      slidesToSlide: 1 ,
-      // optional, default to 1.
-    },
-    desktop3: {
-      breakpoint: { max: 1480, min: 1194 },
-      items: 4,
-      slidesToSlide: 1 ,
-      // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1194, min: 864 },
-      items: 3,
-      slidesToSlide: 1 // optional, default to 1.
-    },
-    mid_tablet: {
-      breakpoint: { max: 750, min: 460 },
-      items: 3,
-      slidesToSlide: 1 // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 660, min: 0 },
-      items: 3,
-      slidesToSlide: 1 ,
-      arrows:false
-      // optional, default to 1.
-    }
-  };
+import React from "react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Box,
+} from "@chakra-ui/react";
+import { MinusIcon, AddIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
+const MegaMenu = () => {
   let titles = [
     {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",
+      image: "",
       title: "Kids Celebrations",
       subtitles: [
         "Kids Birthday Decoration",
@@ -104,7 +73,7 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image:"https://cdn.togetherv.com/party-decoration-icon_1679913296.webp",title: "Birthday Surprises" ,subtitles: [
+    { image:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",title: "Birthday Surprises" ,subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -118,7 +87,7 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image: "https://cdn.togetherv.com/romantic-stays-icon_1682410730.webp",title: "Room Decorations" ,subtitles: [
+    { image: "",title: "Room Decorations" ,subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -132,7 +101,7 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",title: "Gifts & Surprises",subtitles: [
+    { image: "",title: "Gifts & Surprises",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -146,7 +115,7 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ], },
-    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",title: "Occasions",subtitles: [
+    { image: "",title: "Occasions",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -161,57 +130,48 @@ const Header = () => {
         "Ganesh Chaturthi Decorations"
       ], },
   ];
+ 
   return (
-    <div id='header'>
-      <Carousel
-    swipeable={false}
-    draggable={false}
-    // showDots={true}
-    responsive={responsive}
-    // containerClass="carousel-container abc"
-    autoPlay={true}
-    infinite={true}
-    autoPlaySpeed={3000}
-    >
-      {titles?.map((el)=>{
-        return  <Link to={`/products?category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
-    <div className='headers-div'>
-        <img style={{height:"35%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
-        <p>{el.title}</p>
-      </div>
-    </Link>  
+    <Accordion allowMultiple>
+      {titles.map((el) => {
+        return (
+          <AccordionItem>
+            {({ isExpanded }) => (
+              <>
+                <AccordionButton>
+                  <Box as="span" flex="1" textAlign="left">
+                    {el.title}
+                  </Box>
+                  {isExpanded ? (
+                    <MinusIcon fontSize="12px" />
+                  ) : (
+                    <AddIcon fontSize="12px" />
+                  )}
+                </AccordionButton>
+
+                <AccordionPanel pb={4}>
+                  <ul>
+                    <Link href="/products?category=decoration">
+                      {el?.subtitles?.map((el) => {
+                        return (
+                          <>
+                            <li>
+                              <p>{el}</p>
+                            </li>
+                            <hr />
+                          </>
+                        );
+                      })}
+                    </Link>
+                  </ul>
+                </AccordionPanel>
+              </>
+            )}
+          </AccordionItem>
+        );
       })}
-{/* 
-    <Link to="/products?category=flowers" style={{textDecoration:"none",color:"black"}}>
-      <div className='headers-div' >
-        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/Capture_flowers-removebg-preview__2_-removebg-preview-min.png" alt="" />
-          <p>Flowers</p>
-      </div>
-    </Link>
+    </Accordion>
+  );
+};
 
-    <Link to={"/products?category=candle_light"} style={{textDecoration:"none",color:"black"}}>
-      <div  className='headers-div' >
-        <img style={{height:"35%",width:"37%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/candle-light-dinner-character_15624-160-removebg-preview-min.png" alt="" />
- <p>Candle Light Dinner</p>
-      </div>
-    </Link>
-
-    <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div  className='headers-div' >
-        <img  style={{height:"30%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/04/gifts_icon_1-removebg-preview.png" alt="" />
-        <p>Gifts</p>
-      </div>
-    </Link>
-
-    <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div className='headers-div'  >
-        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/balloon_decoration-removebg-preview-1-1-min.png" alt="" />
-        <p>Decoration</p>
-      </div>
-    </Link> */}
-    </Carousel>
-    </div>
-  )
-}
-
-export default Header
+export default MegaMenu;

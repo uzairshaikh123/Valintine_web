@@ -1,79 +1,57 @@
 .cities-cont {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 10px;
-  width: 90%;
-  gap: 20px;
+  width: 100%;
+  gap: 10px;
+}
+.cities{
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px;
+  transition: 1s ease-in-out;
 }
 
+.cities:hover{
+  margin-top: -15px;
+  
+}
+.modal-img{
+  display: block;
+  margin: auto;
+  width:50%;
+  height: 70%;
+}
 .modal-cont{
-
-  /* border: 1px solid red; */
-  /* margin-right: 10px; */
   margin-top: 20px;
-
-
 }
+
 .city-modal {
-  /* border: 1px solid red; */
+  width: 100%;
 }
-@media all and (min-width: 548px) and (max-width: 624px) {
+@media all and (min-width: 0px) and (max-width: 500px) { 
   .cities-cont {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    overflow-y: auto;
-    height: 50vh;
-    width: 50%;
-    margin: auto;
+
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: repeat(2,1fr);
   }
-  .cities {
-    width: 50%;
-  }
-  .city-modal {
-    width: 40%;
-    margin: auto;
-    padding: 50px;
-    border: 5px solid gray;
-  }
-}
-@media all and (min-width: 1px) and (max-width: 548px) {
-  .city-modal {
-    width: 30%;
-    padding: 100px;
-    border: 5px solid rgb(128, 128, 128);
+  .cities{
+    /* width: 50%; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    font-size: small;
+  
   }
-  .cities-cont {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    overflow-y: auto;
-    overflow-y: auto;
-    height: 50vh;
-    width: 50%;
+  .modal-img{
+    display: block;
     margin: auto;
+    width:50%;
+    height: 50%;
   }
-  #desc{
-    width: 50%;
-    margin: auto;
-  }
-  .modal-cont{
-    margin-top: -32px;
-  }
-}
 
-
-
-@media screen and (min-width: 550px){
-  .modal-cont{
-    margin-top: -48px;
-  }
-  
-  
-}
-
-@media screen and (min-width: 960px) {
-  .modal-cont{
-    margin-top: 0px;
-  }
-  
 }
