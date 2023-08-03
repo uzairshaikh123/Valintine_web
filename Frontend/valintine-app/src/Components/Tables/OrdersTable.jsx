@@ -2,59 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handle_edit_orders_by_admin, handle_get_allorders_byadmin, handlegetproducts } from "../../Redux/action";
-import { Button, Select } from "@mui/material";
+// import { Button, Select } from "@mui/material";
 import EditModal from "../AdminComponents/ProductEditModal";
 import './Orders.css'
-const TableContainer = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-`;
+import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-`;
-
-const TableHead = styled.thead`
-  background-color: #007bff;
-  color: #fff;
-`;
-
-const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-`;
-
-const TableCell = styled.td`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const TableHeaderCell = styled.th`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const PaginationButton = styled.button`
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: ${(props) => (props.active ? "#007bff" : "#f2f2f2")};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
 
 const Orders= () => {
   const itemsPerPage = 3; // Number of items to show per page
@@ -110,28 +62,28 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
   return (
     <TableContainer style={{minWidth:"100%"}}>
       <Table>
-        <TableHead>
-          <TableRow>
+        <Thead>
+          <Tr>
           { keys.map((el)=>{
 
-            return <TableHeaderCell>{el}</TableHeaderCell>
+            return <Th>{el}</Th>
             })
             }
            
-          </TableRow>
-        </TableHead>
+          </Tr>
+        </Thead>
         <tbody>
           {orders?.map((item) => (
-            <TableRow key={item._id}>
-               <TableCell>
+            <Tr key={item._id}>
+               <Td>
                <img style={{height:"50%",width:"50%"}} src={item.image[0]} alt="" /> 
-                </TableCell>
-               <TableCell>{item._id}</TableCell>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.date?item.date:"NA"}</TableCell>
-              <TableCell>{item?.address?item?.address:"NA"}</TableCell>
+                </Td>
+               <Td>{item._id}</Td>
+              <Td>{item.name}</Td>
+              <Td>{item.date?item.date:"NA"}</Td>
+              <Td>{item?.address?item?.address:"NA"}</Td>
               
-              <TableCell>
+              <Td>
                <select placeholder="Update Status Here" onInput={(e)=>handle_status_change(item._id,item,e.target.value)}>
                 
                 <option value="Update Status Here">Select One</option>
@@ -139,15 +91,15 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
                 <option value="Delivered">Delivered</option>
                 <option value="Cancel">Cancel</option>
                </select>
-              </TableCell>
-              <TableCell>
+              </Td>
+              <Td>
                 <Button>
                     
                         {item.status}
                         
                         </Button>
-              </TableCell>
-            </TableRow>
+              </Td>
+            </Tr>
           ))}
         </tbody>
       </Table>

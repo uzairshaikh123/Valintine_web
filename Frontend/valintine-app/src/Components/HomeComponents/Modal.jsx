@@ -48,9 +48,9 @@ initial=false
   }
   return (
     <div className='modal-cont'>
-      <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"aqua",border:"none"}} className='locationbtn navloc'  onClick={onOpen}
+      <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"pink",display:"flex"}} className='locationbtn navloc'  onClick={onOpen}
       >
-        <img style={{width:"25%",height:"60%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
+        <img style={{width:"20%",height:"100%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
         {mycity}</Button>
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
       >

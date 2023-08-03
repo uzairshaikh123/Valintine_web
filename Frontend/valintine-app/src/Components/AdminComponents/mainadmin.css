@@ -313,6 +313,8 @@ body {
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
+	/* border: 1px solid red; */
+	min-width: 100%;
 }
 #content main .head-title {
 	display: flex;

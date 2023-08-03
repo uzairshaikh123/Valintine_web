@@ -23,3 +23,7 @@ export const HANDLE_DELETE_PRODUCT = "delete/product/byadmin";
 export const HANDLE_EDIT_PRODUCT = "edit/product/byadmin";
 export const HANDLE_DELETE_USER = "delete/user/byadmin";
 export const HANDLE_UPDATE_ORDERS = "update/orders/byadmin";
+export const HANDLE_ADD_SLIDER_IMAGES = "add/sliderimages/byadmin";
+export const HANDLE_ADD_TESTIMONIAL_IMAGES = "add/testimonialimages/byadmin";
+export const HANDLE_DELETE_SLIDERS_IMAGES = "delete/slidersimages/byadmin";
+export const HANDLE_DELETE_TESTIMONIALS_IMAGES = "delete/testimonialimages/byadmin";

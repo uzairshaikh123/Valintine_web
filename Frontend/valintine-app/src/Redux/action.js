@@ -488,4 +488,86 @@ export const handle_edit_orders_by_admin = (id,data) => (dispatch) => {
       return err;
     });
 };
+export const handle_addslider_Image_by_admin = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`http://localhost:8080/orders/sliders/add`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_ADD_SLIDER_IMAGES});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_addtestimonial_Image_by_admin = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`http://localhost:8080/orders/sliders/add`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_ADD_TESTIMONIAL_IMAGES});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_deleteslider_Image_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .delete(`http://localhost:8080/orders/sliders/delete/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_DELETE_SLIDERS_IMAGES});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_deletetestimonials_Image_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .delete(`http://localhost:8080/orders/testimonials/delete/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_DELETE_TESTIMONIALS_IMAGES});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
 

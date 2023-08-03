@@ -38,16 +38,16 @@ function TemporaryDrawer() {
           </DrawerHeader>
 
           <DrawerBody 
-        border={"1px solid red"}
+        // border={"1px solid red"}
         >
             <MegaMenu />
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant='outline' mr={3} onClick={onClose}>
+            {/* <Button variant='outline' mr={3} onClick={onClose}>
               Cancel
-            </Button>
-            <Button colorScheme='blue'>Save</Button>
+            </Button> */}
+            {/* <Button colorScheme='blue'>Save</Button> */}
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

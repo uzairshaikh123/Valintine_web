@@ -202,7 +202,7 @@ const MainAdmin = () => {
         <main>
           <div class="head-title">
             <div class="left">
-              <h1>{active_title}</h1>
+              <h1 style={{width:"100%"}}>{active_title}</h1>
               <ul class="breadcrumb">
                 <li>
                   <a href="dashboard">{active_title}</a>

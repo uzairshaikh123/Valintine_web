@@ -82,6 +82,18 @@ export const reducer = (state = initstate, { type, payload }) => {
     case types.HANDLE_UPDATE_ORDERS: {
       return { ...state,error:false,loading:false};
     }
+    case types.HANDLE_ADD_SLIDER_IMAGES: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_ADD_TESTIMONIAL_IMAGES: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_DELETE_TESTIMONIALS_IMAGES: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_DELETE_SLIDERS_IMAGES: {
+      return { ...state,error:false,loading:false};
+    }
     default: {
       return { ...state };
     }
