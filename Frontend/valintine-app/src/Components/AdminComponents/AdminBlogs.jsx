@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { handlegetproducts } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
-const TableCompOrders= () => {
+const AdminBlogs= () => {
 
 
   const store = useSelector((store) => store);
@@ -29,7 +29,9 @@ console.log(products);
           <Tr>
             <Th>Image</Th>
             <Th>ID</Th>
-            <Th>Name</Th>
+            <Th>
+                Title
+            </Th>
             <Th>Price</Th>
             <Th>Edit</Th>
             <Th>Delete</Th>
@@ -64,4 +66,4 @@ console.log(products);
   );
 };
 
-export default TableCompOrders;
+export default AdminBlogs;

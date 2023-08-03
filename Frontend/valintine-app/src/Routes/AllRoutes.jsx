@@ -18,6 +18,7 @@ import MainAdmin from '../Components/AdminComponents/MainAdmin'
 import PrivateRouteAdmin from './PrivateRouteAdmin'
 import Blogs from '../Pages/Blogs'
 import Wishlist from '../Pages/Wishlist'
+import SingleBlog from '../Pages/SingleBlog'
 
 const AllRoutes = () => {
   return (
@@ -46,6 +47,7 @@ const AllRoutes = () => {
                 <Route path="/adminlogin" element={<AdminLogin/>}/>
                 <Route path="/orders" element={<OrdersPage/>}/>
                 <Route path="/blogs" element={<Blogs/>}/>
+                <Route path="/blogs/:id" element={<SingleBlog/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>
                 {/* <Route path="/register" element={<Register/>}/>
                 <Route path="/profile" element={<Profile/>}/>

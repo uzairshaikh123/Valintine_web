@@ -8,7 +8,7 @@ const Customers = () => {
 
 
   return (
-    <div>
+    <div style={{maxWidth:"100%"}}>
       <h1>Customers</h1>
       <TableCompUsers />
     </div>

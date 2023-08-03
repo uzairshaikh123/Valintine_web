@@ -5,7 +5,7 @@ import Orders from '../Tables/OrdersTable'
 const AdminOrders = () => {
 
   return (
-    <div>
+    <div style={{maxWidth:"100%"}}>
       <h1>Orders</h1>
       <Orders />
     </div>

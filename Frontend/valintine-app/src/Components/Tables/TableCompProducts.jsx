@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handle_delete_product_by_admin, handlegetproducts } from "../../Redux/action";
 import EditModal from "../AdminComponents/ProductEditModal";
-import { TableContainer } from "@chakra-ui/react";
+import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 
 const TableCompProducts= () => {
@@ -15,19 +15,9 @@ const TableCompProducts= () => {
     // Add more data here...
   ];
 
-  const [currentPage, setCurrentPage] = useState(1);
   const totalItems = data.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const getPaginatedData = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return data.slice(startIndex, endIndex);
-  };
+  
 
  const handle_delete_product=(id)=>{
 dispatch(handle_delete_product_by_admin(id)).then((res)=>{
@@ -55,47 +45,37 @@ let keys = ["image", "id", "name", "city","Price","Edit","Delete"];
 
   return (
     <TableContainer style={{minWidth:"100%"}}>
-      {/* <Table> */}
-        {/* <TableHead>
-          <TableRow>
+      <Table>
+        <Thead>
+          <Tr>
           {  keys.map((el)=>{
 
-return <TableHeaderCell>{el}</TableHeaderCell>
+return <Th>{el}</Th>
 })
 }
-          </TableRow>
-        </TableHead> */}
-        {/* <tbody>
+          </Tr>
+        </Thead>
+        <tbody>
           {products?.map((item) => (
-            <TableRow key={item._id}>
-               <TableCell>
+            <Tr key={item._id}>
+               <Td>
                <img style={{height:"50%",width:"50%"}} src={item.image[0]} alt="" /> 
-                </TableCell>
-               <TableCell>{item._id}</TableCell>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.city}</TableCell>
-              <TableCell>{item.price}</TableCell>
-              <TableCell>
+                </Td>
+               <Td>{item._id}</Td>
+              <Td>{item.name}</Td>
+              <Td>{item.city}</Td>
+              <Td>{item.price}</Td>
+              <Td>
                 <EditModal id={item?._id} products={products}/>
-              </TableCell>
-              <TableCell>
+              </Td>
+              <Td>
                 <Button onClick={()=>handle_delete_product(item._id)}>DELETE</Button>
-              </TableCell>
-            </TableRow>
+              </Td>
+            </Tr>
           ))}
-        </tbody> */}
-      {/* </Table> */}
-      {/* <Pagination>
-        {products?.map((_, index) => (
-          <PaginationButton
-            key={index}
-            active={currentPage === index + 1}
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </PaginationButton>
-        ))}
-      </Pagination> */}
+        </tbody>
+      </Table>
+
     </TableContainer>
   );
 };

@@ -4,8 +4,6 @@ import TableComp from '../Tables/TableCompProducts'
 const AdminDash = () => {
   return (
     <div>AdminDash
-{/* <TableComp/> */}
-
     </div>
   )
 }

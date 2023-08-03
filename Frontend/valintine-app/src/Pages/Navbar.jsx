@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
 import { Button, IconButton, Menu, MenuItem } from "@chakra-ui/react";
+import {HiShoppingCart} from 'react-icons/hi'
 function Navbar({ cartcount }) {
  
 
@@ -100,22 +101,9 @@ function Navbar({ cartcount }) {
 
         <Link to={"/cart"}>
           <a href="#" className="cart-nav location">
-            <IconButton
-              aria-label="cart"
-              style={{
-                display: "flex",
-                width: "35px",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {/* <StyledBadge
-                badgeContent={cartcount || cart?.length}
-                color="secondary"
-              > */}
-                {/* <ShoppingCartIcon /> */}
-              {/* </StyledBadge> */}
-            </IconButton>
+            
+             <HiShoppingCart />
+           
           </a>
         </Link>
 
@@ -127,41 +115,7 @@ function Navbar({ cartcount }) {
       </div>
           {<BasicModal name={"Location"} />}
           <div className="user">
-      <Button
-        id="basic-button"
-        aria-controls={open2 ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        user
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open2}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>
-        <Link to={"/orders"}>
-        
-          My Orders
-        </Link>
-          
-          </MenuItem>
-        <MenuItem onClick={handleClose}>
-        {token && (
-          <p
-      
-          onClick={handlelogout}
-          >Logout</p>
-          )}
-        </MenuItem>
-      </Menu>
+    
     </div>
       {/* <div className="navbar-menu-icon" onClick={toggleMenu}>
         <TemporaryDrawer />

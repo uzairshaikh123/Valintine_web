@@ -2,58 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handle_delete_users_by_admin, handle_get_all_users, handlegetproducts } from "../../Redux/action";
-import { Button } from "@mui/material";
+import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
+// import { Button } from "@mui/material";
 
-const TableContainer = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-`;
-
-const TableHead = styled.thead`
-  background-color: #007bff;
-  color: #fff;
-`;
-
-const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-`;
-
-const TableCell = styled.td`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const TableHeaderCell = styled.th`
-  padding: 12px 15px;
-  text-align: left;
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const PaginationButton = styled.button`
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: ${(props) => (props.active ? "#007bff" : "#f2f2f2")};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
 
 const TableCompUsers= () => {
   const itemsPerPage = 3; // Number of items to show per page
@@ -108,31 +59,31 @@ const handle_delete_users=(id) => {
   return (
     <TableContainer style={{minWidth:"100%"}}>
       <Table>
-        <TableHead>
-          <TableRow>
+        <Thead>
+          <Tr>
           {  keys.map((el)=>{
 
-return <TableHeaderCell>{el}</TableHeaderCell>
+return <Th>{el}</Th>
 })
 }
-          </TableRow>
-        </TableHead>
+          </Tr>
+        </Thead>
         <tbody>
           {users?.map((item) => (
-            <TableRow key={item._id}>
-               <TableCell>
+            <Tr key={item._id}>
+               <Td>
                <img style={{height:"50%",width:"50%"}} src={"https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"} alt="" /> 
-                </TableCell>
-               <TableCell>{item._id}</TableCell>
-              <TableCell>{item.name?.slice(0,10)}</TableCell>
-              <TableCell>{item.email}</TableCell>
-              <TableCell>{item.address}</TableCell>
-              <TableCell>{0}</TableCell>
-              <TableCell>{0}</TableCell>
-              <TableCell>
+                </Td>
+               <Td>{item._id}</Td>
+              <Td>{item.name?.slice(0,10)}</Td>
+              <Td>{item.email}</Td>
+              <Td>{item.address}</Td>
+              <Td>{0}</Td>
+              <Td>{0}</Td>
+              <Td>
                 <Button onClick={()=>handle_delete_users(item._id)}>DELETE</Button>
-              </TableCell>
-            </TableRow>
+              </Td>
+            </Tr>
           ))}
         </tbody>
       </Table>
