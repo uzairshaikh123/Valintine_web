@@ -18,6 +18,6 @@ const BlogSchema  =  mongoose.Schema({
     comments: { type: Array, required:true}
 })
 
-const BlogModel = mongoose.model("cart",BlogSchema)
+const BlogModel = mongoose.model("blogs",BlogSchema)
 
 module.exports = BlogModel
