@@ -20,6 +20,14 @@
 /* border: 1px solid red; */
 height: auto;
 align-items: center;
+
+}
+
+.headers-div>p{
+    display: block;
+    margin: auto;
+    text-align: center;
+
 }
 .headers-div>img{ 
 transition: 0.5s ease-in-out;
