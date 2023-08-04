@@ -8,12 +8,12 @@
   border: 0;
   box-sizing: border-box;
 }
-
+/* 
 body {
   background-color: hsl(0, 0%, 100%);
   font-family: system-ui, sans-serif;
   font-size: 1.15rem;
-}
+} */
 p {
   text-align: justify;
 }
@@ -22,13 +22,14 @@ a {
   font-weight: 600;
 }
 h1 {
-  font-size: 2.5rem;
+  /* font-size: 2.5rem; */
+  font-weight: 500;
 }
 h2 {
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 h3 {
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
 }
 /* variables */
 :root {
