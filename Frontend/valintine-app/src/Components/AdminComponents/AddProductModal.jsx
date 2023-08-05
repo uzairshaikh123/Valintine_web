@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/action";
 import { MdDelete } from "react-icons/md";
-import { Box, Button, Modal, Text } from "@chakra-ui/react";
+import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 
 const style = {
   position: "absolute",
@@ -15,9 +15,10 @@ const style = {
 };
 
 export default function AddProductModal({ id }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   let handleOpen = () => setOpen(true);
   let [open, setOpen] = useState(false);
-  let handleClose = () => setOpen(false);
+  // let handleClose = () => setOpen(false);
   let [price, setprice] = useState("");
   let [images, setimages] = useState([1]);
   let [Proddetails, setProddetails] = useState([1]);
@@ -187,7 +188,7 @@ console.log(obj)
   return (
     <div >
       <Button
-        onClick={handleOpen}
+        onClick={onOpen}
         style={{
           float: "right",
           margin: "10px",
@@ -203,19 +204,24 @@ console.log(obj)
         Add Product
       </Button>
       <Modal
-     
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+     isOpen={isOpen} onClose={onClose}
        
-      >
-        <Box sx={style} >
-          <Text id="modal-modal-title" variant="h6" component="h2">
-            Add Product
-          </Text>
+      
+        // aria-labelledby="modal-modal-title"
+        // aria-describedby="modal-modal-description"
+        
+        >  
+      <ModalOverlay />
+        <ModalContent>
+        <ModalHeader>Add Product</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+         
+       
+        <Box style={{  overflowY: "auto", marginTop: "20px"}} >
+        
           <hr />
-          <Box style={{ height: "80vh", overflowY: "auto", marginTop: "20px"}}>
+          <Box style={{  overflowY: "auto", marginTop: "20px"}}>
             <form action="">
               <label htmlFor="">Name</label>
               <input type="text" id="name" placeholder="Enter Name of Product" />
@@ -229,9 +235,9 @@ console.log(obj)
                     <input className="urls" type="file" placeholder="Enter url of Image" />
                     <MdDelete
                     color="#3498db"
-                      onClick={() => handleImages(i)}
-                      size={"30px"}
-                      cursor={"pointer"}
+                    onClick={() => handleImages(i)}
+                    size={"30px"}
+                    cursor={"pointer"}
                     />
                   </div>
                 );
@@ -277,8 +283,8 @@ console.log(obj)
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input
                     className="prod_det"
-                      type="text"
-                      placeholder="Enter Name of Prod_details"
+                    type="text"
+                    placeholder="Enter Name of Prod_details"
                     />
                     <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
@@ -294,18 +300,18 @@ console.log(obj)
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input
                     className="prod_offer_desc"
-                      type="text"
-                      placeholder="Enter Offer Description"
+                    type="text"
+                    placeholder="Enter Offer Description"
                     />
                     <input
                     className="prod_offer_image"
-                      type="file"
-                      placeholder="Enter Offer Image Url"
+                    type="file"
+                    placeholder="Enter Offer Image Url"
                     />
                     <input
                     className="prod_offer_terms"
-                      type="text"
-                      placeholder="Enter Offer Terms"
+                    type="text"
+                    placeholder="Enter Offer Terms"
                     />
                     <MdDelete color="#3498db" size={"70px"} cursor={"pointer"} />
                   </div>
@@ -322,11 +328,11 @@ console.log(obj)
                     className="prod_cat_name"
                       type="text"
                       placeholder="Enter Product Category Name"
-                    />
+                      />
                     <input
                     className="prod_cat_price"
-                      type="text"
-                      placeholder="Enter Product Category Price"
+                    type="text"
+                    placeholder="Enter Product Category Price"
                     />
                     <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                   </div>
@@ -343,9 +349,9 @@ console.log(obj)
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input
                     className="description"
-                      type="text"
-                 
-                      placeholder={`Enter Line ${i + 1} Description`}
+                    type="text"
+                    
+                    placeholder={`Enter Line ${i + 1} Description`}
                     />
                     <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
@@ -359,8 +365,8 @@ console.log(obj)
                   <div style={{ display: "flex", marginTop: "5px" }}>
                     <input
                     className="delivery_info"
-                      type="text"
-                      placeholder={`Enter Line ${i + 1} of Delivery_info`}
+                    type="text"
+                    placeholder={`Enter Line ${i + 1} of Delivery_info`}
                     />
                     <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />
                   </div>
@@ -385,12 +391,14 @@ console.log(obj)
                   borderRadius: "10px",
                   marginTop: "20px",
                 }}
-              >
+                >
                 Add Product
               </button>
             </form>
           </Box>
         </Box>
+                </ModalBody>
+      </ModalContent>
       </Modal>
     </div>
   );

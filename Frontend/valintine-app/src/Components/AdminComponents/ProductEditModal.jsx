@@ -1,26 +1,12 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import { useDispatch, useSelector } from 'react-redux';
 import { handlegetproducts } from '../../Redux/action';
-import { Button, Modal, Text } from '@chakra-ui/react';
+import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 800,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function EditModal({id,products}) {
-  const [open, setOpen] = React.useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [product , setproduct] = React.useState([])
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const dispatch = useDispatch()
 const store = useSelector(store=>store)
 // const {loading,error,products}=store
@@ -44,17 +30,22 @@ const store = useSelector(store=>store)
 console.log(product,id)
   return (
     <div>
-      <Button onClick={handleOpen}>Edit</Button>
+      <Button onClick={onOpen}>Edit</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+       isOpen={isOpen} onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Text id="modal-modal-title" variant="h6" component="h2">
-            Edit Product
-          </Text>
+        <ModalOverlay />
+        <ModalContent>
+
+          <ModalHeader>Edit Product</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+           
+
+        <Box>
+          
           <div style={{height:"80vh",overflowY:"auto"}}>
 
     <label htmlFor="">Name</label>
@@ -79,14 +70,27 @@ console.log(product,id)
     <label htmlFor="">prod_details</label>
     {/* <input type="text" placeholder='Enter Name of Product' defaultValue={product?.prod_details[0]}/>
     <label htmlFor="">description</label>
-    <input type="text" placeholder='Enter Name of Product'  defaultValue={product?.description}/> */}
+  <input type="text" placeholder='Enter Name of Product'  defaultValue={product?.description}/> */}
     <label htmlFor="">delivery_info</label>
     {/* <input type="text" placeholder='Enter Name of Product' defaultValue={product?.delivery_info[0]}/> */}
     <label htmlFor="">pincodes</label>
     <input type="text" placeholder='Enter Name of Product' defaultValue={product?.pincodes}/>
-    <button>Save</button>
+    <button
+    style={{
+      background: "blue",
+      color: "white",
+      padding: "10px 25px",
+      display: "block",
+      margin: "auto",
+      cursor: "pointer",
+      border: "none",
+      borderRadius: "10px",
+      marginTop: "20px",
+    }}>Save</button>
           </div>
         </Box>
+  </ModalBody>
+</ModalContent>
       </Modal>
     </div>
   );
