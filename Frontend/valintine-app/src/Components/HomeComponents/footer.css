@@ -41,6 +41,7 @@
   .footer-section p,
   .footer-section ul {
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .subscribe-form {

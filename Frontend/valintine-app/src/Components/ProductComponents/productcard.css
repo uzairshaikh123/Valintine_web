@@ -63,6 +63,7 @@
 .card-body {
   padding: 16px;
   line-height: 20px;
+  font-weight: 400;
 }
 
 .card-title {

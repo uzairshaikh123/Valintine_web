@@ -73,7 +73,7 @@ initial=false
     cities.map((city, index) => (
         <div onClick={()=>handleClose(city.name)} className='cities'  key={index}>
         <img className='modal-img' src={city.img} alt={city.name} />
-        <Text>{city.name}</Text>
+        <p>{city.name}</p>
       </div>
     ))
     

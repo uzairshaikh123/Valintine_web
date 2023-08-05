@@ -58,7 +58,7 @@ const Header = () => {
       ],
     },
     {
-        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/candle-light-dinner-character_15624-160-removebg-preview.png",
+        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/cd.webp",
       title: "Candlelight Dinners",
       subtitles: [
         "Candlelight Dinners in NCR",
@@ -169,46 +169,18 @@ const Header = () => {
     // showDots={true}
     responsive={responsive}
     // containerClass="carousel-container abc"
-    autoPlay={true}
+    // autoPlay={true}
     infinite={true}
-    autoPlaySpeed={3000}
+    // autoPlaySpeed={3000}
     >
       {titles?.map((el)=>{
         return  <Link to={`/products?category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
     <div className='headers-div'>
-        <img style={{height:"35%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
+        <img style={{height:"50%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
         <p>{el.title}</p>
       </div>
     </Link>  
       })}
-{/* 
-    <Link to="/products?category=flowers" style={{textDecoration:"none",color:"black"}}>
-      <div className='headers-div' >
-        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/Capture_flowers-removebg-preview__2_-removebg-preview-min.png" alt="" />
-          <p>Flowers</p>
-      </div>
-    </Link>
-
-    <Link to={"/products?category=candle_light"} style={{textDecoration:"none",color:"black"}}>
-      <div  className='headers-div' >
-        <img style={{height:"35%",width:"37%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/candle-light-dinner-character_15624-160-removebg-preview-min.png" alt="" />
- <p>Candle Light Dinner</p>
-      </div>
-    </Link>
-
-    <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div  className='headers-div' >
-        <img  style={{height:"30%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/04/gifts_icon_1-removebg-preview.png" alt="" />
-        <p>Gifts</p>
-      </div>
-    </Link>
-
-    <Link to={"/products?category=decoration"} style={{textDecoration:"none",color:"black"}}>
-      <div className='headers-div'  >
-        <img style={{height:"35%",width:"30%"}} src="https://valentinesaga.com/wp-content/uploads/2023/06/balloon_decoration-removebg-preview-1-1-min.png" alt="" />
-        <p>Decoration</p>
-      </div>
-    </Link> */}
     </Carousel>
     </div>
   )

@@ -46,17 +46,22 @@ const Bookeh = () => {
       };
 
 const store = useSelector(store=>store)
-const {products,loading} = store
+const {error,products,loading} = store
 const [bookeh ,setbookeh] = useState([])
 const dispatch = useDispatch()
 useEffect(()=>{
 
 dispatch(handlegetproducts()).then((res)=>{
-  let filterdata = res?.data.data?.filter((el)=>{
-    return el.category==="flowers"
+  if(res.status=200 || res.status==201){
 
-  })
-  setbookeh(filterdata)
+    let filterdata = res?.data.data?.filter((el)=>{
+      return el.category==="flowers"
+  
+    })
+    setbookeh(filterdata)
+  }else{
+    setbookeh([])
+  }
 })
 
 },[])
@@ -84,7 +89,7 @@ dispatch(handlegetproducts()).then((res)=>{
     {loading==false?bookeh?.map((e)=>{
 
         return <BookehCard id={e._id} heading={heading} img={e.image[0]} multiple_price={e.multiple_price} name={e.name} desc={e.category.toUpperCase()} price={e.price} />
-    }):<div style={{height:"100%",width:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+    }):error?<div>Error</div>:<div style={{height:"100%",width:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
       <Hearts
     height="80"
     width="80"
