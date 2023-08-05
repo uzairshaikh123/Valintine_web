@@ -17,6 +17,7 @@ const ProductSchema = mongoose.Schema({
   booked_dates: { type: Array, required: false },
   pincodes: { type: Array, required: true },
   Product_category: { type: Array, required: false },
+  video_link: { type: String, required: false },
   offers: { type: Array, required: false },
   slots:{ type: Array, required: false}
 });
