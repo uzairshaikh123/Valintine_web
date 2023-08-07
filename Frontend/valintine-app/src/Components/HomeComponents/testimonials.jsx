@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './testimonial.css'
+import { Link } from 'react-router-dom';
 
 const Testimonials = () => {
 const responsive = {
@@ -36,15 +37,27 @@ const responsive = {
     containerClass="carousel-container"
     infinite={true}
     >
-    
+    <div>
+    <Link to={'products?category=candle_light'}>
         <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+    </Link>
+    </div>
    
+   <div>
+   <Link to={'products?category=candle_light'}>
+     <img className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+    </Link>
+
+   </div>
    
-        <img className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
-
-         <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
-
+<div>
+<Link to={'products?category=candle_light'}>  
+<img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+</Link>
+</div>
+<Link to={'products?category=candle_light'}>
         <img className='slider' src="https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+</Link>
 
   </Carousel>
   </>

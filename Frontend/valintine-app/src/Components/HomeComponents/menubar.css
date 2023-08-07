@@ -1,61 +1,86 @@
-* {
-  margin: 0px;
-  padding: 0px;
+.theme-dark {
+	margin-top: 0;
 }
 
-#menubar {
-  border: 1px solid rgb(241, 226, 226);
-  width: 100%;
-}
-#menubar > div {
-  display: flex;
-  justify-content: space-around;
+.theme-dark p {
+	padding: 10px;
+	text-align: center;
 }
 
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 2.5px;
-  margin-left: 4px;
-}
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-.menu-items {
-  display: inline-block;
-  /* border: 1px solid red; */
-  padding: 5px;
-  cursor: pointer;
-}
-.dropdown{
-  /* border: 1px solid red; */
-  position: absolute;
-  top: 170px;
-  background: white;
-  width: 95%;
-  left: 20px;
-  height: 200px;
-  z-index: 1;
-  opacity: 0;
-  display:none;
+.theme-dark .page-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
-.dropdown.active-dropdown{
-    display: block;
-    opacity: 1;
+.theme-dark .page-wrapper .page-header {
+	background-color: purple;
 }
 
-@media all and (min-width: 0px) and (max-width: 1300px) {
-    
-  .dropdown{
-    display: none;
-  }
-  #menubar {
-    display: none;
+.theme-dark .page-wrapper .page-header .header-container {
+	width: 1132px;
+	margin: 0 auto;
+	border: 1px dashed gray;
+}
 
-  }
-  
+.theme-dark .page-wrapper .page-header nav {
+	background-color: yellow;
+	position: absolute;
+	width: 100%;
+	left: 0;
+}
 
+.theme-dark .page-wrapper .page-header nav ul {
+	margin: 0 auto;
+	padding-left: 20px;
+	max-width: 1132px;
+}
+
+.theme-dark .page-wrapper .page-header nav ul a {
+	color: purple;
+	text-decoration: none;
+}
+
+.theme-dark .page-wrapper .page-header nav > ul > li {
+	display: inline-block;
+	position: relative;
+	padding: 10px;
+	z-index: 100;
+}
+
+.theme-dark .page-wrapper .page-header nav > ul > li > ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	padding: 0.5em 1000em;
+	margin: 0 -1000em;
+	z-index: 101;
+	visibility: hidden;
+	opacity: 0;
+	background: red;
+}
+
+.theme-dark .page-wrapper .page-header nav > ul > li > ul > li {
+	padding: 5px 0;
+	list-style: none;
+	margin: 0 12px;
+	min-width: 250px;
+}
+
+.theme-dark .page-wrapper .page-header nav > ul > li > ul > li a {
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
+.theme-dark .page-wrapper .page-header nav > ul > li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+	/* transition: all base-animation; */
+}
+
+.theme-dark .page-wrapper main section {
+	width: 1132px;
+	margin: 0 auto;
+	border: 1px dashed gray;
+	min-height: 300px;
 }

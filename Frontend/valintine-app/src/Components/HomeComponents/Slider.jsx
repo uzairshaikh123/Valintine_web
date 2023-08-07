@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './slider.css'
 import candle from './candlelight.jpg'
+import { Link } from 'react-router-dom';
 const Slider = () => {
 const responsive = {
   desktop: {
@@ -38,19 +39,26 @@ const responsive = {
    
    
    <div  className='slider-container'>
+       <Link to={'products?category=candle_light'}>
         <img   className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" />
+       </Link>
          </div>
    
    <div className='slider-container'>
+   <Link to={'products?category=decorations'}>
         <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/baloon.jpg" alt="" />
+   </Link>
    </div>
    <div className='slider-container'>
+   <Link to={'products?category=decorations'}>
           <img  className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/unnamed.jpg" alt="" />
+   </Link>
    </div>
 
 <div className='slider-container'>
-
+<Link to={'products?category=decorations'}>
         <img  className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/birthday.jpg"} alt="" />
+</Link>
 </div>
 
   </Carousel>

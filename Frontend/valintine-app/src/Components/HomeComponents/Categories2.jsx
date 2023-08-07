@@ -1,5 +1,6 @@
 import React from 'react'
 import "./category2.css" 
+import { Link } from 'react-router-dom'
 const Categories2 = () => {
 
     let cards=[
@@ -22,7 +23,9 @@ const Categories2 = () => {
 {cards.map((el)=>{
 
       return <div>
+        <Link to={`products?category=${el.category}`}>
         <img src={el.img} alt="" />
+        </Link>
       </div>
 })}
      

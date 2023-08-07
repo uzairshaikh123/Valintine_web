@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -9,29 +10,35 @@ function Footer() {
           <h3>
             <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
           </h3>
-          <p>Let's Connect With Us</p>
-          <ul>
+          {/* <p>Let's Connect With Us</p> */}
+          {/* <ul>
             <li>Github</li>
             <li>Whatsapp</li>
             <li>Linkidin</li>
-          </ul>
+          </ul> */}
         </div>
         <div className="footer-section">
-          <h5>About</h5>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
+          <h5 style={{fontWeight:600,color:"black",fontSize:"25px"}}>Connect With Us</h5>
+                  
+          <p><Link to="/" style={{textDecoration:"none",color:"black"}}>Home</Link></p>
+          <p><Link to="/about" style={{textDecoration:"none",color:"black"}}>About us</Link></p>
+          <p><Link to="/products" style={{textDecoration:"none",color:"black"}}>Shop</Link></p>
+          <p><Link to="/blog" style={{textDecoration:"none",color:"black"}}>Blog</Link></p>
+          <p><Link to="/faq" style={{textDecoration:"none",color:"black"}}>Faq</Link></p>
+          <p><Link to="/terms" style={{textDecoration:"none",color:"black"}}>Term And Conditions</Link></p>
+          <p><Link to="/policy" style={{textDecoration:"none",color:"black"}}>Privacy Policy</Link></p>
+          <p><Link to="/contact" style={{textDecoration:"none",color:"black"}}>Contact Us</Link></p>
          
         </div>
         <div className="footer-section">
-          <h5>Contact</h5>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
-          <p><a href="" style={{textDecoration:"none",color:"white"}}>Links</a></p>
+          <h5 style={{fontWeight:600,color:"black",fontSize:"25px"}}>Conditions</h5>
+          <p><Link to="https://www.facebook.com/Coupleservices" style={{textDecoration:"none",color:"black"}}>Facebook</Link></p>
+          <p><Link to="https://www.instagram.com/valentine.saga/" style={{textDecoration:"none",color:"black"}}>Instagram</Link></p>
+          <p><Link to="https://www.youtube.com/@ValentineSaga" style={{textDecoration:"none",color:"black"}}>Youtube</Link></p>
+          <p><Link to="https://twitter.com/RaviJha63438448" style={{textDecoration:"none",color:"black"}}>Twitter</Link></p>
+          <p><Link to="support@valantinesaga.com" style={{textDecoration:"none",color:"black"}}>Email</Link></p>
+          <p><Link to="https://in.pinterest.com/rpj0597saga" style={{textDecoration:"none",color:"black"}}>Pinterest</Link></p>
+          <p><Link to="https://www.linkedin.com/in/valentine-saga-00252126a/" style={{textDecoration:"none",color:"black"}}>Linkidin</Link></p>
         </div>
         <div className="footer-section footer-section-last">
           <h5>Subscribe</h5>
