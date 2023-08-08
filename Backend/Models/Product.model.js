@@ -19,7 +19,8 @@ const ProductSchema = mongoose.Schema({
   Product_category: { type: Array, required: false },
   video_link: { type: String, required: false },
   offers: { type: Array, required: false },
-  slots:{ type: Array, required: false}
+  slots:{ type: Array, required: false},
+  discounts:{ type: Array, required: false}
 });
 
 const ProductModel = mongoose.model("products", ProductSchema);
