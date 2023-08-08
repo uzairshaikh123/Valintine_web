@@ -1,5 +1,6 @@
 import React from 'react'
 import './menubar.css'
+import {Link} from 'react-router-dom'
 const MenuBar = () => {
     const handlehover = (e) => {
         // alert("hello")
@@ -133,47 +134,66 @@ const MenuBar = () => {
 
     return (
        
-        <div class="page-wrapper">
-        <header class="page-header">
-            <div class="header-container">
-                <p>
-                    CSS fullwidth drop down menu. Each submenu stays underneath it's parent item.
-                    <a href="https://stackoverflow.com/questions/17261421/full-width-css-dropdown-menu">Solution (thanks to Ionică Bizău)</a>
-                </p>
-            </div>	
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#">Menu 1</a>
-                        <ul class="sub-nav">
-                            <li><a href="#">Sub menu1</a></li>
-                            <li><a href="#">Sub menu2</a></li>
-                            <li><a href="#">Sub menu3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Menu 2</a>
-                        <ul class="sub-nav">
-                            <li><a href="#">Sub menu1</a></li>
-                            <li><a href="#">Sub menu2</a></li>
-                            <li><a href="#">Sub menu3</a></li>
-                            <li><a href="#">Sub menu4</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Menu 3</a>
-                    </li>
-                    <li>
-                        <a href="#">Menu 4</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section>
-            </section>	
-        </main>
+        
+
+
+<>
+
+<div class="menubar">
+  <div class="subnav">
+    <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#company">
+      <p>Company</p>
+      <ul>
+      <li>submenu 1</li>
+       <li>submenu 2</li>
+        <li>submenu 3</li>
+         </ul>
+      </a>
+      <a href="#team">
+      <p>Team</p>
+      <ul>
+     
+      <li>submenu 1</li>
+       <li>submenu 1</li>
+        <li>submenu 1</li>
+         </ul>
+      </a>
+      <a href="#careers">
+      <p>Careers</p>
+      <ul>
+     
+      <li>submenu 1</li>
+       <li>submenu 1</li>
+        <li>submenu 1</li>
+         </ul>
+      </a>
     </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#bring">Bring</a>
+      <a href="#deliver">Deliver</a>
+      <a href="#package">Package</a>
+      <a href="#express">Express</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#link1">Link 1</a>
+      <a href="#link2">Link 2</a>
+      <a href="#link3">Link 3</a>
+      <a href="#link4">Link 4</a>
+    </div>
+  </div>
+  <a href="#contact">Contact</a>
+</div>
+</>
+
+
     )
 }
 
