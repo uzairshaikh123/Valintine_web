@@ -1,0 +1,9 @@
+# Redirect non-www to www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^velentinesaga\.com$ [NC]
+RewriteRule ^(.*)$ http://www.velentinesaga.com/$1 [R=301,L]
+
+# Redirect www to non-www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.velentinesaga\.com$ [NC]
+RewriteRule ^(.*)$ http://velentinesaga.com/$1 [R=301,L]
