@@ -9,6 +9,7 @@ function Footer() {
       <div className="footer-section">
           <h3>
             <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
+            {/* <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/ram.jpg" alt="" /> */}
           </h3>
           {/* <p>Let's Connect With Us</p> */}
           {/* <ul>
