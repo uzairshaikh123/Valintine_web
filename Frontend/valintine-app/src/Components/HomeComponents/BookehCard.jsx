@@ -3,8 +3,11 @@ import './bookeh.css'
 import { Link } from 'react-router-dom';
 const BookehCard = ({id,img,name,desc,price,heading}) => {
 // console.log(multiple_price);
+const handlepage =()=>{
+  window.scrollTo(0, 0);
+}
   return (
-    <Link to={`/products/${id}`} style={{textDecoration:"none"}}>
+    <Link to={`/products/${id}`} style={{textDecoration:"none"}} onClick={handlepage}>
 
     <div id='bookeh-card'>
       <div>

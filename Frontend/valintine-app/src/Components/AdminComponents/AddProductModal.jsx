@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/action";
 import { MdDelete } from "react-icons/md";
 import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
+import axios from "axios";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  bgcolor: "background.paper",
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 800,
+//   bgcolor: "background.paper",
+//   p: 4,
+// };
 
 export default function AddProductModal({ id }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -75,6 +76,17 @@ for(let i = 0; i < urls.length; i++) {
 }
 
 
+// Image convert into url from Aws
+let awsimages =[]
+for(let i = 0; i < imgurls.length; i++) {
+ console.log(imgurls[i]);
+  axios.post("http://localhost:8080/aws/convert",imgurls[i]).then((res)=>{
+   console.log(res)
+  })
+
+}
+
+
 let desc = document.querySelectorAll(".description")
 let description=[]
 for(let i = 0; i < desc.length; i++) {
@@ -106,6 +118,16 @@ for(let i = 0; i <addons.length; i++) {
   
   Addons.push({name:addons_name[i].value,price:addons_price[i].value,desc:addons_desc[i].value,img:addons_img[i].value})
 }
+
+
+// Image convert into url from Aws
+
+for(let i = 0; i < addons.length; i++) {
+
+}
+
+
+
 let  offer_desc= document.querySelectorAll(".prod_offer_desc")
 let  offer_image= document.querySelectorAll(".prod_offer_image")
 let  offer_terms= document.querySelectorAll(".prod_offer_terms")
