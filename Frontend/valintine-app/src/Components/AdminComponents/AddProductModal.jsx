@@ -30,6 +30,10 @@ export default function AddProductModal({ id }) {
   let [Product_category, setProduct_category] = useState([1]);
   let [offers, setoffers] = useState([1]);
   let [slots, setslots] = useState([1]);
+  let [addonsawsimages, setawsaddonsimages] = useState([]);
+  const [imagesaws,setawsimages]=useState([]);
+  const [offerawsimages,setofferawsimages]=useState([]);
+  
   const dispatch = useDispatch()
 
   const handleImages = (i) => {
@@ -72,20 +76,23 @@ export default function AddProductModal({ id }) {
 let urls = document.querySelectorAll(".urls")
 let imgurls=[]
 for(let i = 0; i < urls.length; i++) {
-  imgurls?.push(urls[i]?.value);
+  imgurls?.push(urls[i]?.files[0]);
 }
 
 
 // Image convert into url from Aws
-let awsimages =[]
 for(let i = 0; i < imgurls.length; i++) {
- console.log(imgurls[i]);
-  axios.post("http://localhost:8080/aws/convert",imgurls[i]).then((res)=>{
-   console.log(res)
-  })
+  const formData = new FormData();
+  formData.append('file', imgurls[i]);
+
+  axios.post("http://localhost:8080/aws/convert",formData).then((res)=>{
+   setawsimages([...imagesaws,res.data.url])
+   console.log(res.data.url)
+  }).catch((err)=>console.log(err.message))
 
 }
 
+console.log(imagesaws,"aws")
 
 let desc = document.querySelectorAll(".description")
 let description=[]
@@ -120,9 +127,17 @@ for(let i = 0; i <addons.length; i++) {
 }
 
 
-// Image convert into url from Aws
 
-for(let i = 0; i < addons.length; i++) {
+
+// Image convert into url from Aws
+for(let i = 0; i < Addons.length; i++) {
+  const formData = new FormData();
+  formData.append('file', Addons[i].img);
+
+  axios.post("http://localhost:8080/aws/convert",formData).then((res)=>{
+   setawsaddonsimages([...addonsawsimages,res.data.url])
+   console.log(res.data.url)
+  }).catch((err)=>console.log(err.message))
 
 }
 
@@ -137,6 +152,20 @@ for(let i = 0; i <addons.length; i++) {
   
   Offers.push({terms:offer_terms[i].value,price:addons_price[i].value,desc:offer_desc[i].value,img:offer_image[i].value})
 }
+
+
+// Image convert into url from Aws
+for(let i = 0; i < Offers.length; i++) {
+  const formData = new FormData();
+  formData.append('file', Offers[i].img);
+
+  axios.post("http://localhost:8080/aws/convert",formData).then((res)=>{
+   setofferawsimages([...offerawsimages,res.data.url])
+   console.log(res.data.url)
+  }).catch((err)=>console.log(err.message))
+
+}
+
 
 let  prod_cat_price= document.querySelectorAll(".prod_cat_price")
 let  prod_cat_name= document.querySelectorAll(".prod_cat_name")
@@ -196,6 +225,8 @@ const price = document.querySelector("#price").value || ""
       Product_category,Offers
     };
 console.log(obj)
+
+
     // dispatch(handle_add_product_by_admin(obj)).then((res)=>{
     //   if(res.status==200 || res.status==201){
 

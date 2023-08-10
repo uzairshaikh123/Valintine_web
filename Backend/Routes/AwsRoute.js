@@ -10,9 +10,9 @@ const upload = multer({ dest: 'uploads/' });
 // API endpoint for file upload and conversion
 AwsRouter.post('/convert', upload.single('file'), (req, res) => {
   const file = req.file;
-  console.log(req.file)
+
   const filestream = fs.readFileSync(file.path)
-//   console.log(filestream)
+ 
 
   if (!file) {
     res.status(400).json({ error: 'No file uploaded.' });
@@ -33,8 +33,8 @@ AwsRouter.post('/convert', upload.single('file'), (req, res) => {
       } else {
         console.log(data) 
         // Get the URL of the uploaded file
-        // const fileUrl = data.Location;
-        // res.json({ url: fileUrl });
+        const fileUrl = data.Location;
+        res.json({ url: fileUrl });
       }
     });
   }
