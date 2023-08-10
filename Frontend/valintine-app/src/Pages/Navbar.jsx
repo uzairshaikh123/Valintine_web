@@ -113,7 +113,7 @@ function Navbar({ cartcount }) {
         {/* </button> */}
           
       </div>
-          {<BasicModal name={"Location"} />}
+          {<BasicModal name={"Delhi"} />}
           <div className="user">
     
     </div>

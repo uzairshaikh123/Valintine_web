@@ -29,7 +29,7 @@ let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/
   {name:"Chandigarh",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Chandigarh_min.png",id:14},
   {name:"Ahmedabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Ahmedabad_min.jpg",id:15},]
 let initial = true
-let mycity = sessionStorage.getItem("cityname") || ""
+let mycity = sessionStorage.getItem("cityname") || "delhi"
 
 
 if(mycity){
@@ -51,7 +51,7 @@ initial=false
       <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={onOpen}  onClick={onOpen}
       >
         <img style={{width:"20%",height:"100%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
-        {mycity}</Button>
+        {mycity.toUpperCase()}</Button>
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
       >
 
@@ -73,7 +73,7 @@ initial=false
     cities.map((city, index) => (
         <div onClick={()=>handleClose(city.name)} className='cities'  key={index}>
         <img className='modal-img' src={city.img} alt={city.name} />
-        <p>{city.name}</p>
+        <p>{city.name.toUpperCase()}</p>
       </div>
     ))
     
