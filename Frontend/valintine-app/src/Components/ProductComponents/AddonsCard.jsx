@@ -1,17 +1,24 @@
 import React from 'react'
 import './addonscard.css'
-const AddonsCard = () => {
+import { Stack, Switch } from '@chakra-ui/react'
+const AddonsCard = ({image}) => {
   return (
     <div id='addons-card'>
-      <img className='addons-img' src="https://valentinesaga.com/wp-content/uploads/2023/03/Red-Roses-In-Love-You-Sticker-Vase5.2JPG.jpg" alt="" />
-      <p>Name</p>
-      <p>desc</p>
-      <p>price</p>
-      <div class="checkbox-wrapper-5">
-  <div class="check">
-    <input checked="" id="check-5" type="checkbox" />
-    <label for="check-5"></label>
-  </div>
+      <div>
+      <img style={{height:"150px",width:"150px"}} id='addons-img' src={image} alt="" />
+
+      </div>
+
+      <div>
+      <p>Theme Based E-Invite</p>
+      <p>Add a theme based e-invite for welcoming your guest</p>
+      <p>$250</p>
+      </div>
+
+      <div>
+     
+  <Switch colorScheme='pink' size='lg' />
+
 </div>
 
     </div>

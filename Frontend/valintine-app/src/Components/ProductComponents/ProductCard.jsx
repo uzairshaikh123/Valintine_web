@@ -23,11 +23,14 @@ const ProductCard = ({
   const handleShare = () => {
     // Logic for sharing
   };
+  const handlepage =()=>{
+    window.scrollTo(0, 0);
+  }
 
   return (
     <div className="card">
       <div className="card-header">
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${id}`} onClick={handlepage}>
           <img src={image[0]} alt={name} />
         </Link>
 
@@ -44,7 +47,7 @@ const ProductCard = ({
 
 
       </div>
-      <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/products/${id}`} onClick={handlepage} style={{ textDecoration: "none" }} preventScrollReset={false}>
         <div className="card-body">
           <h4 className="card-description">{category.toUpperCase()}</h4>
           <p className="card-title">{name.slice(0,15).toUpperCase()}...</p>

@@ -45,7 +45,7 @@ const responsive = {
    
    <div>
    <Link to={'products?category=candle_light'}>
-     <img className='slider' src="	https://deowgxgt4vwfe.cloudfront.net/uploads/1654858992_original.jpg" alt="" />
+     <img className='slider' src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/indpendent-day-image2.jpg" alt="" />
     </Link>
 
    </div>
