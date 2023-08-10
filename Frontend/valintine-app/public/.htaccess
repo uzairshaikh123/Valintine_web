@@ -1,9 +1,0 @@
-<!-- # Redirect non-www to www
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^valentinesaga\.com$ [NC]
-RewriteRule ^(.*)$ https://www.valentinesaga.com/$1 [R=301,L] -->
-
-# Redirect www to non-www
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^valentinesaga\.com$ [NC]
-RewriteRule ^(.*)$ https://www.valentinesaga.com/$1 [R=301,L]
