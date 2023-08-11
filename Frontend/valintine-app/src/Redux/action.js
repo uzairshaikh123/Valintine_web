@@ -472,7 +472,7 @@ export const handle_edit_orders_by_admin = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .patch(`http://localhost:8080/orders/update/${id}`,data,{
+    .patch(`${process.env.REACT_APP_Backend_url}/orders/update/${id}`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -492,7 +492,7 @@ export const handle_addslider_Image_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`http://localhost:8080/orders/sliders/add`,data,{
+    .post(`${process.env.REACT_APP_Backend_url}/orders/sliders/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -513,7 +513,7 @@ export const handle_addtestimonial_Image_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`http://localhost:8080/orders/sliders/add`,data,{
+    .post(`${process.env.REACT_APP_Backend_url}/orders/sliders/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -533,7 +533,7 @@ export const handle_deleteslider_Image_by_admin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .delete(`http://localhost:8080/orders/sliders/delete/${id}`,{
+    .delete(`${process.env.REACT_APP_Backend_url}/orders/sliders/delete/${id}`,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -554,7 +554,7 @@ export const handle_deletetestimonials_Image_by_admin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .delete(`http://localhost:8080/orders/testimonials/delete/${id}`,{
+    .delete(`${process.env.REACT_APP_Backend_url}/orders/testimonials/delete/${id}`,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
