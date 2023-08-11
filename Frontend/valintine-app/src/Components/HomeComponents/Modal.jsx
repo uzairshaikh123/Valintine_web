@@ -52,13 +52,13 @@ initial=false
       >
         <img style={{width:"20%",height:"100%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
         {mycity.toUpperCase()}</Button>
-        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
+        <Modal closeOnOverlayClick={false} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
       >
 
 <ModalOverlay />
         <ModalContent >
           {/* <ModalHeader>Modal Title</ModalHeader> */}
-          <ModalCloseButton />
+          {/* <ModalCloseButton /> */}
           <ModalBody className='modal-body'>
           <Box className='city-modal'>
           <Text marginBottom={'30px'} id="modal-modal-title" variant="h6" component="h2">
@@ -84,12 +84,7 @@ initial=false
         </Box>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant='ghost'>Secondary Action</Button>
-          </ModalFooter>
+          
         </ModalContent>
 
 

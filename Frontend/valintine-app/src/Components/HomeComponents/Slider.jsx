@@ -61,6 +61,17 @@ const responsive = {
 </Link>
 </div>
 
+<div className='slider-container'>
+<Link to={'products?category=decorations'}>
+        <img  className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/bt.jpg"} alt="" />
+</Link>
+</div>
+<div className='slider-container'>
+<Link to={'products?category=decorations'}>
+        <img  className='slider' src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/CANDEL-LIGHT-DINNER2.jpg"} alt="" />
+</Link>
+</div>
+
   </Carousel>
   )
 }

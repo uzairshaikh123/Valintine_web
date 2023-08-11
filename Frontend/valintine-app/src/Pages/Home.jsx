@@ -34,7 +34,7 @@ dispatch(handle_erase_admin_token())
   return (
     <div style={{overflow:"hidden"}}>
      
-      <MenuBar/>
+      {/* <MenuBar/> */}
         <Header/>
 
         <Slider/>

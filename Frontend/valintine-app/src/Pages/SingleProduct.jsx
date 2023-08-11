@@ -48,6 +48,7 @@ const SingleProductPage = () => {
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
+  console.log(products)
   const handleaddtocart = () => {
     let obj = {
       ...product[0],
