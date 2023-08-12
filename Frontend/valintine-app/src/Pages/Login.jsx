@@ -160,7 +160,7 @@ function Login() {
             </button>
             <p className="toggle-text">
               Already have an account?{" "}
-              <span className="toggle-link" onClick={handleToggle}>
+              <span className="toggle-link link-" onClick={handleToggle}>
                 Login
               </span>
             </p>
