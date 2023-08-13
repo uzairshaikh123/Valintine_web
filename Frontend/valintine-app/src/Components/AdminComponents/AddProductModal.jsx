@@ -136,7 +136,7 @@ export default function AddProductModal({ id }) {
       const formData = new FormData();
       formData.append('file', Addons[i].img);
 
-      axios.post("http://localhost:8080/aws/convert", formData).then((res) => {
+      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         Addons[i].img = res.data.url
         // setawsaddonsimages([...addonsawsimages, res.data.url])
         console.log(addonsawsimages, res.data.url, "line no 140")
@@ -210,6 +210,7 @@ export default function AddProductModal({ id }) {
     const pincodes = document.querySelector("#pincodes").value || ""
     const price = document.querySelector("#price").value || ""
     const subcategory = document.querySelector("#subcategory").value || ""
+    const video_link = document.querySelector("#video_link").value || ""
 
 
 
@@ -230,6 +231,7 @@ export default function AddProductModal({ id }) {
       let obj = {
         name: name,
         category: category,
+        subcategory:subcategory,
         price: price,
         city: city,
         image: imgurls,
@@ -301,6 +303,8 @@ export default function AddProductModal({ id }) {
 
                   <label htmlFor="">Category</label>
                   <input type="text" id="category" placeholder="Enter Name of Category" />
+                  <label htmlFor="">Video Link</label>
+                  <input type="text" id="video_link" placeholder="Enter Name of video_link" />
                   <label htmlFor="">SubCategory</label>
                   <input type="text" id="subcategory" placeholder="Enter Name of SubCategory" />
                   <label htmlFor="">Images (size:1200X800)</label>
@@ -328,6 +332,61 @@ export default function AddProductModal({ id }) {
                       <div style={{ display: "flex", marginTop: "5px" }}>
                         <input className="multiple_Price_weight" type="text" placeholder="Enter Name of Weight" />
                         <input className="multiple_Price_price" type="text" placeholder="Enter Name of Price" />
+                        <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
+                      </div>
+                    );
+                  })}
+                  <Button onClick={handle_Multiple_price}>Add more Rows</Button>
+                  <label htmlFor="">Slots</label>
+                  {Multiple_price.map(() => {
+                    return (
+                      <div style={{ display: "flex", marginTop: "5px" }}>
+                        <div>
+
+                        <label htmlFor="">Start Time</label>
+                        <select>
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">4</option>
+                          <option value="">5</option>
+                          <option value="">6</option>
+                          <option value="">7</option>
+                          <option value="">8</option>
+                          <option value="">9</option>
+                          <option value="">10</option>
+                          <option value="">11</option>
+                          <option value="">12</option>
+                        </select>
+
+                        <select>
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+                        </div>
+                        <div>
+
+                        <label htmlFor="">End Time</label>
+                        <select>
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">4</option>
+                          <option value="">5</option>
+                          <option value="">6</option>
+                          <option value="">7</option>
+                          <option value="">8</option>
+                          <option value="">9</option>
+                          <option value="">10</option>
+                          <option value="">11</option>
+                          <option value="">12</option>
+                        </select>
+
+                        <select>
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+                        </div>
                         <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                       </div>
                     );
