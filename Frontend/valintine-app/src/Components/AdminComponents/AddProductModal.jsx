@@ -86,7 +86,7 @@ export default function AddProductModal({ id }) {
     for (let i = 0; i < imgurls.length; i++) {
       const formData = new FormData();
       formData.append('file', imgurls[i]);
-      axios.post("http://localhost:8080/aws/convert", formData).then((res) => {
+      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         // setawsimages([...imagesaws, res.data.url])
         imgurls[i]=res.data.url
         console.log(res.data.url, imagesaws, "line 91")
@@ -162,7 +162,7 @@ export default function AddProductModal({ id }) {
       const formData = new FormData();
       formData.append('file', Offers[i].img);
 
-      axios.post("http://localhost:8080/aws/convert", formData).then((res) => {
+      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         Offers[i] = res.data.url
       }).catch((err) => console.log(err.message))
 
@@ -239,7 +239,6 @@ export default function AddProductModal({ id }) {
         description: description,
         multiple_price: multiple_price_arr,
         addons: Addons,
-        subcategory:subcategory,
         delivery_info: Delivery_info,
         pincodes: pincodes?.split(","),
         Product_category , slots , video_link
