@@ -21,8 +21,8 @@ function AdminLogin() {
   const navigate = useNavigate();
   const store = useSelector((store) => store);
   const { loading, error, token } = store;
-  const [adminID, setadminID] = useState("ravi@gmail.com");
-  const [adminPass, setadminPass] = useState("ravi");
+  const [adminID, setadminID] = useState("");
+  const [adminPass, setadminPass] = useState("");
   const handleregister = (e) => {
    
     e.preventDefault();
