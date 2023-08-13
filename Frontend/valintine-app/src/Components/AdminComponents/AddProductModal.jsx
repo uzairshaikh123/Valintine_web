@@ -69,6 +69,9 @@ export default function AddProductModal({ id }) {
   const handle_offers = (i) => {
     setoffers([...offers, offers.length + 1]);
   };
+  const handle_add_slots = (i) => {
+    setslots([...slots, slots.length + 1]);
+  };
 
   const handleadd = (e) => {
     e.preventDefault()
@@ -192,9 +195,11 @@ export default function AddProductModal({ id }) {
     let multiple_price_price = document.querySelectorAll(".multiple_Price_price")
 
     let multiple_price_arr = []
-    for (let i = 0; i < Multiple_price.length; i++) {
+    if(multiple_price_price.length > 0 && multiple_price_weight.length > 0){
 
-      multiple_price_arr?.push({ weight: multiple_price_weight[i].value, price: multiple_price_price[i].value })
+      for (let i = 0; i < Multiple_price.length; i++) {
+        
+        multiple_price_arr?.push({ weight: multiple_price_weight[i].value, price: multiple_price_price[i].value })
     }
     for (let i = 0; i < multiple_price_arr.length; i++) {
       if (multiple_price_arr[i].weight == "" || multiple_price_arr[i].price == "") {
@@ -202,6 +207,22 @@ export default function AddProductModal({ id }) {
         break
       }
     }
+  }
+
+
+  
+      let starttime = document.querySelectorAll(".starttime")
+      let starttime_words = document.querySelectorAll(".starttime-words")
+    let endtime = document.querySelectorAll(".endtime")
+    let endtime_words = document.querySelectorAll(".endtime-words")
+    let actualslots =[]
+       if (endtime.length && endtime_words.length && starttime_words.length && starttime.length) {
+
+         for(let i=0;i<slots.length;i++){
+           actualslots.push({starttime:starttime[i].value,starttime_words:starttime_words[i].value,endtime_words:endtime_words[i].value, endtime:endtime[i].value})
+          }
+        }
+
 
 
     const name = document.querySelector("#name").value || ""
@@ -241,7 +262,7 @@ export default function AddProductModal({ id }) {
         addons: Addons,
         delivery_info: Delivery_info,
         pincodes: pincodes?.split(","),
-        Product_category , slots , video_link
+        Product_category , slots:actualslots , video_link
       };
 
       dispatch(handle_add_product_by_admin(obj)).then((res) => {
@@ -343,22 +364,22 @@ export default function AddProductModal({ id }) {
                         <div>
 
                         <label htmlFor="">Start Time</label>
-                        <select>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4</option>
-                          <option value="">5</option>
-                          <option value="">6</option>
-                          <option value="">7</option>
-                          <option value="">8</option>
-                          <option value="">9</option>
-                          <option value="">10</option>
-                          <option value="">11</option>
-                          <option value="">12</option>
+                        <select className="starttime">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
                         </select>
 
-                        <select>
+                        <select className="starttime-words">
                           <option value="AM">AM</option>
                           <option value="PM">PM</option>
                         </select>
@@ -366,22 +387,22 @@ export default function AddProductModal({ id }) {
                         <div>
 
                         <label htmlFor="">End Time</label>
-                        <select>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4</option>
-                          <option value="">5</option>
-                          <option value="">6</option>
-                          <option value="">7</option>
-                          <option value="">8</option>
-                          <option value="">9</option>
-                          <option value="">10</option>
-                          <option value="">11</option>
-                          <option value="">12</option>
+                        <select className="endtime">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
                         </select>
 
-                        <select>
+                        <select className="endtime-words">
                           <option value="AM">AM</option>
                           <option value="PM">PM</option>
                         </select>
@@ -390,7 +411,7 @@ export default function AddProductModal({ id }) {
                       </div>
                     );
                   })}
-                  <Button onClick={handle_Multiple_price}>Add more Rows</Button>
+                  <Button onClick={handle_add_slots}>Add more Rows</Button>
 
                   <label htmlFor="">Addons (size:500X300)</label>
                   {addons.map(() => {
