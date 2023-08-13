@@ -30,10 +30,6 @@ export default function AddProductModal({ id }) {
   let [Product_category, setProduct_category] = useState([1]);
   let [offers, setoffers] = useState([1]);
   let [slots, setslots] = useState([1]);
-  let [addonsawsimages, setawsaddonsimages] = useState([]);
-  const [imagesaws, setawsimages] = useState([]);
-  const [offerawsimages, setofferawsimages] = useState([]);
-  const [video_link, setvideo_link] = useState("");
 
   const dispatch = useDispatch()
 
@@ -92,7 +88,7 @@ export default function AddProductModal({ id }) {
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         // setawsimages([...imagesaws, res.data.url])
         imgurls[i]=res.data.url
-        console.log(res.data.url, imagesaws, "line 91")
+        // console.log(res.data.url, imagesaws, "line 91")
       }).catch((err) => console.log(err.message))
 
     }
@@ -142,7 +138,7 @@ export default function AddProductModal({ id }) {
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         Addons[i].img = res.data.url
         // setawsaddonsimages([...addonsawsimages, res.data.url])
-        console.log(addonsawsimages, res.data.url, "line no 140")
+        // console.log(addonsawsimages, res.data.url, "line no 140")
       }).catch((err) => console.log(err.message))
 
     }
@@ -241,9 +237,7 @@ export default function AddProductModal({ id }) {
       alert("Previous Request Pending")
       return
     }
-    console.log(addonsawsimages,
-      imagesaws,
-      offerawsimages)
+
 
     timer = setTimeout(() => {
 
@@ -277,6 +271,7 @@ export default function AddProductModal({ id }) {
       })
     }, 5000)
   };
+  console.log(slots)
 
   return (
     <div >
@@ -360,11 +355,9 @@ export default function AddProductModal({ id }) {
                   <label htmlFor="">Slots</label>
                   {Multiple_price.map(() => {
                     return (
-                      <div style={{ display: "flex", marginTop: "5px" }}>
+                      <div style={{  marginTop: "5px" }}>
 
                        {slots.map(()=>{
-                        
-                         
                         return <>
                         <div>
 
@@ -412,9 +405,9 @@ export default function AddProductModal({ id }) {
                           <option value="PM">PM</option>
                         </select>
                         </div>
+                        <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                         </>
                       })}
-                        <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                       </div>
                     );
                   })}
