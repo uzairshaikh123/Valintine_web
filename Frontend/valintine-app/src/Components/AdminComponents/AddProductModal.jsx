@@ -361,6 +361,11 @@ export default function AddProductModal({ id }) {
                   {Multiple_price.map(() => {
                     return (
                       <div style={{ display: "flex", marginTop: "5px" }}>
+
+                       {slots.map(()=>{
+                        
+                         
+                        return <>
                         <div>
 
                         <label htmlFor="">Start Time</label>
@@ -407,6 +412,8 @@ export default function AddProductModal({ id }) {
                           <option value="PM">PM</option>
                         </select>
                         </div>
+                        </>
+                      })}
                         <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                       </div>
                     );
