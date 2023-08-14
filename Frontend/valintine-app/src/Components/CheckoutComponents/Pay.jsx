@@ -5,9 +5,10 @@ const Pay = () => {
 
 	const handle_payments=()=>{
 		axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-			console.log(res)
+			window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
+			console.log(res.data.data)
+				
 		})
-		// phonepay
 	}
 
 
@@ -15,7 +16,7 @@ const Pay = () => {
 
 	return (
 		<div style={{ width: "100%" }}>
-			<Button onClick={handle_payments}>Pay Button</Button>
+			<Button bg={"red"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay</Button>
 		</div>
 	)
 }
