@@ -6,6 +6,7 @@ import AddressPage from './Shipping';
 import Payment from '../Components/CheckoutComponents/Payment';
 import { useSelector } from 'react-redux';
 import Phonepe from '../Components/CheckoutComponents/Phonepe';
+import Pay from '../Components/CheckoutComponents/Pay';
 
 function Checkout() {
 
@@ -49,7 +50,8 @@ const handlesavaddress=()=>{
      
 {/* <Payment/>
  */}
- <Phonepe />
+ {/* <Phonepe /> */}
+ <Pay />
 
       
     {/* </div> */}
