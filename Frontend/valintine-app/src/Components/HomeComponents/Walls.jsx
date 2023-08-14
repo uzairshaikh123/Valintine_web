@@ -52,7 +52,7 @@ useEffect(()=>{
 dispatch(handlegetproducts()).then((res)=>{
   console.log(res)
   let filterdata = res?.data.data?.filter((el)=>{
-    return el.category==="decorations"
+    return el.category==="decoration"
 
   })
   setdecoration(filterdata)
@@ -61,7 +61,7 @@ dispatch(handlegetproducts()).then((res)=>{
 },[])
 
 
-    let heading="WEEKLY FEATURED PRODUCTS"
+    let heading="DECORATION PRODUCTS"
   return (
     <div>
          <h1 style={{marginBottom:"30px",marginTop:"30px"}}>{heading}</h1>
