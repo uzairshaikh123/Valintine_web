@@ -4,6 +4,7 @@ import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/acti
 import { MdDelete } from "react-icons/md";
 import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
+import { Hearts } from "react-loader-spinner";
 
 // const style = {
 //   position: "absolute",
@@ -30,7 +31,7 @@ export default function AddProductModal({ id }) {
   let [Product_category, setProduct_category] = useState([1]);
   let [offers, setoffers] = useState([1]);
   let [slots, setslots] = useState([1]);
-
+  const {loading,error} = useState()
   const dispatch = useDispatch()
 
   const handleImages = (i) => {
@@ -137,8 +138,6 @@ export default function AddProductModal({ id }) {
 
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         Addons[i].img = res.data.url
-        // setawsaddonsimages([...addonsawsimages, res.data.url])
-        // console.log(addonsawsimages, res.data.url, "line no 140")
       }).catch((err) => console.log(err.message))
 
     }
@@ -232,6 +231,7 @@ export default function AddProductModal({ id }) {
 
 
 
+    onClose()
     let timer
     if (timer) {
       alert("Previous Request Pending")
@@ -258,7 +258,6 @@ export default function AddProductModal({ id }) {
         pincodes: pincodes?.split(","),
         Product_category , slots:actualslots , video_link
       };
-
       dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
         if (res.status == 200 || res.status == 201) {
@@ -270,8 +269,10 @@ export default function AddProductModal({ id }) {
         }
       })
     }, 5000)
+
+
   };
-  console.log(slots)
+ 
 
   return (
     <div >
@@ -292,7 +293,26 @@ export default function AddProductModal({ id }) {
       >
         Add Product
       </Button>
-      <Modal
+      { loading?<div
+          style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Hearts
+            height="80"
+            width="80"
+            color="red"
+            ariaLabel="hearts-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>:error?<div>
+        error
+      </div>:<Modal
       
         isOpen={isOpen} onClose={onClose}
 
@@ -353,7 +373,7 @@ export default function AddProductModal({ id }) {
                   })}
                   <Button onClick={handle_Multiple_price}>Add more Rows</Button>
                   <label htmlFor="">Slots</label>
-                  {Multiple_price.map(() => {
+                  {slots.map(() => {
                     return (
                       <div style={{  marginTop: "5px" }}>
 
@@ -557,7 +577,7 @@ export default function AddProductModal({ id }) {
             </Box>
           </ModalBody>
         </ModalContent>
-      </Modal>
+      </Modal>}
     </div>
   );
 }
