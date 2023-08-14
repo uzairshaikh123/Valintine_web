@@ -34,7 +34,7 @@ const Pay = () => {
 
 	return (
 		<div style={{ width: "100%" }}>
-			<Button onClick={handle_payments}>Pay</Button>
+			<Button onClick={handle_payments}>Pay Button</Button>
 		</div>
 	)
 }
