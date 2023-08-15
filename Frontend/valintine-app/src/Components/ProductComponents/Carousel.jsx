@@ -103,7 +103,7 @@ const AsNavFor = ({ image }) => {
           return (
             <div key={el} style={{ border: "1px solid red" }}>
               <img
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer",marginLeft:"10px" }}
                 width={"100%"}
                 src={el}
                 alt=""

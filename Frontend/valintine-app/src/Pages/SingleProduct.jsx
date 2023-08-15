@@ -25,6 +25,7 @@ import BasicDateTimePicker, {
 } from "../Components/ProductComponents/DatePicker";
 import PlayerComponent from "../Components/ProductComponents/VideoPlayer";
 import Addons from "../Components/ProductComponents/Addons";
+import AddonsCard from "../Components/ProductComponents/AddonsCard";
 const SingleProductPage = () => {
   const store = useSelector((store) => store);
   const { loading, error, products } = store;
@@ -89,7 +90,7 @@ const SingleProductPage = () => {
       }
     });
   };
-
+console.log(products)
   return loading ? (
     <div
       style={{
@@ -250,8 +251,15 @@ const SingleProductPage = () => {
               </div>
             </div>
           </div>
-          <Addons />
-          <table
+<div className="addons-singleproduct">
+
+{product[0]?.addons?.map((el)=>{
+  return <AddonsCard img={el.img} name={el.name} price={el.price} desc={el.desc} />
+})}
+</div>
+
+
+          <div
             className="product-specifications"
             style={{
               marginTop: "20px",
@@ -262,18 +270,17 @@ const SingleProductPage = () => {
               background:"white"
             }}
           >
-            <h2 style={{ textAlign: "start", marginBottom: "20px" }}>
+            <p style={{fontWeight:800,fontSize:"medium"}}>
               Product Details
-            </h2>
-            <tbody>
+            </p>
+            <ul style={{padding: "25px"}}>
               {product[0]?.prod_details?.map((spec, index) => (
-                <tr key={index}>
-                  <td>{spec}</td>
-                  {/* <td>{spec.value}</td> */}
-                </tr>
+                <li style={{listStyle:"dotted"}} key={index}>
+                 {spec}
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ul>
+          </div>
 
           <div>
             <PlayerComponent VIDEO_PATH={"https://youtu.be/0BIaDVnYp2A"} />

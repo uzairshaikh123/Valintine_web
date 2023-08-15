@@ -53,13 +53,7 @@ const dispatch = useDispatch()
 const[ candle_light, setcandle_light] =useState([])
 useEffect(()=>{
 
-dispatch(handlegetproducts()).then((res)=>{
-  let filterdata = res?.data.data?.filter((el)=>{
-    return el.category==="candle_light"
-
-  })
-  setcandle_light(filterdata)
-})
+dispatch(handlegetproducts())
 
 },[])
 
@@ -89,7 +83,7 @@ dispatch(handlegetproducts()).then((res)=>{
     wrapperClass=""
     visible={true}
     />
-    </div>:candle_light?.map((e)=>{
+    </div>:products?.map((e)=>{
 
         return <BookehCard id={e._id} heading={heading} img={e.image[0]} name={e.name} desc={e.category.toUpperCase()} price={e.price} />
        

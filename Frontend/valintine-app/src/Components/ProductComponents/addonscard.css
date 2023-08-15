@@ -7,7 +7,7 @@
 {
 border: 1px solid rgb(14, 13, 13);
 height: auto;
-width: 45%;
+/* width: 45%; */
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -15,7 +15,7 @@ border-radius: 10px;
 padding: 10px 10px;
 }
 #addons-img{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-left:-20px ;
   border-radius: 10px;
 }

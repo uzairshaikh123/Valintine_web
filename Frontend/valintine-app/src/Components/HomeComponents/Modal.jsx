@@ -39,16 +39,29 @@ initial=false
 }
 
   
+let status = sessionStorage.getItem("status") || true
   const handleClose = (city) =>{ 
     
     sessionStorage.setItem("cityname",city)
+    sessionStorage.setItem("status",false)
     
     onClose()
   
   }
+
+
+  const handlestatus =()=>{
+    if(status==true){
+      onOpen()
+    }else{
+      onClose()
+    }
+  }
+
+
   return (
     <div className='modal-cont'>
-      <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={onOpen}  onClick={onOpen}
+      <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={handlestatus}  onClick={onOpen}
       >
         <img style={{width:"20%",height:"100%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
         {mycity.toUpperCase()}</Button>
