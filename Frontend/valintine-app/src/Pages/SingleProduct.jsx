@@ -224,16 +224,17 @@ console.log(products)
                 <button
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
+                 
                 >
                   <Link to={"/cart"} style={{ color: "white" }}>
-                    Add to Cart
+                   Buy Now
                   </Link>
                 </button>
                 <button
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
                 >
-                  Buy Now
+                  Add to Cart
                 </button>
               </div>
 
