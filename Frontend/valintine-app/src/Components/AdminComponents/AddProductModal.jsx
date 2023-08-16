@@ -335,7 +335,6 @@ export default function AddProductModal({ id }) {
                 <form action="">
                   <label htmlFor="">Name</label>
                   <input type="text" id="name" placeholder="Enter Name of Product" />
-
                   <label htmlFor="">Category</label>
                   <input type="text" id="category" placeholder="Enter Name of Category" />
                   <label htmlFor="">Video Link</label>

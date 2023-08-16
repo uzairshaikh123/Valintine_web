@@ -35,7 +35,7 @@ function Footer() {
           <p><Link to="/" style={{textDecoration:"none",color:"black"}}>Home</Link></p>
           <p><Link to="/about" style={{textDecoration:"none",color:"black"}}>About us</Link></p>
           <p><Link to="/products" style={{textDecoration:"none",color:"black"}}>Shop</Link></p>
-          <p><Link to="/blog" style={{textDecoration:"none",color:"black"}}>Blog</Link></p>
+          <p><Link to="/blogs" style={{textDecoration:"none",color:"black"}}>Blog</Link></p>
           <p><Link to="/faq" style={{textDecoration:"none",color:"black"}}>Faq</Link></p>
           <p><Link to="/terms" style={{textDecoration:"none",color:"black"}}>Term And Conditions</Link></p>
           <p><Link to="/policy" style={{textDecoration:"none",color:"black"}}>Privacy Policy</Link></p>
