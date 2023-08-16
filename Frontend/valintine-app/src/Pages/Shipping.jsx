@@ -35,6 +35,18 @@ dispatch(handleaddress(user?._id,obj)).then((res)=>{
       theme: "colored",
     });
     handlesavaddress()
+  }else{
+    toast.error("Some Error Please retry", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    
   }
 
 })

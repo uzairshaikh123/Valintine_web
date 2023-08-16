@@ -40,7 +40,11 @@ const AllRoutes = () => {
                   </PrivateRoute>
                
                 }/>
-                <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="/checkout" element={
+                 <PrivateRoute>
+                   <Checkout/>
+                 </PrivateRoute>
+                }/>
                 <Route path="/wishlist" element={<Wishlist/>}/>
                 <Route path="/admin" element={
                 <PrivateRouteAdmin>
@@ -49,7 +53,12 @@ const AllRoutes = () => {
                 
                 }/>
                 <Route path="/adminlogin" element={<AdminLogin/>}/>
-                <Route path="/orders" element={<OrdersPage/>}/>
+                <Route path="/orders" element={
+                   <PrivateRoute>
+                <OrdersPage/>
+                   </PrivateRoute>
+                
+                }/>
                 <Route path="/blogs" element={<Blogs/>}/>
                 <Route path="/blogs/:id" element={<SingleBlog/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>

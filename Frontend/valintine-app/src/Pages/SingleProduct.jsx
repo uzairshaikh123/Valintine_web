@@ -55,10 +55,11 @@ const SingleProductPage = () => {
       ...product[0],
       quantity: 1,
       productID: product[0]._id,
-      userID: user._id,
+      userID: user?._id,
     };
+    delete obj._id
     // console.log(obj,user,product,product[0]._id)
-    dispatch(handleaddcartproduct(obj)).then((res) => {
+    dispatch(handleaddcartproduct(user?._id,obj)).then((res) => {
       const user = JSON.parse(sessionStorage.getItem("userdetails"));
       if (res.status === 200) {
         toast.success("🤩 Product added to cart", {
@@ -90,7 +91,7 @@ const SingleProductPage = () => {
       }
     });
   };
-console.log(products)
+
   return loading ? (
     <div
       style={{
@@ -226,14 +227,14 @@ console.log(products)
                   onClick={handleaddtocart}
                 >
                   <Link to={"/cart"} style={{ color: "white" }}>
-                    Add to Cart
+                   Buy Now
                   </Link>
                 </button>
                 <button
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
                 >
-                  Buy Now
+                 Add to Cart
                 </button>
               </div>
 
@@ -307,9 +308,9 @@ console.log(products)
       </div>
       <AboutProduct />
       <div>
-        <h1 style={{ marginTop: "20px" }}>Ratings</h1>
+        {/* <h1 style={{ marginTop: "20px" }}>Ratings</h1> */}
 
-        <CustomizedRating reviews={product[0]?.reviews} />
+        {/* <CustomizedRating reviews={product[0]?.reviews} /> */}
       </div>
     </>
   );

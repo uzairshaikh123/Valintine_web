@@ -4,8 +4,9 @@ import { Button } from '@chakra-ui/react';
 const Pay = () => {
 
 	const handle_payments=()=>{
-		axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-			window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
+		// axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
+		axios.post(`http://localhost:8080/pay/phonepay`).then((res)=>{
+			// window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
 			console.log(res.data.data)
 				
 		})

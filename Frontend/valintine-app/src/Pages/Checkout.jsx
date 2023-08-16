@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import "../Styles/checkout.css"
 import Links from '../Components/HomeComponents/Links';
 import AddressPage from './Shipping';
-import Payment from '../Components/CheckoutComponents/Payment';
 import { useSelector } from 'react-redux';
-import Phonepe from '../Components/CheckoutComponents/Phonepe';
 import Pay from '../Components/CheckoutComponents/Pay';
 
 function Checkout() {
@@ -32,15 +30,17 @@ const handlesavaddress=()=>{
    const total = sessionStorage.getItem("total_price")
   return (
     <>
+    <div>
+
     <div  style={{background:"#f7f9fc"}}>
       <h2 style={{borderBottom:"2px solid white",display:"inline"}}>Checkout</h2>
     <div className='checkout-cont'>
       {show && <AddressPage handlesavaddress={handlesavaddress} />}
       {show===false && <div style={{OverflowY:"auto",minWidth:"50%",padding:"20px",margin:"auto",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",height:"inherit",display:"flex",flexDirection:"column",alignItem:"center",borderRadius:"10px",justifyContent:"center",width:"40%",backgroundColor:"white",textAlign:"start"}} >
-        <h3 style={{textAlign:"start"}}>Summary</h3>
-        <h3 style={{textAlign:"start"}}>Name : {user.name}</h3>
-        <h3 style={{textAlign:"start"}}>Total : {total}</h3>
-        <h3 style={{textAlign:"start"}}>Address : {user.address}</h3>
+        <p style={{textAlign:"start",fontWeight:800}}>Summary</p>
+        <p style={{textAlign:"start"}}> <span style={{fontWeight:700}}>Name :</span> {user.name}</p>
+        <p style={{textAlign:"start"}}><span style={{fontWeight:700}}>Total :</span>{total}</p>
+        <p style={{textAlign:"start"}}><span style={{fontWeight:700}}>Address :</span> : {user.address}</p>
         {cart.map((el)=>{
           return <p>Cart Items : {el.name}</p>
         })}
@@ -51,8 +51,10 @@ const handlesavaddress=()=>{
 
     </div>
     </div>
-
+<div>
 <Pay />
+</div>
+        </div>
     </>
     
     )

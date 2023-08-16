@@ -5,7 +5,7 @@ const PrivateRoute = ({children}) => {
 
 const user = JSON.parse(sessionStorage.getItem("userdetails")) ||""
 const navigate = useNavigate()
-console.log(user)
+// console.log(user)
 if(!user){
     return <Navigate to={"/login"}/>
 }

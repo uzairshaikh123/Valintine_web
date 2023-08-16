@@ -91,15 +91,17 @@ export const handlegetcartproducts = (id) => (dispatch) => {
       return err;
     });
 };
-export const handle_delete_cartproducts = (id) => (dispatch) => {
+export const handle_delete_cartproducts = (userID,id) => (dispatch) => {
   dispatch({ type: types.LOADING });
-
+let data = {id:userID}
   return axios
-    .delete(`${process.env.REACT_APP_Backend_url}/cart/delete/${id}`, {
+    .delete(`http://localhost:8080/cart/delete/${id}` , data , {
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token"),
+        body:data
       },
+      
     })
     .then((res) => {
       console.log(res.data);
@@ -115,11 +117,12 @@ export const handle_delete_cartproducts = (id) => (dispatch) => {
 };
 
 
-export const handleaddcartproduct = (data) => (dispatch) => {
+export const handleaddcartproduct = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`${process.env.REACT_APP_Backend_url}/cart/add`,data, {
+    .post(`${process.env.REACT_APP_Backend_url}/add/${id}`,data, {
+    // .post(`${process.env.REACT_APP_Backend_url}/cart/add`,data, {
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token"),
@@ -141,9 +144,10 @@ export const handleaddcartproduct = (data) => (dispatch) => {
 
 export const handlecartquantity = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
+ 
 
   return axios
-    .patch(`${process.env.REACT_APP_Backend_url}/cart/update/${id}`, data,{
+    .patch(`${process.env.REACT_APP_Backend_url}/update/${id}`, data ,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token"),

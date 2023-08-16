@@ -66,7 +66,10 @@ useEffect(()=>{
      
       {admin.length==0 && <Navbar cartcount={cart?.length} />}
       {admin.length==0 && <Whatsapp />}
+      <div  style={{minHeight:"80vh"}}>
+
       <AllRoutes />
+      </div>
       
       <ToastContainer />
 {admin.length==0 &&  <Footer />}

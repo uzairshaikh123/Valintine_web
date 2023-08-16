@@ -3,6 +3,7 @@ import "../Styles/cart.css";
 import { Link } from "react-router-dom";
 import Links from "../Components/HomeComponents/Links";
 import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios'
 import {
   handle_delete_cartproducts,
   handlecartquantity,
@@ -23,8 +24,8 @@ function Cart() {
   // console.log(cart)
 
   const handleremove_product_from_cart = (id) => {
-    dispatch(handle_delete_cartproducts(id)).then((res) => {
-      if (res?.status === 200 || res.status === 201) {
+    dispatch(handle_delete_cartproducts(user?._id,id)).then((res) => {
+      if (res?.status === 200 || res?.status === 201) {
         toast.success("Product Deleted", {
           position: "top-right",
           autoClose: 5000,
@@ -54,6 +55,7 @@ function Cart() {
   const increaseQuantity = (itemId, qty) => {
     const obj = {
       quantity: qty + 1,
+      id:user._id
     };
 
     // console.log(qty,itemId)
@@ -66,12 +68,14 @@ function Cart() {
   };
 
   const decreaseQuantity = (itemId, qty) => {
+   
     const obj = {
       quantity: qty - 1,
+      id:user._id
     };
 
     if (qty === 1) {
-      dispatch(handle_delete_cartproducts(itemId)).then((res) => {
+      dispatch(handle_delete_cartproducts(user?._id,itemId)).then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(handlegetcartproducts(user._id));
           toast.success("Product Removed", {
@@ -86,15 +90,17 @@ function Cart() {
           });
         }
       });
+    }else{
+
+      dispatch(handlecartquantity(itemId, obj)).then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          dispatch(handlegetcartproducts(user?._id));
+          // alert("qty")
+        }
+      });
     }
 
-    console.log(qty, itemId);
-    dispatch(handlecartquantity(itemId, obj)).then((res) => {
-      if (res.status === 200 || res.status === 201) {
-        dispatch(handlegetcartproducts(user?._id));
-        // alert("qty")
-      }
-    });
+   
   };
 
   const getTotalCost = () => {
@@ -107,7 +113,7 @@ function Cart() {
    let total = cart.reduce((acc,el)=>{
 if(el.multiple_price.length>0){
 
-  console.log("el",el.multiple_price)
+  // console.log("el",el.multiple_price)
   for(let i=0;i<el.multiple_price.length;i++){
     let w=+el.weight
    if(w==el.multiple_price[i].weight){
@@ -121,8 +127,15 @@ if(el.multiple_price.length>0){
 return acc
       
    },0)
-   console.log(total)
+   
    sessionStorage.setItem("total_price",JSON.stringify(total))
+   
+   let obj ={total:total || '0'}
+   
+   let user =JSON.parse(sessionStorage.getItem("userdetails")) 
+   axios.patch(`http://localhost:8080/total/${user?._id}`,obj).then((res)=>{
+    // console.log(res)
+   })
    return total
   
     // return cart?.reduce((total, item) => total + item.quantity * item.price, 0);
@@ -135,12 +148,12 @@ return acc
           Cart
         </h2>
         <div className="cart">
-          <div style={{ height: "400px", overflowY: "auto" }}>
+          <div style={{ height: "400px", overflowY: "auto"}}>
             {cart.map((item) => (
               <div className="cart-item" key={item.id}>
                 <div style={{ display: "flex", gap: "5px" }}>
                   <img
-                    style={{ height: "25%", width: "25%" }}
+                    style={{ height: "auto", width: "55%" }}
                     src={item.image[0]}
                     alt=""
                   />
@@ -152,7 +165,7 @@ return acc
                     <p>{item.multiple_price.length?item.price:`₹${item.price}`}</p>
                   </div>
                 </div>
-                <div className="quantity" style={{}}>
+                <div className="quantity" >
                   <button
                     style={{
                       borderRadius: "50%",
@@ -185,10 +198,11 @@ return acc
                 </div>
                 <div
                   className="remove"
+                 
                   onClick={() => handleremove_product_from_cart(item.productID)}
                 >
                   <img
-                    style={{ height: "15%", width: "15%", cursor: "pointer" }}
+                    style={{ height: "15%", width: "15%", cursor: "pointer" ,float:"right" }}
                     src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
                     alt=""
                   />

@@ -1,6 +1,7 @@
 import React from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 
 function Footer() {
   return (
@@ -9,6 +10,16 @@ function Footer() {
       <div className="footer-section">
           <h3>
             <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
+            <div>
+            <p>
+               Address :  METRO GATE NO 2, B 1,2&3, near DWARKA MOR, Sewak Park, Delhi, 110059
+              </p> 
+              <p>Email id : support@velentinesaga.com</p>
+              <p>Mobile No : +91 91134 54217</p>
+            </div>
+
+
+            <Button bg={'blue'} color={"white"}><Link to="/contact" style={{textDecoration:"none",color:"white"}}>Contact Us</Link></Button>
             {/* <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/ram.jpg" alt="" /> */}
           </h3>
           {/* <p>Let's Connect With Us</p> */}
@@ -28,7 +39,7 @@ function Footer() {
           <p><Link to="/faq" style={{textDecoration:"none",color:"black"}}>Faq</Link></p>
           <p><Link to="/terms" style={{textDecoration:"none",color:"black"}}>Term And Conditions</Link></p>
           <p><Link to="/policy" style={{textDecoration:"none",color:"black"}}>Privacy Policy</Link></p>
-          <p><Link to="/contact" style={{textDecoration:"none",color:"black"}}>Contact Us</Link></p>
+         
          
         </div>
         <div className="footer-section">
@@ -44,10 +55,10 @@ function Footer() {
         <div className="footer-section footer-section-last">
           <h5>Subscribe</h5>
           <p>Get updates and exclusive offers!</p>
-          <form className="subscribe-form">
+         
             <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
-          </form>
+            <Button bg={'blue'} color={"white"}>Subscribe</Button>
+          
         </div>
         
       </div>

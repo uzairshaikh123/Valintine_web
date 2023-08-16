@@ -24,7 +24,7 @@ const Categories2 = () => {
 
       return <div>
         <Link to={`products?category=${el.category}`}>
-        <img src={el.img} alt="" />
+        <img className='cat2-img' src={el.img} alt="" />
         </Link>
       </div>
 })}
