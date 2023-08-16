@@ -13,6 +13,7 @@ const BlogsRouter = require('./Routes/Blogs.Route')
 const AwsRouter = require('./Routes/AwsRoute')
 const TestimonialRouter = require('./Routes/Testimonials')
 const payrouter = require('./Routes/payment')
+const totalRouter = require('./Routes/TotalRoute')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -29,6 +30,7 @@ app.use("/pay",payrouter)
 app.use("/sliders",SlidersRouter)
 app.use("/testimonials",TestimonialRouter)
 app.use("/blogs",BlogsRouter)
+app.use("/total",totalRouter)
 
 
 app.listen(8080, async () => {

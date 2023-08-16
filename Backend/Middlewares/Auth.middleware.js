@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 
 AuthMiddleware.use((req,res,next)=>{
     let token = req.headers.authorization
-    console.log("req.body",req.body)
+  
 
 try {
     jwt.verify(token, 'authuser', function(err, decoded) {

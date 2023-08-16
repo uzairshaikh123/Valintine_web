@@ -16,14 +16,23 @@ CartRoute.get('/usercart/:id', AuthMiddleware,async (req, res) => {
 })
 
 
-CartRoute.post('/add',AuthMiddleware, async (req, res) => {
-console.log(req.body)
+CartRoute.post('/add/:id',AuthMiddleware, async (req, res) => {
+    const id = req.params.id;
     try {
-      let findproduct = await CartModel.findOne({_id:req.body._id})
-    //   console.log(findproduct)
-          if(findproduct){
-            console.log("error: product found")
-           return res.status(404).send({message: 'Product already exists'})
+        let find = false
+        let findproduct = await CartModel.find({userID:id})
+        if(findproduct.length>0){
+            for(let i=0; i<findproduct.length; i++){
+                if(req.body.productID==findproduct[i].productID){
+                    find=true
+                }
+            }
+        }
+     
+          if(find==true){
+           
+            res.status(404).send({message: 'Product already exists'})
+
           }
           else{
               let newproduct = new CartModel(req.body)
@@ -43,10 +52,11 @@ console.log(req.body)
 CartRoute.patch('/update/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
-    console.log(id,req.body)
+    let {quantity} = req.body
+   
     try {
 
-        let updatedproduct = await  CartModel.findByIdAndUpdate({_id:id},req.body)
+        let updatedproduct = await  CartModel.findOneAndUpdate({userID:req.body.id,productID:id},{quantity:quantity})
         res.status(200).send({"msg":"Product Updated",data:updatedproduct})
     } catch (error) {
         res.status(500).send({"msg":error.message})
@@ -56,11 +66,14 @@ CartRoute.patch('/update/:id',AuthMiddleware, async (req, res) => {
 })
 
 
+
+
 CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
     try {
-        let delproduct = await  CartModel.findByIdAndDelete({_id:id})
+        let delproduct = await  CartModel.findOneAndDelete({userID:req.body.id,productID:id})
+        console.log(delproduct,req.headers.body)
         res.status(200).send({"msg":"Product Deleted",data:delproduct})
     } catch (error) {
         res.status(500).send({"msg":error.message})
@@ -73,11 +86,12 @@ CartRoute.delete('/deleteall/:id',AuthMiddleware, async (req, res) => {
     let id = req.params.id
     console.log(id)
     try {
-        let delproduct = await  CartModel.deleteMany({userID:id})
+        let delproduct = await CartModel.deleteMany({userID:id})
         res.status(200).send({"msg":"Product Deleted",data:delproduct})
     } catch (error) {
         res.status(500).send({"msg":error.message})
-        }
+
+    }
 
 
 })

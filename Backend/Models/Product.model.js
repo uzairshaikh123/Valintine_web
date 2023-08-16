@@ -5,7 +5,7 @@ const ProductSchema = mongoose.Schema({
   category:{type: String,required: true},
   subcategory:{type: String,required: false},
   image: { type: Array, required: true },
-  price: { type: String, required: true },
+  price: { type: String, required: false },
   rating: { type: Number, required: false },
   city: { type: String, required: true },
   weight: { type: String, required: false },
