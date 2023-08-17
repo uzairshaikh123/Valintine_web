@@ -16,12 +16,12 @@
 .category-cont>div>img{
     height: 100%;
     width: 100%;
-    /* border-radius: 10px; */
     cursor: pointer;
     
 }
 .cat2-img{
-    border-radius:50%;
+    
+    border-radius: 10px;
 
 }
 @media all and (min-width: 0px) and (max-width: 768px) {
