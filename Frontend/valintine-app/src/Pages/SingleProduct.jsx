@@ -235,11 +235,8 @@ const SingleProductPage = () => {
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
                 >
-<<<<<<< HEAD
+
                  Add to Cart
-=======
-                  Add to Cart
->>>>>>> baa11a4332f63109d9ec75089a50905b81d08108
                 </button>
               </div>
 
