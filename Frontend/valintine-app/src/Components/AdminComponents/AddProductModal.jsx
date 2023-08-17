@@ -268,7 +268,7 @@ export default function AddProductModal({ id }) {
 
         }
       })
-    }, 5000)
+    }, 2000)
 
 
   };

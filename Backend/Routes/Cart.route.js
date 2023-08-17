@@ -81,6 +81,8 @@ CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
 
 
 })
+
+
 CartRoute.delete('/deleteall/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id
