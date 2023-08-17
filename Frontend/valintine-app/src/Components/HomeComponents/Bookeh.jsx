@@ -54,7 +54,7 @@ useEffect(()=>{
 dispatch(handlegetproducts()).then((res)=>{
   if(res.status=200 || res.status==201){
 
-    let filterdata = res?.data.data?.filter((el)=>{
+    let filterdata = res?.data?.data?.filter((el)=>{
       return el.category==="flowers"
   
     })

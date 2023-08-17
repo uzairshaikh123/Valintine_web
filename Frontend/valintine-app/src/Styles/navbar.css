@@ -6,9 +6,9 @@
   padding: 7px;
   height: 56px;
   justify-content: space-between;
-  align-items: center;
   border-top: 5px solid pink;
-  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
 }
 
 .navbar > div:nth-child(2) {
@@ -72,6 +72,10 @@
 #glass{
   height: 32px !important;
 }
+.navbar-options>a{
+display: flex;
+align-items: center;
+}
 .navbar-options .location {
   display: inline-block;
   position: relative;
@@ -102,8 +106,8 @@
 .navbar-options {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   float: right;
-  /* border: 1px solid red; */
   gap: 50px;
   font-size: 25px;
   text-transform: uppercase;

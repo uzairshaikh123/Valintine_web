@@ -28,16 +28,11 @@
   height: 70%;
 }
 .modal-cont{
-  margin-top: 20px;
+ margin-top: 30px;
 }
 
 .city-modal {
   width: 100%;
-}
-.locationbtn>img{
-  width: 100%;
-  height: 50%;
-
 }
 
 @media all and (min-width: 915px) and (max-width: 3000px) {
@@ -48,6 +43,11 @@
     color: rgb(155, 121, 126);
     outline: 1px;
     }
+    .locationbtn>img{
+      width: 22%;
+      height: 100%;
+    }
+    
 }
 @media all and (min-width: 0px) and (max-width: 915px) {
   /* .locationbtn{
@@ -55,9 +55,8 @@
     height: auto;
     } */
     .locationbtn>img{
-      width: 100%;
-      height: 70%;
-    
+      width: 40%;
+      height: 100%;
     }
  }
 @media all and (min-width: 0px) and (max-width: 500px) { 
@@ -82,5 +81,8 @@
     width:50%;
     height: 50%;
   }
-  
+  .locationbtn>img{
+    width: 35%;
+    height: 100%;
+  }
 }
