@@ -93,21 +93,18 @@ export const handlegetcartproducts = (id) => (dispatch) => {
 };
 export const handle_delete_cartproducts = (userID,id) => (dispatch) => {
   dispatch({ type: types.LOADING });
-let data = {id:userID}
+
   return axios
-    .delete(`http://localhost:8080/cart/delete/${id}` , data , {
+    .delete(`http://localhost:8080/cart/delete/${id}/${userID}`  , {
       headers: {
         "Content-Type": "application/json",
-        authorization: sessionStorage.getItem("token"),
-        body:data
+        authorization: sessionStorage.getItem("token")
       },
       
     })
     .then((res) => {
       console.log(res.data);
-
       dispatch({ type: types.DELETECARTPRODUCTS});
-      
       return res;
     })
     .catch((err) => {

@@ -11,11 +11,11 @@ function Footer() {
           <h3>
             <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
             <div>
-            <span style={{fontWeight:500, fontSize:"15px"}}>
+            <p style={{fontWeight:500, fontSize:"15px",width:"auto"}}>
                Address :  METRO GATE NO 2, B 1,2&3, near DWARKA MOR, Sewak Park, Delhi, 110059
-              </span> 
-              <span>Email id : support@velentinesaga.com</span>
-              <span>Mobile No : +91 91134 54217</span>
+              </p> 
+              <p style={{fontWeight:500, fontSize:"15px",width:"auto"}}>Email id : support@velentinesaga.com</p>
+              <p style={{fontWeight:500, fontSize:"15px",width:"auto"}}>Mobile No : +91 8210005030</p>
             </div>
 
 
@@ -35,7 +35,7 @@ function Footer() {
           <p><Link to="/" style={{textDecoration:"none",color:"black"}}>Home</Link></p>
           <p><Link to="/about" style={{textDecoration:"none",color:"black"}}>About us</Link></p>
           <p><Link to="/products" style={{textDecoration:"none",color:"black"}}>Shop</Link></p>
-          <p><Link to="/blogs" style={{textDecoration:"none",color:"black"}}>Blog</Link></p>
+          <p><Link to="/blogs" style={{textDecoration:"none",color:"black"}}>Blogs</Link></p>
           <p><Link to="/faq" style={{textDecoration:"none",color:"black"}}>Faq</Link></p>
           <p><Link to="/terms" style={{textDecoration:"none",color:"black"}}>Term And Conditions</Link></p>
           <p><Link to="/policy" style={{textDecoration:"none",color:"black"}}>Privacy Policy</Link></p>

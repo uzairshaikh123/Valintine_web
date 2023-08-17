@@ -6,6 +6,34 @@ const AuthMiddleware = require('../Middlewares/Auth.middleware');
 const productRoute = express.Router()
 
 
+productRoute.get('/?', async (req, res) => {
+
+    console.log(req.query)
+
+    try {
+        let allproducts = await  ProductModel.find({})
+        res.status(200).send({"msg":"All Products",data:allproducts})
+    } catch (error) {
+        res.status(500).send({"msg":error.message})
+        }
+
+})
+
+
+productRoute.get('/q?', async (req, res) => {
+
+    console.log(req.query)
+
+    try {
+        let allproducts = await  ProductModel.find({})
+        res.status(200).send({"msg":"All Products",data:allproducts})
+    } catch (error) {
+        res.status(500).send({"msg":error.message})
+        }
+
+})
+
+
 productRoute.get('/all', async (req, res) => {
     try {
         let allproducts = await  ProductModel.find({})
