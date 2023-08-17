@@ -93,21 +93,18 @@ export const handlegetcartproducts = (id) => (dispatch) => {
 };
 export const handle_delete_cartproducts = (userID,id) => (dispatch) => {
   dispatch({ type: types.LOADING });
-let data = {id:userID}
+
   return axios
-    .delete(`http://localhost:8080/cart/delete/${id}` , data , {
+    .delete(`http://localhost:8080/cart/delete/${id}/${userID}`  , {
       headers: {
         "Content-Type": "application/json",
-        authorization: sessionStorage.getItem("token"),
-        body:data
+        authorization: sessionStorage.getItem("token")
       },
       
     })
     .then((res) => {
       console.log(res.data);
-
       dispatch({ type: types.DELETECARTPRODUCTS});
-      
       return res;
     })
     .catch((err) => {
@@ -121,7 +118,7 @@ export const handleaddcartproduct = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`${process.env.REACT_APP_Backend_url}/add/${id}`,data, {
+    .post(`${process.env.REACT_APP_Backend_url}/cart/add/${id}`,data, {
     // .post(`${process.env.REACT_APP_Backend_url}/cart/add`,data, {
       headers: {
         "Content-Type": "application/json",

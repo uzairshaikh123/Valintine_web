@@ -286,7 +286,7 @@ const SingleProductPage = () => {
           </div>
 
           <div>
-            <PlayerComponent VIDEO_PATH={"https://youtu.be/0BIaDVnYp2A"} />
+            <PlayerComponent VIDEO_PATH={product[0]?.video_link || "https://youtu.be/0BIaDVnYp2A"} />
           </div>
 
           <div></div>

@@ -128,13 +128,13 @@ return acc
       
    },0)
    
-   sessionStorage.setItem("total_price",JSON.stringify(total))
+  
    
-   let obj ={total:total || '0'}
+   let obj = {total:total || '0'}
    
    let user =JSON.parse(sessionStorage.getItem("userdetails")) 
    axios.patch(`http://localhost:8080/total/${user?._id}`,obj).then((res)=>{
-    // console.log(res)
+    console.log(res)
    })
    return total
   

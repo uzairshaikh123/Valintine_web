@@ -48,6 +48,9 @@ function Navbar({ cartcount }) {
     setitems(cart?.length);
   }, [cart]);
   console.log(cartcount);
+  const handlevalue =()=>{
+    
+  }
   return (
     <div className="navbar">
        <div className="navbar-menu-icon" onClick={toggleMenu}>
@@ -69,6 +72,7 @@ function Navbar({ cartcount }) {
             type="text"
             className="navbar-search"
             placeholder="what you want to search"
+            onChange={handlevalue}
           />
           <img
             id="glass"

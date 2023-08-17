@@ -19,15 +19,15 @@ try {
 
 totalRouter.patch("/:id",async (req,res)=>{
 
-let id =(req.params.id)
+let {id} = req.params
 try {
     let user = await totalModel.findOne({userID: id})
 
     if(user){
-        let updatedtotal = await totalModel. findOneAndUpdate({userID:id},req.body)
+        let updatedtotal = await totalModel.findOneAndUpdate({userID:id},req.body)
         res.status(200).send({msg:"Total updated",data:updatedtotal.total})
     }else{
-        let newuser = totalModel({userID:req.params.id,total:req.body.total})
+        let newuser = totalModel({userID:id,total:req.body.total})
         await newuser.save()
         res.status(200).send({msg:"User Created",data:newuser})
     }
