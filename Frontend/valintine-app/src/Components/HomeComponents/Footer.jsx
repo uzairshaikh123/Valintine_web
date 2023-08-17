@@ -11,11 +11,11 @@ function Footer() {
           <h3>
             <img style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
             <div>
-            <p>
+            <span style={{fontWeight:500, fontSize:"15px"}}>
                Address :  METRO GATE NO 2, B 1,2&3, near DWARKA MOR, Sewak Park, Delhi, 110059
-              </p> 
-              <p>Email id : support@velentinesaga.com</p>
-              <p>Mobile No : +91 91134 54217</p>
+              </span> 
+              <span>Email id : support@velentinesaga.com</span>
+              <span>Mobile No : +91 91134 54217</span>
             </div>
 
 

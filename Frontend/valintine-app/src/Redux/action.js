@@ -147,7 +147,7 @@ export const handlecartquantity = (id,data) => (dispatch) => {
  
 
   return axios
-    .patch(`${process.env.REACT_APP_Backend_url}/update/${id}`, data ,{
+    .patch(`${process.env.REACT_APP_Backend_url}/cart/update/${id}`, data ,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token"),
