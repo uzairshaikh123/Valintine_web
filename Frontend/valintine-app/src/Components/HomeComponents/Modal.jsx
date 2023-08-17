@@ -63,7 +63,7 @@ let status = sessionStorage.getItem("status") || true
     <div className='modal-cont'>
       <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={handlestatus}  onClick={onOpen}
       >
-        <img style={{width:"20%",height:"100%"}} src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
+        <img src="https://img.icons8.com/?size=512&id=7880&format=png" alt="" />
         {mycity.toUpperCase()}</Button>
         <Modal closeOnOverlayClick={false} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}
       >
