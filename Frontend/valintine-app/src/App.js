@@ -25,13 +25,13 @@ function App() {
       <button onClick={closeToast}>Close</button>
     </div>
   );
-  
-  const store = useSelector((store)=>store)
-  const {cart,admin_token} = store
+
+  const store = useSelector((store) => store);
+  const { cart, admin_token } = store;
   // const admin_token = sessionStorage.getItem('admin_token') || ""
-  const [admin,setadmin]=useState("")
+  const [admin, setadmin] = useState("");
   const notify = () => {
-    toast(<Msg />,{position: "bottom-left"});
+    toast(<Msg />, { position: "bottom-left" });
   };
   // console.log(admin_token)
 
@@ -43,38 +43,29 @@ function App() {
       clearTimeout(popup);
     };
   }, []);
-  const dispatch = useDispatch()
-  useEffect(()=>{
+  const dispatch = useDispatch();
+  useEffect(() => {
     let user = JSON.parse(sessionStorage.getItem("userdetails"));
-    
-    dispatch(handlegetcartproducts(user?._id))
-    
-},[])
 
+    dispatch(handlegetcartproducts(user?._id));
+  }, []);
 
+  useEffect(() => {
+    setadmin(admin_token);
+  }, [admin_token]);
 
-useEffect(()=>{
-
-    setadmin(admin_token)
-
-},[admin_token])
-
-// console.log(admin)
+  // console.log(admin)
 
   return (
     <div className="App">
-     
-      {admin.length==0 && <Navbar cartcount={cart?.length} />}
-      {admin.length==0 && <Whatsapp />}
-      <div  style={{minHeight:"80vh"}}>
-
-      <AllRoutes />
+      {admin.length == 0 && <Navbar cartcount={cart?.length} />}
+      {admin.length == 0 && <Whatsapp />}
+      <div style={{ minHeight: "80vh" }}>
+        <AllRoutes />
       </div>
-      
+
       <ToastContainer />
-{admin.length==0 &&  <Footer />}
-    
-    
+      {admin.length == 0 && <Footer />}
     </div>
   );
 }

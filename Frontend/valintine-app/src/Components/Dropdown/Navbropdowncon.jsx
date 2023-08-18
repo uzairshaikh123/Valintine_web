@@ -3,7 +3,6 @@ import styles from "./navdropcon.module.css";
 import { Link } from "react-router-dom";
 
 export const Navbropdowncon = ({ data }) => {
-    console.log(data)
     return (
         <div className={styles.navdropcon}>
             <div className={styles.dropdown}>

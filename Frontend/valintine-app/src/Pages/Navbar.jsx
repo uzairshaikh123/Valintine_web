@@ -9,9 +9,12 @@ import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
 import { Button, IconButton, Menu, MenuItem } from "@chakra-ui/react";
 import {HiShoppingCart} from 'react-icons/hi'
-function Navbar({ cartcount }) {
- 
+import { useSearchParams } from "react-router-dom";
 
+function Navbar({ cartcount }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCity = sessionStorage.getItem("cityname")
+  // const initialCity=searchParams.get("city")
   const store = useSelector((store) => store);
   const { token, cart } = store;
   const dispatch = useDispatch();
@@ -36,7 +39,7 @@ function Navbar({ cartcount }) {
   const handlelogout = () => {
     let t = sessionStorage.setItem("token", "");
     // let user = JSON.parse(sessionStorage.getItem("userdetails"))
-    console.log("t", t);
+    // console.log("t", t);
     dispatch({ type: "logout" });
     // dispatch(handlegetcartproducts(user?._id))
     window.location.reload();
@@ -46,15 +49,17 @@ function Navbar({ cartcount }) {
   useEffect(() => {
 
     setitems(cart?.length);
-  }, [cart]);
-  console.log(cartcount);
+    // setSearchParams({ city: initialCity }); // Use the city state variable
+    setSearchParams({city:initialCity})
+  }, [cart,initialCity]);
+  // console.log(cartcount);
   return (
     <div className="navbar">
        <div className="navbar-menu-icon" onClick={toggleMenu}>
         <TemporaryDrawer />
       </div>
       <div className="navbar-logo">
-        <Link to={"/"}>
+        <Link to={`/?city=${initialCity}`}>
           <img
             className="logo"
             id={"comp-logo"}
