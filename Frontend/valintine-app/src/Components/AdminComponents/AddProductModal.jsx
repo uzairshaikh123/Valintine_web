@@ -259,16 +259,16 @@ console.log(imgurls)
         Product_category , slots:actualslots , video_link
       };
       console.log(obj)
-    //   dispatch(handle_add_product_by_admin(obj)).then((res) => {
+      dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
-    //     if (res.status == 200 || res.status == 201) {
+        if (res.status == 200 || res.status == 201) {
 
-    //       alert("Product added successfully")
-    //     } else {
-    //       alert("error")
+          alert("Product added successfully")
+        } else {
+          alert("error")
 
-    //     }
-    //   })
+        }
+      })
     }, 2000)
 
 
