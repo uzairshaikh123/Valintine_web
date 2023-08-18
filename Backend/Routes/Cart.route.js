@@ -68,11 +68,11 @@ CartRoute.patch('/update/:id',AuthMiddleware, async (req, res) => {
 
 
 
-CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
+CartRoute.delete('/delete/:id/:userID',AuthMiddleware, async (req, res) => {
 
-    let id = req.params.id
+    let {id,userID} = req.params
     try {
-        let delproduct = await  CartModel.findOneAndDelete({userID:req.body.id,productID:id})
+        let delproduct = await  CartModel.findOneAndDelete({userID:userID,productID:id})
         console.log(delproduct,req.headers.body)
         res.status(200).send({"msg":"Product Deleted",data:delproduct})
     } catch (error) {
@@ -81,6 +81,8 @@ CartRoute.delete('/delete/:id',AuthMiddleware, async (req, res) => {
 
 
 })
+
+
 CartRoute.delete('/deleteall/:id',AuthMiddleware, async (req, res) => {
 
     let id = req.params.id

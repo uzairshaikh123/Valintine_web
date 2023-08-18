@@ -71,6 +71,8 @@ export default function AddProductModal({ id }) {
   };
 
   const handleadd = (e) => {
+
+
     e.preventDefault()
     // const pin = pincode.split(",");
     // console.log(pin);
@@ -78,9 +80,10 @@ export default function AddProductModal({ id }) {
     let imgurls = []
     for (let i = 0; i < urls.length; i++) {
       imgurls?.push(urls[i]?.files[0]);
+     
     }
 
-
+console.log(imgurls)
 
     // Image convert into url from Aws
     for (let i = 0; i < imgurls.length; i++) {
@@ -89,12 +92,12 @@ export default function AddProductModal({ id }) {
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         // setawsimages([...imagesaws, res.data.url])
         imgurls[i]=res.data.url
-        // console.log(res.data.url, imagesaws, "line 91")
+        console.log(res.data.url, "line 91")
       }).catch((err) => console.log(err.message))
 
     }
 
-
+console.log(imgurls)
 
     let desc = document.querySelectorAll(".description")
     let description = []
@@ -144,27 +147,27 @@ export default function AddProductModal({ id }) {
 
 
 
-    let offer_desc = document.querySelectorAll(".prod_offer_desc")
-    let offer_image = document.querySelectorAll(".prod_offer_image")
-    let offer_terms = document.querySelectorAll(".prod_offer_terms")
-    let offer_price = document.querySelectorAll(".prod_offer_price")
+    // let offer_desc = document.querySelectorAll(".prod_offer_desc")
+    // let offer_image = document.querySelectorAll(".prod_offer_image")
+    // let offer_terms = document.querySelectorAll(".prod_offer_terms")
+    // let offer_price = document.querySelectorAll(".prod_offer_price")
 
-    let Offers = []
-    for (let i = 0; i < offers.length; i++) {
-      Offers.push({ terms: offer_terms[i].value, price: offer_price[i].value, desc: offer_desc[i].value, img: offer_image[i].files[0] })
-    }
+    // let Offers = []
+    // for (let i = 0; i < offers.length; i++) {
+    //   Offers.push({ terms: offer_terms[i].value, price: offer_price[i].value, desc: offer_desc[i].value, img: offer_image[i].files[0] })
+    // }
 
 
     // Image convert into url from Aws
-    for (let i = 0; i < Offers.length; i++) {
-      const formData = new FormData();
-      formData.append('file', Offers[i].img);
+    // for (let i = 0; i < Offers.length; i++) {
+    //   const formData = new FormData();
+    //   formData.append('file', Offers[i].img);
 
-      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-        Offers[i] = res.data.url
-      }).catch((err) => console.log(err.message))
+    //   axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
+    //     Offers[i] = res.data.url
+    //   }).catch((err) => console.log(err.message))
 
-    }
+    // }
 
 
     let prod_cat_price = document.querySelectorAll(".prod_cat_price")
@@ -239,8 +242,6 @@ export default function AddProductModal({ id }) {
     }
 
 
-    timer = setTimeout(() => {
-
       
 
       let obj = {
@@ -258,6 +259,7 @@ export default function AddProductModal({ id }) {
         pincodes: pincodes?.split(","),
         Product_category , slots:actualslots , video_link
       };
+      console.log(obj)
       dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
         if (res.status == 200 || res.status == 201) {
@@ -268,7 +270,7 @@ export default function AddProductModal({ id }) {
 
         }
       })
-    }, 5000)
+
 
 
   };
@@ -372,9 +374,7 @@ export default function AddProductModal({ id }) {
                   })}
                   <Button onClick={handle_Multiple_price}>Add more Rows</Button>
                   <label htmlFor="">Slots</label>
-                  {slots.map(() => {
-                    return (
-                      <div style={{  marginTop: "5px" }}>
+                 
 
                        {slots.map(()=>{
                         return <>
@@ -427,9 +427,9 @@ export default function AddProductModal({ id }) {
                         <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                         </>
                       })}
-                      </div>
-                    );
-                  })}
+                  
+                  
+                
                   <Button onClick={handle_add_slots}>Add more Rows</Button>
 
                   <label htmlFor="">Addons (size:500X300)</label>
@@ -466,7 +466,7 @@ export default function AddProductModal({ id }) {
 
 
                   <Button onClick={handleProd_details}>Add more Rows</Button>
-                  <label htmlFor="">Product Offers</label>
+                  {/* <label htmlFor="">Product Offers</label>
                   {offers.map(() => {
                     return (
                       <div style={{ display: "flex", marginTop: "5px" }}>
@@ -495,7 +495,7 @@ export default function AddProductModal({ id }) {
                     );
                   })}
 
-                  <Button onClick={handle_offers}>Add more Rows</Button>
+                  <Button onClick={handle_offers}>Add more Rows</Button> */}
 
                   <label htmlFor="">Product category</label>
                   {Product_category.map(() => {

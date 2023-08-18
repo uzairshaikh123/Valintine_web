@@ -13,7 +13,7 @@ AwsRouter.post('/convert', upload.single('file'), (req, res) => {
 
   const filestream = fs.readFileSync(file.path)
  
-
+console.log(filestream)
   if (!file) {
     res.status(400).json({ error: 'No file uploaded.' });
   } else {

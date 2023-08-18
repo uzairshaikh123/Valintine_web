@@ -49,10 +49,17 @@ function Navbar({ cartcount }) {
   useEffect(() => {
 
     setitems(cart?.length);
+
     // setSearchParams({ city: initialCity }); // Use the city state variable
     setSearchParams({city:initialCity})
   }, [cart,initialCity]);
   // console.log(cartcount);
+  }, [cart]);
+  console.log(cartcount);
+  const handlevalue =()=>{
+    
+  }
+
   return (
     <div className="navbar">
        <div className="navbar-menu-icon" onClick={toggleMenu}>
@@ -74,6 +81,7 @@ function Navbar({ cartcount }) {
             type="text"
             className="navbar-search"
             placeholder="what you want to search"
+            onChange={handlevalue}
           />
           <img
             id="glass"

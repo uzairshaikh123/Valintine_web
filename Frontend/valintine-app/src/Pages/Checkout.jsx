@@ -5,9 +5,10 @@ import Links from '../Components/HomeComponents/Links';
 import AddressPage from './Shipping';
 import { useSelector } from 'react-redux';
 import Pay from '../Components/CheckoutComponents/Pay';
+import axios from 'axios';
 
 function Checkout() {
-
+const [amt ,setamt] = useState(0)
 const store = useSelector(store=>store)
 const [show ,setshow]=useState(true)
 const {loading,error,cart}=store
@@ -26,6 +27,15 @@ const handleeditaddress=()=>{
 const handlesavaddress=()=>{
   setshow(false)
 }
+
+useEffect(()=>{
+  let user =JSON.parse(sessionStorage.getItem("userdetails")) 
+
+axios.get(`http://localhost:8080/total/${user?._id}`).then((res)=>{
+ setamt(res?.data?.data[0]?.total)
+ console.log(res?.data?.data[0]?.total)
+ })
+},[])
   
    const total = sessionStorage.getItem("total_price")
   return (
@@ -39,7 +49,7 @@ const handlesavaddress=()=>{
       {show===false && <div style={{OverflowY:"auto",minWidth:"50%",padding:"20px",margin:"auto",boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",height:"inherit",display:"flex",flexDirection:"column",alignItem:"center",borderRadius:"10px",justifyContent:"center",width:"40%",backgroundColor:"white",textAlign:"start"}} >
         <p style={{textAlign:"start",fontWeight:800}}>Summary</p>
         <p style={{textAlign:"start"}}> <span style={{fontWeight:700}}>Name :</span> {user.name}</p>
-        <p style={{textAlign:"start"}}><span style={{fontWeight:700}}>Total :</span>{total}</p>
+        <p style={{textAlign:"start"}}><span style={{fontWeight:700}}>Total :</span>{amt}</p>
         <p style={{textAlign:"start"}}><span style={{fontWeight:700}}>Address :</span> : {user.address}</p>
         {cart.map((el)=>{
           return <p>Cart Items : {el.name}</p>
