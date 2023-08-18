@@ -81,7 +81,7 @@ export default function AddProductModal({ id }) {
     }
 
 
-
+console.log(imgurls)
     // Image convert into url from Aws
     for (let i = 0; i < imgurls.length; i++) {
       const formData = new FormData();
@@ -156,15 +156,15 @@ export default function AddProductModal({ id }) {
 
 
     // Image convert into url from Aws
-    for (let i = 0; i < Offers.length; i++) {
-      const formData = new FormData();
-      formData.append('file', Offers[i].img);
+    // for (let i = 0; i < Offers.length; i++) {
+    //   const formData = new FormData();
+    //   formData.append('file', Offers[i].img);
 
-      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-        Offers[i] = res.data.url
-      }).catch((err) => console.log(err.message))
+    //   axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
+    //     Offers[i] = res.data.url
+    //   }).catch((err) => console.log(err.message))
 
-    }
+    // }
 
 
     let prod_cat_price = document.querySelectorAll(".prod_cat_price")
@@ -258,16 +258,17 @@ export default function AddProductModal({ id }) {
         pincodes: pincodes?.split(","),
         Product_category , slots:actualslots , video_link
       };
-      dispatch(handle_add_product_by_admin(obj)).then((res) => {
+      console.log(obj)
+    //   dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
-        if (res.status == 200 || res.status == 201) {
+    //     if (res.status == 200 || res.status == 201) {
 
-          alert("Product added successfully")
-        } else {
-          alert("error")
+    //       alert("Product added successfully")
+    //     } else {
+    //       alert("error")
 
-        }
-      })
+    //     }
+    //   })
     }, 2000)
 
 
@@ -372,9 +373,7 @@ export default function AddProductModal({ id }) {
                   })}
                   <Button onClick={handle_Multiple_price}>Add more Rows</Button>
                   <label htmlFor="">Slots</label>
-                  {slots.map(() => {
-                    return (
-                      <div style={{  marginTop: "5px" }}>
+                 
 
                        {slots.map(()=>{
                         return <>
@@ -427,9 +426,9 @@ export default function AddProductModal({ id }) {
                         <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
                         </>
                       })}
-                      </div>
-                    );
-                  })}
+                  
+                  
+                
                   <Button onClick={handle_add_slots}>Add more Rows</Button>
 
                   <label htmlFor="">Addons (size:500X300)</label>
