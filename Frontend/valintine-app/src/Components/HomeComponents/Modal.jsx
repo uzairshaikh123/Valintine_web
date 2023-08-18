@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './modal.css'
+import { useEffect, useState} from 'react';
 import { Box, Button, Modal, Text, useDisclosure } from '@chakra-ui/react';
 import {
   ModalOverlay,
@@ -9,9 +10,12 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
-
+import { useSearchParams } from "react-router-dom";
 export default function BasicModal({name}) {
-  console.log("ok")
+  // console.log("ok")
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCity=searchParams.get("city")
+  const [city,setCity]=useState(initialCity || "Delhi")
   const { isOpen, onClose ,onOpen} = useDisclosure()
 let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
   {name:"Jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},
@@ -58,7 +62,16 @@ let status = sessionStorage.getItem("status") || true
     }
   }
 
-
+  const handleSelectCity=(city)=>{
+    setCity(city)
+  }
+  
+  useEffect(()=>{
+    let params = {
+      city,
+    };
+    setSearchParams(params);
+  },[city])
   return (
     <div className='modal-cont'>
       <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={handlestatus}  onClick={onOpen}
@@ -84,12 +97,11 @@ let status = sessionStorage.getItem("status") || true
 
 {
     cities.map((city, index) => (
-        <div onClick={()=>handleClose(city.name)} className='cities'  key={index}>
+        <div onClick={()=>{handleClose(city.name); handleSelectCity(city.name)}} className='cities'  key={index}>
         <img className='modal-img' src={city.img} alt={city.name} />
         <p>{city.name.toUpperCase()}</p>
       </div>
     ))
-    
 }
     </Box>
         <hr style={{marginTop:"40px"}} />

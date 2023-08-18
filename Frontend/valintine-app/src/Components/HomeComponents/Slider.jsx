@@ -2,9 +2,11 @@ import React from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './slider.css'
+
 // import candle from './candlelight.jpg'
 import { Link } from 'react-router-dom';
 const Slider = () => {
+  
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },

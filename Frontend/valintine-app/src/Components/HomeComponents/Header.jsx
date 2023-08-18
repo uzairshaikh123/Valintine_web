@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./headers.css"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from 'react-router-dom';
+import {useSearchParams} from "react-router-dom"
+
 const Header = () => {
   const responsive = {
     desktop: {
@@ -161,6 +163,25 @@ const Header = () => {
         "Ganesh Chaturthi Decorations"
       ], },
   ];
+  const [searchParams,setSearchParams]=useSearchParams()
+  // const firstcity=sessionStorage.getItem("cityname")
+  const cityname=searchParams.get("city")
+  const initialCategory=searchParams.get("category")
+  const [city,setCity]=useState(cityname || "Delhi")
+  const [category,setcategory]=useState(initialCategory || "")
+  useEffect(()=>{
+    let params={
+      city
+    }
+    if (category) {
+      params.category = category;
+    }
+    setSearchParams(params)
+  },[city])
+
+  const handleClick=(cat)=>{
+    setcategory(cat)
+  }
   return (
     <div id='header'>
       <Carousel
@@ -174,8 +195,8 @@ const Header = () => {
     // autoPlaySpeed={3000}
     >
       {titles?.map((el)=>{
-        return  <Link to={`/products?category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
-    <div className='headers-div'>
+        return  <Link to={`?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
+    <div className='headers-div' onClick={()=>handleClick(el.title)} >
         <img style={{height:"50%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
         <p>{el.title}</p>
       </div>
