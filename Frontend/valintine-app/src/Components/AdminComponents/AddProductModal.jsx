@@ -71,6 +71,8 @@ export default function AddProductModal({ id }) {
   };
 
   const handleadd = (e) => {
+
+
     e.preventDefault()
     // const pin = pincode.split(",");
     // console.log(pin);
@@ -78,10 +80,11 @@ export default function AddProductModal({ id }) {
     let imgurls = []
     for (let i = 0; i < urls.length; i++) {
       imgurls?.push(urls[i]?.files[0]);
+     
     }
 
-
 console.log(imgurls)
+
     // Image convert into url from Aws
     for (let i = 0; i < imgurls.length; i++) {
       const formData = new FormData();
@@ -89,12 +92,12 @@ console.log(imgurls)
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
         // setawsimages([...imagesaws, res.data.url])
         imgurls[i]=res.data.url
-        // console.log(res.data.url, imagesaws, "line 91")
+        console.log(res.data.url, "line 91")
       }).catch((err) => console.log(err.message))
 
     }
 
-
+console.log(imgurls)
 
     let desc = document.querySelectorAll(".description")
     let description = []
@@ -144,15 +147,15 @@ console.log(imgurls)
 
 
 
-    let offer_desc = document.querySelectorAll(".prod_offer_desc")
-    let offer_image = document.querySelectorAll(".prod_offer_image")
-    let offer_terms = document.querySelectorAll(".prod_offer_terms")
-    let offer_price = document.querySelectorAll(".prod_offer_price")
+    // let offer_desc = document.querySelectorAll(".prod_offer_desc")
+    // let offer_image = document.querySelectorAll(".prod_offer_image")
+    // let offer_terms = document.querySelectorAll(".prod_offer_terms")
+    // let offer_price = document.querySelectorAll(".prod_offer_price")
 
-    let Offers = []
-    for (let i = 0; i < offers.length; i++) {
-      Offers.push({ terms: offer_terms[i].value, price: offer_price[i].value, desc: offer_desc[i].value, img: offer_image[i].files[0] })
-    }
+    // let Offers = []
+    // for (let i = 0; i < offers.length; i++) {
+    //   Offers.push({ terms: offer_terms[i].value, price: offer_price[i].value, desc: offer_desc[i].value, img: offer_image[i].files[0] })
+    // }
 
 
     // Image convert into url from Aws
@@ -239,8 +242,6 @@ console.log(imgurls)
     }
 
 
-    timer = setTimeout(() => {
-
       
 
       let obj = {
@@ -269,7 +270,7 @@ console.log(imgurls)
 
         }
       })
-    }, 2000)
+
 
 
   };
@@ -465,7 +466,7 @@ console.log(imgurls)
 
 
                   <Button onClick={handleProd_details}>Add more Rows</Button>
-                  <label htmlFor="">Product Offers</label>
+                  {/* <label htmlFor="">Product Offers</label>
                   {offers.map(() => {
                     return (
                       <div style={{ display: "flex", marginTop: "5px" }}>
@@ -494,7 +495,7 @@ console.log(imgurls)
                     );
                   })}
 
-                  <Button onClick={handle_offers}>Add more Rows</Button>
+                  <Button onClick={handle_offers}>Add more Rows</Button> */}
 
                   <label htmlFor="">Product category</label>
                   {Product_category.map(() => {

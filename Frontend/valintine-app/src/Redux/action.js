@@ -385,9 +385,8 @@ export const handle_get_all_blogs = () => (dispatch) => {
 
 export const handle_add_product_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
-
-  return axios
-    .post(`${process.env.REACT_APP_Backend_url}/products/add`,data,{
+console.log(data)
+  return axios.post(`http://localhost:8080/products/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
