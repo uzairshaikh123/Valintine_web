@@ -4,13 +4,14 @@ import { Button } from '@chakra-ui/react';
 const Pay = () => {
 
 	const [amt , setamt ] = useState(0)
+	
 	const handle_payments=()=>{
 		let user = JSON.parse(sessionStorage.getItem("userdetails"))
 		
-
+		
 		let data =
 		{
-			"merchantId": process.env.merchantId,
+			"merchantId": process.env.REACT_APP_merchantId,
 			"merchantTransactionId": "MT7850590068188104",
 			"merchantUserId": user?._id,
 			"amount": amt,
@@ -22,8 +23,8 @@ const Pay = () => {
 			}
 		  }
 		  // axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-			  axios.post(`http://localhost:8080/pay/phonepay`,data).then((res)=>{
-				  	// window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
+			  axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`,data).then((res)=>{
+				  	window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
 				  	console.log(res)
 				  
 				  })
@@ -31,7 +32,7 @@ const Pay = () => {
 				useEffect(()=>{
 		         let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 
-					axios.get(`http://localhost:8080/total/${user?._id}`).then((res)=>{
+					axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=>{
 						setamt(res?.data?.data[0]?.total)
 						console.log(res?.data?.data[0]?.total)
 						})

@@ -27,7 +27,7 @@ const store = useSelector(store=>store)
   },[products])
 
 
-console.log(product,id)
+// console.log(product,id)
   return (
     <div>
       <Button onClick={onOpen}>Edit</Button>
