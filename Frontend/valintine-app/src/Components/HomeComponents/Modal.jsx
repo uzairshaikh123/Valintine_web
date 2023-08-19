@@ -15,7 +15,7 @@ export default function BasicModal({name}) {
   // console.log("ok")
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCity=searchParams.get("city")
-  const [city,setCity]=useState(initialCity || "Delhi")
+  const [city,setCity]=useState(initialCity || "delhi")
   const { isOpen, onClose ,onOpen} = useDisclosure()
 let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
   {name:"Jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},

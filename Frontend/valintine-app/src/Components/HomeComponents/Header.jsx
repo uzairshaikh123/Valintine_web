@@ -167,7 +167,7 @@ const Header = () => {
   // const firstcity=sessionStorage.getItem("cityname")
   const cityname=searchParams.get("city")
   const initialCategory=searchParams.get("category")
-  const [city,setCity]=useState(cityname || "Delhi")
+  const [city,setCity]=useState(cityname || "delhi")
   const [category,setcategory]=useState(initialCategory || "")
   useEffect(()=>{
     let params={

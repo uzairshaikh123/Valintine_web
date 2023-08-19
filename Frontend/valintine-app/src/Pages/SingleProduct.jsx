@@ -30,7 +30,10 @@ const SingleProductPage = () => {
   const store = useSelector((store) => store);
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
-
+  let initialPrice = product[0]?.multiple_price?.length > 0
+    ? product[0].multiple_price[0].price
+    : product[0]?.price;
+  const [selectedPrice, setSelectedPrice] = useState(initialPrice);
   const params = useParams();
   const id = params.id;
   const dispatch = useDispatch();
@@ -38,7 +41,8 @@ const SingleProductPage = () => {
   useEffect(() => {
     dispatch(handlegetproducts());
   }, []);
-
+ 
+  console.log(product[0])
   useEffect(() => {
     let findproduct = products.filter((el) => {
       return el._id === id;
@@ -49,7 +53,7 @@ const SingleProductPage = () => {
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
-  console.log(products)
+  console.log(product[0])
   const handleaddtocart = () => {
     let obj = {
       ...product[0],
@@ -58,7 +62,6 @@ const SingleProductPage = () => {
       userID: user?._id,
     };
     delete obj._id
-    // console.log(obj,user,product,product[0]._id)
     dispatch(handleaddcartproduct(user?._id,obj)).then((res) => {
       const user = JSON.parse(sessionStorage.getItem("userdetails"));
       if (res.status === 200) {
@@ -91,7 +94,22 @@ const SingleProductPage = () => {
       }
     });
   };
-
+  let selectedIndex = 0;
+  const handleButtonClick=(index)=> {
+    const buttonContainer = document.getElementById('button-container');
+    const buttons = buttonContainer.querySelectorAll('.weight-buttons');
+    
+    buttons[selectedIndex].classList.remove('selected');
+    buttons[selectedIndex].classList.add('unselected');
+    
+    buttons[index].classList.remove('unselected');
+    buttons[index].classList.add('selected');
+    
+    
+    selectedIndex = index;
+    setSelectedPrice(product[0]?.multiple_price[index]?.price || product[0]?.price);
+  }
+  
   return loading ? (
     <div
       style={{
@@ -138,7 +156,7 @@ const SingleProductPage = () => {
             <div>
               <div className="product-price">
                 <p className="product-title">
-                  ₹ {product[0]?.price}/{product[0]?.category}
+                  ₹ {selectedPrice?selectedPrice:initialPrice}/{product[0]?.category}
                 </p>
                 <span style={{ fontSize: "10px" }}>
                   {}Inclusive of all taxes
@@ -171,29 +189,42 @@ const SingleProductPage = () => {
                     padding: "10px",
                   }}
                 >
-                  <p style={{ marginTop: "5px", marginBottom: "20px" }}>
-                    Weight : Serving Info
-                  </p>
+                 {
+                  product[0]?.category=="cake"? <p style={{ marginTop: "5px", marginBottom: "20px" }}>
+                  Weight : Serving Info
+                </p>:
+                ""
+                 }
 
-                  <div style={{ display: "flex", gap: "10px" }}>
+                  <div id="button-container" style={{ display: "flex", gap: "10px" }}>
                     {product[0]?.multiple_price?.map((spec, index) => (
-                      <button className={"weight-buttons active"}>
+                      <button 
+                        key={index}
+                        id={`button-${index}`}
+                        class={`weight-buttons ${index === 0 ? 'selected' : 'unselected'}`}
+                        // data-weight={spec.weight}
+                        // data-price={spec.price}
+                        onClick={()=>handleButtonClick(`${index}`)} >
                         {spec?.weight} kg
                       </button>
                     ))}
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex" }} className="cakecategory">
-                <div>
-                  <input type="checkbox" />
-                  <span>Eggless</span>
-                </div>
-                <div>
-                  <input type="checkbox" />
-                  <span>Heart Shape</span>
-                </div>
-              </div>
+              {
+                 product[0]?.category=="cake"? <div style={{ display: "flex" }} className="cakecategory">
+                 <div>
+                   <input type="checkbox" />
+                   <span>Eggless</span>
+                 </div>
+                 <div>
+                   <input type="checkbox" />
+                   <span>Heart Shape</span>
+                 </div>
+               </div>:
+               ""
+              }
+             
               <div style={{ marginTop: "20px", marginBottom: "20px" }}>
                 <input type="text" placeholder="Product Message" />
               </div>
@@ -239,19 +270,7 @@ const SingleProductPage = () => {
                  Add to Cart
                 </button>
               </div>
-
-              <div>
-                <p>Offers</p>
-                <div id="offers-cont">
-                  <div className={"offerbox"}>
-                    <img
-                      src="https://assets.winni.in/groot/2023/04/mobikwik/coupon-three.png"
-                      alt=""
-                    />
-                    <p>Get upto ₹750 Cashback on paying via Mobikwik</p>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
 <div className="addons-singleproduct">

@@ -23,6 +23,23 @@ productRoute.get("/?", async (req, res) => {
     res.status(500).send({ msg: error.message });
   }
 });
+
+productRoute.get("/search", async (req, res) => {
+  const searchQuery = req.query.q;
+
+  if (!searchQuery) {
+    return res.status(400).json({ error: 'Search query parameter "q" is required.' });
+  }
+
+  try {
+    const searchResults = await ProductModel.find({ name: { $regex: searchQuery, $options: 'i' } });
+    res.json({ results: searchResults });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while searching for products.' });
+  }
+});
+
+
 productRoute.get("/all", async (req, res) => {
   try {
     let allproducts = await ProductModel.find({});

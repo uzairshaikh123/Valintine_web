@@ -133,8 +133,28 @@ align-items: center;
   list-style: none;
 }
 
-/* .navbar-options .location {
-} */
+#search-results {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin: auto; 
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 2;
+  margin-top: 5px;
+}
+
+.search-result-item {
+  padding: 10px;
+  cursor: pointer;
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.search-result-item:hover{
+  background-color: rgb(249, 148, 187);
+}
 
 /* Responsive styles */
 @media (max-width: 770px) {
