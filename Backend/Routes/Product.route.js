@@ -50,6 +50,7 @@ productRoute.get("/all", async (req, res) => {
 });
 
 productRoute.post("/add", AdminMiddleware, async (req, res) => {
+  console.log(req.body)
   try {
     let newproduct = new ProductModel(req.body);
     await newproduct.save();
