@@ -53,8 +53,7 @@ function Navbar({ cartcount }) {
     // setSearchParams({ city: initialCity }); // Use the city state variable
     setSearchParams({city:initialCity})
   }, [cart,initialCity]);
-  // console.log(cartcount);
-  }, [cart]);
+
   console.log(cartcount);
   const handlevalue =()=>{
     
