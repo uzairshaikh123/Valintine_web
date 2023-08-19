@@ -9,12 +9,12 @@ payrouter.post("/phonepay",(req,res)=>{
   
   let objstr = btoa(JSON.stringify(req.body,null,2))
   
-  let check = objstr +"/pg/v1/pay"+"099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"
+  let check = objstr +"/pg/v1/pay"+process.env.phonepaykey
   var hash = crypto.createHash('sha256');
   let originalValue = hash.update(check, 'utf-8');
-  let hashValue= originalValue.digest('hex');  
-let checksum = hashValue+"###" + process.env.indexkey
-
+  let hashValue = originalValue.digest('hex');  
+let checksum = hashValue +"###" + process.env.indexkey
+console.log(checksum,objstr)
     const options = {
       method: 'POST',
       url: 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay',
