@@ -5,14 +5,14 @@ var http = require('http'),
 const crypto = require('crypto');
 exports.postReq = function(request,response){
    var encRequest = crypto.createHash('sha256').update(JSON.stringify(request.body)).digest('hex');
-    var body = '',
+    var body = request.body,
 	workingKey = process.env.Working_Key,	//Put in the 32-Bit key shared by CCAvenues.
 	accessCode = process.env.Access_key_cc,			//Put in the Access Code shared by CCAvenues.
 	formbody = '';
     
-    
+    console.log(encRequest)
     request.on('data', function (data) {
-	body += data;
+	data+=body
 	encRequest = ccav.node_encrypt_ccavenue_request(body,workingKey); 
 	formbody = '<form id="nonseamless" method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction"/> <input type="hidden" id="encRequest" name="encRequest" value="' + encRequest + '"><input type="hidden" name="access_code" id="access_code" value="' + accessCode + '"><script language="javascript">document.redirect.submit();</script></form>';
     });
