@@ -20,7 +20,7 @@ const Paywithcc = () => {
 			</tr>
 			<tr>
 				<td>Merchant Id</td>
-				<td><input type="text" name="merchant_id" id="merchant_id" value="" /> </td>
+				<td><input type="text" name="merchant_id" id="merchant_id" value={process.env.REACT_APP_Merchant_ID} /> </td>
 			</tr>
 			<tr>
 				<td>Order Id</td>
