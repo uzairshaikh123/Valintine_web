@@ -95,7 +95,7 @@ export const handle_delete_cartproducts = (userID,id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .delete(`http://localhost:8080/cart/delete/${id}/${userID}`  , {
+    .delete(`${process.env.REACT_APP_Backend_url}/${id}/${userID}`  , {
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token")
