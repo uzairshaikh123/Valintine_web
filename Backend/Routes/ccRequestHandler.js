@@ -7,7 +7,7 @@ exports.postReq = function(request,response){
    var encRequest = crypto.createHash('sha256').update(JSON.stringify(request.body)).digest('hex');
     var body = '',
 	workingKey = process.env.Working_Key,	//Put in the 32-Bit key shared by CCAvenues.
-	accessCode = process.env.Access_key,			//Put in the Access Code shared by CCAvenues.
+	accessCode = process.env.Access_key_cc,			//Put in the Access Code shared by CCAvenues.
 	formbody = '';
     
     
