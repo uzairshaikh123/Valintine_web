@@ -3,18 +3,18 @@ const express = require('express');
 const crypto = require('crypto');
 const payrouter = express.Router();
 var nodeBase64 = require('nodejs-base64-converter');
-
 require("dotenv").config()
+
 payrouter.post("/phonepay",(req,res)=>{
   
   let objstr = btoa(JSON.stringify(req.body,null,2))
   
-  let check = objstr +"/pg/v1/pay"+process.env.phonepaykey
+  let check = objstr +"/pg/v1/pay"+ process.env.phonepaykey
   var hash = crypto.createHash('sha256');
   let originalValue = hash.update(check, 'utf-8');
   let hashValue = originalValue.digest('hex');  
-let checksum = hashValue +"###" + process.env.indexkey
-console.log(checksum,objstr)
+let checksum = hashValue +"###" + 1
+console.log(objstr, "checksum" , checksum )
     const options = {
       method: 'POST',
       url: 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay',

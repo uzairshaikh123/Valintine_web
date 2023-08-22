@@ -14,6 +14,9 @@ const AwsRouter = require('./Routes/AwsRoute')
 const TestimonialRouter = require('./Routes/Testimonials')
 const payrouter = require('./Routes/payment')
 const totalRouter = require('./Routes/TotalRoute')
+const { postReq } = require('./Routes/ccRequestHandler')
+const { postRes } = require('./Routes/ccResponseHanlder')
+const ccRequestHandler = require('./Routes/ccRequestHandler')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -21,6 +24,8 @@ app.get('/', (req, res) => {
 })
 
 app.use("/auth",AuthRouter)
+app.use("/ccavRequestHandler",postReq)
+app.use("/ccavResponseHandler",postRes)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
 app.use("/orders",OrdersRoute)
