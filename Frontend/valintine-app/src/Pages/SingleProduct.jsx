@@ -42,6 +42,7 @@ const SingleProductPage = () => {
   console.log(product[0])
   useEffect(() => {
     dispatch(handlegetproducts());
+    
   }, []);
 
   useEffect(() => {
@@ -196,7 +197,7 @@ const SingleProductPage = () => {
                   }}
                 >
                   {
-                    product[0]?.category == "cakes" || "cake" ? <p style={{ marginTop: "5px", marginBottom: "20px" }}>
+                    product[0]?.category == "cakes" ? <p style={{ marginTop: "5px", marginBottom: "20px" }}>
                       Weight : Serving Info
                     </p> :
                       ""
@@ -218,7 +219,7 @@ const SingleProductPage = () => {
                 </div>
               </div>
               {
-                product[0]?.category == "cake" || "cakes" ? <div style={{ display: "flex" }} className="cakecategory">
+                product[0]?.category =="cakes" ? <div style={{ display: "flex" }} className="cakecategory">
                   <div>
                     <input type="checkbox" />
                     <span>Eggless</span>
@@ -232,7 +233,7 @@ const SingleProductPage = () => {
               }
 
               {
-                product[0]?.category === "cake" || "cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                product[0]?.category ==="cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
                   <input type="text" placeholder="Product Message" />
                 </div> : ""
               }

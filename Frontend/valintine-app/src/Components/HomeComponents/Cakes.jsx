@@ -53,7 +53,7 @@ useEffect(()=>{
 
 dispatch(handlegetproducts()).then((res)=>{
   let filterdata = res?.data?.data?.filter((el)=>{
-    return el.category==="cake"
+    return el.category==="cakes"
 
   })
   setcake(filterdata)

@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Header from '../Components/HomeComponents/Header'
 import Slider from '../Components/HomeComponents/Slider'
 import Celebrate from '../Components/HomeComponents/Celebrate'
-import Celeb2 from '../Components/HomeComponents/Celeb2'
+// import Celeb2 from '../Components/HomeComponents/Celeb2'
 import Bookeh from '../Components/HomeComponents/Bookeh'
 import Walls from '../Components/HomeComponents/Walls'
 import Cakes from '../Components/HomeComponents/Cakes'
@@ -24,7 +24,7 @@ const Cookies = require('js-cookie')
 
 const Home = () => {
   let imgbig = [{ img: "https://i.ibb.co/LgQxrzP/cherishx-partystore-courier.gif", id: 1 }, { id: 2, img: "https://deowgxgt4vwfe.cloudfront.net/website_static/img/cherishx-custom-decorations.gif" }]
-  let smallimg = [{ id: 1, img: "https://valentinesaga.com/wp-content/uploads/2023/07/Candlelight-Diner-Banner-ValentineSaga.png" }, { id: 2, img: "https://valentinesaga.com/wp-content/uploads/2023/07/Flawers-Banner-With-Valentine-Saga-1.jpg" }, { id: 3, img: "https://valentinesaga.com/wp-content/uploads/2023/05/Flawers-and-Gift-Combo-Banner.png" }, { id: 4, img: "https://valentinesaga.com/wp-content/uploads/2023/05/Happy-Birthday-Banner-12321.png" }]
+  // let smallimg = [{ id: 1, img: "https://valentinesaga.com/wp-content/uploads/2023/07/Candlelight-Diner-Banner-ValentineSaga.png" }, { id: 2, img: "https://valentinesaga.com/wp-content/uploads/2023/07/Flawers-Banner-With-Valentine-Saga-1.jpg" }, { id: 3, img: "https://valentinesaga.com/wp-content/uploads/2023/05/Flawers-and-Gift-Combo-Banner.png" }, { id: 4, img: "https://valentinesaga.com/wp-content/uploads/2023/05/Happy-Birthday-Banner-12321.png" }]
   // console.log(Cookies.get('token'))
   const dispatch = useDispatch()
   useEffect(() => {
@@ -44,7 +44,7 @@ const Home = () => {
           <Categories />
           <Categories2 />
           <Celebrate img={imgbig} />
-          <Celeb2 img={smallimg} />
+          {/* <Celeb2 img={smallimg} /> */}
           <Bookeh />
           <Walls />
           <Cakes />

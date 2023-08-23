@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "./DatePicker.css"
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,14 +11,8 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
   // const [selectedSlot, setSelectedSlot] = useState(null);
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // const handledate = (date) => {
-  //   setStartDate(date);
-  //   setIsModalOpen(true);
-  // }
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
-
+  
+  console.log(isDatePickerEnabled)
   const closeSlotModal = () => {
     setIsSlotModalOpen(false);
   };
@@ -32,16 +26,20 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
   };
 
   const formatTimeSlot = (slot) => {
+    if (!slot || !slot.starttime || !slot.endtime) {
+      return "Invalid time slot";
+    }
+  
     const startTimeComponents = slot.starttime.split(":");
     const startHour = startTimeComponents[0].padStart(2, "0");
     const startMinutes = startTimeComponents[1] || "00";
     const startTime = `${startHour}:${startMinutes} ${slot.starttime_words}`;
-
+  
     const endTimeComponents = slot.endtime.split(":");
     const endHour = endTimeComponents[0].padStart(2, "0");
     const endMinutes = endTimeComponents[1] || "00";
     const endTime = `${endHour}:${endMinutes} ${slot.endtime_words}`;
-
+  
     return `${startTime} to ${endTime}`;
   };
 

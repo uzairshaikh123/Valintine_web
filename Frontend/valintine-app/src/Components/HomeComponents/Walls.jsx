@@ -51,7 +51,7 @@ useEffect(()=>{
 
 dispatch(handlegetproducts()).then((res)=>{
   let filterdata = res?.data.data?.filter((el)=>{
-    return el.category==="decoration"
+    return el.category==="decorations"
 
   })
   setdecoration(filterdata)
