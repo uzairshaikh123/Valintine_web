@@ -23,7 +23,7 @@ cancel_url,
 language,
 }
 
-axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,obj).then((res)=>{
+axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,JSON.stringify(obj)).then((res)=>{
 	console.log(res)
 }).catch((err)=>{
 console.log(err.message,"error: " + err)
