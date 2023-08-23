@@ -9,7 +9,7 @@ payrouter.post("/phonepay",(req,res)=>{
   
   let objstr = btoa(JSON.stringify(req.body,null,2))
   
-  let check = objstr +"/pg/v1/pay"+process.env.phonepaykey
+  let check = objstr + "/pg/v1/pay" + process.env.phonepaykey
   var hash = crypto.createHash('sha256');
   let originalValue = hash.update(check, 'utf-8');
   let hashValue = originalValue.digest('hex');  
