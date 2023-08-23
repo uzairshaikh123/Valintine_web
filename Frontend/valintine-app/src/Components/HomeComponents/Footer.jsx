@@ -61,15 +61,15 @@ export default function Footer() {
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
-      <Container as={Stack} maxW={'6xl'} py={10}>
+      <Container as={Stack} maxW={'7xl'} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 2fr' }}
+          templateColumns={{ sm: '1fr 1fr', md: '3fr 2fr 2fr' }}
           spacing={8}>
           <Stack spacing={3}>
             <Box>
-              <Link to='/'><Image style={{width:"80%",height:"100%"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" /></Link>
+              <Link to='/'><Image style={{width:"50%",height:"100%",paddingBottom:"20px"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" /></Link>
             </Box>
-            <Text fontSize={'sm'}>Address :  METRO GATE NO 2, B 1,2&3, near DWARKA MOR, Sewak Park, Delhi, 110059</Text>
+            <Text fontSize={'sm'} w="80%">Address :  D-499 3rd Floor, Ramphal Chowk, Dwarka Sector 7, New Delhi-110075</Text>
             <Text fontSize={'sm'}>Email id : support@velentinesaga.com</Text>
             <Text fontSize={'sm'}>Mobile No : +91 8210005030</Text>
             <Stack direction={'row'} spacing={6}>

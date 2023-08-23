@@ -31,7 +31,7 @@ export default function AddProductModal({ id }) {
   let [Product_category, setProduct_category] = useState([1]);
   let [offers, setoffers] = useState([1]);
   let [slots, setslots] = useState([1]);
-  const {loading,error} = useState()
+  const { loading, error } = useState()
   const dispatch = useDispatch()
 
   const handleImages = (i) => {
@@ -80,11 +80,11 @@ export default function AddProductModal({ id }) {
     let imgurls = []
     for (let i = 0; i < urls.length; i++) {
       imgurls?.push(urls[i]?.files[0]);
-     
+
     }
 
-console.log(imgurls)
-let imgarr=[]
+    console.log(imgurls)
+    let imgarr = []
     // Image convert into url from Aws
     for (let i = 0; i < imgurls.length; i++) {
       const formData = new FormData();
@@ -97,7 +97,7 @@ let imgarr=[]
 
     }
 
-console.log(imgarr)
+    console.log(imgarr)
 
     let desc = document.querySelectorAll(".description")
     let description = []
@@ -140,7 +140,7 @@ console.log(imgarr)
       formData.append('file', Addons[i].img);
 
       axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-        Addons[i].img = res.data.url +""
+        Addons[i].img = res.data.url + ""
       }).catch((err) => console.log(err.message))
 
     }
@@ -193,33 +193,33 @@ console.log(imgarr)
     let multiple_price_price = document.querySelectorAll(".multiple_Price_price")
 
     let multiple_price_arr = []
-    if(multiple_price_price.length > 0 && multiple_price_weight.length > 0){
+    if (multiple_price_price.length > 0 && multiple_price_weight.length > 0) {
 
       for (let i = 0; i < Multiple_price.length; i++) {
-        
+
         multiple_price_arr?.push({ weight: multiple_price_weight[i].value, price: multiple_price_price[i].value })
-    }
-    for (let i = 0; i < multiple_price_arr.length; i++) {
-      if (multiple_price_arr[i].weight == "" || multiple_price_arr[i].price == "") {
-        multiple_price_arr = []
-        break
+      }
+      for (let i = 0; i < multiple_price_arr.length; i++) {
+        if (multiple_price_arr[i].weight == "" || multiple_price_arr[i].price == "") {
+          multiple_price_arr = []
+          break
+        }
       }
     }
-  }
 
 
-  
-      let starttime = document.querySelectorAll(".starttime")
-      let starttime_words = document.querySelectorAll(".starttime-words")
+
+    let starttime = document.querySelectorAll(".starttime")
+    let starttime_words = document.querySelectorAll(".starttime-words")
     let endtime = document.querySelectorAll(".endtime")
     let endtime_words = document.querySelectorAll(".endtime-words")
-    let actualslots =[]
-       if (endtime.length && endtime_words.length && starttime_words.length && starttime.length) {
+    let actualslots = []
+    if (endtime.length && endtime_words.length && starttime_words.length && starttime.length) {
 
-         for(let i=0;i<slots.length;i++){
-           actualslots.push({starttime:starttime[i].value,starttime_words:starttime_words[i].value,endtime_words:endtime_words[i].value, endtime:endtime[i].value})
-          }
-        }
+      for (let i = 0; i < slots.length; i++) {
+        actualslots.push({ starttime: starttime[i].value, starttime_words: starttime_words[i].value, endtime_words: endtime_words[i].value, endtime: endtime[i].value })
+      }
+    }
 
 
 
@@ -232,7 +232,7 @@ console.log(imgarr)
     const video_link = document.querySelector("#video_link").value || ""
 
 
-
+    // console.log(category)
 
     onClose()
     let timer
@@ -242,39 +242,39 @@ console.log(imgarr)
     }
 
 
-      
 
-      let obj = {
-        name: name,
-        category: category,
-        subcategory:subcategory,
-        price: price,
-        city: city,
-        image: imgarr,
-        prod_details: product_details,
-        description: description,
-        multiple_price: multiple_price_arr,
-        addons: Addons,
-        delivery_info: Delivery_info,
-        pincodes: pincodes?.split(","),
-        Product_category , slots:actualslots , video_link
-      };
-      console.log(obj)
-      dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
-        if (res.status == 200 || res.status == 201) {
+    let obj = {
+      name: name,
+      category: category,
+      subcategory: subcategory,
+      price: price,
+      city: city,
+      image: imgarr,
+      prod_details: product_details,
+      description: description,
+      multiple_price: multiple_price_arr,
+      addons: Addons,
+      delivery_info: Delivery_info,
+      pincodes: pincodes?.split(","),
+      Product_category, slots: actualslots, video_link
+    };
+    console.log(obj)
+    dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
-          alert("Product added successfully")
-        } else {
-          alert("error")
+      if (res.status == 200 || res.status == 201) {
 
-        }
-      })
+        alert("Product added successfully")
+      } else {
+        alert("error")
+
+      }
+    })
 
 
 
   };
- 
+
 
   return (
     <div >
@@ -290,32 +290,32 @@ console.log(imgarr)
           borderRadius: "10px",
           cursor: "pointer",
           fontSize: "18px",
-          
+
         }}
       >
         Add Product
       </Button>
-      { loading?<div
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Hearts
-            height="80"
-            width="80"
-            color="red"
-            ariaLabel="hearts-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </div>:error?<div>
+      {loading ? <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Hearts
+          height="80"
+          width="80"
+          color="red"
+          ariaLabel="hearts-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div> : error ? <div>
         error
-      </div>:<Modal
-      
+      </div> : <Modal
+
         isOpen={isOpen} onClose={onClose}
 
 
@@ -338,7 +338,16 @@ console.log(imgarr)
                   <label htmlFor="">Name</label>
                   <input type="text" id="name" placeholder="Enter Name of Product" />
                   <label htmlFor="">Category</label>
-                  <input type="text" id="category" placeholder="Enter Name of Category" />
+                  {/* <input type="text" id="category" placeholder="Enter Name of Category" /> */}
+                  <select id="category">
+                    <option value="">Select Category</option>
+                    <option value="cakes">Cakes</option>
+                    <option value="candlelight dinner">Candlelight Dinner</option>
+                    <option value="flowers">Flowers</option>
+                    <option value="decorations">Decorations</option>
+                    <option value="anniversary celebrations">Anniversary Celebrations</option>
+                    <option value="birthday surprises">Birthday Surprises</option>
+                  </select>
                   <label htmlFor="">Video Link</label>
                   <input type="text" id="video_link" placeholder="Enter Name of video_link" />
                   <label htmlFor="">SubCategory</label>
@@ -374,11 +383,11 @@ console.log(imgarr)
                   })}
                   <Button onClick={handle_Multiple_price}>Add more Rows</Button>
                   <label htmlFor="">Slots</label>
-                 
 
-                       {slots.map(()=>{
-                        return <>
-                        <div>
+
+                  {slots.map(() => {
+                    return <>
+                      <div>
 
                         <label htmlFor="">Start Time</label>
                         <select className="starttime">
@@ -400,8 +409,8 @@ console.log(imgarr)
                           <option value="AM">AM</option>
                           <option value="PM">PM</option>
                         </select>
-                        </div>
-                        <div>
+                      </div>
+                      <div>
 
                         <label htmlFor="">End Time</label>
                         <select className="endtime">
@@ -423,13 +432,13 @@ console.log(imgarr)
                           <option value="AM">AM</option>
                           <option value="PM">PM</option>
                         </select>
-                        </div>
-                        <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
-                        </>
-                      })}
-                  
-                  
-                
+                      </div>
+                      <MdDelete color="#3498db" size={"50px"} cursor={"pointer"} />
+                    </>
+                  })}
+
+
+
                   <Button onClick={handle_add_slots}>Add more Rows</Button>
 
                   <label htmlFor="">Addons (size:500X300)</label>
