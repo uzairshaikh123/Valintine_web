@@ -21,7 +21,7 @@ exports.postReq = function(request,response){
     });
 				
     request.on('end', function () {
-        response.writeHeader(200, {"Content-Type": "text/html"});
+    response.writeHeader(200, {"Content-Type": "text/html"});
 	response.write(formbody);
 	response.end();
     });
