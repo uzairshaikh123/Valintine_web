@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 const Categories2 = () => {
 
     let cards=[
-        {category:"anniversery",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/Anniver.jpg"},
-        {category:"baby",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/baby.jpg"},
-        {category:"babyshower",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/babyshower.jpg"},
-        {category:"anniversery",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/backl.png"},
-        {category:"Baloons",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/bal+buq.jpg"},
-        {category:"car",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/car.jpg"},
-        {category:"ceremony",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/ceremony.jpg"},
-        {category:"firstnight",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/firstnight.png"},
-        {category:"person",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/person.jpg"},
-        {category:"stage",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/HomePage+Categories/stage.jpg"}
+        {category:"Balloons & Bouquet",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Balloons+%26+Bouquet.png"},
+        {category:"bacholorette decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/bacholorette+decoration.png"},
+        {category:"Baby welcome decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Baby+welcome+decoration.png"},
+        {category:"anniversary Decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/anniversary+Decoration.png"},
+        {category:"Baby shower",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Baby+shower.png"},
+        {category:"Car booth decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Car+booth+decoration.png"},
+        {category:"Stage decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Car+booth+decoration.png"},
+        {category:"Naming celebration decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Naming+celebration+decoration.png"},
+        {category:"personalized gifts",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/personalized+gifts.png"},
+        {category:"first night decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/first+night+decoration.png"}
     ]
 
 

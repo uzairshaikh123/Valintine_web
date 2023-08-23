@@ -67,7 +67,7 @@ dispatch(handlegetproducts()).then((res)=>{
 },[])
 
 
-      
+console.log(bookeh)      
        
     
     let heading="ELEGANT FLOWERS AND BOUQUETS"
