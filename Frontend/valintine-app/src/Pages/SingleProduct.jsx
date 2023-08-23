@@ -28,6 +28,8 @@ import Addons from "../Components/ProductComponents/Addons";
 import AddonsCard from "../Components/ProductComponents/AddonsCard";
 const SingleProductPage = () => {
   const store = useSelector((store) => store);
+  const [pincode, setPincode] = useState("");
+  const [isDatePickerEnabled, setIsDatePickerEnabled] = useState(false);
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
   let initialPrice = product[0]?.multiple_price?.length > 0
@@ -37,12 +39,11 @@ const SingleProductPage = () => {
   const params = useParams();
   const id = params.id;
   const dispatch = useDispatch();
-
+  console.log(product[0])
   useEffect(() => {
     dispatch(handlegetproducts());
   }, []);
- 
-  console.log(product[0])
+
   useEffect(() => {
     let findproduct = products.filter((el) => {
       return el._id === id;
@@ -53,7 +54,7 @@ const SingleProductPage = () => {
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
-  console.log(product[0])
+  // console.log(product[0])
   const handleaddtocart = () => {
     let obj = {
       ...product[0],
@@ -62,7 +63,7 @@ const SingleProductPage = () => {
       userID: user?._id,
     };
     delete obj._id
-    dispatch(handleaddcartproduct(user?._id,obj)).then((res) => {
+    dispatch(handleaddcartproduct(user?._id, obj)).then((res) => {
       const user = JSON.parse(sessionStorage.getItem("userdetails"));
       if (res.status === 200) {
         toast.success("🤩 Product added to cart", {
@@ -95,21 +96,26 @@ const SingleProductPage = () => {
     });
   };
   let selectedIndex = 0;
-  const handleButtonClick=(index)=> {
+  const handleButtonClick = (index) => {
+    setSelectedPrice(product[0]?.multiple_price[index]?.price || product[0]?.price);
     const buttonContainer = document.getElementById('button-container');
     const buttons = buttonContainer.querySelectorAll('.weight-buttons');
-    
+
     buttons[selectedIndex].classList.remove('selected');
     buttons[selectedIndex].classList.add('unselected');
-    
+
     buttons[index].classList.remove('unselected');
     buttons[index].classList.add('selected');
-    
-    
+
     selectedIndex = index;
-    setSelectedPrice(product[0]?.multiple_price[index]?.price || product[0]?.price);
   }
-  
+ 
+  const handlePincodeChange = (event) => {
+    const newPincode = event.target.value.trim();
+    setPincode(newPincode);
+    setIsDatePickerEnabled(product[0]?.pincodes?.includes(newPincode));
+  };
+
   return loading ? (
     <div
       style={{
@@ -156,10 +162,10 @@ const SingleProductPage = () => {
             <div>
               <div className="product-price">
                 <p className="product-title">
-                  ₹ {selectedPrice?selectedPrice:initialPrice}/{product[0]?.category}
+                  ₹ {selectedPrice ? selectedPrice : initialPrice}/{product[0]?.category}
                 </p>
                 <span style={{ fontSize: "10px" }}>
-                  {}Inclusive of all taxes
+                  { }Inclusive of all taxes
                 </span>
               </div>
               <div>
@@ -184,27 +190,27 @@ const SingleProductPage = () => {
                 </ul>
                 <div
                   style={{
-                    
+
                     marginBottom: "20px",
                     padding: "10px",
                   }}
                 >
-                 {
-                  product[0]?.category=="cake"? <p style={{ marginTop: "5px", marginBottom: "20px" }}>
-                  Weight : Serving Info
-                </p>:
-                ""
-                 }
+                  {
+                    product[0]?.category == "cakes" || "cake" ? <p style={{ marginTop: "5px", marginBottom: "20px" }}>
+                      Weight : Serving Info
+                    </p> :
+                      ""
+                  }
 
                   <div id="button-container" style={{ display: "flex", gap: "10px" }}>
                     {product[0]?.multiple_price?.map((spec, index) => (
-                      <button 
+                      <button
                         key={index}
                         id={`button-${index}`}
                         class={`weight-buttons ${index === 0 ? 'selected' : 'unselected'}`}
                         // data-weight={spec.weight}
                         // data-price={spec.price}
-                        onClick={()=>handleButtonClick(`${index}`)} >
+                        onClick={() => handleButtonClick(`${index}`)} >
                         {spec?.weight} kg
                       </button>
                     ))}
@@ -212,37 +218,42 @@ const SingleProductPage = () => {
                 </div>
               </div>
               {
-                 product[0]?.category=="cake"? <div style={{ display: "flex" }} className="cakecategory">
-                 <div>
-                   <input type="checkbox" />
-                   <span>Eggless</span>
-                 </div>
-                 <div>
-                   <input type="checkbox" />
-                   <span>Heart Shape</span>
-                 </div>
-               </div>:
-               ""
+                product[0]?.category == "cake" || "cakes" ? <div style={{ display: "flex" }} className="cakecategory">
+                  <div>
+                    <input type="checkbox" />
+                    <span>Eggless</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" />
+                    <span>Heart Shape</span>
+                  </div>
+                </div> :
+                  ""
               }
-             
-              <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                <input type="text" placeholder="Product Message" />
-              </div>
-              <div
-                style={{
-                  width: "100%",
-                  border: "1px solid gray",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <i class="bx bxs-location-plus"></i>
-                <input
-                  type={"number"}
-                  placeholder="Enter Pincode"
-                  style={{ outline: "none" }}
-                />
-              </div>
+
+              {
+                product[0]?.category === "cake" || "cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                  <input type="text" placeholder="Product Message" />
+                </div> : ""
+              }
+              {
+                product[0]?.category == "candlelight dinner" ? <div
+                  style={{
+                    width: "100%",
+                    border: "1px solid gray",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <i class="bx bxs-location-plus"></i>
+                  <input
+                    type={"number"}
+                    placeholder="Enter Pincode"
+                    style={{ outline: "none" }}
+                    onChange={handlePincodeChange}
+                  />
+                </div> : ""
+              }
               <div
                 style={{
                   marginTop: "10px",
@@ -250,16 +261,16 @@ const SingleProductPage = () => {
                   minWidth: "100%",
                 }}
               >
-                <DatePickerComp />
+                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product}/>
               </div>
               <div id="cart-buttons">
                 <button
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
-                 
+                  disabled
                 >
-                  <Link to={"/cart"} style={{ color: "white" }}>
-                   Buy Now
+                  <Link to={"/cart"} style={{ color: "white" }} >
+                    Buy Now
                   </Link>
                 </button>
                 <button
@@ -267,18 +278,18 @@ const SingleProductPage = () => {
                   onClick={handleaddtocart}
                 >
 
-                 Add to Cart
+                  Add to Cart
                 </button>
               </div>
-             
+
             </div>
           </div>
-<div className="addons-singleproduct">
+          <div className="addons-singleproduct">
 
-{product[0]?.addons?.map((el)=>{
-  return <AddonsCard img={el.img} name={el.name} price={el.price} desc={el.desc} />
-})}
-</div>
+            {product[0]?.addons?.map((el) => {
+              return <AddonsCard img={el.img} name={el.name} price={el.price} desc={el.desc} />
+            })}
+          </div>
 
 
           <div
@@ -289,23 +300,23 @@ const SingleProductPage = () => {
               height: "auto",
               padding: "25px",
               lineHeight: "30px",
-              background:"white"
+              background: "white"
             }}
           >
-            <p style={{fontWeight:800,fontSize:"medium"}}>
+            <p style={{ fontWeight: 800, fontSize: "medium" }}>
               Product Details
             </p>
-            <ul style={{padding: "25px"}}>
+            <ul style={{ padding: "25px" }}>
               {product[0]?.prod_details?.map((spec, index) => (
-                <li style={{listStyle:"dotted"}} key={index}>
-                 {spec}
+                <li style={{ listStyle: "dotted" }} key={index}>
+                  {spec}
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <PlayerComponent VIDEO_PATH={product[0]?.video_link || "https://youtu.be/0BIaDVnYp2A"} />
+            <PlayerComponent VIDEO_PATH={product[0]?.video_link}/>
           </div>
 
           <div></div>
@@ -315,10 +326,10 @@ const SingleProductPage = () => {
               boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               height: "auto",
               padding: "20px",
-              marginTop:"50px"
+              marginTop: "50px"
             }}
           >
-            <p style={{ textAlign: "start" ,fontWeight:"800" }}>Product Description:</p>
+            <p style={{ textAlign: "start", fontWeight: "800" }}>Product Description:</p>
             <ul style={{ padding: "25px" }}>
               {product[0]?.description?.map((highlight, index) => (
                 <li key={index}>{highlight}</li>

@@ -133,7 +133,7 @@ return acc
    let obj = {total:total || '0'}
    
    let user =JSON.parse(sessionStorage.getItem("userdetails")) 
-   axios.patch(`http://localhost:8080/total/${user?._id}`,obj).then((res)=>{
+   axios.patch(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`,obj).then((res)=>{
     console.log(res)
    })
    return total

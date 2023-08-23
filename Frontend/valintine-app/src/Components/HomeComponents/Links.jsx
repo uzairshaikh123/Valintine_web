@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './links.css'
 const Links = () => {
+useEffect(()=>{
 
+},[])
 let links=[
     {
       "img": "https://valentinesaga.com/wp-content/uploads/2023/06/Private-Cabana-Dining-by-Umrao-4.1-100x100.png",

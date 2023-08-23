@@ -1,22 +1,43 @@
-var crypto = require("crypto");
-exports.encrypt = function (plainText, workingKey) {
-  var m = crypto.createHash("md5");
-  m.update(workingKey);
-  var key = m.digest("binary");
-  var iv = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f";
-  var cipher = crypto.createCipheriv("aes-256-ctr", key, iv);
-  var encoded = cipher.update(plainText, "utf8", "hex");
-  encoded += cipher.final("hex");
-  return encoded;
-};
+// utils.js
 
-exports.decrypt = function (encText, workingKey) {
-  var m = crypto.createHash("md5");
-  m.update(workingKey);
-  var key = m.digest("binary");
-  var iv = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f";
-  var decipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
-  var decoded = decipher.update(encText, "hex", "utf8");
-  decoded += decipher.final("utf8");
-  return decoded;
-};
+/* payment gaetway encryption */
+const crypto = require('crypto');
+exports.node_encrypt_ccavenue_request = (payload) => {
+
+  // parameter payload should be in string/stringify
+
+   let key = process.env.Working_Key; // your working_key provided by bank
+
+
+   const method = "aes-256-gcm";
+   const initVector = crypto.randomBytes(16);
+   const cipher = crypto.createCipheriv(method, key, initVector);
+   let encrypted = cipher.update(payload, 'utf8', 'hex');
+   encrypted += cipher.final('hex');
+   const tag = cipher.getAuthTag().toString('hex');
+   return initVector.toString('hex') + encrypted + tag;
+}
+
+
+
+/* payment gateway decryption */
+exports.node_dencrypt_ccavenue_response = (encResp) => {
+
+   // parameter encResp should be in string
+
+   let key = "9E67B5672CD8204AE4C7571564C30779"; // your working_key provided by bank
+   const method = "aes-256-gcm";
+   const encryptedTextBuffer = Buffer.from(encResp, 'hex');
+   const iv_len = 16;
+   const tag_length = 16;
+   const iv = encryptedTextBuffer.slice(0, iv_len);
+   const tag = encryptedTextBuffer.slice(-tag_length);
+   const ciphertext = encryptedTextBuffer.slice(iv_len, -tag_length);
+   const decipher = crypto.createDecipheriv(method, key, iv);
+   decipher.setAuthTag(tag);
+   let decrypted = decipher.update(ciphertext, 'binary', 'utf8');
+   decrypted += decipher.final('utf8');
+
+   let data = qs.parse(decrypted);
+   return data;
+}

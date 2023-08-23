@@ -6,6 +6,7 @@ import AddressPage from './Shipping';
 import { useSelector } from 'react-redux';
 import Pay from '../Components/CheckoutComponents/Pay';
 import axios from 'axios';
+import Paywithcc from '../Components/CheckoutComponents/Paywithcc';
 
 function Checkout() {
 const [amt ,setamt] = useState(0)
@@ -31,7 +32,7 @@ const handlesavaddress=()=>{
 useEffect(()=>{
   let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 
-axios.get(`http://localhost:8080/total/${user?._id}`).then((res)=>{
+axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=>{
  setamt(res?.data?.data[0]?.total)
  console.log(res?.data?.data[0]?.total)
  })
@@ -63,6 +64,7 @@ axios.get(`http://localhost:8080/total/${user?._id}`).then((res)=>{
     </div>
 <div>
 <Pay />
+<Paywithcc />
 </div>
         </div>
     </>
