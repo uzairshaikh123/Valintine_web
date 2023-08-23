@@ -17,6 +17,7 @@ const totalRouter = require('./Routes/TotalRoute')
 const { postReq } = require('./Routes/ccRequestHandler')
 const { postRes } = require('./Routes/ccResponseHanlder')
 const ccRequestHandler = require('./Routes/ccRequestHandler')
+const ccRouter = require('./Routes/ccRequestHandler')
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/auth",AuthRouter)
-app.use("/ccavRequestHandler",postReq)
+app.use("/ccavRequestHandler",ccRouter)
 app.use("/ccavResponseHandler",postRes)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
