@@ -3,7 +3,8 @@ import axios from 'axios'
 const Paywithcc = () => {
 
 
-const handleSubmit = () => {
+const handleSubmit = (e) => {
+e.preventDefault()
 	const merchant_id=document.querySelector("#merchant_id")
 	const order_id=document.querySelector("#order_id")
 	const currency=document.querySelector("#currency")
