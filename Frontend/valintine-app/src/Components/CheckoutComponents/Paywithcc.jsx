@@ -1,10 +1,42 @@
 import React from 'react'
-
+import axios from 'axios'
 const Paywithcc = () => {
+
+
+const handleSubmit = () => {
+	const merchant_id=document.querySelector("#merchant_id")
+	const order_id=document.querySelector("#order_id")
+	const currency=document.querySelector("#currency")
+	const amount=document.querySelector("#amount")
+	const redirect_url=document.querySelector("#redirect_url")
+	const cancel_url=document.querySelector("#cancel_url")
+	const language=document.querySelector("#language")
+
+let obj ={
+	merchant_id,
+order_id,
+currency,
+amount,
+redirect_url,
+cancel_url,
+language,
+}
+
+axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,obj).then((res)=>{
+	console.log(res)
+}).catch((err)=>{
+console.log(err.message,"error: " + err)
+})
+// action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}
+
+}
+
+
+
   return (
     <div>
       
-	<form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
+	<form method="POST" name="customerData">
 		<table width="40%" height="100" border='1' align="center">
 			<caption>
 				<font size="4" color="blue"><b>Integration Kit</b></font>
@@ -20,29 +52,29 @@ const Paywithcc = () => {
 			</tr>
 			<tr>
 				<td>Merchant Id</td>
-				<td><input type="text" name="merchant_id" id="merchant_id" value={process.env.REACT_APP_Merchant_ID} /> </td>
+				<td><input type="text"  name="merchant_id" id="merchant_id" value={process.env.REACT_APP_Merchant_ID} /> </td>
 			</tr>
 			<tr>
 				<td>Order Id</td>
-				<td><input type="text" name="order_id" value={`${Date.now()}`} /></td>
+				<td><input type="text" id='order_id' name="order_id" value={`${Date.now()}`} /></td>
 			</tr>
 			<tr>
 				<td>Currency</td>
-				<td><input type="text" name="currency" value="INR" /></td>
+				<td><input type="text" id='currency' name="currency" value="INR" /></td>
 			</tr>
 			<tr>
 				<td>Amount</td>
-				<td><input type="text" name="amount" value="1.00" /></td>
+				<td><input type="text" id='amount' name="amount" value="1.00" /></td>
 			</tr>
 			<tr>
 				<td>Redirect URL</td>
-				<td><input type="text" name="redirect_url"
+				<td><input type="text" id='redirect_url' name="redirect_url"
 					value="http://127.0.0.1:3001/ccavResponseHandler" />
 				</td>
 			</tr>
 			<tr>
 				<td>Cancel URL</td>
-				<td><input type="text" name="cancel_url"
+				<td><input type="text" id='cancel_url' name="cancel_url"
 					value="http://127.0.0.1:3001/ccavResponseHandler" />
 				</td>
 			</tr>
@@ -161,7 +193,7 @@ const Paywithcc = () => {
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Checkout" /></td>
+				<td><input onClick={handleSubmit} type="submit" value="Checkout" /></td>
 			</tr>
 		</table>
 	</form>
