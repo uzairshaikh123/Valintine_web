@@ -347,11 +347,41 @@ export default function AddProductModal({ id }) {
                     <option value="decorations">Decorations</option>
                     <option value="anniversary celebrations">Anniversary Celebrations</option>
                     <option value="birthday surprises">Birthday Surprises</option>
+                    <option value="kids celebrations">Kids Celebrations</option>
+                    <option value="room decorations">Room Decorations</option>
+                    <option value="gifts">Gifts</option>
+                    <option value="occasions">Occasions</option>
                   </select>
                   <label htmlFor="">Video Link</label>
                   <input type="text" id="video_link" placeholder="Enter Name of video_link" />
                   <label htmlFor="">SubCategory</label>
-                  <input type="text" id="subcategory" placeholder="Enter Name of SubCategory" />
+                  {/* <input type="text" id="subcategory" placeholder="Enter Name of SubCategory" /> */}
+                  <select id="subcategory">
+                          <option value="Kids Birthday Decoration">Kids Birthday Decoration</option>
+                          <option value="Welcome Baby Decorations">Welcome Baby Decorations</option>
+                          <option value="Baby Shower Decorations">Baby Shower Decorations</option>
+                          <option value="Birthday Activities">Birthday Activities</option>
+                          <option value="Naming Ceremony Decorations">Naming Ceremony Decorations</option>
+                          <option value="Themed Birthday Cakes">Themed Birthday Cakes</option>
+                          <option value="1st Birthday Decorations">1st Birthday Decorations</option>
+                          <option value="Balloon Bouquets">Balloon Bouquets</option>
+                          <option value="Annaprashan Decorations">Annaprashan Decorations</option>
+                          <option value="Candlelight Dinners in NCR">Candlelight Dinners in NCR</option>
+                          <option value="Private Candlelight Dinners">Private Candlelight Dinners</option>
+                          <option value="Lunch Specials">Lunch Specials</option>
+                          <option value="Cabana Dining Experience">Cabana Dining Experience</option>
+                          <option value="Dining at 5 Star Properties">Dining at 5 Star Properties</option>
+                          <option value="Outdoor Candlelight Dining">Outdoor Candlelight Dining</option>
+                          <option value="Poolside Candlelight Dinners">Poolside Candlelight Dinners</option>
+                          <option value="Pocket Friendly Candlelight Dinners">Pocket Friendly Candlelight Dinners</option>
+                          <option value="Private Movie And Dinners">Private Movie And Dinners</option>
+                          <option value="Balloon Decorations">Balloon Decorations</option>
+                          <option value="Birthday Decorations">Birthday Decorations</option>
+                          <option value="Car Boot Decorations">Car Boot Decorations</option>
+                          <option value="First Night Decorations">First Night Decorations</option>
+                          <option value="Bachelorette Decorations">Bachelorette Decorations</option>
+                          <option value="Ganesh Chaturthi Decorations">Ganesh Chaturthi Decorations</option>
+                        </select>
                   <label htmlFor="">Images (size:1200X800)</label>
                   {images?.map((el, i) => {
                     return (
@@ -510,11 +540,17 @@ export default function AddProductModal({ id }) {
                   {Product_category.map(() => {
                     return (
                       <div style={{ display: "flex", marginTop: "5px" }}>
-                        <input
+                        {/* <input
                           className="prod_cat_name"
                           type="text"
                           placeholder="Enter Product Category Name"
-                        />
+                        /> */}
+                         <select className="prod_cat_name" style={{width:"300px",fontSize:"18px"}}>
+                          <option value="veg">Veg</option>
+                          <option value="nonveg">NonVeg</option>
+                          <option value="eggless">Eggless</option>
+                          <option value="heartshape">Heart Shape</option>
+                        </select>
                         <input
                           className="prod_cat_price"
                           type="text"
