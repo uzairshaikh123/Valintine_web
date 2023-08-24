@@ -18,13 +18,13 @@ ccRouter.post("/", (request,response)=>{
 
     console.log("body",request.body)
     
-    var encRequest = crypto.createHash('sha256').update(JSON.stringify(request.body)).digest('hex');
+    // var encRequest = crypto.createHash('sha256').update(JSON.stringify(request.body)).digest('hex');
     var body = JSON.stringify(request.body),
     workingKey = process.env.Working_Key,	//Put in the 32-Bit key shared by CCAvenues.
     accessCode = process.env.Access_key_cc,			//Put in the Access Code shared by CCAvenues.
     formbody = '';
     
-    console.log(encRequest)
+    // console.log(encRequest)
     // request.on('data', function () {
         const encRequest = ccav.getEncryptedOrder(body);
         // data+=body
