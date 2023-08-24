@@ -383,37 +383,10 @@ export const handle_get_all_blogs = () => (dispatch) => {
     });
 };
 
-// let body={
-//   name:"apna",
-//   Product_category: [],
-// addons: [],
-// booked_dates: [],
-// category: "decorations",
-// city: "delhi",
-// delivery_info: ['dfgdfdfs'],
-// description: ['fgfdvdfs'],
-// discounts: [],
-// image: ["jsdh","ajsfd"],
-// multiple_price: [],
-// name: "Princess Birthday Pink Decor",
-// offers: [],
-// pincodes:  ['110095', '110098', '110005'],
-// price: "123",
-// prod_details: ['sdvgfxfcv'],
-// reviews: [],
-// slots: [],
-// subcategory: "kids decoration",
-// video_link: "esrdszrf",
 
-// }
-export const handle_add_product_by_admin = (data) => (dispatch) => {
+export const handle_add_product_by_admin2 = (data) => async (dispatch) => {
   dispatch({ type: types.LOADING });
 console.log(data)
-// for(let i=0;i<data?.image.length;i++){
-  
-  // }
-    // data.image=data.image[0]
-// const clone = JSON.parse(JSON.stringify(data));
   return axios
     .post(`${process.env.REACT_APP_Backend_url}/products/add`,data,{
       headers: {
@@ -422,7 +395,7 @@ console.log(data)
       },
     })
     .then((res) => {
-      dispatch({ type: types.HANDLE_ADD_PRODUCT});
+      dispatch({type: types.HANDLE_ADD_PRODUCT});
       return res;
     })
     .catch((err) => {

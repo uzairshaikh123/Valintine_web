@@ -1,20 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handle_add_product_by_admin, handlegetproducts } from "../../Redux/action";
+import { handle_add_product_by_admin, handle_add_product_by_admin2, handlegetproducts } from "../../Redux/action";
 import { MdDelete } from "react-icons/md";
 import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { Hearts } from "react-loader-spinner";
 
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 800,
-//   bgcolor: "background.paper",
-//   p: 4,
-// };
 
 export default function AddProductModal({ id }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -71,33 +62,34 @@ export default function AddProductModal({ id }) {
   };
 
   const handleadd = (e) => {
-
-
     e.preventDefault()
-    // const pin = pincode.split(",");
-    // console.log(pin);
+
     let urls = document.querySelectorAll(".urls")
+    // let imgurls = []
+    // for (let i = 0; i < urls.length; i++) {
+    //   imgurls?.push(urls[i]?.files[0]);
+
+    // }
     let imgurls = []
     for (let i = 0; i < urls.length; i++) {
-      imgurls?.push(urls[i]?.files[0]);
+      imgurls?.push(urls[i].value);
 
     }
 
-    console.log(imgurls)
-    let imgarr = []
+    
+    
     // Image convert into url from Aws
-    for (let i = 0; i < imgurls.length; i++) {
-      const formData = new FormData();
-      formData.append('file', imgurls[i]);
-      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-        // setawsimages([...imagesaws, res.data.url])
-        imgarr.push(res.data.url)
-        console.log(res.data.url, "line 91")
-      }).catch((err) => console.log(err.message))
+    // for (let i = 0; i < imgurls.length; i++) {
+    //   const formData = new FormData();
+    //   formData.append('file', imgurls[i]);
+    //   axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
+    //     // setawsimages([...imagesaws, res.data.url])
+    //     imgarr.push(res.data.url)      
+    //   }).catch((err) => console.log(err.message))
 
-    }
+    // }
 
-    console.log(imgarr)
+  
 
     let desc = document.querySelectorAll(".description")
     let description = []
@@ -128,46 +120,22 @@ export default function AddProductModal({ id }) {
     let Addons = []
     for (let i = 0; i < addons.length; i++) {
 
-      Addons.push({ name: addons_name[i].value, price: addons_price[i].value, desc: addons_desc[i].value, img: addons_img[i].files[0] })
+      Addons.push({ name: addons_name[i].value, price: addons_price[i].value, desc: addons_desc[i].value, img: addons_img[i].value })
     }
 
 
 
 
     // Image convert into url from Aws
-    for (let i = 0; i < Addons.length; i++) {
-      const formData = new FormData();
-      formData.append('file', Addons[i].img);
-
-      axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-        Addons[i].img = res.data.url + ""
-      }).catch((err) => console.log(err.message))
-
-    }
-
-
-
-    // let offer_desc = document.querySelectorAll(".prod_offer_desc")
-    // let offer_image = document.querySelectorAll(".prod_offer_image")
-    // let offer_terms = document.querySelectorAll(".prod_offer_terms")
-    // let offer_price = document.querySelectorAll(".prod_offer_price")
-
-    // let Offers = []
-    // for (let i = 0; i < offers.length; i++) {
-    //   Offers.push({ terms: offer_terms[i].value, price: offer_price[i].value, desc: offer_desc[i].value, img: offer_image[i].files[0] })
-    // }
-
-
-    // Image convert into url from Aws
-    // for (let i = 0; i < Offers.length; i++) {
+    // for (let i = 0; i < Addons.length; i++) {
     //   const formData = new FormData();
-    //   formData.append('file', Offers[i].img);
-
+    //   formData.append('file', Addons[i].img);
     //   axios.post(`${process.env.REACT_APP_Backend_url}/aws/convert`, formData).then((res) => {
-    //     Offers[i] = res.data.url
+    //     Addons[i].img = res.data.url + ""
     //   }).catch((err) => console.log(err.message))
 
     // }
+
 
 
     let prod_cat_price = document.querySelectorAll(".prod_cat_price")
@@ -232,7 +200,7 @@ export default function AddProductModal({ id }) {
     const video_link = document.querySelector("#video_link").value || ""
 
 
-    // console.log(category)
+   
 
     onClose()
     let timer
@@ -242,15 +210,16 @@ export default function AddProductModal({ id }) {
     }
 
 
-
-
-    let obj = {
+setTimeout(() => {
+  
+  
+  let obj = {
       name: name,
       category: category,
       subcategory: subcategory,
       price: price,
       city: city,
-      image: imgarr,
+      image: imgurls,
       prod_details: product_details,
       description: description,
       multiple_price: multiple_price_arr,
@@ -259,18 +228,20 @@ export default function AddProductModal({ id }) {
       pincodes: pincodes?.split(","),
       Product_category, slots: actualslots, video_link
     };
-    console.log(obj)
-    dispatch(handle_add_product_by_admin(obj)).then((res) => {
 
+   
+    dispatch(handle_add_product_by_admin2(obj)).then((res) => {
+      
       if (res.status == 200 || res.status == 201) {
-
+        
         alert("Product added successfully")
       } else {
         alert("error")
-
+        
       }
     })
-
+    
+  }, 2000);
 
 
   };
@@ -340,7 +311,7 @@ export default function AddProductModal({ id }) {
                   <label htmlFor="">Category</label>
                   {/* <input type="text" id="category" placeholder="Enter Name of Category" /> */}
                   <select id="category">
-                    <option value="">Select Category</option>
+                    {/* <option value="">Select Category</option> */}
                     <option value="cakes">Cakes</option>
                     <option value="candlelight dinner">Candlelight Dinner</option>
                     <option value="flowers">Flowers</option>
@@ -356,7 +327,7 @@ export default function AddProductModal({ id }) {
                   {images?.map((el, i) => {
                     return (
                       <div style={{ display: "flex", marginTop: "5px" }}>
-                        <input className="urls" type="file" placeholder="Enter url of Image" />
+                        <input className="urls" type="text" placeholder="Enter url of Image" />
                         <MdDelete
                           color="#3498db"
                           onClick={() => handleImages(i)}
@@ -449,7 +420,7 @@ export default function AddProductModal({ id }) {
                         <br />
                         <input style={{ marginTop: "5px" }} className="addons-desc" type="text" placeholder="Enter Description of Addon" />
                         <br />
-                        <input style={{ marginTop: "5px" }} className="addons-img" type="file" placeholder="Enter Image url  of Addon" />
+                        <input style={{ marginTop: "5px" }} className="addons-img" type="text" placeholder="Enter Image url  of Addon" />
                         <br />
                         <input style={{ marginTop: "5px" }} className="addons-price" type="text" placeholder="Enter Price of Addon" />
                         <MdDelete color="#3498db" size={"30px"} cursor={"pointer"} />

@@ -3,15 +3,15 @@ import axios from 'axios'
 const Paywithcc = () => {
 
 
-const handleSubmit = (e) => {
+const handleSubmit =  (e) => {
 e.preventDefault()
-	const merchant_id=document.querySelector("#merchant_id")
-	const order_id=document.querySelector("#order_id")
-	const currency=document.querySelector("#currency")
-	const amount=document.querySelector("#amount")
-	const redirect_url=document.querySelector("#redirect_url")
-	const cancel_url=document.querySelector("#cancel_url")
-	const language=document.querySelector("#language")
+	const merchant_id=document.querySelector("#merchant_id").value
+	const order_id=document.querySelector("#order_id").value
+	const currency=document.querySelector("#currency").value
+	const amount=document.querySelector("#amount").value
+	const redirect_url=document.querySelector("#redirect_url").value
+	const cancel_url=document.querySelector("#cancel_url").value
+	const language=document.querySelector("#language").value
 
 let obj ={
 	merchant_id,
@@ -22,8 +22,9 @@ redirect_url,
 cancel_url,
 language,
 }
+console.log(obj)
 
-axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,JSON.stringify(obj)).then((res)=>{
+ axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,JSON.stringify(obj)).then((res)=>{
 	console.log(res)
 }).catch((err)=>{
 console.log(err.message,"error: " + err)
