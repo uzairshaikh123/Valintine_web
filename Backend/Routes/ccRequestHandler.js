@@ -4,8 +4,15 @@ var http = require('http'),
     qs = require('querystring');
 const crypto = require('crypto');
 const express = require('express');
+require("dotenv").config()
 const ccRouter = express.Router()
+const nodeCCAvenue = require('node-ccavenue');
 
+
+const ccav = new nodeCCAvenue.Configure({
+  merchant_id: process.env.Merchant_ID,
+  working_key: process.env.Working_Key,
+});
 
 ccRouter.post("/", (request,response)=>{
 
@@ -18,11 +25,12 @@ ccRouter.post("/", (request,response)=>{
     formbody = '';
     
     console.log(encRequest)
-    request.on('data', function (data) {
-    data+=body
-    encRequest = ccav.node_encrypt_ccavenue_request(body,workingKey); 
+    // request.on('data', function () {
+        const encRequest = ccav.getEncryptedOrder(body);
+        // data+=body
+        // encRequest = ccav.node_encrypt_ccavenue_request(body,workingKey); 
     formbody = '<form id="nonseamless" method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction"/> <input type="hidden" id="encRequest" name="encRequest" value="' + encRequest + '"><input type="hidden" name="access_code" id="access_code" value="' + accessCode + '"><script language="javascript">document.redirect.submit();</script></form>';
-    });
+    // });
                 
     response.send(formbody);
     // request.on('end', function () {
