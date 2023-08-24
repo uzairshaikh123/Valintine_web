@@ -23,11 +23,30 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+const ccavReqHandler = require('./Routes/ccRequestHandler.js');
+const ccavResHandler = require('./Routes/ccResponseHanlder.js');
 
+app.use(express.static('public'));
+app.set('views', __dirname + '/public');
+app.engine('html', require('ejs').renderFile);
+
+
+app.get('/paycc', function (req, res){
+    	res.render('dataFrom.html');
+});
+
+app.post('/ccavRequestHandler', function (request, response){
+	ccavReqHandler.postReq(request, response);
+});
+
+
+app.post('/ccavResponseHandler', function (request, response){
+        ccavResHandler.postRes(request, response);
+});
 
 app.use("/auth",AuthRouter)
-app.use("/ccavRequestHandler",ccRouter)
-app.use("/ccavResponseHandler",postRes)
+// app.use("/ccavRequestHandler",ccRouter)
+// app.use("/ccavResponseHandler",postRes)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
 app.use("/orders",OrdersRoute)
