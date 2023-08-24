@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/auth",AuthRouter)
-app.use("/ccavRequestHandler",ccRouter)
+app.use("/ccavRequestHandler",postReq)
 app.use("/ccavResponseHandler",postRes)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
