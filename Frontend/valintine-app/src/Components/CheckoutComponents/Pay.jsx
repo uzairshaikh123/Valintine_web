@@ -6,44 +6,45 @@ const Pay = () => {
 	const [amt , setamt ] = useState(0)
 	
 	const handle_payments=()=>{
-		let user = JSON.parse(sessionStorage.getItem("userdetails"))
+		// let user = JSON.parse(sessionStorage.getItem("userdetails"))
 		
 		
-		// let data =
-		// {
+		// // let data =
+		// // {
+		// // 	"merchantId": process.env.REACT_APP_merchantId,
+		// // 	"merchantTransactionId": "MT7850590068188104",
+		// // 	"merchantUserId": user?._id,
+		// // 	"amount": amt,
+		// // 	"redirectUrl": "https://valentinesaga.com/orders",
+		// // 	"redirectMode": "POST",
+		// // 	"callbackUrl": "https://webhook.site/callback-url",
+		// // 	"paymentInstrument": {
+		// // 	  "type": "PAY_PAGE"
+		// // 	}
+		// //   }
+		
+		// let data ={
 		// 	"merchantId": process.env.REACT_APP_merchantId,
-		// 	"merchantTransactionId": "MT7850590068188104",
+		// 	"merchantTransactionId": "MT7850590068188103",
 		// 	"merchantUserId": user?._id,
-		// 	"amount": amt,
+		// 	"amount": 10000,
 		// 	"redirectUrl": "https://valentinesaga.com/orders",
 		// 	"redirectMode": "POST",
 		// 	"callbackUrl": "https://webhook.site/callback-url",
+		// 	"mobileNumber": "9999999991",
 		// 	"paymentInstrument": {
 		// 	  "type": "PAY_PAGE"
 		// 	}
 		//   }
-		
-		let data ={
-			"merchantId": process.env.REACT_APP_merchantId,
-			"merchantTransactionId": "MT7850590068188103",
-			"merchantUserId": user?._id,
-			"amount": 10000,
-			"redirectUrl": "https://valentinesaga.com/orders",
-			"redirectMode": "POST",
-			"callbackUrl": "https://webhook.site/callback-url",
-			"mobileNumber": "9999999991",
-			"paymentInstrument": {
-			  "type": "PAY_PAGE"
-			}
-		  }
-		  // axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-			  axios.post(`http://localhost:8080/pay/phonepay`,data).then((res)=>{
-				  	// window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
-				  	console.log(res)
+		//   // axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
+		// 	  axios.post(`http://localhost:8080/pay/phonepay`,data).then((res)=>{
+		// 		  	// window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
+		// 		  	console.log(res)
 				  
-				  }).catch((err)=>{
-					console.log(err.message)
-				  })
+		// 		  }).catch((err)=>{
+		// 			console.log(err.message)
+		// 		  })
+		axios.get(`${process.env.REACT_APP_Backend_url}/paycc`)
 				}
 				useEffect(()=>{
 		         let user =JSON.parse(sessionStorage.getItem("userdetails")) 
