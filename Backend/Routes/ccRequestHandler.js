@@ -25,9 +25,8 @@ ccRouter.post("/", (request,response)=>{
     });
                 
     request.on('end', function () {
-    response?.writeHeader(200, {"Content-Type": "text/html"});
-    response.write(formbody);
-    response.end();
+    
+    response.send(formbody);
     });
     return; 
 })
