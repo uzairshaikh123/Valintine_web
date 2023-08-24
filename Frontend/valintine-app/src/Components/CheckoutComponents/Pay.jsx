@@ -44,7 +44,9 @@ const Pay = () => {
 		// 		  }).catch((err)=>{
 		// 			console.log(err.message)
 		// 		  })
-		axios.get(`${process.env.REACT_APP_Backend_url}/paycc`)
+		axios.get(`${process.env.REACT_APP_Backend_url}/paycc`).then((res)=>{
+			console.log(res.data)
+		})
 				}
 				useEffect(()=>{
 		         let user =JSON.parse(sessionStorage.getItem("userdetails")) 

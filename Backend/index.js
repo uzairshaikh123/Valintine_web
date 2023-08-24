@@ -32,7 +32,7 @@ app.engine('html', require('ejs').renderFile);
 
 
 app.get('/paycc', function (req, res){
-    	res.render('dataFrom.html');
+    	res.render('./public/dataFrom.html');
 });
 
 app.post('/ccavRequestHandler', function (request, response){
