@@ -23,9 +23,9 @@ cancel_url,
 language,
 }
 console.log(obj)
-
- axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`,JSON.stringify(obj)).then((res)=>{
-	console.log(res)
+let data = JSON.stringify(obj)
+ axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`, data).then((res)=>{
+	console.log(res.data)
 }).catch((err)=>{
 console.log(err.message,"error: " + err)
 })

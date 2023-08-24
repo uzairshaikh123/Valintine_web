@@ -5,9 +5,11 @@ var http = require('http'),
 const crypto = require('crypto');
 const express = require('express');
 const ccRouter = express.Router()
+
+
 ccRouter.post("/", (request,response)=>{
 
-    console.log("body",request)
+    console.log("body",request.body)
     
     var encRequest = crypto.createHash('sha256').update(JSON.stringify(request.body)).digest('hex');
     var body = JSON.stringify(request.body),
