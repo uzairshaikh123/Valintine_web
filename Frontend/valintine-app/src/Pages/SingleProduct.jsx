@@ -33,10 +33,10 @@ const SingleProductPage = () => {
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
   let initialPrice = product[0]?.multiple_price?.length > 0
-    ? (+product[0].multiple_price[0].price)
-    : (+product[0]?.price);
+    ? (+(product[0].multiple_price[0].price))
+    : (+(product[0]?.price));
   console.log(typeof (initialPrice))
-  const [selectedPrice, setSelectedPrice] = useState(initialPrice);
+  const [selectedPrice, setSelectedPrice] = useState(initialPrice || 0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const params = useParams();
   const id = params.id;
@@ -46,7 +46,7 @@ const SingleProductPage = () => {
     dispatch(handlegetproducts());
 
   }, []);
-  console.log("select", selectedPrice)
+  // console.log("select", selectedPrice)
   useEffect(() => {
     let findproduct = products.filter((el) => {
       return el._id === id;
@@ -99,7 +99,7 @@ const SingleProductPage = () => {
     });
   };
   const handleButtonClick = (index) => {
-    setSelectedPrice(product[0]?.multiple_price[index]?.price || product[0]?.price);
+    setSelectedPrice(parseFloat(product[0]?.multiple_price[index]?.price) || parseFloat(product[0]?.price));
     setSelectedIndex(index)
   }
 
@@ -111,9 +111,10 @@ const SingleProductPage = () => {
 
   const handleCheckboxChange = (event, name, price) => {
     const checkboxChecked = event.target.checked;
-    const checkboxPrice = checkboxChecked ? (+price) : 0;
-    setSelectedPrice(prevPrice => prevPrice + checkboxPrice);
-    console.log(+(selectedPrice))
+    const checkboxPrice = checkboxChecked ? (+price) : (-price);
+    const newprice=selectedPrice>0?selectedPrice:initialPrice
+    setSelectedPrice(newprice+checkboxPrice);
+    // console.log(+(initialPrice))
   };
 
   return loading ? (
