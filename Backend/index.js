@@ -36,6 +36,7 @@ app.engine('html', require('ejs').renderFile);
 // });
 
 app.post('/ccavRequestHandler', function (request, response){
+  console.log("indexjs 39",request.body)
 	ccavReqHandler.postReq(request, response);
 });
 
