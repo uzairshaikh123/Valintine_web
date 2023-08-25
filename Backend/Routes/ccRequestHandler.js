@@ -2,6 +2,7 @@ var http = require('http'),
     fs = require('fs'),
     ccav = require('./ccutils.js'),
     qs = require('querystring');
+require("dotenv").config();
 
 exports.postReq = function(request,response){
     console.log("body line 7",request.body)
@@ -18,7 +19,7 @@ exports.postReq = function(request,response){
     });
 				
     request.on('end', function () {
-        response.writeHeader(200, {"Content-Type": "text/html"});
+    response.writeHeader(200, {"Content-Type": "text/html"});
 	response.write(formbody);
 	response.end();
     });

@@ -14,10 +14,10 @@ const AwsRouter = require('./Routes/AwsRoute')
 const TestimonialRouter = require('./Routes/Testimonials')
 const payrouter = require('./Routes/payment')
 const totalRouter = require('./Routes/TotalRoute')
-const { postReq } = require('./Routes/ccRequestHandler')
-const { postRes } = require('./Routes/ccResponseHanlder')
-const ccRequestHandler = require('./Routes/ccRequestHandler')
-const ccRouter = require('./Routes/ccRequestHandler')
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -31,9 +31,9 @@ app.set('views', __dirname + '/public');
 app.engine('html', require('ejs').renderFile);
 
 
-app.get('/paycc', function (req, res){
-    	res.render('./public/dataFrom.html');
-});
+// app.get('/paycc', function (req, res){
+//     	res.render('./public/dataFrom.html');
+// });
 
 app.post('/ccavRequestHandler', function (request, response){
 	ccavReqHandler.postReq(request, response);
@@ -43,6 +43,8 @@ app.post('/ccavRequestHandler', function (request, response){
 app.post('/ccavResponseHandler', function (request, response){
         ccavResHandler.postRes(request, response);
 });
+
+
 
 app.use("/auth",AuthRouter)
 // app.use("/ccavRequestHandler",ccRouter)

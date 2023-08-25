@@ -2,6 +2,7 @@ var http = require('http'),
     fs = require('fs'),
     ccav = require('./ccutils.js'),
     qs = require('querystring');
+require("dotenv").config();
 
 exports.postRes = function(request,response){
     var ccavEncResponse='',
