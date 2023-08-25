@@ -5,7 +5,7 @@ var http = require('http'),
 require("dotenv").config();
 
 exports.postReq = function(request,response){
-    console.log("body line 7",request.body)
+    console.log("body line 7",request.body,request.body.order_id)
     var body = request.body,
 	workingKey = process.env.Working_Key,	//Put in the 32-Bit key shared by CCAvenues.
 	accessCode = process.env.Access_key_cc,			//Put in the Access Code shared by CCAvenues.
