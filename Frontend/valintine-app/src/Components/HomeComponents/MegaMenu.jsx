@@ -33,7 +33,7 @@ const MegaMenu = () => {
         "Candlelight Dinners in NCR",
         "Private Candlelight Dinners",
         "Lunch Specials",
-        "Private Movie &amp; Dinners",
+        "Private Movie And Dinners",
         "Cabana Dining Experience",
         "Dining at 5 Star Properties",
         "Outdoor Candlelight Dining",

@@ -18,7 +18,7 @@ const Products = () => {
     dispatch(handlegetproducts());
   }, []);
 
-  
+
 
   return (
     <div>

@@ -34,7 +34,6 @@ const Home = () => {
     <>
       <Navbardropdown />
       <div style={{ overflow: "hidden" }}>
-
         {/* <MenuBar/> */}
 
         <Header />
