@@ -178,6 +178,7 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ], },
+      
     { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Please+(1).png",title: "Occasions",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
