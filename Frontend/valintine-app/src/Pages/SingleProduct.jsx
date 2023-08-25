@@ -33,18 +33,20 @@ const SingleProductPage = () => {
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
   let initialPrice = product[0]?.multiple_price?.length > 0
-    ? product[0].multiple_price[0].price
-    : product[0]?.price;
+    ? (+product[0].multiple_price[0].price)
+    : (+product[0]?.price);
+  console.log(typeof (initialPrice))
   const [selectedPrice, setSelectedPrice] = useState(initialPrice);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const params = useParams();
   const id = params.id;
   const dispatch = useDispatch();
   console.log(product[0])
   useEffect(() => {
     dispatch(handlegetproducts());
-    
-  }, []);
 
+  }, []);
+  console.log("select", selectedPrice)
   useEffect(() => {
     let findproduct = products.filter((el) => {
       return el._id === id;
@@ -96,25 +98,22 @@ const SingleProductPage = () => {
       }
     });
   };
-  let selectedIndex = 0;
   const handleButtonClick = (index) => {
     setSelectedPrice(product[0]?.multiple_price[index]?.price || product[0]?.price);
-    const buttonContainer = document.getElementById('button-container');
-    const buttons = buttonContainer.querySelectorAll('.weight-buttons');
-
-    buttons[selectedIndex].classList.remove('selected');
-    buttons[selectedIndex].classList.add('unselected');
-
-    buttons[index].classList.remove('unselected');
-    buttons[index].classList.add('selected');
-
-    selectedIndex = index;
+    setSelectedIndex(index)
   }
- 
+
   const handlePincodeChange = (event) => {
     const newPincode = event.target.value.trim();
     setPincode(newPincode);
     setIsDatePickerEnabled(product[0]?.pincodes?.includes(newPincode));
+  };
+
+  const handleCheckboxChange = (event, name, price) => {
+    const checkboxChecked = event.target.checked;
+    const checkboxPrice = checkboxChecked ? (+price) : 0;
+    setSelectedPrice(prevPrice => prevPrice + checkboxPrice);
+    console.log(+(selectedPrice))
   };
 
   return loading ? (
@@ -202,38 +201,49 @@ const SingleProductPage = () => {
                     </p> :
                       ""
                   }
-
                   <div id="button-container" style={{ display: "flex", gap: "10px" }}>
                     {product[0]?.multiple_price?.map((spec, index) => (
                       <button
                         key={index}
                         id={`button-${index}`}
-                        class={`weight-buttons ${index === 0 ? 'selected' : 'unselected'}`}
-                        // data-weight={spec.weight}
-                        // data-price={spec.price}
-                        onClick={() => handleButtonClick(`${index}`)} >
+                        className={`weight-buttons ${selectedIndex == index ? 'selected' : 'unselected'}`}
+                        onClick={() => handleButtonClick(`${index}`)}>
                         {spec?.weight} kg
                       </button>
                     ))}
                   </div>
                 </div>
               </div>
-              {
+              {/* {
                 product[0]?.category =="cakes" ? <div style={{ display: "flex" }} className="cakecategory">
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={handleCheckboxChange}/>
                     <span>Eggless</span>
                   </div>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={handleCheckboxChange}/>
                     <span>Heart Shape</span>
                   </div>
                 </div> :
                   ""
-              }
+              } */}
+              {product[0]?.category == "cakes" && (<div style={{ display: "flex" }} className="cakecategory">
+                {
+                  product[0]?.Product_category?.map(item => (
+                    <div key={item.name} >
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleCheckboxChange(e, item.name, item.price)}
+                      />
+                      <span>{item.name}</span>
+                    </div>
+                  ))
+                }
+
+              </div>)}
 
               {
-                product[0]?.category ==="cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                product[0]?.category === "cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
                   <input type="text" placeholder="Product Message" />
                 </div> : ""
               }
@@ -262,7 +272,7 @@ const SingleProductPage = () => {
                   minWidth: "100%",
                 }}
               >
-                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product}/>
+                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product} />
               </div>
               <div id="cart-buttons">
                 <button
@@ -317,7 +327,7 @@ const SingleProductPage = () => {
           </div>
 
           <div>
-            <PlayerComponent VIDEO_PATH={product[0]?.video_link}/>
+            <PlayerComponent VIDEO_PATH={product[0]?.video_link} />
           </div>
 
           <div></div>
