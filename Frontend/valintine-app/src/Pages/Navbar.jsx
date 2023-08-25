@@ -11,7 +11,7 @@ import { Button, IconButton, Menu, MenuItem } from "@chakra-ui/react";
 import { HiShoppingCart } from 'react-icons/hi'
 import { useSearchParams } from "react-router-dom";
 import SearchResults from "./SearchResults";
-
+import Swal from "sweetalert2";
 function Navbar({ cartcount }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCity = sessionStorage.getItem("cityname")?.toLowerCase()
@@ -44,22 +44,25 @@ function Navbar({ cartcount }) {
     setSelectedProduct(product);
   };
   const handlelogout = () => {
-    let t = sessionStorage.setItem("token", "");
-    // let user = JSON.parse(sessionStorage.getItem("userdetails"))
-    // console.log("t", t);
-    dispatch({ type: "logout" });
-    // dispatch(handlegetcartproducts(user?._id))
-    window.location.reload();
-    return navigate("/login");
+    sessionStorage.setItem("token", "");
+    Swal.fire(
+      'Good job!',
+      'Logut Successfully',
+      'success'
+    )
+    setTimeout(() => {
+      window.location.reload();
+    }, [1000])
+
   };
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchResultsRef.current && !searchResultsRef.current.contains(event.target)) {
         setResults([]); // Clear search results when clicking outside
       }
     };
-    
+
     // Add event listener to window
     window.addEventListener("click", handleClickOutside);
 
@@ -67,9 +70,9 @@ function Navbar({ cartcount }) {
     return () => {
       window.removeEventListener("click", handleClickOutside);
     };
-  },[])
+  }, [])
   useEffect(() => {
-   
+
     setitems(cart?.length);
 
     // setSearchParams({ city: initialCity }); // Use the city state variable
@@ -141,13 +144,13 @@ function Navbar({ cartcount }) {
         </div> */}
         </div>
         <div className="navbar-options">
-          {token === "" && (
-            <Link to={"/login"}>
-              <a href="#" className="login-nav location">
-                Login
-              </a>
+          {token === "" ? (
+            <Link to={"/login"} className="login-nav location">
+              Login
             </Link>
-          )}
+          ) : <Link to={"/login"} className="login-nav location" onClick={handlelogout}>
+            Logout
+          </Link>}
 
           <Link to={"/cart"}>
             <a href="#" className="cart-nav location">

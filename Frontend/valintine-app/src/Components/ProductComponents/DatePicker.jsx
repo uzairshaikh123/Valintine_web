@@ -8,11 +8,9 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isSlotModalOpen, setIsSlotModalOpen] = useState(false);
   const [selectedSlotText, setSelectedSlotText] = useState("");
-  // const [selectedSlot, setSelectedSlot] = useState(null);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure()
   
-  console.log(isDatePickerEnabled)
+  // console.log(isDatePickerEnabled)
   const closeSlotModal = () => {
     setIsSlotModalOpen(false);
   };
@@ -52,8 +50,8 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
         dateFormat="dd/MM/yyyy"
         withPortal
         minDate={Date.now()}
-        disabled={!isDatePickerEnabled}
-        className={isDatePickerEnabled ? "" : "disabled-date-picker"}
+        disabled={product[0]?.category=="candlelight dinner"&& !isDatePickerEnabled}
+        className={product[0]?.category=="candlelight dinner"&& !isDatePickerEnabled ?"disabled-date-picker":""}
       />
       {/* <Modal isOpen={isModalOpen} onClose={closeModal} isCentered>
         <ModalOverlay />
