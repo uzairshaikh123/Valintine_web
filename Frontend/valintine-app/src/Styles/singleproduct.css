@@ -104,15 +104,18 @@
 }
 
 .selected {
-  background-color: pink;
+  background-color: rgb(243, 80, 142);
 }
 
 .unselected {
   background-color: gray;
 }
-/* .weight-buttons.active.selected {
-  background-color: pink !important;
-} */
+.selected:hover {
+  background: rgb(194, 50, 105);
+}
+.unselected:hover {
+  background-color: rgb(104, 80, 80);
+}
 #cart-buttons > button {
   border-radius: 8px;
   width: 45%;

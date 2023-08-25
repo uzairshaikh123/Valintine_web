@@ -5,6 +5,53 @@ import { Navbropdowncon } from "./Navbropdowncon";
 
 let titles = [
   {
+    image: "", title: "Cakes",
+    subtitles: [
+      {
+        subsubtile: "Birthday Cake",
+        subsubdata: [
+          "1st Anniversary Cakes",
+          "Truffle Cakes",
+          "Chocolate Cakes",
+          "Black Forest Cakes",
+          "Butterscotch Cakes",
+          "Pineapple Cakes",
+          "Photo Cakes",
+          "Designer Cakes",
+          "Dry Cakes"
+        ]
+      },
+      {
+        subsubtile: "Anniversary Cakes",
+        subsubdata: [
+          "25th Anniversary",
+          "Dry Cakes",
+          "Chocolate Cakes",
+          "Designer Cakes",
+          "Black Forest Cakes",
+          "Butterscotch Cakes",
+          "Truffle Cakes",
+          "Photo Cakes",
+          "Pineapple Cakes",
+        ]
+      },
+      {
+        subsubtile: "Kid's Birthday Cakes",
+        subsubdata: [
+          "Butterscotch Cakes",
+          "Black Forest Cakes",
+          "Chocolate Cakes",
+          "Dry Cakes",
+          "Designer Cakes",
+          "Pineapple Cakes",
+          "Truffle Cakes",
+          "Photo Cakes",
+          "25th Anniversary",
+        ]
+      },
+    ],
+  },
+  {
     image: "",
     title: "Kids Celebrations",
     subtitles: [
@@ -367,6 +414,7 @@ let titles = [
       },
     ],
   },
+ 
 ];
 
 export const Navbardropdown = () => {
