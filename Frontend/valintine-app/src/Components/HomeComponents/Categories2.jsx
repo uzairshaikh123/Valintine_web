@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./category2.css" 
 import { Link } from 'react-router-dom'
-const Categories2 = () => {
+import {useSearchParams} from "react-router-dom"
 
+const Categories2 = () => {
+  const [searchParams,setSearchParams]=useSearchParams()
+  const cityname=searchParams.get("city")
+  const [city,setCity]=useState(cityname || "delhi")
+  useEffect(()=>{
+    let params={
+      city
+    }
+    setSearchParams(params)
+  },[city])
     let cards=[
         {category:"Balloons & Bouquet",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Balloons+%26+Bouquet.png"},
         {category:"bacholorette decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/bacholorette+decoration.png"},
@@ -23,7 +33,7 @@ const Categories2 = () => {
 {cards.map((el)=>{
 
       return <div>
-        <Link to={`products?category=${el.category}`}>
+        <Link to={`products?city=${cityname}&category=${el.category}`}>
         <img className='cat2-img' src={el.img} alt="" />
         </Link>
       </div>

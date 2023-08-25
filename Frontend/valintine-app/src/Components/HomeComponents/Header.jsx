@@ -45,7 +45,7 @@ const Header = () => {
   };
   let titles = [
     {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",
+      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/celebration-with-confetti-party-icon_51486-28.jpg",
       title: "Kids Celebrations",
       subtitles: [
         "Kids Birthday Decoration",
@@ -75,7 +75,7 @@ const Header = () => {
       ],
     },
     {
-        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png",
+        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/balloon_decoration-removebg-preview-1.png",
       title: "Decorations",
       subtitles: [
         "Balloon Decorations",
@@ -92,7 +92,7 @@ const Header = () => {
         "Ganesh Chaturthi Decorations"
       ],
     },
-    {image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/balloon_decoration-removebg-preview-1.png", title: "Anniversary Celebrations", subtitles: [
+    {image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/couple.png", title: "Anniversary Celebrations", subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -134,7 +134,37 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",title: "Gifts & Surprises",subtitles: [
+      {
+        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",
+        title: "Cakes",
+        subtitles: [
+          "Kids Birthday Decoration",
+          "Welcome Baby Decorations",
+          "Baby Shower Decorations",
+          "Birthday Activities",
+          "Naming Ceremony Decorations",
+          "Themed Birthday Cakes",
+          "1st Birthday Decorations",
+          "Balloon Bouquets",
+          "Annaprashan Decorations",
+        ],
+      },
+      {
+        image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/flower.jfif",
+        title: "Flowers",
+        subtitles: [
+          "Kids Birthday Decoration",
+          "Welcome Baby Decorations",
+          "Baby Shower Decorations",
+          "Birthday Activities",
+          "Naming Ceremony Decorations",
+          "Themed Birthday Cakes",
+          "1st Birthday Decorations",
+          "Balloon Bouquets",
+          "Annaprashan Decorations",
+        ],
+      },
+    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png",title: "Gifts & Surprises",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -148,7 +178,8 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ], },
-    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",title: "Occasions",subtitles: [
+      
+    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Please+(1).png",title: "Occasions",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -195,7 +226,7 @@ const Header = () => {
     // autoPlaySpeed={3000}
     >
       {titles?.map((el)=>{
-        return  <Link to={`?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
+        return  <Link to={`products?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
     <div className='headers-div' onClick={()=>handleClick(el.title)} >
         <img style={{height:"50%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
         <p>{el.title}</p>
