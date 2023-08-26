@@ -29,10 +29,10 @@ BlogRouter.post('/add', AdminMiddleware, async (req, res) => {
 
 
 })
-BlogRouter.post('/update', AdminMiddleware, async (req, res) => {
-
+BlogRouter.patch('/update/:id', AdminMiddleware, async (req, res) => {
+const {id} = req.params
     try {
-        let newproduct = await BlogModel.findByIdAndUpdate(req.body)
+        let newproduct = await BlogModel.findByIdAndUpdate({_id:id},req.body)
      
         res.status(200).send({"msg":"Blog Updated",data:newproduct})
     } catch (error) {

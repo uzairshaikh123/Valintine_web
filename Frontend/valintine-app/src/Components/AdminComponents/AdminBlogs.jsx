@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handlegetproducts } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import AddBlogs from "./AddBlogs";
 
 const AdminBlogs= () => {
 
@@ -23,6 +24,7 @@ console.log(products);
 
   return (
     <>
+    <Button><AddBlogs/></Button>
     <TableContainer style={{minWidth:"100%",border:"1px solid red",overflow:"hidden"}}>
       <Table>
         <Thead>

@@ -9,6 +9,7 @@ import AdminProducts from "./AdminProducts";
 import AdminDash from "./AdminDash";
 import Sliders from "./Sliders";
 import Testimonilas from "./Testimonilas";
+import AdminBlogs from "./AdminBlogs";
 const MainAdmin = () => {
   const dispatch = useDispatch();
   const [users,setusers] = useState([])
@@ -248,7 +249,7 @@ const MainAdmin = () => {
           </ul>
                          }
 
-{active_title==="Testimonials"?<Testimonilas/>:active_title==="Sliders"?<Sliders/>:active_title==="Customers"?<Customers/>:active_title==="Orders"?<AdminOrders/>:active_title==="Products"?<AdminProducts/>:<AdminDash />}
+{active_title==="Blogs"?<AdminBlogs />:active_title==="Testimonials"?<Testimonilas/>:active_title==="Sliders"?<Sliders/>:active_title==="Customers"?<Customers/>:active_title==="Orders"?<AdminOrders/>:active_title==="Products"?<AdminProducts/>:<AdminDash />}
 
 
 
