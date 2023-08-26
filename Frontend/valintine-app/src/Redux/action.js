@@ -429,10 +429,26 @@ export const handle_delete_product_by_admin = (id) => (dispatch) => {
 
 
 export const handle_edit_product_by_admin = (id,data) => (dispatch) => {
+  console.log(data,id)
   dispatch({ type: types.LOADING });
-
+  function stringify(obj) {
+    let cache = [];
+    let str = JSON.stringify(obj, function(key, value) {
+      if (typeof value === "object" && value !== null) {
+        if (cache.indexOf(value) !== -1) {
+          // Circular reference found, discard key
+          return;
+        }
+        // Store value in our collection
+        cache.push(value);
+      }
+      return value;
+    });
+    cache = null; // reset the cache
+    return str;
+  }
   return axios
-    .patch(`${process.env.REACT_APP_Backend_url}/products/update/${id}`,data,{
+    .patch(`${process.env.REACT_APP_Backend_url}/products/update/${id}`,stringify(data),{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),

@@ -42,7 +42,7 @@ function TemporaryDrawer() {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Image src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png" alt="" />
+            <Image style={{height:"200px"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png" alt="" />
           </DrawerHeader>
 
           <DrawerBody

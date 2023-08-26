@@ -109,8 +109,9 @@ function Navbar({ cartcount }) {
             <img
               className="logo"
               id={"comp-logo"}
-              style={{ width: "140px", height: "48px" }}
-              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
+              style={{ width: "140px", height: "auto" }}
+              // src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
+              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png"}
               alt=""
             />
           </Link>
