@@ -51,7 +51,7 @@ const Blogfrom = () => {
 <label>AUTHOR DESCRIPTION</label>
 <input type="text" placeholder="Type author description" className="author-description"></input>
 
-<label>AUTHOR NAME</label>
+<label>AUTHOR NAM</label>
 <input type="text" placeholder="Type author name" className="author-name"></input>
 
 <label>AUTHOR DATE</label>
