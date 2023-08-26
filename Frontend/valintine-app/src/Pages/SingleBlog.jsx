@@ -1,7 +1,10 @@
 import React from 'react'
 import '../Styles/singleblog.css'
+import Blogfrom from './Blogfrom'
 const SingleBlog = () => {
   return (
+    <>
+    <Blogfrom />
     <article class="ad5-padding-y-lg">
     <header class="ad5-container ad5-max-width-xs ad5-margin-bottom-lg">
       <div class="ad5-text-component ad5-text-center ad5-line-height-lg ad5-text-gap-md ad5-margin-bottom-md">
@@ -85,7 +88,7 @@ const SingleBlog = () => {
         <figure class="ad5-text-component__block ad5-text-component__block--left">
           <img src="https://cdn.dribbble.com/users/310943/screenshots/2281993/empty-state-illustrations_still_2x.gif?compress=1&resize=400x300" alt="Image description here" />
           <figcaption>Image caption</figcaption>
-        </figure>
+          </figure>
   
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis incidunt minus vero deserunt illum perspiciatis sed sit. Officia, quia at? Nisi dolores quis culpa nulla eveniet? Rem vel numquam ipsa voluptatum voluptate illo minima, temporibus atque officia soluta magnam laborum neque alias consequuntur enim aliquid consequatur non accusamus exercitationem. Perspiciatis dolorem a commodi alias, ad corporis iusto magnam in quae deleniti incidunt facilis voluptatibus. Aliquid reprehenderit, provident, totam necessitatibus cumque vel veniam consequuntur maxime iure accusamus explicabo recusandae neque quas?</p>
   
@@ -101,6 +104,7 @@ const SingleBlog = () => {
       </div>
     </div>
   </article>
+  </>
   )
 }
 

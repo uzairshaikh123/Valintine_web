@@ -1,9 +1,12 @@
 import React from 'react'
 import "../Styles/blogs.css";
+
 import { Link } from 'react-router-dom';
+import Blogfrom from './Blogfrom';
 const Blogs = () => {
   return (
     <>
+   
     <div class='container container-flex'>
         <div class='site-title'>
           {/* <h1>Living The Social Life</h1> */}
