@@ -26,7 +26,6 @@ function TemporaryDrawer() {
     window.location.reload()
   };
   let tokenValue = sessionStorage.getItem("token") || ""
-  console.log(tokenValue)
   return (
     <>
       <Button ref={btnRef} onClick={onOpen} colorScheme='white'>

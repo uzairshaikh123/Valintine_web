@@ -28,7 +28,7 @@ const MenuBar = () => {
         },
         {
             image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/cd.webp",
-          title: "Candlelight Dinners",
+          title: "Candlelight Dinner",
           subtitles: [
             "Candlelight Dinners in NCR",
             "Private Candlelight Dinners",

@@ -67,7 +67,29 @@ export const handlegetproducts = () => (dispatch) => {
     });
 };
 
+export const handlegetfilterproducts = (city,category) => (dispatch) => {
 
+  dispatch({ type: types.LOADING });
+// console.log(process.env.REACT_APP_Backend_url)
+  return axios
+    .get(`http://localhost:8080/products/?city=${city}&category=${category}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: Cookies.get("token"),
+      },
+    })
+    .then((res) => {
+      // console.log(res.data);
+
+      dispatch({ type: types.GETPRODUCTS, payload: res.data.data });
+
+      return res;
+    })
+    .catch((err) => {
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
 
 export const handlegetcartproducts = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
