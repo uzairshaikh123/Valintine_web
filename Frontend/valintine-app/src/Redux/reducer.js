@@ -8,6 +8,7 @@ const initstate = {
   products: [],
   token: sessionStorage.getItem("token") || "",
   orders:[],
+  blogs:[],
   admin_token:sessionStorage.getItem("admin_token") || "",
 };
 
@@ -93,6 +94,18 @@ export const reducer = (state = initstate, { type, payload }) => {
     }
     case types.HANDLE_DELETE_SLIDERS_IMAGES: {
       return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_DELETE_BLOGS: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_ADD_BLOGS: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_EDIT_BLOGS: {
+      return { ...state,error:false,loading:false};
+    }
+    case types.HANDLE_GET_BLOGS: {
+      return { ...state,error:false,loading:false,blogs:payload};
     }
     default: {
       return { ...state };

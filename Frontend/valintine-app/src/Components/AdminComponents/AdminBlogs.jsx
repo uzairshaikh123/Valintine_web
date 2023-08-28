@@ -24,7 +24,7 @@ console.log(products);
 
   return (
     <>
-    <Button><AddBlogs/></Button>
+   <AddBlogs/>
     <TableContainer style={{minWidth:"100%",border:"1px solid red",overflow:"hidden"}}>
       <Table>
         <Thead>

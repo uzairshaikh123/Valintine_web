@@ -366,14 +366,77 @@ export const handle_get_all_blogs = () => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .get(`${process.env.REACT_APP_Backend_url}/auth/all`,{
+    .get(`${process.env.REACT_APP_Backend_url}/blogs/all`,{
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_GET_BLOGS ,payload:res.data.data});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+export const handle_add_blog = (data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .post(`${process.env.REACT_APP_Backend_url}/blogs/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
-      dispatch({ type: types.GET_ALL_ORDERS ,payload:res.data.data});
+      dispatch({ type: types.HANDLE_ADD_BLOGS ,payload:res.data.data});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+
+
+
+export const handle_edit_blog = (id,data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .patch(`${process.env.REACT_APP_Backend_url}/blogs/update/${id}`,data,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_EDIT_BLOGS});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_delete_blog = (id,data) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .delete(`${process.env.REACT_APP_Backend_url}/blogs/delete/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        authorization: sessionStorage.getItem("admin_token"),
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_DELETE_BLOGS});
       return res;
     })
     .catch((err) => {
