@@ -348,6 +348,8 @@ export const handle_get_all_users = () => (dispatch) => {
       return err;
     });
 };
+
+
 export const handle_admin_login = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
@@ -643,6 +645,9 @@ export const handle_addtestimonial_Image_by_admin = (data) => (dispatch) => {
       return err;
     });
 };
+
+
+
 export const handle_deleteslider_Image_by_admin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
