@@ -54,13 +54,8 @@ console.log(blog)
   
        <p>{blog?.blogdescription}</p>
   
-        
-  
-  
-  
         <hr />
-  
-  
+
         <figure class="ad5-text-component__block">
           <img src={`${blog?.subimage1}`} alt="Image description here" />
           {/* <figcaption>Image caption</figcaption> */}
