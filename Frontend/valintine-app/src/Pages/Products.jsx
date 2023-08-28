@@ -3,23 +3,26 @@ import ProductCard from "../Components/ProductComponents/ProductCard";
 import "../Styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {useSearchParams} from "react-router-dom"
+
 // import SliderComp from "../Components/ProductComponents/Slidercomp";
 // import SelectSmall from "../Components/ProductComponents/SelectComp";
 // import SortComp from "../Components/ProductComponents/SortComp";
 import { Hearts } from "react-loader-spinner";
-import { handlegetproducts } from "../Redux/action";
+import { handlegetfilterproducts, handlegetproducts } from "../Redux/action";
 const Products = () => {
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, products } = store;
-
-
+  const [searchParams,setSearchParams]=useSearchParams()
+  const cityname=searchParams.get("city")
+  const initialCategory=searchParams.get("category")
+  // console.log(cityname,initialCategory)
   useEffect(() => {
-    dispatch(handlegetproducts());
-  }, []);
+    dispatch(handlegetfilterproducts(cityname, initialCategory));
+  }, [cityname, initialCategory]);
 
-
-
+console.log(cityname,initialCategory)
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>

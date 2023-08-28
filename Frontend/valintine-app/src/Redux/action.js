@@ -43,12 +43,47 @@ export const handleSignup = (data) => (dispatch) => {
     });
 };
 
-export const handlegetproducts = () => (dispatch) => {
+// export const handlegetproducts = () => (dispatch) => {
+
+//   dispatch({ type: types.LOADING });
+// // console.log(process.env.REACT_APP_Backend_url)
+//   return axios
+//     .get(`${process.env.REACT_APP_Backend_url}/products/all`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//         authorization: Cookies.get("token"),
+//       },
+//     })
+//     .then((res) => {
+//       // console.log(res.data);
+
+//       dispatch({ type: types.GETPRODUCTS, payload: res.data.data });
+
+//       return res;
+//     })
+//     .catch((err) => {
+//       dispatch({ type: types.ERROR });
+//       return err;
+//     });
+// };
+
+export const handlegetfilterproducts = (city,category) => (dispatch) => {
 
   dispatch({ type: types.LOADING });
 // console.log(process.env.REACT_APP_Backend_url)
+  let url = `${process.env.REACT_APP_Backend_url}/products/`;
+  if (city && category) {
+    url += `?city=${city}&category=${category}`;
+  }
+  else if (city) {
+    url += `?city=${city}`;
+  }
+  else{
+    url+= `all`
+  }
+   
   return axios
-    .get(`${process.env.REACT_APP_Backend_url}/products/all`, {
+    .get(url, {
       headers: {
         "Content-Type": "application/json",
         authorization: Cookies.get("token"),
@@ -66,8 +101,6 @@ export const handlegetproducts = () => (dispatch) => {
       return err;
     });
 };
-
-
 
 export const handlegetcartproducts = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
