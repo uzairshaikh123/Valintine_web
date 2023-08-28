@@ -14,6 +14,15 @@ BlogRouter.get('/all', async (req, res) => {
         }
 
 })
+BlogRouter.get('/:id', async (req, res) => {
+    try {
+        let allproducts = await  BlogModel.find({_id:req.params.id})
+        res.status(200).send({"msg":"Single Blog",data:allproducts})
+    } catch (error) {
+        res.status(500).send({"msg":error.message})
+        }
+
+})
 
 
 BlogRouter.post('/add', AdminMiddleware, async (req, res) => {

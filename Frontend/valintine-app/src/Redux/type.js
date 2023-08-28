@@ -28,3 +28,7 @@ export const HANDLE_ADD_SLIDER_IMAGES = "add/sliderimages/byadmin";
 export const HANDLE_ADD_TESTIMONIAL_IMAGES = "add/testimonialimages/byadmin";
 export const HANDLE_DELETE_SLIDERS_IMAGES = "delete/slidersimages/byadmin";
 export const HANDLE_DELETE_TESTIMONIALS_IMAGES = "delete/testimonialimages/byadmin";
+export const HANDLE_ADD_BLOGS = "add/blog/byadmin";
+export const HANDLE_DELETE_BLOGS = "delete/blog/byadmin";
+export const HANDLE_EDIT_BLOGS = "edit/blog/byadmin";
+export const HANDLE_GET_BLOGS = "get/blog/byadmin";
