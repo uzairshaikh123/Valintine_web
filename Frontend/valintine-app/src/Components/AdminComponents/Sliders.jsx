@@ -6,6 +6,7 @@ import { Button, Table, TableContainer, Td, Th, Thead, Tr, Modal, ModalOverlay, 
 const Sliders = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl,setImageUrl]=useState("")
+  const [category,setcategory]=useState("")
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, allproducts } = store;
@@ -16,17 +17,22 @@ const Sliders = () => {
   }, []);
   // console.log(allproducts);
 
-  const handleaddsliderImage = (url) => {
-    dispatch(handle_addslider_Image_by_admin(url)).then((res) => {
+  const handleaddsliderImage = () => {
+    let obj={
+      images:imageUrl,category
+          }
+    console.log(obj)
+    dispatch(handle_addslider_Image_by_admin(obj)).then((res) => {
       if (res.status == 200 || res.status == 201) {
         alert("Image Added")
       } else {
         alert("error")
       }
     })
+    onClose()
   }
-  const handledeletesliderImage = () => {
-    dispatch(handle_deleteslider_Image_by_admin()).then((res) => {
+  const handledeletesliderImage = (id) => {
+    dispatch(handle_deleteslider_Image_by_admin(id)).then((res) => {
       if (res.status == 200 || res.status == 201) {
         alert("Image Added")
       } else {
@@ -62,7 +68,7 @@ const Sliders = () => {
                 <Td>{item.price}</Td>
 
                 <Td>
-                  <Button>DELETE</Button>
+                  <Button onClick={()=>handledeletesliderImage(item?._id)}>DELETE</Button>
                 </Td>
               </Tr>
             ))}
@@ -79,13 +85,14 @@ const Sliders = () => {
           <ModalCloseButton />
           <ModalBody>
           <Input variant='filled' placeholder='Add Image Url' onChange={(e)=>setImageUrl(e.target.value)}/>
+          <Input mt={'10px'} variant='filled' placeholder='Add Category' onChange={(e)=>setcategory(e.target.value)}/>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button colorScheme='blue' onClick={()=>handleaddsliderImage(imageUrl)}>Add</Button>
+            <Button colorScheme='blue' onClick={()=>handleaddsliderImage()}>Add</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

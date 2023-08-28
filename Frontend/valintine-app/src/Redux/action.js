@@ -625,7 +625,7 @@ export const handle_addtestimonial_Image_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`${process.env.REACT_APP_Backend_url}/orders/sliders/add`,data,{
+    .post(`${process.env.REACT_APP_Backend_url}/testimonials/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -648,7 +648,7 @@ export const handle_deleteslider_Image_by_admin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .delete(`${process.env.REACT_APP_Backend_url}/orders/sliders/delete/${id}`,{
+    .delete(`${process.env.REACT_APP_Backend_url}/sliders/delete/${id}`,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -669,7 +669,7 @@ export const handle_deletetestimonials_Image_by_admin = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .delete(`${process.env.REACT_APP_Backend_url}/orders/testimonials/delete/${id}`,{
+    .delete(`${process.env.REACT_APP_Backend_url}/testimonials/delete/${id}`,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),
@@ -677,6 +677,46 @@ export const handle_deletetestimonials_Image_by_admin = (id) => (dispatch) => {
     })
     .then((res) => {
       dispatch({ type: types.HANDLE_DELETE_TESTIMONIALS_IMAGES});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_getestimonials_Image_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/testimonials/all`,{
+      headers: {
+        "Content-Type": "application/json",
+       
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_GET_TESTIMONIALS});
+      return res;
+    })
+    .catch((err) => {
+      console.log(err.message)
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
+export const handle_getsliders_Image_by_admin = (id) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/sliders/all`,{
+      headers: {
+        "Content-Type": "application/json",
+       
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.HANDLE_GET_SLIDERS});
       return res;
     })
     .catch((err) => {
