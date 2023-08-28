@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   handleaddcartproduct,
   handlegetcartproducts,
+  handlegetfilterproducts,
   handlegetproducts,
 } from "../Redux/action";
 import AboutProduct from "../Components/ProductComponents/AboutProduct";
@@ -43,7 +44,7 @@ const SingleProductPage = () => {
   const dispatch = useDispatch();
   console.log(product[0])
   useEffect(() => {
-    dispatch(handlegetproducts());
+    dispatch(handlegetfilterproducts());
 
   }, []);
   // console.log("select", selectedPrice)

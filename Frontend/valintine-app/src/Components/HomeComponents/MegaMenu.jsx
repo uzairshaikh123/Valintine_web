@@ -28,7 +28,7 @@ const MegaMenu = () => {
     },
     {
         image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/candle-light-dinner-character_15624-160-removebg-preview.png",
-      title: "Candlelight Dinners",
+      title: "Candlelight Dinner",
       subtitles: [
         "Candlelight Dinners in NCR",
         "Private Candlelight Dinners",

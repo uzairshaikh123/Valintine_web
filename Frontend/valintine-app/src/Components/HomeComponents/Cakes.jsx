@@ -3,12 +3,16 @@ import BookehCard from './BookehCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { handlegetproducts } from '../../Redux/action';
+import { handlegetfilterproducts, handlegetproducts } from '../../Redux/action';
 import { Hearts } from 'react-loader-spinner';
+import {useSearchParams} from "react-router-dom"
 
 
 
 const Cakes = () => {
+  const [searchParams,setSearchParams]=useSearchParams()
+  const cityname=searchParams.get("city")
+
   const [cake , setcake ] = useState([])
   const responsive = {
     desktop: {
@@ -46,12 +50,12 @@ const Cakes = () => {
     }
   };
 
-  const store = useSelector(store=>store)
+const store = useSelector(store=>store)
 const {products,loading} = store
 const dispatch = useDispatch()
 useEffect(()=>{
 
-dispatch(handlegetproducts()).then((res)=>{
+dispatch(handlegetfilterproducts(cityname)).then((res)=>{
   let filterdata = res?.data?.data?.filter((el)=>{
     return el.category==="cakes"
 
@@ -59,7 +63,7 @@ dispatch(handlegetproducts()).then((res)=>{
   setcake(filterdata)
 })
 
-},[])
+},[cityname])
 
       
     
