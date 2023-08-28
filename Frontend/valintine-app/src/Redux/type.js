@@ -1,4 +1,5 @@
 export const GETPRODUCTS = "getproducts";
+export const GETALLPRODUCTS="GETALLPRODUCTS"
 export const GETCARTPRODUCTS = "getcartproducts";
 export const ADDCARTPRODUCTS = "addcartproduct";
 export const DELETECARTPRODUCTS = "deletecartproduct";

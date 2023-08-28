@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_delete_blog, handle_get_all_blogs, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
+import { handle_delete_blog, handle_get_all_blogs } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import AddBlogs from "./AddBlogs";
 
@@ -10,13 +10,13 @@ const AdminBlogs= () => {
 
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
-  const { loading, error, blogs } = store;
+  const { loading, error,blogs } = store;
 
 
   useEffect(() => {
+    // dispatch(handlegetproducts());
     dispatch(handle_get_all_blogs());
   }, []);
-console.log(blogs);
 
 
 const handle_delete = (id)=>{
@@ -53,6 +53,7 @@ const handle_delete = (id)=>{
           </Tr>
         </Thead>
         <tbody>
+
           {blogs?.map((item) => (
             <Tr key={item._id}>
                <Td>

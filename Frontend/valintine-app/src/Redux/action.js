@@ -43,29 +43,29 @@ export const handleSignup = (data) => (dispatch) => {
     });
 };
 
-// export const handlegetproducts = () => (dispatch) => {
+export const handlegetproducts = () => (dispatch) => {
 
-//   dispatch({ type: types.LOADING });
-// // console.log(process.env.REACT_APP_Backend_url)
-//   return axios
-//     .get(`${process.env.REACT_APP_Backend_url}/products/all`, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         authorization: Cookies.get("token"),
-//       },
-//     })
-//     .then((res) => {
-//       // console.log(res.data);
+  dispatch({ type: types.LOADING });
+// console.log(process.env.REACT_APP_Backend_url)
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/products/all`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: Cookies.get("token"),
+      },
+    })
+    .then((res) => {
+      // console.log(res.data);
 
-//       dispatch({ type: types.GETPRODUCTS, payload: res.data.data });
+      dispatch({ type: types.GETALLPRODUCTS, payload: res.data.data });
 
-//       return res;
-//     })
-//     .catch((err) => {
-//       dispatch({ type: types.ERROR });
-//       return err;
-//     });
-// };
+      return res;
+    })
+    .catch((err) => {
+      dispatch({ type: types.ERROR });
+      return err;
+    });
+};
 
 export const handlegetfilterproducts = (city,category) => (dispatch) => {
 
@@ -77,11 +77,7 @@ export const handlegetfilterproducts = (city,category) => (dispatch) => {
   }
   else if (city) {
     url += `?city=${city}`;
-  }
-  else{
-    url+= `all`
-  }
-   
+  }  
   return axios
     .get(url, {
       headers: {
@@ -608,7 +604,7 @@ export const handle_addslider_Image_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`${process.env.REACT_APP_Backend_url}/orders/sliders/add`,data,{
+    .post(`${process.env.REACT_APP_Backend_url}/sliders/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),

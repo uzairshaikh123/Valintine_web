@@ -9,14 +9,12 @@ const TableCompOrders= () => {
 
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
-  const { loading, error, products } = store;
+  const { loading, error, allproducts } = store;
 
 
   useEffect(() => {
-    dispatch(handlegetfilterproducts());
+    dispatch(handlegetproducts());
   }, []);
-console.log(products);
-
 
 
 
@@ -37,7 +35,7 @@ console.log(products);
           </Tr>
         </Thead>
         <tbody>
-          {products?.map((item) => (
+          {allproducts?.map((item) => (
             <Tr key={item._id}>
                <Td>
                <img style={{height:"100%",width:"100%"}} src={item.image[0]} alt="" /> 

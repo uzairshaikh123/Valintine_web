@@ -16,6 +16,8 @@ export default function BasicModal({name}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCity=searchParams.get("city")
   const [city,setCity]=useState(initialCity || "delhi")
+  const initialCategory=searchParams.get("category")
+
   const { isOpen, onClose ,onOpen} = useDisclosure()
 let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
   {name:"Jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},
@@ -68,10 +70,13 @@ let status = sessionStorage.getItem("status") || true
   
   useEffect(()=>{
     let params = {
-      city,
+      city
     };
+    if(initialCategory){
+      params.category=initialCategory
+    }
     setSearchParams(params);
-  },[city])
+  },[city,initialCategory])
   return (
     <div className='modal-cont'>
       <Button  style={{padding:"10px",cursor:"pointer",backgroundColor:"transparent",border:"none",fontSize:"20px",color:"black",display:"flex"}} className='locationbtn navloc' onLoad={handlestatus}  onClick={onOpen}

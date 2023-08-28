@@ -7,7 +7,6 @@ import { handle_add_blog } from '../../Redux/action';
 const AddBlogs = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
-
   const handlesubmit = (e) => {
     e.preventDefault();
 
