@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_addtestimonial_Image_by_admin, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
+import { handle_addtestimonial_Image_by_admin, handle_deleteslider_Image_by_admin, handle_deletetestimonials_Image_by_admin, handle_getestimonials_Image_by_admin, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Input, } from "@chakra-ui/react";
 
 const Testimonilas = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState("")
   const [category, setcategory] = useState("")
+  const [images, setimages] = useState([])
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, allproducts } = store;
 
 
   useEffect(() => {
-    dispatch(handlegetproducts());
+    dispatch(handle_getestimonials_Image_by_admin()).then((res)=>{
+    setimages(res?.data?.data)
+    })
   }, []);
 
 
@@ -32,6 +35,15 @@ images:imageUrl,category
 
     onClose()
   }
+  const handledeletetestimonialImage = (id) => {
+    dispatch(handle_deletetestimonials_Image_by_admin(id)).then((res) => {
+      if (res.status == 200 || res.status == 201) {
+        alert("Image Deleted")
+      } else {
+        alert("error")
+      }
+    })
+  }
 
 
   return (
@@ -43,21 +55,22 @@ images:imageUrl,category
             <Tr>
               <Th>Image</Th>
               <Th>ID</Th>
-              <Th>Link</Th>
+              <Th>CATEGORY</Th>
+              <Th>DELETE</Th>
             </Tr>
           </Thead>
           <tbody>
-            {allproducts?.map((item) => (
+            {images?.map((item) => (
               <Tr key={item._id}>
                 <Td>
-                  <img style={{ height: "50%", width: "50%" }} src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" />
+                  <img style={{ height: "50%", width: "50%" }} src={item?.images} alt="" />
                 </Td>
 
-                <Td>{item._id}</Td>
-                <Td>{item.price}</Td>
+                <Td>{item?._id}</Td>
+                <Td>{item?.category}</Td>
 
                 <Td>
-                  <Button>DELETE</Button>
+                  <Button onClick={()=>handledeletetestimonialImage(item?._id)}>DELETE</Button>
                 </Td>
               </Tr>
             ))}
