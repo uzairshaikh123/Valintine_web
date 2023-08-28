@@ -6,6 +6,7 @@ const initstate = {
   error: false,
   cart: [],
   products: [],
+  allproducts:[],
   token: sessionStorage.getItem("token") || "",
   orders:[],
   admin_token:sessionStorage.getItem("admin_token") || "",
@@ -21,6 +22,9 @@ export const reducer = (state = initstate, { type, payload }) => {
     }
     case types.GETPRODUCTS: {
       return { ...state,error:false,loading:false,products:payload};
+    }
+    case types.GETALLPRODUCTS: {
+      return { ...state,error:false,loading:false,allproducts:payload};
     }
     case types.LOGIN: {
       return { ...state,error:false,loading:false,token:payload};

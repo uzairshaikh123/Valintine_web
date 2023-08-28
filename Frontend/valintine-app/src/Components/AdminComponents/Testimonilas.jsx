@@ -9,13 +9,12 @@ const Testimonilas= () => {
 
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
-  const { loading, error, products } = store;
+  const { loading, error, allproducts } = store;
 
 
   useEffect(() => {
-    dispatch(handlegetfilterproducts());
+    dispatch(handlegetproducts());
   }, []);
-console.log(products);
 
 
 const handleaddtestimonialImage =()=>{
@@ -42,7 +41,7 @@ const handleaddtestimonialImage =()=>{
           </Tr>
         </Thead>
         <tbody>
-          {products?.map((item) => (
+          {allproducts?.map((item) => (
             <Tr key={item._id}>
                <Td>
                <img style={{height:"50%",width:"50%"}} src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/candle.jpg"} alt="" /> 

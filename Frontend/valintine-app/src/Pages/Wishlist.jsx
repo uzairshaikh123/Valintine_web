@@ -7,11 +7,11 @@ const Wishlist = () => {
 
     const store = useSelector((store) => store);
     const dispatch = useDispatch();
-    const { loading, error, products } = store;
+    const { loading, error, allproducts } = store;
   
   
     useEffect(() => {
-      dispatch(handlegetfilterproducts());
+      dispatch(handlegetproducts());
     }, []);
 
 
@@ -21,7 +21,7 @@ const Wishlist = () => {
    
    <div id="products" style={{marginTop:"50px"}}>
 
-   {products?.map((el) => {
+   {allproducts?.map((el) => {
             return (<WishListCard key={el._id}
                 id={el._id}
                 image={el.image}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../Components/ProductComponents/ProductCard";
 import "../Styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,17 +12,24 @@ import { Hearts } from "react-loader-spinner";
 import { handlegetfilterproducts, handlegetproducts } from "../Redux/action";
 const Products = () => {
   const store = useSelector((store) => store);
+  const [prodData,setProdData]=useState([])
   const dispatch = useDispatch();
   const { loading, error, products } = store;
   const [searchParams,setSearchParams]=useSearchParams()
   const cityname=searchParams.get("city")
   const initialCategory=searchParams.get("category")
-  // console.log(cityname,initialCategory)
+  console.log(cityname,initialCategory)
   useEffect(() => {
-    dispatch(handlegetfilterproducts(cityname, initialCategory));
+    dispatch(handlegetfilterproducts(cityname, initialCategory)).then((res)=>(setProdData(res.data.data)))
+    let params={
+      city:cityname,
+      category:initialCategory
+    }
+    setSearchParams(params)
   }, [cityname, initialCategory]);
 
-console.log(cityname,initialCategory)
+// console.log(cityname,initialCategory)
+// console.log(products)
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>
@@ -78,7 +85,7 @@ console.log(cityname,initialCategory)
         <>Error</>
       ) : (
         <div id="products">
-          {products?.map((el) => {
+          {prodData?.map((el) => {
             return (
               <ProductCard
                 key={el._id}

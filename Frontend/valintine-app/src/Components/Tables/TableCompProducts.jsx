@@ -30,13 +30,13 @@ const TableCompProducts = () => {
   }
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
-  const { loading, error, products } = store;
+  const { loading, error, allproducts } = store;
 
 
   useEffect(() => {
-    dispatch(handlegetfilterproducts());
+    dispatch(handlegetproducts());
   }, []);
-  console.log(products);
+  // console.log(products);
 
 
 
@@ -56,7 +56,7 @@ const TableCompProducts = () => {
           </Tr>
         </Thead>
         <tbody>
-          {products?.map((item) => (
+          {allproducts?.map((item) => (
             <Tr key={item._id}>
               <Td>
                 <img style={{ height: "50%", width: "50%" }} src={item.image[0]} alt="" />
@@ -66,7 +66,7 @@ const TableCompProducts = () => {
               <Td>{item.city}</Td>
               <Td>{item.price}</Td>
               <Td>
-                <EditModal id={item?._id} products={products} />
+                <EditModal id={item?._id} products={allproducts} />
               </Td>
               <Td>
                 <Button onClick={() => handle_delete_product(item._id)}>DELETE</Button>

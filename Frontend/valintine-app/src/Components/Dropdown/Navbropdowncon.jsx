@@ -3,10 +3,10 @@ import styles from "./navdropcon.module.css";
 import { Link } from "react-router-dom";
 
 export const Navbropdowncon = ({ data }) => {
+    const initialCity = sessionStorage.getItem("cityname")?.toLowerCase()
     return (
         <div className={styles.navdropcon}>
             <div className={styles.dropdown}>
-
                 {data.subtitles.map((subtitle, index) => (
                     <div key={index}>
                         <ul className={styles.navdropconList}>
@@ -18,7 +18,7 @@ export const Navbropdowncon = ({ data }) => {
                             {subtitle.subsubdata.map((subsubitem, subIndex) => (
                                 <li key={subIndex}>
                                     <span>
-                                        <Link to="/products">{subsubitem}</Link>
+                                        <Link to={`/products?city=${initialCity}&category=${subtitle.subsubtile}`}>{subsubitem}</Link>
                                     </span>
                                 </li>
                             ))}

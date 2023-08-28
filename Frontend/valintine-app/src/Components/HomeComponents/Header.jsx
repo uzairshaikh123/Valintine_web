@@ -208,7 +208,7 @@ const Header = () => {
       params.category = category;
     }
     setSearchParams(params)
-  },[city])
+  },[city,category])
 
   const handleClick=(cat)=>{
     setcategory(cat)
