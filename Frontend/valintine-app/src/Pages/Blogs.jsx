@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../Styles/blogs.css";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { handle_get_all_blogs } from '../Redux/action';
 const Blogs = () => {
+
+    const dispatch = useDispatch();
+    const store = useSelector(store=>store)
+    const { loading, error, blogs } = store;
+  
+  
+    useEffect(() => {
+      dispatch(handle_get_all_blogs());
+    }, []);
+  console.log(blogs);
+  
+
+
+
+
+
+
+
   return (
     <>
     <div class='container container-flex'>
