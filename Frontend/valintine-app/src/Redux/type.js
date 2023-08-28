@@ -32,3 +32,5 @@ export const HANDLE_ADD_BLOGS = "add/blog/byadmin";
 export const HANDLE_DELETE_BLOGS = "delete/blog/byadmin";
 export const HANDLE_EDIT_BLOGS = "edit/blog/byadmin";
 export const HANDLE_GET_BLOGS = "get/blog/byadmin";
+export const HANDLE_GET_SLIDERS = "get/blog/byadmin";
+export const HANDLE_GET_TESTIMONIALS = "get/blog/byadmin";

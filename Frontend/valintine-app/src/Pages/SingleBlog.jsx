@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/singleblog.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { handle_get_all_blogs } from '../Redux/action';
+import { useParams } from 'react-router-dom';
 const SingleBlog = () => {
 
 
@@ -9,13 +10,21 @@ const SingleBlog = () => {
   const store = useSelector(store=>store)
   const { loading, error, blogs } = store;
  const [blog,setblog] = useState({})
-console.log(blogs,store)
+ const params = useParams();
+ const id = params.id;
+console.log(id)
   useEffect(() => {
     dispatch(handle_get_all_blogs()).then(()=>{
+     
 
-      setblog(blogs[0])
+      let filterdata = blogs.filter((el)=>{
+   if(el?._id==id){
+    setblog(el)
+   }
+      })
+      
     })
-  }, []);
+  }, [blogs]);
 
 console.log(blog)
 
