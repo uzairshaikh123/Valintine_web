@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_addtestimonial_Image_by_admin, handlegetproducts } from "../../Redux/action";
+import { handle_addtestimonial_Image_by_admin, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 const Testimonilas= () => {
@@ -13,7 +13,7 @@ const Testimonilas= () => {
 
 
   useEffect(() => {
-    dispatch(handlegetproducts());
+    dispatch(handlegetfilterproducts());
   }, []);
 console.log(products);
 

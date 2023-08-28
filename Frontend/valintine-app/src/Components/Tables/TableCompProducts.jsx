@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handle_delete_product_by_admin, handlegetproducts } from "../../Redux/action";
+import { handle_delete_product_by_admin, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
 import EditModal from "../AdminComponents/ProductEditModal";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 
-const TableCompProducts= () => {
+const TableCompProducts = () => {
   const itemsPerPage = 3; // Number of items to show per page
   const data = [
     { id: 1, name: "John Doe", age: 30, email: "john@example.com" },
@@ -17,59 +17,59 @@ const TableCompProducts= () => {
 
   const totalItems = data.length;
 
-  
 
- const handle_delete_product=(id)=>{
-dispatch(handle_delete_product_by_admin(id)).then((res)=>{
-  if(res.status ==200 || res.status ==201) {
-    alert("Product deleted successfully")
-  }else{
-    alert("error")
+
+  const handle_delete_product = (id) => {
+    dispatch(handle_delete_product_by_admin(id)).then((res) => {
+      if (res.status == 200 || res.status == 201) {
+        alert("Product deleted successfully")
+      } else {
+        alert("error")
+      }
+    })
   }
-})
- }
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, products } = store;
 
 
   useEffect(() => {
-    dispatch(handlegetproducts());
+    dispatch(handlegetfilterproducts());
   }, []);
-console.log(products);
+  console.log(products);
 
 
 
-let keys = ["image", "id", "name", "city","Price","Edit","Delete"];
+  let keys = ["image", "id", "name", "city", "Price", "Edit", "Delete"];
 
 
   return (
-    <TableContainer style={{minWidth:"100%"}}>
+    <TableContainer style={{ minWidth: "100%" }}>
       <Table>
         <Thead>
           <Tr>
-          {  keys.map((el)=>{
+            {keys.map((el) => {
 
-return <Th>{el}</Th>
-})
-}
+              return <Th>{el}</Th>
+            })
+            }
           </Tr>
         </Thead>
         <tbody>
           {products?.map((item) => (
             <Tr key={item._id}>
-               <Td>
-               <img style={{height:"50%",width:"50%"}} src={item.image[0]} alt="" /> 
-                </Td>
-               <Td>{item._id}</Td>
+              <Td>
+                <img style={{ height: "50%", width: "50%" }} src={item.image[0]} alt="" />
+              </Td>
+              <Td>{item._id}</Td>
               <Td>{item.name}</Td>
               <Td>{item.city}</Td>
               <Td>{item.price}</Td>
               <Td>
-                <EditModal id={item?._id} products={products}/>
+                <EditModal id={item?._id} products={products} />
               </Td>
               <Td>
-                <Button onClick={()=>handle_delete_product(item._id)}>DELETE</Button>
+                <Button onClick={() => handle_delete_product(item._id)}>DELETE</Button>
               </Td>
             </Tr>
           ))}

@@ -17,13 +17,12 @@ const Products = () => {
   const [searchParams,setSearchParams]=useSearchParams()
   const cityname=searchParams.get("city")
   const initialCategory=searchParams.get("category")
-  console.log(cityname,initialCategory)
+  // console.log(cityname,initialCategory)
   useEffect(() => {
     dispatch(handlegetfilterproducts(cityname, initialCategory));
   }, [cityname, initialCategory]);
 
-
-
+console.log(cityname,initialCategory)
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import WishListCard from '../Components/ProductComponents/WishlistCard'
 import { useDispatch, useSelector } from 'react-redux';
-import { handlegetproducts } from '../Redux/action';
+import { handlegetfilterproducts, handlegetproducts } from '../Redux/action';
 import '../Styles/products.css'
 const Wishlist = () => {
 
@@ -11,7 +11,7 @@ const Wishlist = () => {
   
   
     useEffect(() => {
-      dispatch(handlegetproducts());
+      dispatch(handlegetfilterproducts());
     }, []);
 
 

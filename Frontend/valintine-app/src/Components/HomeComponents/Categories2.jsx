@@ -20,7 +20,7 @@ const Categories2 = () => {
         {category:"anniversary Decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/anniversary+Decoration.png"},
         {category:"Baby shower",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Baby+shower.png"},
         {category:"Car booth decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Car+booth+decoration.png"},
-        {category:"Stage decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Car+booth+decoration.png"},
+        {category:"Stage decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Stage+decoration.png"},
         {category:"Naming celebration decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Naming+celebration+decoration.png"},
         {category:"personalized gifts",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/personalized+gifts.png"},
         {category:"first night decoration",img:"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/first+night+decoration.png"}

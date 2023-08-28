@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { handlegetproducts } from "../../Redux/action";
+import { handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 const TableCompOrders= () => {
@@ -13,7 +13,7 @@ const TableCompOrders= () => {
 
 
   useEffect(() => {
-    dispatch(handlegetproducts());
+    dispatch(handlegetfilterproducts());
   }, []);
 console.log(products);
 
