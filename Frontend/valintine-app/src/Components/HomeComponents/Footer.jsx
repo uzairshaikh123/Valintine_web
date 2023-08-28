@@ -67,7 +67,7 @@ export default function Footer() {
           spacing={8}>
           <Stack spacing={3}>
             <Box>
-              <Link to='/'><Image style={{width:"140px",height:"auto",paddingBottom:"20px"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png" alt="" /></Link>
+              <Link to='/'><Image style={{width:"140px",height:"auto",paddingBottom:"20px"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/New-logo-final.jpg" alt="" /></Link>
             </Box>
             <Text fontSize={'sm'} w="80%">Address :  D-499 3rd Floor, Ramphal Chowk, Dwarka Sector 7, New Delhi-110075</Text>
             <Text fontSize={'sm'}>Email id : support@velentinesaga.com</Text>

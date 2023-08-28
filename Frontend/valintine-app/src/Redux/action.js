@@ -602,7 +602,7 @@ export const handle_addslider_Image_by_admin = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 
   return axios
-    .post(`${process.env.REACT_APP_Backend_url}/orders/sliders/add`,data,{
+    .post(`${process.env.REACT_APP_Backend_url}/sliders/add`,data,{
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("admin_token"),

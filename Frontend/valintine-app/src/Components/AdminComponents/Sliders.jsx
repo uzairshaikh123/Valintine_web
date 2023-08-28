@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { handle_addslider_Image_by_admin, handle_deleteslider_Image_by_admin, handlegetfilterproducts, handlegetproducts } from "../../Redux/action";
-import { Button, Table, TableContainer, Td, Th, Thead, Tr, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, } from "@chakra-ui/react";
+import { Button, Table, TableContainer, Td, Th, Thead, Tr, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Input, } from "@chakra-ui/react";
 const Sliders = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const [imageUrl,setImageUrl]=useState("")
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
   const { loading, error, allproducts } = store;
@@ -14,10 +14,10 @@ const Sliders = () => {
   useEffect(() => {
     dispatch(handlegetproducts());
   }, []);
-  console.log(allproducts);
+  // console.log(allproducts);
 
-  const handleaddsliderImage = () => {
-    dispatch(handle_addslider_Image_by_admin()).then((res) => {
+  const handleaddsliderImage = (url) => {
+    dispatch(handle_addslider_Image_by_admin(url)).then((res) => {
       if (res.status == 200 || res.status == 201) {
         alert("Image Added")
       } else {
@@ -70,6 +70,25 @@ const Sliders = () => {
         </Table>
 
       </TableContainer>
+
+
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Image</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <Input variant='filled' placeholder='Add Image Url' onChange={(e)=>setImageUrl(e.target.value)}/>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button colorScheme='blue' onClick={()=>handleaddsliderImage(imageUrl)}>Add</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

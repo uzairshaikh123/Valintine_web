@@ -23,7 +23,7 @@ const MainAdmin = () => {
 
   const [active_title, setactivetitle] = useState("Dashboard");
   const handle_Component = (e) => {
-    console.log(e)
+    // console.log(e)
     let val = e.target.innerText;
     setactivetitle(e.target.innerText);
   };
