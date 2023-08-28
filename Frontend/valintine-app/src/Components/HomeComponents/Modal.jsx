@@ -70,9 +70,11 @@ let status = sessionStorage.getItem("status") || true
   
   useEffect(()=>{
     let params = {
-      city,
-      category:initialCategory
+      city
     };
+    if(initialCategory){
+      params.category=initialCategory
+    }
     setSearchParams(params);
   },[city,initialCategory])
   return (
