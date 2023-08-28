@@ -1,5 +1,6 @@
 const express = require('express');
 const AdminMiddleware = require('../Middlewares/Admin.middleware');
+const SliderModel = require('../Models/Slider.model');
 
 const SliderRouter = express.Router()
 
