@@ -122,9 +122,11 @@ export const handlegetcartproducts = (id) => (dispatch) => {
 };
 export const handle_delete_cartproducts = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
-let user = sessionStorage.getItem("userdetails");
+let user = JSON.parse(sessionStorage.getItem("userdetails"));
+console.log(user)
+console.log(user?._id)
   return axios
-    .delete(`${process.env.REACT_APP_Backend_url}/cart/delete/${id}/${userID}`  , {
+    .delete(`${process.env.REACT_APP_Backend_url}/cart/delete/${id}/${user?._id}`  , {
 
       headers: {
         "Content-Type": "application/json",
