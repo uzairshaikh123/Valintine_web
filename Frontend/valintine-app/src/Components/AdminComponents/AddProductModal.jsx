@@ -311,7 +311,6 @@ setTimeout(() => {
                   <label htmlFor="">Category</label>
                   {/* <input type="text" id="category" placeholder="Enter Name of Category" /> */}
                   <select id="category">
-                    {/* <option value="">Select Category</option> */}
                     <option value="cakes">Cakes</option>
                     <option value="candlelight dinner">Candlelight Dinner</option>
                     <option value="flowers">Flowers</option>
@@ -401,7 +400,24 @@ setTimeout(() => {
                   <label htmlFor="">Price</label>
                   <input type="text" className="price" id="price" placeholder="Enter Price of Product" />
                   <label htmlFor="">City</label>
-                  <input type="text" id="city" placeholder="Enter Name of City" />
+                  {/* <input type="text" id="city" placeholder="Enter Name of City" /> */}
+                  <select className="starttime" id="city">
+                          <option value="delhi">Delhi</option>
+                          <option value="jaipur">Jaipur</option>
+                          <option value="bangalore">Bangalore</option>
+                          <option value="kolkata">Kolkata</option>
+                          <option value="indore">Indore</option>
+                          <option value="pune">Pune</option>
+                          <option value="all india">ALl India</option>
+                          <option value="hyderabad">Hyderabad</option>
+                          <option value="mumbai">Mumbai</option>
+                          <option value="kanpur">Kanpur</option>
+                          <option value="chennai">Chennai</option>
+                          <option value="jammu">Jammu</option>
+                          <option value="lucknow">Lucknow</option>
+                          <option value="chandigarh">Chandigarh</option>
+                          <option value="hyderabad">Hyderabad</option>
+                        </select>
                   <label htmlFor="">Multiple_price</label>
                   {Multiple_price.map(() => {
                     return (
