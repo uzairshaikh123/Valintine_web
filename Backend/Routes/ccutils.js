@@ -2,6 +2,7 @@
 const crypto = require('crypto');
 /* payment gaetway encryption */
 require("dotenv").config()
+var qs = require('qs');
 
 exports.encrypt = (payload) => {
 

@@ -55,7 +55,7 @@ console.log(obj)
 			</tr>
 			<tr>
 				<td>Merchant Id</td>
-				<td><input type="text" name="merchant_id" id="merchant_id" value={`${process.env.REACT_APP_Merchant_ID}`} /> </td>
+				<td><input type="text" name="merchant_id" id="merchant_id" value={`2625348`} /> </td>
 			</tr>
 			<tr>
 				<td>Order Id</td>
