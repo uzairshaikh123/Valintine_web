@@ -101,7 +101,7 @@ const MegaMenu = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image: "",title: "Gifts & Surprises",subtitles: [
+    { image: "",title: "Gifts And Surprises",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",

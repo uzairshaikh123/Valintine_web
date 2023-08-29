@@ -15,8 +15,14 @@ const Links = () => {
   useEffect(() => {
     dispatch(handlegetproducts())
   }, [cityname])
-//  console.log(cityname)
-//   console.log("Links",products)
+  const TruncatedString = ( inputString) => {
+    const words = inputString.split(' ');
+    const truncatedWords = words.slice(0, 3);
+    const truncatedString = truncatedWords.join(' ');
+    console.log(inputString)
+  
+    return <p>{truncatedString}{words.length > 3 ? '...' : ''}</p>;
+  };
   return (
     <div id='links-cont'>
       <div>
@@ -26,7 +32,7 @@ const Links = () => {
             index <= 3 && <Link to={`/products?city=${cityname}&category=${link.category}`}><div key={index} className='items'>
               <img src={link.image[0]} alt={link.name}/>
               <div>
-                <a href='/'>{link.name}</a>
+                <a href='/'>{TruncatedString(link.name)}</a>
                 <h3>₹ {link.price}</h3>
               </div>
             </div>
@@ -42,7 +48,7 @@ const Links = () => {
               <img src={link.image[0]} alt={link.name} />
               <div>
 
-                <a href='/'>{link.name}</a>
+                <a href='/'>{TruncatedString(link.name)}</a>
                 <h3>₹ {link.price}</h3>
               </div>
             </div>
@@ -57,7 +63,7 @@ const Links = () => {
             index > 7 && index <= 11 && <Link to={`/products?city=${cityname}&category=${link.category}`} key={index}> <div className='items'>
               <img src={link.image[1]} alt={link.name}/>
               <div>
-                <a href='/'>{link.name}</a>
+                <a href='/'>{TruncatedString(link.name)}</a>
                 <h3>₹ {link.price}</h3>
               </div>
             </div>
