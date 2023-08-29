@@ -24,7 +24,7 @@ function Cart() {
   // console.log(cart)
 
   const handleremove_product_from_cart = (id) => {
-    dispatch(handle_delete_cartproducts(user?._id,id)).then((res) => {
+    dispatch(handle_delete_cartproducts(id)).then((res) => {
       if (res?.status === 200 || res?.status === 201) {
         toast.success("Product Deleted", {
           position: "top-right",
@@ -75,7 +75,7 @@ function Cart() {
     };
 
     if (qty === 1) {
-      dispatch(handle_delete_cartproducts(user?._id,itemId)).then((res) => {
+      dispatch(handle_delete_cartproducts(itemId)).then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(handlegetcartproducts(user._id));
           toast.success("Product Removed", {
@@ -188,7 +188,8 @@ return acc
                 </div>
                 <div
                   className="remove"
-                  onClick={() => handleremove_product_from_cart(item.productID)}
+                  onClick={() => handleremove_product_from_cart(item?.productID)}
+
                 >
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
