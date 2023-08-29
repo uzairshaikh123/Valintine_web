@@ -4,6 +4,7 @@ import { Button } from '@chakra-ui/react';
 const Pay = () => {
 
 	const [amt , setamt ] = useState(0)
+	const [html , sethtml ] = useState()
 	
 	const handle_payments=()=>{
 		// let user = JSON.parse(sessionStorage.getItem("userdetails"))
@@ -44,7 +45,8 @@ const Pay = () => {
 		// 		  }).catch((err)=>{
 		// 			console.log(err.message)
 		// 		  })
-		axios.get(`${process.env.REACT_APP_Backend_url}/paycc`).then((res)=>{
+		axios.get(`${process.env.REACT_APP_Backend_url}/payment`).then((res)=>{
+			sethtml(`${res.data}`)
 			console.log(res.data)
 		})
 				}
@@ -59,9 +61,14 @@ const Pay = () => {
 				},[])
 
 	return (
+		<>
 		<div style={{ width: "100%" }}>
 			<Button bg={"red"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
 		</div>
+		<div dangerouslySetInnerHTML={{ __html: html }}>
+		
+		</div>
+		</>
 	)
 }
 
