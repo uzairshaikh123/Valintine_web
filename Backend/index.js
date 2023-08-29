@@ -52,7 +52,8 @@ app.get('/payment', (req, res) => {
   
   const order_id = Date.now();
   const currency = 'INR';
-  const amount = '1000.00'; // Replace with the actual amount
+  const amount = '1000.00';
+  const language = "EN" // Replace with the actual amount
 
   const data = `${accessCode}|${order_id}|${amount}|${currency}|${"2625348"}`;
   const encryptedData = crypto.createHash('sha256').update(data).digest('hex');
