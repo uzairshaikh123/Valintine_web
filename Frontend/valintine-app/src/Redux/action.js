@@ -120,11 +120,11 @@ export const handlegetcartproducts = (id) => (dispatch) => {
       return err;
     });
 };
-export const handle_delete_cartproducts = (userID,id) => (dispatch) => {
+export const handle_delete_cartproducts = (id) => (dispatch) => {
   dispatch({ type: types.LOADING });
-
+let user = sessionStorage.getItem("userdetails");
   return axios
-    .delete(`${process.env.REACT_APP_Backend_url}/${id}/${userID}`  , {
+    .delete(`${process.env.REACT_APP_Backend_url}/${id}/${user?._id}`  , {
       headers: {
         "Content-Type": "application/json",
         authorization: sessionStorage.getItem("token")
