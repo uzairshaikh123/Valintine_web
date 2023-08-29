@@ -1,5 +1,5 @@
 // utils.js
-
+const crypto = require('crypto');
 /* payment gaetway encryption */
 require("dotenv").config()
 

@@ -15,12 +15,10 @@ const TestimonialRouter = require('./Routes/Testimonials')
 const payrouter = require('./Routes/payment')
 const totalRouter = require('./Routes/TotalRoute')
 const bodyParser = require('body-parser');
-
+const path = require('path');
 
 app.use(express.json({limit: '25mb'}));
 app.use(express.urlencoded({limit: '25mb'}));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
@@ -28,30 +26,51 @@ app.get('/', (req, res) => {
 })
 const ccavReqHandler = require('./Routes/ccRequestHandler.js');
 const ccavResHandler = require('./Routes/ccResponseHanlder.js');
-
-app.use(express.static('public'));
-app.set('views', __dirname + '/public');
-app.engine('html', require('ejs').renderFile);
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+const crypto = require('crypto');
 
 // app.get('/paycc', function (req, res){
 //     	res.render('./public/dataFrom.html');
 // });
 
-app.post('/ccavRequestHandler', function (request, response){
-  console.log("indexjs 39",request.body)
-	ccavReqHandler.postReq(request, response);
-});
+// ccavReqHandler.postReq(request, response);
+// // app.post('/ccavRequestHandler', function (request, response){
+ 
+// //   // response.end("end")
+// // });
 
 
-app.post('/ccavResponseHandler', function (request, response){
-        ccavResHandler.postRes(request, response);
+// app.post('/ccavResponseHandler', function (request, response){
+//         ccavResHandler.postRes(request, response);
+// });
+app.get('/payment', (req, res) => {
+  const workingKey = process.env.Working_Key;
+  const accessCode = process.env.Access_key_cc;
+  
+  
+  const order_id = Date.now();
+  const currency = 'INR';
+  const amount = '1000.00'; // Replace with the actual amount
+
+  const data = `${accessCode}|${order_id}|${amount}|${currency}`;
+  const encryptedData = crypto.createHash('sha256').update(data).digest('hex');
+
+  res.render('payment', {
+    accessCode,
+    order_id,
+    amount,
+    currency,
+    encryptedData,
+    workingKey
+  });
 });
 
 
 
 app.use("/auth",AuthRouter)
-// app.use("/ccavRequestHandler",ccRouter)
+app.use("/ccavRequestHandler",ccavReqHandler.postReq)
 // app.use("/ccavResponseHandler",postRes)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
