@@ -56,7 +56,7 @@ app.get('/payment', (req, res) => {
 
   const data = `${accessCode}|${order_id}|${amount}|${currency}|${"2625348"}`;
   const encryptedData = crypto.createHash('sha256').update(data).digest('hex');
-
+console.log(data)
   res.render('payment', {
     accessCode,
     order_id,
