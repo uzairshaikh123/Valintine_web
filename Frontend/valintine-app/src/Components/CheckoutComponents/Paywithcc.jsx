@@ -39,7 +39,7 @@ console.log(obj)
 
   return (
     <div>
-      <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
+      <form method="POST" name="customerData" action={`${process.env.REACT_APP_dev_url}/ccavRequestHandler`}>
 		<table width="40%" height="100" border='1' align="center">
 			<caption>
 				<font size="4" color="blue"><b>Integration Kit</b></font>
@@ -55,7 +55,7 @@ console.log(obj)
 			</tr>
 			<tr>
 				<td>Merchant Id</td>
-				<td><input type="text" name="merchant_id" id="merchant_id" value={`${process.env.REACT_APP_Merchant_ID}`} /> </td>
+				<td><input type="text" name="merchant_id" id="merchant_id" value={`2625348`} /> </td>
 			</tr>
 			<tr>
 				<td>Order Id</td>
