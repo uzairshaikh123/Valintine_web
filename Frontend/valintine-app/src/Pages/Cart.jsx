@@ -104,7 +104,7 @@ function Cart() {
   };
 
   const getTotalCost = () => {
-    console.log(cart)
+    // console.log(cart)
 
   //  let multiple_price_cart = cart.filter((el)=>{
 
@@ -134,7 +134,7 @@ return acc
    
    let user =JSON.parse(sessionStorage.getItem("userdetails")) 
    axios.patch(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`,obj).then((res)=>{
-    console.log(res)
+    // console.log(res)
    })
    return total
   
@@ -151,29 +151,26 @@ return acc
           <div style={{ height: "400px", overflowY: "auto"}}>
             {cart.map((item) => (
               <div className="cart-item" key={item.id}>
-                <div style={{ display: "flex", gap: "5px" }}>
+                <div className="cartContainer">
+                  <div>
                   <img
-                    style={{ height: "auto", width: "55%" }}
+                    // style={{ height: "auto", width: "55%" }}
                     src={item.image[0]}
                     alt=""
                   />
-                  <div style={{ marginTop: "15px" }}>
+                  </div>
+                  <div className="details">
                     <h3 className="cart-prod-name">
                       {" "}
                       {item.name}
                     </h3>
-                    <p>{item.multiple_price.length?item.price:`₹${item.price}`}</p>
+                    <p>₹{item.price}</p>
+                    {/* <p>{item.multiple_price.length?item.price:`₹${item.price}`}</p> */}
                   </div>
                 </div>
                 <div className="quantity" >
                   <button
-                    style={{
-                      borderRadius: "50%",
-                      display: "inline",
-                      backgroundColor: "#ce93d8",
-                      padding: "10px",
-                      cursor: "pointer",
-                    }}
+
                     onClick={() =>
                       decreaseQuantity(item?.productID, item.quantity)
                     }
@@ -182,13 +179,6 @@ return acc
                   </button>
                   <span>{item.quantity}</span>
                   <button
-                    style={{
-                      borderRadius: "50%",
-                      display: "inline",
-                      backgroundColor: "#ce93d8",
-                      padding: "10px",
-                      cursor: "pointer",
-                    }}
                     onClick={() =>
                       increaseQuantity(item?.productID, item.quantity)
                     }
@@ -198,11 +188,9 @@ return acc
                 </div>
                 <div
                   className="remove"
-                 
                   onClick={() => handleremove_product_from_cart(item.productID)}
                 >
                   <img
-                    style={{ height: "15%", width: "15%", cursor: "pointer" ,float:"right" }}
                     src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
                     alt=""
                   />

@@ -280,7 +280,6 @@ const SingleProductPage = () => {
                 <button
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
-                  disabled
                 >
                   <Link to={"/cart"} style={{ color: "white" }} >
                     Buy Now
@@ -290,7 +289,6 @@ const SingleProductPage = () => {
                   style={{ marginBottom: "20px" }}
                   onClick={handleaddtocart}
                 >
-
                   Add to Cart
                 </button>
               </div>

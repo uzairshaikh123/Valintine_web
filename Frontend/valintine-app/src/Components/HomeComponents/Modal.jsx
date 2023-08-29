@@ -25,7 +25,7 @@ let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/
   {name:"kolkata",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Kolkata_Icon-min.png",id:4},
   {name:"Indore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Indore_Icon-min.png",id:5},
   {name:"Pune",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Pune_Icon-min.png",id:6},
-  {name:"Across India",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/india-icon-min.png",id:7},
+  {name:"All India",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/india-icon-min.png",id:7},
   {name:"Hyderabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Hyderabad_min.png",id:8},
   {name:"Mumbai",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Mumbai_min.png",id:9},
   {name:"Kanpur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Kanpur_min.png",id:10},
