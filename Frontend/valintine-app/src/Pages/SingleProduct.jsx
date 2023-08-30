@@ -36,29 +36,25 @@ const SingleProductPage = () => {
   let initialPrice = product[0]?.multiple_price?.length > 0
     ? (+(product[0].multiple_price[0].price))
     : (+(product[0]?.price));
-  console.log(typeof (initialPrice))
   const [selectedPrice, setSelectedPrice] = useState(initialPrice || 0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const params = useParams();
   const id = params.id;
   const dispatch = useDispatch();
-  console.log(product[0])
   useEffect(() => {
     dispatch(handlegetfilterproducts());
 
   }, []);
-  // console.log("select", selectedPrice)
   useEffect(() => {
     let findproduct = products.filter((el) => {
       return el._id === id;
     });
     setproduct(findproduct);
-  }, [products]);
-
+  }, [products,id]);
+  
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
-  // console.log(product[0])
   const handleaddtocart = () => {
     let obj = {
       ...product[0],
@@ -115,7 +111,6 @@ const SingleProductPage = () => {
     const checkboxPrice = checkboxChecked ? (+price) : (-price);
     const newprice=selectedPrice>0?selectedPrice:initialPrice
     setSelectedPrice(newprice+checkboxPrice);
-    // console.log(+(initialPrice))
   };
 
   return loading ? (
@@ -146,7 +141,7 @@ const SingleProductPage = () => {
         </div> */}
           {/* <div className="related-images"> */}
 
-          <AsNavFor image={product[0]?.image} />
+          <AsNavFor image={product[0]?.image} id={id}/>
           {/* <div style={{width:"100%",height:"300px",border:"1px solid red"}}>
 
         </div> */}
@@ -245,12 +240,12 @@ const SingleProductPage = () => {
               </div>)}
 
               {
-                product[0]?.category === "cakes" ? <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                product[0]?.category === "cakes" && <div style={{ marginTop: "20px", marginBottom: "20px" }}>
                   <input type="text" placeholder="Product Message" />
-                </div> : ""
+                </div>
               }
               {
-                product[0]?.category == "candlelight dinner" ? <div
+                product[0]?.category !== "candlelight dinner" && <div
                   style={{
                     width: "100%",
                     border: "1px solid gray",
@@ -265,7 +260,7 @@ const SingleProductPage = () => {
                     style={{ outline: "none" }}
                     onChange={handlePincodeChange}
                   />
-                </div> : ""
+                </div>
               }
               <div
                 style={{

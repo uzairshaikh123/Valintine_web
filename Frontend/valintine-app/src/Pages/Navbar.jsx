@@ -15,15 +15,13 @@ import Swal from "sweetalert2";
 function Navbar({ cartcount }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCity = sessionStorage.getItem("cityname")?.toLowerCase()
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  // const [selectedProduct, setSelectedProduct] = useState(null);
   // const initialCity=searchParams.get("city")
   const searchResultsRef = useRef(null);
   const store = useSelector((store) => store);
   const { token, cart } = store;
-  const dispatch = useDispatch();
-  // const color = pink[500];
   const [menuOpen, setMenuOpen] = useState(false);
-  const [open, close] = useState(true);
+  const [flag, setflag] = useState(false);
   const navigate = useNavigate();
   const [items, setitems] = useState(cart.length);
   const [text, setText] = useState("")
@@ -40,8 +38,9 @@ function Navbar({ cartcount }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const showProductDetails = (product) => {
-    setSelectedProduct(product);
+  const handleAddClassname = () => {
+    setflag(false)
+    setText("")
   };
   const handlelogout = () => {
     sessionStorage.setItem("token", "");
@@ -72,26 +71,23 @@ function Navbar({ cartcount }) {
     };
   }, [])
   useEffect(() => {
-
     setitems(cart?.length);
-
-    // setSearchParams({ city: initialCity }); // Use the city state variable
     setSearchParams({ city: initialCity })
-  }, [cart, initialCity]);
+  }, [cart, initialCity,flag]);
 
-  // console.log(cartcount);
   const handlevalue = (e) => {
     setText(e.target.value)
+    // setflag(false)
   }
 
   function handleSearchClick() {
+    setflag(true)
     if (text.trim() !== '') {
-      fetch(`http://localhost:8080/products/search?q=${encodeURIComponent(text)}`)
+      fetch(`${process.env.REACT_APP_Backend_url}/products/search?q=${encodeURIComponent(text)}`)
         .then((response) => response.json())
         .then((data) => {
           const searchResults = data.results;
           setResults(searchResults)
-          setSelectedProduct(null)
         })
         .catch((error) => {
           console.error('Error fetching search results:', error);
@@ -111,7 +107,7 @@ function Navbar({ cartcount }) {
               id={"comp-logo"}
               style={{ width: "140px", height: "auto" }}
               // src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
-              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png"}
+              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/New-logo-final.jpg"}
               alt=""
             />
           </Link>
@@ -122,6 +118,7 @@ function Navbar({ cartcount }) {
               className="navbar-search"
               placeholder="what you want to search"
               onChange={handlevalue}
+              value={text}
             />
             <img
               id="glass"
@@ -175,24 +172,21 @@ function Navbar({ cartcount }) {
         <TemporaryDrawer />
       </div> */}
       </div>
-      <div id="search-results" ref={searchResultsRef}>
-        {results.map((result) => (
-          <div
-            key={result._id}
-            className="search-result-item"
-            onClick={() => showProductDetails(result)}
-          >
-            {result.name}
-          </div>
-        ))}
-      </div>
-      {/* {selectedProduct && (
-        <div id="product-details">
-          <h2>{selectedProduct.name}</h2>
-          <p>Category: {selectedProduct.category}</p>
-          <p>Price: {selectedProduct.price}</p>
-        </div>
-      )} */}
+      {
+        flag && <div id="search-results" ref={searchResultsRef}>
+         {results.map((result) => (
+           <Link key={result._id} to={`/products/${result._id}`}>
+           <div
+             className="search-result-item"
+             onClick={handleAddClassname}
+           >
+             {result.name}
+           </div>
+           </Link>
+         ))}
+       </div>
+      }
+      
     </>
   );
 }

@@ -26,7 +26,7 @@ productRoute.get("/?", async (req, res) => {
 
 productRoute.get("/search", async (req, res) => {
   const searchQuery = req.query.q;
-
+  console.log(searchQuery)
   if (!searchQuery) {
     return res.status(400).json({ error: 'Search query parameter "q" is required.' });
   }

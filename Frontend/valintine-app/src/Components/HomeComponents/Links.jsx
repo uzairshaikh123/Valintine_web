@@ -19,8 +19,6 @@ const Links = () => {
     const words = inputString.split(' ');
     const truncatedWords = words.slice(0, 3);
     const truncatedString = truncatedWords.join(' ');
-    console.log(inputString)
-  
     return <p>{truncatedString}{words.length > 3 ? '...' : ''}</p>;
   };
   return (

@@ -200,7 +200,6 @@ const Header = () => {
   const initialCategory=searchParams.get("category")
   const [city,setCity]=useState(cityname || "delhi")
   const [category,setcategory]=useState(initialCategory || "")
-  console.log("header",initialCategory)
   useEffect(()=>{
     let params={
       city

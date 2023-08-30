@@ -46,7 +46,7 @@ const AsNavFor = ({ image }) => {
       return el._id === id;
     });
     setproduct(findproduct);
-  }, [products]);
+  }, [products,id]);
 
   // console.log("asnav", product[0]?.image);
 

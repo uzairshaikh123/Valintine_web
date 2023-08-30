@@ -50,8 +50,8 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
         dateFormat="dd/MM/yyyy"
         withPortal
         minDate={Date.now()}
-        disabled={product[0]?.category=="candlelight dinner"&& !isDatePickerEnabled}
-        className={product[0]?.category=="candlelight dinner"&& !isDatePickerEnabled ?"disabled-date-picker":""}
+        disabled={product[0]?.category!=="candlelight dinner"&& !isDatePickerEnabled}
+        className={product[0]?.category!=="candlelight dinner"&& !isDatePickerEnabled ?"disabled-date-picker":""}
       />
       {/* <Modal isOpen={isModalOpen} onClose={closeModal} isCentered>
         <ModalOverlay />
