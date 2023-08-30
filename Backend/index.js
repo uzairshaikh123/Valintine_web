@@ -71,8 +71,8 @@ console.log(data)
 
 
 app.use("/auth",AuthRouter)
-app.use("/ccavRequestHandler",ccavReqHandler.postReq)
-// app.use("/ccavResponseHandler",postRes)
+app.use("/ccavRequestHandler",ccavReqHandler.ccav_request_handler)
+app.use("/ccavResponseHandler",ccavResHandler.ccav_response_handler)
 app.use("/products",productRoute)
 app.use("/cart",CartRoute)
 app.use("/orders",OrdersRoute)
