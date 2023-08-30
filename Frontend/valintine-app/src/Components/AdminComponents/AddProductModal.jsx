@@ -319,7 +319,7 @@ setTimeout(() => {
                     <option value="birthday surprises">Birthday Surprises</option>
                     <option value="kids celebrations">Kids Celebrations</option>
                     <option value="room decorations">Room Decorations</option>
-                    <option value="gifts">Gifts</option>
+                    <option value="gifts and surprises">Gifts And Surprises</option>
                     <option value="occasions">Occasions</option>
                   </select>
                   <label htmlFor="">Video Link</label>

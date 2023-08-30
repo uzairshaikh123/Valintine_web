@@ -46,7 +46,7 @@ function Navbar({ cartcount }) {
   const handlelogout = () => {
     sessionStorage.setItem("token", "");
     Swal.fire(
-      'Good job!',
+      '😶',
       'Logut Successfully',
       'success'
     )

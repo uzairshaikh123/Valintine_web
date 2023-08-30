@@ -164,7 +164,7 @@ const Header = () => {
           "Annaprashan Decorations",
         ],
       },
-    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png",title: "Gifts & Surprises",subtitles: [
+    { image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png",title: "Gifts And Surprises",subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -200,6 +200,7 @@ const Header = () => {
   const initialCategory=searchParams.get("category")
   const [city,setCity]=useState(cityname || "delhi")
   const [category,setcategory]=useState(initialCategory || "")
+  console.log("header",initialCategory)
   useEffect(()=>{
     let params={
       city
