@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Form</title>
-</head>
-<body>
-    <h1>CCAvenue Payment Form</h1>
-    <form method="post" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
-        <input type="hidden" name="encRequest" value="<%= encryptedData %>">
-        <input type="hidden" name="access_code" value="<%= accessCode %>">
-        <input type="hidden" name="order_id" value="<%= order_id %>">
-        <input type="hidden" name="currency" value="<%= currency %>">
-        <input type="hidden" name="amount" value="<%= amount %>">
-        <input type="hidden" name="redirect_url" value="http://your_domain.com/redirect"> <!-- Replace with your redirect URL -->
-        <input type="hidden" name="cancel_url" value="http://your_domain.com/cancel"> <!-- Replace with your cancel URL -->
-        <input type="submit" value="Proceed to Payment">
-    </form>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+  </head>
+  <body>
+
+Loading...
+<!-- For production payment url will be changed. Please Ask Payment gateway for testign and production url-->
+ <form id="nonseamless" method="post" name="redirect" action="https://test.ccavenue.com/transaction.do?command=initiateTransaction"/>
+
+ <input type="hidden" id="encRequest" name="encRequest" value="<%= encryptedData %>">
+
+<input type="hidden" name="access_code" id="access_code" value="<%= access_code %>">
+<script language="javascript">
+
+    setTimeout(() => {
+        document.redirect.submit();
+    }, 500);
+  
+
+</script>
+</form>
+
+  </body>
 </html>

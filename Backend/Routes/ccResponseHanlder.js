@@ -1,32 +1,58 @@
-var http = require('http'),
-    fs = require('fs'),
-    ccav = require('./ccutils.js'),
-    qs = require('querystring');
-require("dotenv").config();
 
-exports.postRes = function(request,response){
-    var ccavEncResponse='',
-	ccavResponse='',	
-	workingKey = process.env.Working_Key,	//Put in the 32-Bit key provided by CCAvenues.
-	ccavPOST = '';
-	
+const qs = require('qs');
+const { encrypt } = require('./ccutils');
+const { decrypt } = require('dotenv');
+exports.ccav_response_handler = async function (req, res) {
+    const { encResp } =  req.body;
+    /* decrypt */
+    let decryptedJsonResponseData;
+    decryptedJsonResponseData = decrypt(encResp);
+    let data = decryptedJsonResponseData;
 
-        request.on('data', function (data) {
-	    ccavEncResponse += data;
-	    ccavPOST =  qs.parse(ccavEncResponse);
-	    var encryption = ccavPOST.encResp;
-	    ccavResponse = ccav.decrypt(encryption,workingKey);
-        });
 
-	request.on('end', function () {
-	    var pData = '';
-	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
-	    pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
-	    pData = pData.replace(/&/gi,'</td></tr><tr><td>')
-	    pData = pData + '</td></tr></table>'
-            htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
-            response.writeHeader(200, {"Content-Type": "text/html"});
-	    response.write(htmlcode);
-	    response.end();
-	}); 	
-};
+
+        const {
+            merchant_param1,
+            merchant_param2,
+            merchant_param6,
+            merchant_param3,
+            merchant_param4,
+            order_status,
+            failure_message,
+            status_code,
+            status_message,
+            amount,
+            tracking_id,
+            payment_mode,
+            card_name,
+            customer_card_id,
+        } = data || {}
+
+
+        if (
+            order_status == 'Invalid'
+            || order_status == 'Aborted'
+            || order_status == 'Cancelled'
+            || order_status == 'Unsuccessful'
+            || order_status == 'Failure'
+        ) {
+          
+            // return response
+          return res.render("ccav_payment_response", {
+                  data_string: JSON.stringify(data),
+                  order_status,
+           });
+        }
+
+
+        // write your logic here...
+
+          // and return response
+          return res.render("ccav_payment_response", {
+                  data_string: JSON.stringify(data),
+                  order_status,
+           });
+
+
+
+}
