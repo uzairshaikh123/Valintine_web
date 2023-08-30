@@ -52,7 +52,7 @@ const Pay = () => {
 			}
 		  }
 		//   // axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-			  axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`,data).then((res)=>{
+			  axios.post(`${process.env.REACT_APP_dev_url}/pay/phonepay`,data).then((res)=>{
 				  	window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
 				  	console.log(res)
 				  
@@ -79,9 +79,7 @@ const Pay = () => {
 		<div style={{ width: "100%" }}>
 			<Button bg={"red"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
 		</div>
-		<div>
 		
-		</div>
 		</>
 	)
 }
