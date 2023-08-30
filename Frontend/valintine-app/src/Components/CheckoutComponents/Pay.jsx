@@ -7,7 +7,7 @@ const Pay = () => {
 	const [html , sethtml ] = useState()
 	
 	const handle_payments=()=>{
-		// let user = JSON.parse(sessionStorage.getItem("userdetails"))
+		let user = JSON.parse(sessionStorage.getItem("userdetails"))
 		
 		
 		// // let data =
@@ -25,8 +25,8 @@ const Pay = () => {
 		// //   }
 		
 		// let data ={
-		// 	"merchantId": process.env.REACT_APP_merchantId,
-		// 	"merchantTransactionId": "MT7850590068188103",
+		// 	"merchantId": "MERCHANTUAT",
+		// 	"merchantTransactionId": Date.now(),
 		// 	"merchantUserId": user?._id,
 		// 	"amount": 10000,
 		// 	"redirectUrl": "https://valentinesaga.com/orders",
@@ -37,18 +37,32 @@ const Pay = () => {
 		// 	  "type": "PAY_PAGE"
 		// 	}
 		//   }
+		// MERCHANTUAT
+		let data ={
+			"merchantId": "VALENTINEONLINE",
+			"merchantTransactionId": `${Date.now()}`,
+			"merchantUserId": `${user?._id}`,
+			"amount": 10,
+			"redirectUrl": "https://webhook.site/redirect-url",
+			"redirectMode": "POST",
+			"callbackUrl": "https://webhook.site/callback-url",
+			"mobileNumber": "9999999999",
+			"paymentInstrument": {
+			  "type": "PAY_PAGE"
+			}
+		  }
 		//   // axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`).then((res)=>{
-		// 	  axios.post(`http://localhost:8080/pay/phonepay`,data).then((res)=>{
-		// 		  	// window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
-		// 		  	console.log(res)
+			  axios.post(`${process.env.REACT_APP_Backend_url}/pay/phonepay`,data).then((res)=>{
+				  	window.open(res?.data?.data?.instrumentResponse?.redirectInfo.url)
+				  	console.log(res)
 				  
-		// 		  }).catch((err)=>{
-		// 			console.log(err.message)
-		// 		  })
-		axios.get(`${process.env.REACT_APP_Backend_url}/payment`).then((res)=>{
-			sethtml(`${res.data}`)
-			console.log(res.data)
-		})
+				  }).catch((err)=>{
+					console.log(err.message)
+				  })
+		// axios.get(`${process.env.REACT_APP_Backend_url}/payment`).then((res)=>{
+		// 	sethtml(`${res.data}`)
+		// 	console.log(res.data)
+		// })
 				}
 				useEffect(()=>{
 		         let user =JSON.parse(sessionStorage.getItem("userdetails")) 
@@ -65,7 +79,7 @@ const Pay = () => {
 		<div style={{ width: "100%" }}>
 			<Button bg={"red"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
 		</div>
-		<div dangerouslySetInnerHTML={{ __html: html }}>
+		<div>
 		
 		</div>
 		</>

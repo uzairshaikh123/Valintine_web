@@ -1,29 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 const Paywithcc = () => {
 
-
+	const [amt , setamt ] = useState(0)
 const handleSubmit =  (e) => {
 e.preventDefault()
-	const merchant_id=document.querySelector("#merchant_id").value
-	const order_id=document.querySelector("#order_id").value
-	const currency=document.querySelector("#currency").value
-	const amount=document.querySelector("#amount").value
-	const redirect_url=document.querySelector("#redirect_url").value
-	const cancel_url=document.querySelector("#cancel_url").value
-	const language=document.querySelector("#language").value
+// 	const merchant_id=document.querySelector("#merchant_id").value
+// 	const order_id=document.querySelector("#order_id").value
+// 	const currency=document.querySelector("#currency").value
+// 	const amount=document.querySelector("#amount").value
+// 	const redirect_url=document.querySelector("#redirect_url").value
+// 	const cancel_url=document.querySelector("#cancel_url").value
+// 	const language=document.querySelector("#language").value
 
-let obj ={
-	merchant_id,
-order_id,
-currency,
-amount,
-redirect_url,
-cancel_url,
-language,
-}
-console.log(obj)
+// let obj ={
+// 	merchant_id,
+// order_id,
+// currency,
+// amount,
+// redirect_url,
+// cancel_url,
+// language,
+// }
+// console.log(obj)
 // let data = JSON.stringify(obj)
+const obj ={}
 
  axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`, obj).then((res)=>{
 	JSON.parse(res.data)
@@ -34,6 +35,15 @@ console.log(obj)
 // action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}
 
 }
+useEffect(()=>{
+	let user =JSON.parse(sessionStorage.getItem("userdetails")) 
+
+	   axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=>{
+		   
+		   setamt(res?.data?.data[0]?.total)
+		   console.log(res?.data?.data[0]?.total)
+		   })
+   },[])
 
 
 
@@ -67,7 +77,7 @@ console.log(obj)
 			</tr>
 			<tr>
 				<td>Amount</td>
-				<td><input type="text" name="amount" value="1.00" /></td>
+				<td><input type="text" name="amount" value={`${amt}`} /></td>
 			</tr>
 			<tr>
 				<td>Redirect URL</td>
