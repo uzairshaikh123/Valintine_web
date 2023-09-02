@@ -49,7 +49,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <form method="POST" name="customerData" action={`${process.env.REACT_APP_dev_url}/ccavRequestHandler`}>
+      <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
 		<table width="40%" height="100" border='1' align="center">
 			<caption>
 				<font size="4" color="blue"><b>Integration Kit</b></font>
