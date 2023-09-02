@@ -9,7 +9,7 @@ const store = useSelector((store)=>store)
 const {orders,error}=store
 const user = JSON.parse(sessionStorage.getItem('userdetails')) || ""
 useEffect(()=>{
-dispatch(handle_get_allorders(user._id)).then((res)=>{
+dispatch(handle_get_allorders(user?._id)).then((res)=>{
 
 })
 
@@ -39,11 +39,7 @@ orders?.map((el)=>{
 </div>
 
 })
-
-
-
 }
-
     </div>
   )
 }
