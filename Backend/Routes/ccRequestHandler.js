@@ -94,7 +94,7 @@ exports.postReq = function(request,response){
     //         customer_identifier, // to save card info on payment gateway side
     //     } = req.body;
     //Generate Md5 hash for the key and then convert in base64 string
-    var md5 = crypto.createHash('md5').update(process.env.Working_Key).digest();
+    var md5 = crypto.createHash('md5').update("59A3CAD0524DC498CB70302C1357320A").digest();
     var keyBase64 = Buffer.from(md5).toString('base64');
     
     //Initializing Vector and then convert in base64 string
@@ -125,7 +125,8 @@ exports.postReq = function(request,response){
         
     response.render("payment", {
                     encryptedData: encryptionResponseData,
-                    access_code: process.env.Access_key_cc, // your access_code provided by bank
+                    access_code: "AVNN05KI16AD13NNDA", // your access_code provided by bank
+                    // access_code: process.env.Access_key_cc, // your access_code provided by bank
                 });
    return; 
 };

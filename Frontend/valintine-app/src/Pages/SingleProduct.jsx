@@ -179,8 +179,7 @@ const SingleProductPage = () => {
                       )
                   )}
                   <a
-                    href="
-           "
+                    href=""
                   >
                     Read More
                   </a>
@@ -353,5 +352,8 @@ const SingleProductPage = () => {
     </>
   );
 };
+
+// decoration  and candlelight pincode none
+// 
 
 export default SingleProductPage;
