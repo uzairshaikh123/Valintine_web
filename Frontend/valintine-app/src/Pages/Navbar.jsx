@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
-import { Button, IconButton, Menu, MenuItem } from "@chakra-ui/react";
+import { Avatar, Button, Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList } from "@chakra-ui/react";
 import { HiShoppingCart } from 'react-icons/hi'
 import { useSearchParams } from "react-router-dom";
 import SearchResults from "./SearchResults";
@@ -26,6 +26,7 @@ function Navbar({ cartcount }) {
   const [items, setitems] = useState(cart.length);
   const [text, setText] = useState("")
   const [results, setResults] = useState([])
+  const user=JSON.parse(sessionStorage.getItem("userdetails"))
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -146,9 +147,35 @@ function Navbar({ cartcount }) {
             <Link to={"/login"} className="login-nav location">
               Login
             </Link>
-          ) : <Link to={"/login"} className="login-nav location" onClick={handlelogout}>
-            Logout
-          </Link>}
+          ) :  <Menu>
+          <MenuButton
+            as={Button}
+            rounded={'full'}
+            variant={'link'}
+            cursor={'pointer'}
+            minW={0}>
+            <Avatar
+              size={'sm'}
+              src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKVgdPnMdBjCdxkKFnwvfzcvEA6RTfYRMuEA&usqp=CAU'}
+            />
+          </MenuButton>
+          <MenuList alignItems={'center'}>
+            <br />
+            <Center>
+              <Avatar
+                size={'xl'}
+                src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKVgdPnMdBjCdxkKFnwvfzcvEA6RTfYRMuEA&usqp=CAU'}
+              />
+            </Center>
+            <br />
+              <MenuItem  fontSize={"15px"}  color={'black'}>{user.name}</MenuItem>
+              <MenuItem  fontSize={"15px"}  color={'black'}>{user.email}</MenuItem>
+            <MenuDivider />
+            <Link to={"/login"}><MenuItem onClick={handlelogout} bg={'rgb(255, 65, 139)'} color={'black'}>Logout</MenuItem></Link>
+          </MenuList>
+        </Menu>
+          
+          }
 
           <Link to={"/cart"}>
             <a href="#" className="cart-nav location">

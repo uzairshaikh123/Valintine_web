@@ -44,21 +44,21 @@ const Header = () => {
     }
   };
   let titles = [
-    {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/celebration-with-confetti-party-icon_51486-28.jpg",
-      title: "Kids Celebrations",
-      subtitles: [
-        "Kids Birthday Decoration",
-        "Welcome Baby Decorations",
-        "Baby Shower Decorations",
-        "Birthday Activities",
-        "Naming Ceremony Decorations",
-        "Themed Birthday Cakes",
-        "1st Birthday Decorations",
-        "Balloon Bouquets",
-        "Annaprashan Decorations",
-      ],
-    },
+    // {
+    //   image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/celebration-with-confetti-party-icon_51486-28.jpg",
+    //   title: "Kids Celebrations",
+    //   subtitles: [
+    //     "Kids Birthday Decoration",
+    //     "Welcome Baby Decorations",
+    //     "Baby Shower Decorations",
+    //     "Birthday Activities",
+    //     "Naming Ceremony Decorations",
+    //     "Themed Birthday Cakes",
+    //     "1st Birthday Decorations",
+    //     "Balloon Bouquets",
+    //     "Annaprashan Decorations",
+    //   ],
+    // },
     {
         image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/cd.webp",
       title: "Candlelight Dinner",
@@ -106,20 +106,20 @@ const Header = () => {
         "Bachelorette Decorations",
         "Ganesh Chaturthi Decorations"
       ],},
-    { image:"https://cdn.togetherv.com/party-decoration-icon_1679913296.webp",title: "Birthday Surprises" ,subtitles: [
-        "Balloon Decorations",
-        "Welcome Baby Decorations",
-        "Baby Shower Decorations",
-        "Birthday Decorations",
-        "Naming Ceremony Decorations",
-        "Car Boot Decorations",
-        "1st Birthday Decorations",
-        "Balloon Bouquets",
-        "Annaprashan Decorations",
-        "First Night Decorations",
-        "Bachelorette Decorations",
-        "Ganesh Chaturthi Decorations"
-      ],},
+    // { image:"https://cdn.togetherv.com/party-decoration-icon_1679913296.webp",title: "Birthday Surprises" ,subtitles: [
+    //     "Balloon Decorations",
+    //     "Welcome Baby Decorations",
+    //     "Baby Shower Decorations",
+    //     "Birthday Decorations",
+    //     "Naming Ceremony Decorations",
+    //     "Car Boot Decorations",
+    //     "1st Birthday Decorations",
+    //     "Balloon Bouquets",
+    //     "Annaprashan Decorations",
+    //     "First Night Decorations",
+    //     "Bachelorette Decorations",
+    //     "Ganesh Chaturthi Decorations"
+    //   ],},
     { image: "https://cdn.togetherv.com/romantic-stays-icon_1682410730.webp",title: "Room Decorations" ,subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",

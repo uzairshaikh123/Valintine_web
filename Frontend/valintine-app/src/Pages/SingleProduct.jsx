@@ -34,8 +34,8 @@ const SingleProductPage = () => {
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
   let initialPrice = product[0]?.multiple_price?.length > 0
-    ? (+(product[0].multiple_price[0].price))
-    : (+(product[0]?.price));
+  ? (+(product[0].multiple_price[0].price))
+  : (parseFloat(product[0]?.price.replace(/,/g, '')))
   const [selectedPrice, setSelectedPrice] = useState(initialPrice || 0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const params = useParams();
@@ -51,7 +51,6 @@ const SingleProductPage = () => {
     });
     setproduct(findproduct);
   }, [products,id]);
-  
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
@@ -112,7 +111,9 @@ const SingleProductPage = () => {
     const newprice=selectedPrice>0?selectedPrice:initialPrice
     setSelectedPrice(newprice+checkboxPrice);
   };
-
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
   return loading ? (
     <div
       style={{
@@ -273,9 +274,8 @@ const SingleProductPage = () => {
               <div id="cart-buttons">
                 <button
                   style={{ marginBottom: "20px" }}
-                  onClick={handleaddtocart}
                 >
-                  <Link to={"/cart"} style={{ color: "white" }} >
+                  <Link to={"/checkout"} style={{ color: "white" }} onClick={handleaddtocart}>
                     Buy Now
                   </Link>
                 </button>
@@ -289,12 +289,12 @@ const SingleProductPage = () => {
 
             </div>
           </div>
-          <div className="addons-singleproduct">
+          {/* <div className="addons-singleproduct">
 
             {product[0]?.addons?.map((el) => {
               return <AddonsCard img={el.img} name={el.name} price={el.price} desc={el.desc} />
             })}
-          </div>
+          </div> */}
 
 
           <div

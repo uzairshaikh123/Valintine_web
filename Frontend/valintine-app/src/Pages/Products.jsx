@@ -27,7 +27,13 @@ const Products = () => {
       category:initialCategory
     }
     setSearchParams(params)
+   
   }, [cityname, initialCategory]);
+
+  
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>

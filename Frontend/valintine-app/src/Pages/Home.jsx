@@ -32,12 +32,15 @@ const Home = () => {
   }, [])
   return (
     <>
-      <Navbardropdown />
+      {/* <Navbardropdown /> */}
       <div style={{ overflow: "hidden" }}>
         {/* <MenuBar/> */}
 
+        <div style={{marginTop:"25px"}}> 
         <Header />
+        </div>
         <Slider />
+          
         {/*  */}
         <div style={{ backgroundColor: "#f7f9fc" }}>
           <Categories />

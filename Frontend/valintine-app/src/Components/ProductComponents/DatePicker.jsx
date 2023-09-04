@@ -20,7 +20,7 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
   };
   const handleSlotSelection = () => {
     setSelectedSlotText();
-    openSlotModal();
+    console.log(selectedSlotText)
   };
 
   const formatTimeSlot = (slot) => {
@@ -53,26 +53,6 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
         disabled={product[0]?.category!=="candlelight dinner"&& !isDatePickerEnabled}
         className={product[0]?.category!=="candlelight dinner"&& !isDatePickerEnabled ?"disabled-date-picker":""}
       />
-      {/* <Modal isOpen={isModalOpen} onClose={closeModal} isCentered>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Select Slot</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody className="modal-scrollable-content">
-           
-            <Box >
-              {
-                product[0]?.slots?.map((slot,index)=>(
-                  <Box key={index} className="slotBox">
-                    <Text fontSize='lg'>{formatTimeSlot(slot)}</Text>
-                    <Radio size='md'></Radio>
-                  </Box>
-                ))
-              }
-            </Box>
-          </ModalBody>
-        </ModalContent>
-      </Modal> */}
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
@@ -91,12 +71,12 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
             </Box>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" onClick={onClose}>Close</Button>
+            <Button colorScheme="blue" onClick={onClose}>Book Now</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={isSlotModalOpen} onClose={closeSlotModal} isCentered>
+      {/* <Modal isOpen={isSlotModalOpen} onClose={closeSlotModal} isCentered>
         <ModalOverlay />
         <ModalContent maxW="500px">
           <ModalHeader>Select customizations</ModalHeader>
@@ -115,7 +95,7 @@ export const DatePickerComp = ({ isDatePickerEnabled, product }) => {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

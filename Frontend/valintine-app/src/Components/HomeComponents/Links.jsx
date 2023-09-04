@@ -27,7 +27,7 @@ const Links = () => {
         <h1>LATEST</h1>
         <div>
           {allproducts?.map((link, index) => (
-            index <= 3 && <Link to={`/products?city=${cityname}&category=${link.category}`}><div key={index} className='items'>
+            index <= 3 && <Link to={`/products/${link._id}`}><div key={index} className='items'>
               <img src={link.image[0]} alt={link.name}/>
               <div>
                 <a href='/'>{TruncatedString(link.name)}</a>
@@ -42,7 +42,7 @@ const Links = () => {
         <h1>BEST SELLING</h1>
         <div >
           {allproducts?.map((link, index) => (
-            index > 3 && index <= 7 && <Link to={`/products?city=${cityname}&category=${link.category}`}><div key={index} className='items'>
+            index > 3 && index <= 7 && <Link to={`/products/${link._id}`}><div key={index} className='items'>
               <img src={link.image[0]} alt={link.name} />
               <div>
 
@@ -58,7 +58,7 @@ const Links = () => {
         <h1>TOP RATED</h1>
         <div>
           {allproducts?.map((link, index) => (
-            index > 7 && index <= 11 && <Link to={`/products?city=${cityname}&category=${link.category}`} key={index}> <div className='items'>
+            index > 7 && index <= 11 && <Link to={`/products/${link._id}`} key={index}> <div className='items'>
               <img src={link.image[1]} alt={link.name}/>
               <div>
                 <a href='/'>{TruncatedString(link.name)}</a>

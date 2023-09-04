@@ -8,7 +8,7 @@ const productRoute = express.Router();
 productRoute.get("/?", async (req, res) => {
   try {
     const { city, category } = req.query;
-    const lowercaseCity = city ? city.toLowerCase() : undefined;
+    const lowercaseCity = city ? city : undefined;
     const lowercategory=category? category.toLowerCase() : undefined;
     let query = {};
     if (lowercaseCity) {

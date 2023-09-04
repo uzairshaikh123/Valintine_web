@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
   return (
     <div>
       <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>

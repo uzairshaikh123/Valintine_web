@@ -10,6 +10,7 @@ import {
   Input,
   useDisclosure,
   Image,
+  Text,
 } from '@chakra-ui/react'
 import './hamburger.css'
 import React, { useEffect, useState } from 'react'
@@ -19,6 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 function TemporaryDrawer() {
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("userdetails"))
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   const handlelogout = () => {
@@ -31,6 +33,7 @@ function TemporaryDrawer() {
       <Button ref={btnRef} onClick={onOpen} colorScheme='white'>
         <img className='hamburger' src="https://img.icons8.com/?size=512&id=3761&format=png" alt="" />
       </Button>
+
       <Drawer
         isOpen={isOpen}
         placement='left'
@@ -41,8 +44,12 @@ function TemporaryDrawer() {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Image style={{height:"200px"}} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png" alt="" />
+            <Image style={{ height: "200px" }} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png" alt="" />
           </DrawerHeader>
+          <div>
+          <Text>UserName :- {user?.name} </Text>
+          <Text>Email :- {user?.email} </Text>
+          </div>
 
           <DrawerBody
           // border={"1px solid red"}
@@ -54,13 +61,13 @@ function TemporaryDrawer() {
             {
               tokenValue ?
                 <Link to={"/login"}>
-                  <Button variant='outline' bg={"red"} color='white'  _hover={{ backgroundColor: 'red.400'}} mr={3} onClick={handlelogout} size="lg" width={"260px"}> 
+                  <Button variant='outline' bg={"red"} color='white' _hover={{ backgroundColor: 'red.400' }} mr={3} onClick={handlelogout} size="lg" width={"260px"}>
                     Logout
                   </Button>
                 </Link>
                 :
                 <Link to={"/login"}>
-                  <Button variant='outline' bg={"rgb(255, 65, 139)"} _hover={{ backgroundColor: 'rgb(240, 113, 162)'}} color={"white"} mr={3} width={"260px"} onClick={()=>onClose()}>
+                  <Button variant='outline' bg={"rgb(255, 65, 139)"} _hover={{ backgroundColor: 'rgb(240, 113, 162)' }} color={"white"} mr={3} width={"260px"} onClick={() => onClose()}>
                     Login
                   </Button>
                 </Link>
