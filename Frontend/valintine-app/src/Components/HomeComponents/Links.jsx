@@ -26,7 +26,7 @@ const Links = () => {
       <div>
         <h1>LATEST</h1>
         <div>
-          {allproducts?.map((link, index) => (
+          {allproducts?.reverse()?.map((link, index) => (
             index <= 3 && <Link to={`/products/${link._id}`}><div key={index} className='items'>
               <img src={link.image[0]} alt={link.name}/>
               <div>

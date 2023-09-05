@@ -20,7 +20,7 @@ const OrderSchema  =  mongoose.Schema({
     quantity: { type: String, required: true },
     status: { type: String, required: true },
     userID: { type: String, required: true },
-    orderDate: { type: String, required: false },
+    orderDate: { type: Array, required: false },
 
 })
 

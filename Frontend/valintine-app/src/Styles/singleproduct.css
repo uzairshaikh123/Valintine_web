@@ -60,7 +60,11 @@
   display: flex;
   justify-content: space-between;
 }
-
+.disable-button{
+  background-color: #f0f0f0; /* Light gray background */
+  color: #a0a0a0; /* Light gray text */
+  cursor: not-allowed;
+}
 /* .weight-buttons {
   border: 1px solid gray;
   padding: 5px 20px;
@@ -120,7 +124,6 @@
   border-radius: 8px;
   width: 45%;
   font-size: 20px;
-  cursor: pointer;
   background-color: #c709e8;
   color: white;
   padding: 5px;

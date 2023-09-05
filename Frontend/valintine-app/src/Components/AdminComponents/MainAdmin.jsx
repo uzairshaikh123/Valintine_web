@@ -16,6 +16,7 @@ const MainAdmin = () => {
   const [customers,setcustomers] = useState([])
   const [products,setproducts] = useState([])
   const [orders,setorders] = useState([])
+  const [sales,setSales] = useState([])
   const [blogs,setblogs] = useState([])
   const [sliders,setsliders] = useState([])
   const [testimonials,settestimonials] = useState([])
@@ -23,8 +24,6 @@ const MainAdmin = () => {
 
   const [active_title, setactivetitle] = useState("Dashboard");
   const handle_Component = (e) => {
-    // console.log(e)
-    let val = e.target.innerText;
     setactivetitle(e.target.innerText);
   };
 
@@ -104,6 +103,28 @@ const MainAdmin = () => {
       }
     });
   }, []);
+  useEffect(()=>{
+  
+    dispatch(handle_get_allorders_byadmin()).then((res) => {
+      setorders(res?.data?.data);
+    });
+    
+  },[])
+ 
+  useEffect(()=>{
+   
+    orders.reduce((acc,el)=>{
+      return acc+el.price
+    },0)
+    
+  },[orders])
+
+  useEffect(() => {
+    dispatch(handle_get_all_users()).then((res)=>{
+        setusers(res?.data?.data)
+    })
+  }, []);
+
   return (
     <>
       <section id="sidebar">
@@ -228,21 +249,21 @@ const MainAdmin = () => {
             <li>
               <i class="bx bxs-calendar-check"></i>
               <span class="text">
-                <h3>1020</h3>
+                <h3>{orders?.length}</h3>
                 <p>New Order</p>
               </span>
             </li>
             <li>
               <i class="bx bxs-group"></i>
               <span class="text">
-                <h3>2834</h3>
-                <p>Visitors</p>
+                <h3>{users?.length}</h3>
+                <p>Users</p>
               </span>
             </li>
             <li>
               <i class="bx bxs-dollar-circle"></i>
               <span class="text">
-                <h3>$2543</h3>
+                <h3>{sales}</h3>
                 <p>Total Sales</p>
               </span>
             </li>
