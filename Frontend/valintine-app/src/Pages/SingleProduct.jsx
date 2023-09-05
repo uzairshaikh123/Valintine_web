@@ -31,11 +31,13 @@ const SingleProductPage = () => {
   const store = useSelector((store) => store);
   const [pincode, setPincode] = useState("");
   const [isDatePickerEnabled, setIsDatePickerEnabled] = useState(false);
+  const [showDatePicker,setShowDatePicker]=useState(false)
+  const [update,setUpdate]=useState(false)
   const { loading, error, products } = store;
   const [product, setproduct] = useState([]);
   let initialPrice = product[0]?.multiple_price?.length > 0
-  ? (+(product[0].multiple_price[0].price))
-  : (parseFloat(product[0]?.price.replace(/,/g, '')))
+    ? (+(product[0].multiple_price[0].price))
+    : (parseFloat(product[0]?.price.replace(/,/g, '')))
   const [selectedPrice, setSelectedPrice] = useState(initialPrice || 0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const params = useParams();
@@ -50,7 +52,7 @@ const SingleProductPage = () => {
       return el._id === id;
     });
     setproduct(findproduct);
-  }, [products,id]);
+  }, [products, id]);
   const user = JSON.parse(sessionStorage.getItem("userdetails")) || {};
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token") || "";
@@ -61,6 +63,8 @@ const SingleProductPage = () => {
       productID: product[0]._id,
       userID: user?._id,
     };
+
+
     delete obj._id
     dispatch(handleaddcartproduct(user?._id, obj)).then((res) => {
       const user = JSON.parse(sessionStorage.getItem("userdetails"));
@@ -94,6 +98,11 @@ const SingleProductPage = () => {
       }
     });
   };
+
+  const handleByNow = () => {
+    setShowDatePicker(true)
+    setUpdate(!update)
+  }
   const handleButtonClick = (index) => {
     setSelectedPrice(parseFloat(product[0]?.multiple_price[index]?.price) || parseFloat(product[0]?.price));
     setSelectedIndex(index)
@@ -108,12 +117,12 @@ const SingleProductPage = () => {
   const handleCheckboxChange = (event, name, price) => {
     const checkboxChecked = event.target.checked;
     const checkboxPrice = checkboxChecked ? (+price) : (-price);
-    const newprice=selectedPrice>0?selectedPrice:initialPrice
-    setSelectedPrice(newprice+checkboxPrice);
+    const newprice = selectedPrice > 0 ? selectedPrice : initialPrice
+    setSelectedPrice(newprice + checkboxPrice);
   };
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0);
-  },[])
+  }, [])
   return loading ? (
     <div
       style={{
@@ -142,7 +151,7 @@ const SingleProductPage = () => {
         </div> */}
           {/* <div className="related-images"> */}
 
-          <AsNavFor image={product[0]?.image} id={id}/>
+          <AsNavFor image={product[0]?.image} id={id} />
           {/* <div style={{width:"100%",height:"300px",border:"1px solid red"}}>
 
         </div> */}
@@ -258,10 +267,12 @@ const SingleProductPage = () => {
                     type={"number"}
                     placeholder="Enter Pincode"
                     style={{ outline: "none" }}
+                    value={pincode}
                     onChange={handlePincodeChange}
                   />
                 </div>
               }
+
               <div
                 style={{
                   marginTop: "10px",
@@ -269,15 +280,16 @@ const SingleProductPage = () => {
                   minWidth: "100%",
                 }}
               >
-                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product} />
+                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product} showDatePicker={showDatePicker} handleByNow={handleByNow} update={update}/>
               </div>
               <div id="cart-buttons">
                 <button
                   style={{ marginBottom: "20px" }}
+                  onClick={handleByNow}
+                  disabled={product[0]?.category !== "candlelight dinner" && !isDatePickerEnabled}
+                  className={product[0]?.category !== "candlelight dinner" && !isDatePickerEnabled ? "disable-button" : ""}
                 >
-                  <Link to={"/checkout"} style={{ color: "white" }} onClick={handleaddtocart}>
-                    Buy Now
-                  </Link>
+                  Book Now
                 </button>
                 <button
                   style={{ marginBottom: "20px" }}

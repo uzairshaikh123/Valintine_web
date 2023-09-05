@@ -53,7 +53,7 @@ const dispatch = useDispatch()
 useEffect(()=>{
 
 dispatch(handlegetfilterproducts(cityname)).then((res)=>{
-  let filterdata = res?.data.data?.filter((el)=>{
+  let filterdata = res?.data?.data?.filter((el)=>{
     return el.category==="decorations"
 
   })
