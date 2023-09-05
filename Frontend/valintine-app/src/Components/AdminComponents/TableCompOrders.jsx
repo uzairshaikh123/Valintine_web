@@ -32,6 +32,8 @@ const TableCompOrders= () => {
             <Th>Edit</Th>
             <Th>Delete</Th>
             <Th>Share</Th>
+            {/* <Th>ADD</Th>
+            <Th>ADD</Th> */}
           </Tr>
         </Thead>
         <tbody>
@@ -52,6 +54,12 @@ const TableCompOrders= () => {
               <Td>
                 <Button>SHARE</Button>
               </Td>
+              {/* <Td>
+                <Button>ADD TO BEST SELLING</Button>
+              </Td>
+              <Td>
+                <Button>ADD TO TOP RATED</Button>
+              </Td> */}
             </Tr>
           ))}
         </tbody>

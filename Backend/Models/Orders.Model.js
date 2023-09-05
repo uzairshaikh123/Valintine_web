@@ -16,6 +16,7 @@ const OrderSchema  =  mongoose.Schema({
     delivery_info: { type: Array, required: true },
     booked_dates: { type: Array, required: false },
     address: { type: String, required: false },
+    total: { type: String, required: false },
     quantity: { type: String, required: true },
     status: { type: String, required: true },
     userID: { type: String, required: true },

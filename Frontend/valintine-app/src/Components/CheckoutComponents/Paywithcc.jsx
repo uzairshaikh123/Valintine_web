@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './paycc.css'
 const Paywithcc = () => {
 
 	const [amt , setamt ] = useState(0)
@@ -50,12 +51,12 @@ useEffect(()=>{
   return (
     <div>
       <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
-		<table width="40%" height="100" border='1' align="center">
+		<table width="40%"  border='1' align="center">
 			<caption>
-				<font size="4" color="blue"><b>Integration Kit</b></font>
+				<font size="4" color="blue"><b>Proceed With CCAvenue</b></font>
 			</caption>
 		</table>
-		<table width="40%" height="100" border='1' align="center">
+		<table width="40%"  border='1' align="center">
 			<tr>
 				<td>Parameter Name:</td>
 				<td>Parameter Value:</td>
@@ -206,7 +207,7 @@ useEffect(()=>{
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Checkout" /></td>
+				<td style={{display:"block"}}><input type="submit" value="Checkout" /></td>
 			</tr>
 		</table>
 	</form>

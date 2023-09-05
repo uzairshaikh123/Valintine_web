@@ -4,7 +4,7 @@ import "../Styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {useSearchParams} from "react-router-dom"
-
+import { useLocation } from 'react-router-dom';
 // import SliderComp from "../Components/ProductComponents/Slidercomp";
 // import SelectSmall from "../Components/ProductComponents/SelectComp";
 // import SortComp from "../Components/ProductComponents/SortComp";
@@ -34,6 +34,14 @@ const Products = () => {
   useEffect(()=>{
     window.scrollTo(0, 0);
   },[])
+
+
+  let location = useLocation();
+
+  React.useEffect(() => {
+    // Google Analytics
+    // ga('send', 'pageview');
+  }, [location]);
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>

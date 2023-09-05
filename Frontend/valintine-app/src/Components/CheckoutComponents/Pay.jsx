@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Button } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
+import Failure from './Failure';
+import Success from './Success';
 const Pay = () => {
 
 	const [amt , setamt ] = useState(0)
@@ -77,7 +79,17 @@ const Pay = () => {
 	return (
 		<>
 		<div style={{ width: "100%" }}>
-			<Button bg={"red"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
+	{/* <Success /> */}
+				<Text size="4" color="blue" textAlign={"center"} marginBottom={"20px"}><b>
+					Proceed With Phonepe
+					</b> 
+					 </Text>
+		
+			<Button bg={"green"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
+			<Text size="4" color="blue" textAlign={"center"} marginTop={"20px"}><b>
+					or
+					</b> 
+					 </Text>
 		</div>
 		
 		</>

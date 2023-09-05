@@ -239,17 +239,21 @@ export const handledelete_allcart_products = (id) => (dispatch) => {
     });
 };
 export const handleadd_allcart_products_toorders = (data) => (dispatch) => {
+  
+
   dispatch({ type: types.LOADING });
 const user = JSON.parse(sessionStorage.getItem('userdetails'));
-   data=data.map((el)=>{
+axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=>{
+  let totalamt =(res?.data?.data[0]?.total)
+  data=data.map((el)=>{
     el.status="Pending";
     el.userID=user?._id
     el.orderDate=new Date().toISOString().slice(0, 10)
+    el.total=totalamt
     return el
   })
+  })
 
-
-console.log(data)
   return axios
     .post(`${process.env.REACT_APP_Backend_url}/orders/add`,data,{
       headers: {

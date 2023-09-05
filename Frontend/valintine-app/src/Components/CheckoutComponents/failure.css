@@ -1,0 +1,41 @@
+/* Failure.css */
+
+/* Custom modal styles */
+.modal-custom {
+    border: none;
+    border-radius: 5px;
+  }
+  
+  /* Header styles for success modal */
+  .modal-header-success {
+    background: #1ab394;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  /* Header styles for failure modal */
+  .modal-header-failure {
+    background: #d75a4a;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  /* Text styles for success modal */
+  .modal-text-success {
+    text-align: center;
+    color: #1ab394;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  /* Text styles for both modals */
+  .modal-text {
+    color: #555555;
+  }
+  
+  /* Close button color for both modals */
+  .close {
+    opacity: 1;
+    color: #fff;
+  }
+  

@@ -29,6 +29,7 @@ import Addons from "../Components/ProductComponents/Addons";
 import AddonsCard from "../Components/ProductComponents/AddonsCard";
 const SingleProductPage = () => {
   const store = useSelector((store) => store);
+  let [change , setchange] = useState(2)
   const [pincode, setPincode] = useState("");
   const [isDatePickerEnabled, setIsDatePickerEnabled] = useState(false);
   const { loading, error, products } = store;
@@ -114,6 +115,10 @@ const SingleProductPage = () => {
   useEffect(()=>{
     window.scrollTo(0, 0);
   },[])
+
+  
+console.log(change)
+
   return loading ? (
     <div
       style={{
@@ -170,7 +175,7 @@ const SingleProductPage = () => {
                 <ul style={{ padding: "20px" }}>
                   {product[0]?.prod_details?.map(
                     (spec, index) =>
-                      index <= 3 && (
+                      index <= change && (
                         <li key={index}>
                           <li style={{ listStyle: "initial", color: "gray" }}>
                             {spec}
@@ -179,11 +184,11 @@ const SingleProductPage = () => {
                         </li>
                       )
                   )}
-                  <a
-                    href=""
-                  >
-                    Read More
-                  </a>
+                 {change<=10 && change>2?<p style={{cursor:"pointer"}} onClick={()=>setchange(2)}>
+                 Show Less...
+                  </p>:<p style={{cursor:"pointer"}} onClick={()=>setchange(10)}>
+                    Read more...
+                  </p>}
                 </ul>
                 <div
                   style={{
@@ -295,8 +300,6 @@ const SingleProductPage = () => {
               return <AddonsCard img={el.img} name={el.name} price={el.price} desc={el.desc} />
             })}
           </div> */}
-
-
           <div
             className="product-specifications"
             style={{
