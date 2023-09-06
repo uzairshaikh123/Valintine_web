@@ -8,7 +8,6 @@ import TableCompProducts from '../Tables/TableCompProducts';
 import AddProductModal from './AddProductModal';
 
 const AdminProducts = () => {
- 
   return (
     <div  style={{maxWidth:"100%"}}>
      <h1>Products</h1>

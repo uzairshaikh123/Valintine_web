@@ -26,7 +26,7 @@ form {
   td {
     padding: 10px;
     text-align: left;
-    display: none;
+    /* display: none; */
   }
   
   /* Style input fields */

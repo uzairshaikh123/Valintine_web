@@ -19,7 +19,6 @@ const Products = () => {
   const cityname=searchParams.get("city")
   const initialCategory=searchParams.get("category")
   console.log(cityname,initialCategory)
-  console.log()
   useEffect(() => {
     dispatch(handlegetfilterproducts(cityname, initialCategory)).then((res)=>(setProdData(res.data.data)))
     let params={
