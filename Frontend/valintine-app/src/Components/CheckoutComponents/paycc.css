@@ -27,9 +27,12 @@ form {
     padding: 10px;
     text-align: left;
     /* display: none; */
+<<<<<<< HEAD
   }
   .cctr{
     display: none;
+=======
+>>>>>>> 3b0407945ee1ff9843a5b9868d0c049917518800
   }
   
   /* Style input fields */

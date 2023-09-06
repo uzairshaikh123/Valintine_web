@@ -148,7 +148,8 @@ console.log(user?._id)
 
 export const handleaddcartproduct = (id,data) => (dispatch) => {
   dispatch({ type: types.LOADING });
-
+const orderdate = JSON.parse(sessionStorage.getItem("slotedate"))
+data.orderDate = orderdate
   return axios
     .post(`${process.env.REACT_APP_Backend_url}/cart/add/${id}`,data, {
     // .post(`${process.env.REACT_APP_Backend_url}/cart/add`,data, {

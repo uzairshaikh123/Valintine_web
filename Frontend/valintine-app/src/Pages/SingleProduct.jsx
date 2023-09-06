@@ -9,7 +9,6 @@ import {
   Link,
   useNavigate,
   useParams,
-  useSearchParams,
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import {
@@ -281,7 +280,7 @@ const SingleProductPage = () => {
                   minWidth: "100%",
                 }}
               >
-                <DatePickerComp isDatePickerEnabled={isDatePickerEnabled} product={product} showDatePicker={showDatePicker} handleByNow={handleByNow} update={update}/>
+                <DatePickerComp handleaddtocart={handleaddtocart} isDatePickerEnabled={isDatePickerEnabled} product={product} showDatePicker={showDatePicker} handleByNow={handleByNow} update={update}/>
               </div>
               <div id="cart-buttons">
                 <button

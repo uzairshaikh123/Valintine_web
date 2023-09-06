@@ -4,9 +4,11 @@ import "./DatePicker.css"
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Box, Select, Text, Radio, useDisclosure, Image } from "@chakra-ui/react";
 import AddonsCard from "./AddonsCard";
-export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, handleByNow,update }) => {
+import { useNavigate } from "react-router-dom";
+export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, handleByNow,update,handleaddtocart }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isSlotModalOpen, setIsSlotModalOpen] = useState(false);
+  const navigate = useNavigate()
   const [selectedSlotText, setSelectedSlotText] = useState("");
   const [selectedSlot, setSelectedSlot] = useState(null);
 
@@ -24,6 +26,7 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
   const handleSlotSelection = (slot) => {
     obj.slot=slot
     setSelectedSlot(slot)
+    sessionStorage.setItem("slotedate",JSON.stringify(obj))
   };
 
   const formatTimeSlot = (slot) => {
@@ -43,7 +46,10 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
 
     return `${startTime} to ${endTime}`;
   };
-
+  
+  const handleAddToCart=()=>{
+   
+  }
   useEffect(() => {
     if (showDatePicker) {
       onOpen()
@@ -56,7 +62,6 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
     setStartDate(date);
     handleByNow()
   };
-  console.log(obj)
   return (
     <>
       <DatePicker
@@ -78,11 +83,11 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
             <Box >
               {
                 product[0]?.slots?.map((slot, index) => (
-                  <Box key={index} className="slotBox" onClick={() => handleSlotSelection(slot)}>
+                  <Box key={index} className={`${selectedSlot === slot?"radiobgcolor":""} slotBox`} onClick={() => handleSlotSelection(slot)}>
                     <Radio  
                      size='md' 
                      isChecked={selectedSlot === slot}
-                     
+                     colorScheme="rgb(255, 65, 139)"
                      >
                     <Text ml={"20px"}>{formatTimeSlot(slot)}</Text>
                     </Radio>
@@ -92,7 +97,11 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
             </Box>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" onClick={onClose}>Book Now</Button>
+            <Button colorScheme="blue" onClick={()=>{
+              onClose();
+              handleaddtocart()
+              navigate("/checkout")
+            }}>Book Now</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>}
