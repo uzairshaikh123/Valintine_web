@@ -123,15 +123,7 @@ const SingleProductPage = () => {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-<<<<<<< HEAD
   },[])
-
-  
-console.log(change)
-
-=======
-  }, [])
->>>>>>> 148aba218478dd53c6ac41b53e60f4fdd4162a6a
   return loading ? (
     <div
       style={{
