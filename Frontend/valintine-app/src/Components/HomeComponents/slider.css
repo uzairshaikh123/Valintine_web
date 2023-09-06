@@ -8,9 +8,10 @@
 
 .carousel-container>button{
     max-width: 20px;
-    background:white;
+    /* background:transparent; */
     color: black;
     width: 10%;
+    display: none;
     /* border: 1px solid red; */
 
 }

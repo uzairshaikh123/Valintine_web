@@ -22,8 +22,8 @@ const Services = () => {
   };
   return (
     <Carousel
-    swipeable={false}
-    draggable={false}
+    swipeable={true}
+    draggable={true}
     showDots={true}
     responsive={responsive}
     autoPlay={true}

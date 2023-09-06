@@ -108,7 +108,7 @@ function Navbar({ cartcount }) {
               id={"comp-logo"}
               style={{ width: "140px", height: "auto" }}
               // src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logo/logo3.png"}
-              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/New-logo-final.jpg"}
+              src={"https://valentinesagaassets.s3.ap-south-1.amazonaws.com/newlogo.webp"}
               alt=""
             />
           </Link>

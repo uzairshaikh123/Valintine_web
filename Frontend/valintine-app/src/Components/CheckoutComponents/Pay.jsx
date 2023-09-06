@@ -81,7 +81,8 @@ const Pay = () => {
 		<div style={{ width: "100%" }}>
 	{/* <Success /> */}
 				<Text size="4" color="blue" textAlign={"center"} marginBottom={"20px"}><b>
-					Proceed With Phonepe
+					
+					<img style={{height:"100px",display:"block",margin:"auto"}} src="https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png" alt="" />
 					</b> 
 					 </Text>
 		

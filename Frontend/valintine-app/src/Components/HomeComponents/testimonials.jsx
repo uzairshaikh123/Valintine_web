@@ -37,13 +37,14 @@ useEffect(() => {
   <>
 <h1 style={{marginBottom:"30px",marginTop:"30px"}}>Customer Testimonials</h1>
   <Carousel
-    swipeable={false}
-    draggable={false}
+    swipeable={true}
+    draggable={true}
     showDots={true}
     responsive={responsive}
     autoPlay={true}
     containerClass="carousel-container"
     infinite={true}
+    arrows={false}
     >
       {images?.map((el)=>{
 

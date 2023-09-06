@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ColumnGroupingTable from '../Tables/TableCompProducts'
-import { handlegetproducts } from '../../Redux/action';
-import { useDispatch, useSelector } from 'react-redux';
-import TableComp from '../Tables/TableCompProducts';
 import './mainadmin.css'
 import TableCompProducts from '../Tables/TableCompProducts';
 import AddProductModal from './AddProductModal';

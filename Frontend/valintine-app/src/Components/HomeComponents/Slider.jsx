@@ -48,11 +48,11 @@ const Slider = () => {
 
 
   return (<Carousel
-    swipeable={false}
-    draggable={false}
+    swipeable={true}
+    draggable={true}
     showDots={true}
     responsive={responsive}
-    autoPlay={true}
+     autoPlay={true}
     infinite={true}
     containerClass="carousel-container carousel-container-2"
   // containerClass="carousel-container"

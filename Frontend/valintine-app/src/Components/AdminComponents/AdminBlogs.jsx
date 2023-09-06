@@ -12,7 +12,7 @@ const AdminBlogs= () => {
   const dispatch = useDispatch();
   const { loading, error,blogs } = store;
 
-
+console.log(blogs,store)
   useEffect(() => {
     // dispatch(handlegetproducts());
     dispatch(handle_get_all_blogs());

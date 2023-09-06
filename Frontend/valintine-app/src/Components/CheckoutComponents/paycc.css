@@ -26,6 +26,9 @@ form {
   td {
     padding: 10px;
     text-align: left;
+    /* display: none; */
+  }
+  .cctr{
     display: none;
   }
   

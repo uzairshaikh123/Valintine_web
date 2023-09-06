@@ -59,7 +59,7 @@ const AsNavFor = ({ image }) => {
         asNavFor={slider2.current}
         ref={slider1}
         dots={true}
-        arrows={true}
+        // arrows={true}
         infinite={true}
         className="slick_carousel"
         // prevArrow={<PrevArrow />}

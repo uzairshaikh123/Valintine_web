@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Image,
   Text,
+  Box,
 } from '@chakra-ui/react'
 import './hamburger.css'
 import React, { useEffect, useState } from 'react'
@@ -44,12 +45,20 @@ function TemporaryDrawer() {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Image style={{ height: "200px" }} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/logoval.png" alt="" />
+            <Image style={{ height: "100px" }} src="https://valentinesagaassets.s3.ap-south-1.amazonaws.com/newlogo.webp" alt="" />
+            <Box display={"flex"} justifyContent={"space-evenly"}  mt={"20px"} gap={"10px"}>
+             <Link onClick={()=>onClose()} to={"/cart"}>
+             <Button colorScheme='pink' >Cart</Button>
+             </Link> 
+             <Link  onClick={()=>onClose()}  to={"/orders"}>
+              <Button colorScheme='pink'>Orders</Button>
+             </Link>
+            </Box>
           </DrawerHeader>
-          <div>
-          <Text>UserName :- {user?.name} </Text>
-          <Text>Email :- {user?.email} </Text>
-          </div>
+          <Box width={"100%"}>
+          <Button colorScheme='green'  width={"100%"}>UserName :- {user?.name} </Button>
+          <Button colorScheme='green' mt={"10px"} width={"100%"}>Email :- {user?.email} </Button>
+          </Box>
 
           <DrawerBody
           // border={"1px solid red"}

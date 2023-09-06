@@ -8,6 +8,7 @@ import './Orders.css'
 import { Button, Table, TableContainer, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 
+
 const Orders= () => {
   const itemsPerPage = 3; // Number of items to show per page
   const data = [
@@ -58,7 +59,6 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
 }
 
 
-
   return (
     <TableContainer style={{minWidth:"100%"}}>
       <Table>
@@ -94,10 +94,8 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
               </Td>
               <Td>
                 <Button>
-                    
                         {item.status}
-                        
-                        </Button>
+                 </Button>
               </Td>
             </Tr>
           ))}

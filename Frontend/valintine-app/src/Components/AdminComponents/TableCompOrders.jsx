@@ -15,7 +15,8 @@ const TableCompOrders= () => {
   useEffect(() => {
     dispatch(handlegetproducts());
   }, []);
-
+  
+  console.log("all",allproducts)
 
 
 
@@ -32,8 +33,8 @@ const TableCompOrders= () => {
             <Th>Edit</Th>
             <Th>Delete</Th>
             <Th>Share</Th>
-            {/* <Th>ADD</Th>
-            <Th>ADD</Th> */}
+            <Th>ADD</Th>
+            <Th>ADD</Th>
           </Tr>
         </Thead>
         <tbody>
@@ -54,12 +55,12 @@ const TableCompOrders= () => {
               <Td>
                 <Button>SHARE</Button>
               </Td>
-              {/* <Td>
+              <Td>
                 <Button>ADD TO BEST SELLING</Button>
               </Td>
               <Td>
                 <Button>ADD TO TOP RATED</Button>
-              </Td> */}
+              </Td>
             </Tr>
           ))}
         </tbody>

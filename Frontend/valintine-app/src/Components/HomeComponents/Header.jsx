@@ -216,13 +216,14 @@ const Header = () => {
   return (
     <div id='header'>
       <Carousel
-    swipeable={false}
-    draggable={false}
+    swipeable={true}
+    draggable={true}
     // showDots={true}
     responsive={responsive}
     // containerClass="carousel-container abc"
-    // autoPlay={true}
+    autoPlay={true}
     infinite={true}
+    arrows={false}
     // autoPlaySpeed={3000}
     >
       {titles?.map((el)=>{
