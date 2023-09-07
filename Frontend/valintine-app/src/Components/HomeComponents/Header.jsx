@@ -224,7 +224,6 @@ const Header = () => {
   return (
     <div id='header'>
       <Carousel
-<<<<<<< HEAD
     swipeable={true}
     draggable={true}
     // showDots={true}
@@ -244,26 +243,7 @@ const Header = () => {
     </Link>  
       })}
     </Carousel>
-=======
-        swipeable={false}
-        draggable={false}
-        // showDots={true}
-        responsive={responsive}
-        // containerClass="carousel-container abc"
-        // autoPlay={true}
-        infinite={true}
-      // autoPlaySpeed={3000}
-      >
-        {titles?.map((el) => {
-          return <Link to={`products/?city=${cityname}&category=${el.title}`} style={{ textDecoration: "none", color: "black" }}>
-            <div className='headers-div' onClick={() => handleClick(el.title)} >
-              <img style={{ height: "50%", width: "30%", cursor: "pointer" }} src={el.image} alt="" />
-              <p>{el.title}</p>
-            </div>
-          </Link>
-        })}
-      </Carousel>
->>>>>>> 3b0407945ee1ff9843a5b9868d0c049917518800
+
     </div>
   )
 }
