@@ -78,7 +78,7 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Amount</td>
-				<td><input type="text" name="amount" value={`${100}`} /></td>
+				<td><input type="text" name="amount" value={`${amt}`} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td>Redirect URL</td>
