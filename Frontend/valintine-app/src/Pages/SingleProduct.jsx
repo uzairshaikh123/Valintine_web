@@ -62,6 +62,7 @@ const SingleProductPage = () => {
       quantity: 1,
       productID: product[0]._id,
       userID: user?._id,
+      price:selectedPrice
     };
 
 
@@ -123,6 +124,8 @@ const SingleProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   },[])
+
+  console.log(selectedPrice)
   return loading ? (
     <div
       style={{

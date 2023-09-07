@@ -177,12 +177,12 @@ function Navbar({ cartcount }) {
           
           }
 
-          <Link to={"/cart"}>
-            <a href="#" className="cart-nav location">
+          <Link to={"/cart"} className="cart-nav location">
+            {/* <a href="#" className="cart-nav location"> */}
 
               <HiShoppingCart />
-
-            </a>
+              <span class='badge badge-warning' id='lblCartCount'> {cart?.length} </span>
+            {/* </a> */}
           </Link>
 
           {/* <button  backgroundColor={color}> */}

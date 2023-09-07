@@ -65,6 +65,7 @@ function Cart() {
         // alert("qty")
       }
     });
+    getTotalCost()
   };
 
   const decreaseQuantity = (itemId, qty) => {
@@ -99,31 +100,15 @@ function Cart() {
         }
       });
     }
-
+    getTotalCost()
    
   };
 
   const getTotalCost = () => {
-    // console.log(cart)
-
-  //  let multiple_price_cart = cart.filter((el)=>{
-
-  //     return el.multiple_price.length
-  //  })
+  
    let total = cart.reduce((acc,el)=>{
-if(el.multiple_price.length>0){
 
-  // console.log("el",el.multiple_price)
-  for(let i=0;i<el.multiple_price.length;i++){
-    let w=+el.weight
-   if(w==el.multiple_price[i].weight){
-      acc+=el.multiple_price[i].price*el.quantity
-   }
-  }
-
-}else{
-  acc += el.quantity * Number(el.price)
-}
+acc += el.quantity * Number(el.price)
 return acc
       
    },0)
@@ -134,7 +119,7 @@ return acc
    
    let user =JSON.parse(sessionStorage.getItem("userdetails")) 
    axios.patch(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`,obj).then((res)=>{
-    // console.log(res)
+    console.log(res)
    })
    return total
   
