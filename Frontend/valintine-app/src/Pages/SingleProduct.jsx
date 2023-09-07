@@ -62,7 +62,7 @@ const SingleProductPage = () => {
       quantity: 1,
       productID: product[0]._id,
       userID: user?._id,
-      price:selectedPrice
+      price:selectedPrice || initialPrice
     };
 
 
