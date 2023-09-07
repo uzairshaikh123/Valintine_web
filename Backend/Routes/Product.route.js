@@ -8,6 +8,7 @@ const productRoute = express.Router();
 productRoute.get("/?", async (req, res) => {
   try {
     const { city, category } = req.query;
+    
     const lowercaseCity = city ? city : undefined;
     const lowercategory=category? category.toLowerCase() : undefined;
     let query = {};
@@ -17,8 +18,19 @@ productRoute.get("/?", async (req, res) => {
     if (category) {
       query.category = lowercategory; // Add category to the query if present
     }
-    let allproducts = await ProductModel.find(query);
+    if(lowercaseCity=="all india" ){
+      
+      let obj ={}
+      if (category) {
+        obj.category = lowercategory; // Add category to the query if present
+      }
+      let allproducts = await ProductModel.find(obj);   
     res.status(200).send({ msg: "All Products", data: allproducts });
+    }else{
+
+      let allproducts = await ProductModel.find(query);
+      res.status(200).send({ msg: "All Products", data: allproducts });
+    }
   } catch (error) {
     res.status(500).send({ msg: error.message });
   }

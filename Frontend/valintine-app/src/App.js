@@ -35,14 +35,14 @@ function App() {
   };
   // console.log(admin_token)
 
-  useEffect(() => {
-    let popup = setTimeout(() => {
-      notify();
-    }, 2000);
-    return () => {
-      clearTimeout(popup);
-    };
-  }, []);
+  // useEffect(() => {
+  //   let popup = setTimeout(() => {
+  //     notify();
+  //   }, 2000);
+  //   return () => {
+  //     clearTimeout(popup);
+  //   };
+  // }, []);
   const dispatch = useDispatch();
   useEffect(() => {
     let user = JSON.parse(sessionStorage.getItem("userdetails"));
