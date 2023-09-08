@@ -109,7 +109,7 @@ export const handlegetcartproducts = (id) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
 
       dispatch({ type: types.GETCARTPRODUCTS, payload: res.data.data });
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './paycc.css'
-const Paywithcc = () => {
-
+const Paywithcc = ({address}) => {
+	let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 	const [amt , setamt ] = useState(0)
 const handleSubmit =  (e) => {
 e.preventDefault()
@@ -46,8 +46,9 @@ useEffect(()=>{
 		   })
    },[])
 
+   address=address.split(",")
 
-
+console.log(address)
   return (
     <div>
       <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
@@ -83,13 +84,13 @@ useEffect(()=>{
 			<tr className='cctr'>
 				<td>Redirect URL</td>
 				<td><input type="text" name="redirect_url"
-					value="http://127.0.0.1:3001/ccavResponseHandler" />
+					value="https://valentinesaga.com/orders" />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Cancel URL</td>
 				<td><input type="text" name="cancel_url"
-					value="http://127.0.0.1:3001/ccavResponseHandler" />
+					value="https://valentinesaga.com/orders" />
 				</td>
 			</tr>
 			<tr className='cctr'>
@@ -101,39 +102,40 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Billing Name</td>
-				<td><input type="text" name="billing_name" value="Peter" /></td>
+				<td><input type="text" name="billing_name" value={user?.name} /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing Address:</td>
+				<td>Billing Address:{address}</td>
 				<td><input type="text" name="billing_address"
-					value="Santacruz" /></td>
+					value={`${address}`}  /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing City:</td>
-				<td><input type="text" name="billing_city" value="Mumbai" /></td>
+				<td>Billing City:{address[3]}</td>
+				<td><input type="text" name="billing_city" value={`${address[3]}`}  /></td>
+			</tr>
+			{/* ['C-3/7 ', ' garima garden', 'Irshad Garden ', ' Ghaziabad ', ' Uttar pradesh ', ' 201005'] */}
+			<tr className='cctr'>
+				<td>Billing State:{address[4]}</td>
+				<td><input type="text" name="billing_state" value={`${address[4]}`}  /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing State:</td>
-				<td><input type="text" name="billing_state" value="MH" /></td>
+				<td>Billing Zip:{address[5]}</td>
+				<td><input type="text"  name="billing_zip" value={`${address[5]}`} /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing Zip:</td>
-				<td><input type="text" name="billing_zip" value="400054" /></td>
-			</tr>
-			<tr className='cctr'>
-				<td>Billing Country:</td>
+				<td>Billing Country:India</td>
 				<td><input type="text" name="billing_country" value="India" />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Billing Tel:</td>
-				<td><input type="text" name="billing_tel" value="9876543210" />
+				<td><input type="text" name="billing_tel" value="" />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Billing Email:</td>
 				<td><input type="text" name="billing_email"
-					value="testing@domain.com" /></td>
+					value={user?.email} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td colspan="2">Shipping information(optional):</td>
@@ -150,7 +152,7 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping City:</td>
-				<td><input type="text" name="delivery_city" value="Mumbai" />
+				<td><input type="text" name="delivery_city" value={`${address[3]}`} />
 				</td>
 			</tr>
 			<tr className='cctr'>
@@ -207,7 +209,7 @@ useEffect(()=>{
 			</tr>
 			<tr style={{border:"none"}}>
 				{/* <td></td> */}
-				<td style={{display:"block"}}><input type="submit" value="Pay Now" /></td>
+				<td style={{display:"block"}}><input type="submit" value={`Pay Now ₹${amt}`} /></td>
 			</tr>
 		</table>
 	</form>

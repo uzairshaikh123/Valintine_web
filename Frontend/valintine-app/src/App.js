@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import React from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import AllRoutes from "./Routes/AllRoutes";
 import Navbar from "./Pages/Navbar";
@@ -10,9 +11,8 @@ import AdminPanel from "./Pages/Admin";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "./Redux/action";
 import Whatsapp from "./Components/HomeComponents/Whatsapp";
-
 // import handleOpe
-function App() {
+const App =React.memo(()=>{
   const Msg = ({ closeToast, toastProps }) => (
     <div>
       <img
@@ -44,16 +44,16 @@ function App() {
   //   };
   // }, []);
   const dispatch = useDispatch();
-  useEffect(() => {
-    let user = JSON.parse(sessionStorage.getItem("userdetails"));
+  // useEffect(() => {
+  //   let user = JSON.parse(sessionStorage.getItem("userdetails"));
 
-    dispatch(handlegetcartproducts(user?._id));
-  }, []);
+  //   dispatch(handlegetcartproducts(user?._id));
+  // }, []);
 
   useEffect(() => {
     setadmin(admin_token);
   }, [admin_token]);
-
+console.log('hello from js')
   // console.log(admin)
 
   return (
@@ -69,5 +69,6 @@ function App() {
     </div>
   );
 }
+)
 
 export default App;

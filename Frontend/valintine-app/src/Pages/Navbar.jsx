@@ -14,6 +14,8 @@ import SearchResults from "./SearchResults";
 import Swal from "sweetalert2";
 function Navbar({ cartcount }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch()
+
   const initialCity = sessionStorage.getItem("cityname")?.toLowerCase()
   // const [selectedProduct, setSelectedProduct] = useState(null);
   // const initialCity=searchParams.get("city")
@@ -30,6 +32,12 @@ function Navbar({ cartcount }) {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+   useEffect(() => {
+    let user = JSON.parse(sessionStorage.getItem("userdetails"));
+
+    dispatch(handlegetcartproducts(user?._id));
+  }, [token]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open2 = Boolean(anchorEl);
@@ -170,6 +178,9 @@ function Navbar({ cartcount }) {
             <br />
               <MenuItem  fontSize={"15px"}  color={'black'}>{user.name}</MenuItem>
               <MenuItem  fontSize={"15px"}  color={'black'}>{user.email}</MenuItem>
+             <Link to={"/orders"}>
+              <MenuItem  fontSize={"15px"}  color={'black'}>Orders</MenuItem>
+             </Link>
             <MenuDivider />
             <Link to={"/login"}><MenuItem onClick={handlelogout} bg={'rgb(255, 65, 139)'} color={'black'}>Logout</MenuItem></Link>
           </MenuList>

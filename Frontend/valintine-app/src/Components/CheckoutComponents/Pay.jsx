@@ -85,8 +85,8 @@ const Pay = () => {
 					<img style={{height:"100px",display:"block",margin:"auto"}} src="https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png" alt="" />
 					</b> 
 					 </Text>
-		
-			<Button bg={"green"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>Proceed to Pay {amt}</Button>
+		<Text textAlign={"center"}>Coming Soon...</Text>
+			<Button isDisabled={true} bg={"green"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>{`Pay Now ₹${amt}`}</Button>
 			<Text size="4" color="blue" textAlign={"center"} marginTop={"20px"}><b>
 					or
 					</b> 

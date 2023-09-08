@@ -232,10 +232,10 @@ const Header = () => {
     autoPlay={true}
     infinite={true}
     arrows={false}
-    // autoPlaySpeed={3000}
+    
     >
       {titles?.map((el)=>{
-        return  <Link to={`products?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
+        return <Link to={`products?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
     <div className='headers-div' onClick={()=>handleClick(el.title)} >
         <img style={{height:"50%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
         <p>{el.title}</p>

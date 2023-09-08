@@ -116,7 +116,6 @@ exports.postReq = function(request,response){
 	// response.write(formbody);
 	// response.end();
     // });
-    console.log(request.body)
 
     const stringify_payload = qs.stringify({
                     ...request.body

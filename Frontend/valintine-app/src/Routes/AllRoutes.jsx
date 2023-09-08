@@ -24,7 +24,7 @@ import About from '../Pages/About'
 const AllRoutes = () => {
   return (
     <Routes>
-        <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/login" element={<Login/>}/>
@@ -51,14 +51,14 @@ const AllRoutes = () => {
                 <MainAdmin/>
                 </PrivateRouteAdmin>
                 
-                }/>
+              }/>
                 <Route path="/adminlogin" element={<AdminLogin/>}/>
                 <Route path="/orders" element={
-                   <PrivateRoute>
+                  <PrivateRoute>
                 <OrdersPage/>
                    </PrivateRoute>
                 
-                }/>
+              }/>
                 <Route path="/blogs" element={<Blogs/>}/>
                 <Route path="/blogs/:id" element={<SingleBlog/>}/>
                 <Route path="*" element={<Pagenotfound/>}/>

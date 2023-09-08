@@ -55,7 +55,7 @@ axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=
         {cart.map((el)=>{
           return <p>Cart Items : {el.name}</p>
         })}
-        <button onClick={handleeditaddress} style={{display:"block",margin:"auto",fontSize:"20px",cursor:"pointer",padding:"5px 20px",background:"blue",color:"white",border:"none",borderRadius:"10px"}}>Edit</button>
+        <button  onClick={handleeditaddress} style={{display:"block",margin:"auto",fontSize:"20px",cursor:"pointer",padding:"5px 20px",background:"blue",color:"white",border:"none",borderRadius:"10px"}}>Edit</button>
         </div>
         }
     
@@ -64,7 +64,7 @@ axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=
     </div>
 <div>
 <Pay />
-<Paywithcc />
+<Paywithcc address={user?.address}/>
 </div>
         </div>
     </>
