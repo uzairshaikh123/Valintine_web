@@ -22,7 +22,7 @@ exports.postRes = function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status} = ccavEncResponse
+		const {order_status,status_code} = ccavEncResponse
 		if (
             order_status == 'Invalid'
             || order_status == 'Aborted'
@@ -35,6 +35,7 @@ exports.postRes = function(request,response){
           return response.render("ccav_payment_response", {
                   data_string: JSON.stringify(ccavEncResponse),
                   order_status,
+				  status_code
            });
         }
 
@@ -42,6 +43,7 @@ exports.postRes = function(request,response){
 		return response.render("ccav_payment_response", {
 			data_string: JSON.stringify(ccavEncResponse),
 			order_status,
+			status_code
 	 });
 
 		// console.log(ccavResponse,"line 25")
