@@ -33,14 +33,14 @@ exports.postRes = function(request,response){
           
             // return response
           return response.render("ccav_payment_response", {
-                  data_string: JSON.stringify(data),
+                  data_string: JSON.stringify(ccavEncResponse),
                   order_status,
            });
         }
 
 		// and return response
 		return response.render("ccav_payment_response", {
-			data_string: JSON.stringify(data),
+			data_string: JSON.stringify(ccavEncResponse),
 			order_status,
 	 });
 
