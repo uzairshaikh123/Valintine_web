@@ -22,7 +22,7 @@ exports.postRes = function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		console.log(request.body,"line 25")
+		console.log(ccavResponse,"line 25")
 	    var pData = '';
 	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
 	    pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
