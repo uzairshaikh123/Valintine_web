@@ -18,11 +18,11 @@ exports.postRes = function(request,response){
     var ivBase64 = Buffer.from([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,0x0e, 0x0f]).toString('base64');
 
         
-	    ccavEncResponse += request.body;
+	    ccavEncResponse += qs.stringify({...request.body});
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		console.log(ccavEncResponse,request.body,"line 25")
+		console.log(request.body,"line 25")
 	    var pData = '';
 	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
 	    pData = pData + ccavResponse.replace(/=/gi,'</td><td>')

@@ -31,44 +31,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 const crypto = require('crypto');
 
-// app.get('/paycc', function (req, res){
-//     	res.render('./public/dataFrom.html');
-// });
-
-// ccavReqHandler.postReq(request, response);
-// // app.post('/ccavRequestHandler', function (request, response){
- 
-// //   // response.end("end")
-// // });
-
-
-// app.post('/ccavResponseHandler', function (request, response){
-//         ccavResHandler.postRes(request, response);
-// });
-app.get('/payment', (req, res) => {
-  const workingKey = process.env.Working_Key;
-  const accessCode = process.env.Access_key_cc;
-  
-  
-  const order_id = Date.now();
-  const currency = 'INR';
-  const amount = '1000.00';
-  const language = "EN" // Replace with the actual amount
-
-  const data = `${accessCode}|${order_id}|${amount}|${currency}|${"2625348"}`;
-  const encryptedData = crypto.createHash('sha256').update(data).digest('hex');
-console.log(data)
-  res.render('payment', {
-    accessCode,
-    order_id,
-    amount,
-    currency,
-    encryptedData,
-    workingKey
-  });
-});
-
-
 
 app.use("/auth",AuthRouter)
 app.use("/ccavRequestHandler",ccavReqHandler.postReq)

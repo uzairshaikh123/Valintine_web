@@ -90,7 +90,7 @@ console.log(address)
 			<tr className='cctr'>
 				<td>Cancel URL</td>
 				<td><input type="text" name="cancel_url"
-					value="https://valentinesaga.com/orders" />
+					value={`${process.env.REACT_APP_Backend_url}/ccavResponseHandler`} />
 				</td>
 			</tr>
 			<tr className='cctr'>
