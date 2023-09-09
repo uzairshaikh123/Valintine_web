@@ -22,7 +22,9 @@ exports.postRes = function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status,status_code} = ccavEncResponse
+		const {order_status} = ccavEncResponse
+		console.log(order_status)
+		
 		if (
             order_status == 'Invalid'
             || order_status == 'Aborted'
@@ -31,30 +33,28 @@ exports.postRes = function(request,response){
             || order_status == 'Failure'
         ) {
           
-            // return response
-          return response.render("ccav_payment_response", {
-                  data_string: JSON.stringify(ccavResponse),
-                  order_status,
-				  status_code
-           });
+			var pData = '';
+			pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
+			pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
+			pData = pData.replace(/&/gi,'</td></tr><tr><td>')
+			pData = pData + '</td></tr></table>'
+			htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
+			response.writeHeader(200, {"Content-Type": "text/html"});
+			response.write(htmlcode);
+           response.send({msg:"Status",status:order_status});
+		   return
         }
 
-		// and return response
-		return response.render("ccav_payment_response", {
-			data_string: JSON.stringify(ccavResponse),
-			order_status,
-			status_code
-	 });
 
-		// console.log(ccavResponse,"line 25")
-	    // var pData = '';
-	    // pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
-	    // pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
-	    // pData = pData.replace(/&/gi,'</td></tr><tr><td>')
-	    // pData = pData + '</td></tr></table>'
-        //     htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
-        //     response.writeHeader(200, {"Content-Type": "text/html"});
-	    // response.write(htmlcode);
-	    // response.end();
+	    var pData = '';
+	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
+	    pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
+	    pData = pData.replace(/&/gi,'</td></tr><tr><td>')
+	    pData = pData + '</td></tr></table>'
+        htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
+        response.writeHeader(200, {"Content-Type": "text/html"});
+	    response.write(htmlcode);
+		return response.send({msg:"Status",status:order_status});
+		
 	
 };
