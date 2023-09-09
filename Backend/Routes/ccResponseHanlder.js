@@ -41,7 +41,7 @@ exports.postRes = function(request,response){
 
 		// and return response
 		return response.render("ccav_payment_response", {
-			data_string: JSON.stringify(ccavEncResponse),
+			data_string: JSON.stringify(ccavResponse),
 			order_status,
 			status_code
 	 });
