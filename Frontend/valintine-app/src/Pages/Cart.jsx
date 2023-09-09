@@ -50,6 +50,7 @@ function Cart() {
         });
       }
     });
+    getTotalCost()
   };
 
   const increaseQuantity = (itemId, qty) => {

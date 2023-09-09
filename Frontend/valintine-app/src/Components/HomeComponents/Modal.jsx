@@ -19,21 +19,21 @@ export default function BasicModal({name}) {
   const initialCategory=searchParams.get("category")
 
   const { isOpen, onClose ,onOpen} = useDisclosure()
-let cities =[{name:"Delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
-  {name:"Jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},
-  {name:"Bangalore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Bangalore_Icon-min.png",id:3},
+let cities =[{name:"delhi",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Delhi_Icon-min.png",id:1},
+  {name:"jaipur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jaipur_Icon-min.png",id:2},
+  {name:"bangalore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Bangalore_Icon-min.png",id:3},
   {name:"kolkata",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Kolkata_Icon-min.png",id:4},
-  {name:"Indore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Indore_Icon-min.png",id:5},
-  {name:"Pune",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Pune_Icon-min.png",id:6},
-  {name:"All India",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/india-icon-min.png",id:7},
-  {name:"Hyderabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Hyderabad_min.png",id:8},
-  {name:"Mumbai",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Mumbai_min.png",id:9},
-  {name:"Kanpur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Kanpur_min.png",id:10},
+  {name:"indore",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Indore_Icon-min.png",id:5},
+  {name:"pune",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Pune_Icon-min.png",id:6},
+  {name:"all india",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/india-icon-min.png",id:7},
+  {name:"hyderabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Hyderabad_min.png",id:8},
+  {name:"mumbai",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Mumbai_min.png",id:9},
+  {name:"kanpur",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Kanpur_min.png",id:10},
   {name:"chennai",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Chennai_min.png",id:11},
-  {name:"Jammu",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jammu_min.png",id:12},
-  {name:"Lucknow",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Lucknow_min.png",id:13},
-  {name:"Chandigarh",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Chandigarh_min.png",id:14},
-  {name:"Ahmedabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Ahmedabad_min.jpg",id:15},]
+  {name:"jammu",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Jammu_min.png",id:12},
+  {name:"lucknow",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Lucknow_min.png",id:13},
+  {name:"chandigarh",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Chandigarh_min.png",id:14},
+  {name:"ahmedabad",img:"https://deowgxgt4vwfe.cloudfront.net/city-icons/Ahmedabad_min.jpg",id:15},]
 let initial = true
 let mycity = sessionStorage.getItem("cityname") || "delhi"
 

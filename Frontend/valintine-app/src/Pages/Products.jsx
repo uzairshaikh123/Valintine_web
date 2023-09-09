@@ -20,7 +20,7 @@ const Products = () => {
   const initialCategory=searchParams.get("category")
   console.log(cityname,initialCategory)
   useEffect(() => {
-    dispatch(handlegetfilterproducts(cityname, initialCategory)).then((res)=>(setProdData(res.data.data)))
+    dispatch(handlegetfilterproducts(cityname, initialCategory)).then((res)=>(setProdData(res?.data?.data)))
     let params={
       city:cityname,
       category:initialCategory
@@ -35,12 +35,9 @@ const Products = () => {
   },[])
 
 
-  let location = useLocation();
 
-  React.useEffect(() => {
-    // Google Analytics
-    // ga('send', 'pageview');
-  }, [location]);
+
+  
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>

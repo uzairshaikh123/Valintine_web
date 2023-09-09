@@ -36,7 +36,7 @@ axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=
  setamt(res?.data?.data[0]?.total)
  console.log(res?.data?.data[0]?.total)
  })
-},[])
+},[cart])
   
    const total = sessionStorage.getItem("total_price")
   return (

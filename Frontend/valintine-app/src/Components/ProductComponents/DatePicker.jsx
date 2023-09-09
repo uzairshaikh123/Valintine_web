@@ -97,10 +97,11 @@ export const DatePickerComp = ({ isDatePickerEnabled, product, showDatePicker, h
             </Box>
           </ModalBody>
           <ModalFooter>
+            
             <Button colorScheme="blue" onClick={()=>{
               onClose();
               handleaddtocart()
-              navigate("/checkout")
+              navigate("/cart")
             }}>Book Now</Button>
           </ModalFooter>
         </ModalContent>
