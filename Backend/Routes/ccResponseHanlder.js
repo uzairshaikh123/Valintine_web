@@ -24,9 +24,9 @@ exports.postRes = async function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status,merchant_param1} = ccavEncResponse
+		const {order_status,merchant_param1,customer_identifier} = ccavEncResponse
 
-console.log(merchant_param1)
+
 
 
 		console.log(order_status)
@@ -38,6 +38,7 @@ console.log(merchant_param1)
             || order_status == 'Unsuccessful'
             || order_status == 'Failure'
         ) {
+			let userID = customer_identifier || merchant_param1 
           
 			var pData = '';
 			pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
@@ -49,26 +50,30 @@ console.log(merchant_param1)
 			</a>
 		  </button>`
 			htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
-		// 	response.writeHeader(200, {"Content-Type": "text/html"});
-		// 	response.write(htmlcode);
-        //    response.status(400).send({msg:"Transaction is failed",order_status});
-		let userID = merchant_param1
+		
+		// getting products from cart
 		let allorders = await CartModel.find({userID:id})
 		try {
-			 await OrdersModel.insertMany(allorders)
+			// adding products to orders
+			let orders= await OrdersModel.insertMany(allorders)
+			 console.log(orders,userID,"line59")
 		} catch (error) {
+			console.log(error.message)
 			return res.status(500).send({"msg":error.message})
 			}
 
 
 			try {
-				let delproduct = await CartModel.deleteMany({userID:id})
+				// deleting products from cart
+				await CartModel.deleteMany({userID:id})
+				console.log("product deleted successfully")
 				
 			} catch (error) {
+				console.log(error.message)
 				return res.status(500).send({"msg":error.message})
 		
 			}
-		response.sendFile(htmlcode)
+		   response.sendFile(htmlcode)
 		   return
         }
 		
