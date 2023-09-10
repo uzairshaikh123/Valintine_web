@@ -29,7 +29,7 @@ exports.postRes = async function(request,response){
 
 
 
-		console.log(order_status)
+		console.log('order_status',order_status)
 		
 		let userID = customer_identifier || merchant_param1 
 		if (
@@ -60,7 +60,7 @@ exports.postRes = async function(request,response){
 
 
 		// getting products from cart
-		let allorders = await CartModel.find({userID:id})
+		let allorders = await CartModel.find({userID:customer_identifier})
 		try {
 			// adding products to orders
 			let orders= await OrdersModel.insertMany(allorders)
@@ -73,7 +73,7 @@ exports.postRes = async function(request,response){
 
 			try {
 				// deleting products from cart
-				await CartModel.deleteMany({userID:id})
+				await CartModel.deleteMany({userID:customer_identifier})
 				console.log("product deleted successfully")
 				
 			} catch (error) {
