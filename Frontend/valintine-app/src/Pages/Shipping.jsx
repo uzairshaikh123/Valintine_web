@@ -15,14 +15,17 @@ let street =(userdet.current['street'].value)
 let city =(userdet.current['city'].value)
 let state =(userdet.current['state'].value)
 let postalcode =(userdet.current['postalcode'].value)
+let mobileno =(userdet.current['mobileno'].value)
 
 postalcode=""+postalcode
-let address=houseno+" , "+street+" , "+city+" , "+state+" , "+postalcode
+let address=houseno+" , "+street+" , "+city+" , "+state+" , "+postalcode+" , "+mobileno
 
 let obj={address}
-console.log(user)
+let data = {houseno:houseno,street:street,city,state,postalcode,mobileno:mobileno}
+
 dispatch(handleaddress(user?._id,obj)).then((res)=>{
   if(res.status===201 || res.status==200){
+    sessionStorage.setItem("address",JSON.stringify(data))
 
     toast.success("Address Saved", {
       position: "top-right",
@@ -78,6 +81,10 @@ dispatch(handleaddress(user?._id,obj)).then((res)=>{
       <div>
         <label htmlFor="postalCode">Postal Code</label>
         <input type="text" id="postalCode" placeholder='Enter Your Postal Code' ref={(e)=>userdet.current['postalcode']=e} />
+      </div>
+      <div>
+        <label htmlFor="postalCode">Mobile No</label>
+        <input type="text" id="mobileno" placeholder='Enter Your Mobile No' ref={(e)=>userdet.current['mobileno']=e} />
       </div>
       <button className='saveadd'>Save Address</button>
       </form>

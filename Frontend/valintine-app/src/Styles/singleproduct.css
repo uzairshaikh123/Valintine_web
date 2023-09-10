@@ -122,7 +122,7 @@
 }
 #cart-buttons > button {
   border-radius: 8px;
-  width: 45%;
+  width: 100%;
   font-size: 20px;
   background-color: #c709e8;
   color: white;

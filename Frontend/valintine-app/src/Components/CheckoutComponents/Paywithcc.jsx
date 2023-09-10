@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './paycc.css'
-const Paywithcc = ({address}) => {
+const Paywithcc = () => {
 	let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 	const [amt , setamt ] = useState(0)
 const handleSubmit =  (e) => {
@@ -29,13 +29,14 @@ const obj ={}
 
  axios.post(`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`, obj).then((res)=>{
 	JSON.parse(res.data)
-	window.location(res.data.action)
+	window.location(res?.data?.action)
 }).catch((err)=>{
      console.log(err.message,"error: " + err)
 })
 // action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}
 
 }
+let address = JSON.parse(sessionStorage.getItem("address"))  || {houseno:"",street:"",city:"",state:"",postalcode:"",mobileno:""}
 useEffect(()=>{
 	let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 
@@ -44,13 +45,15 @@ useEffect(()=>{
 		   setamt(res?.data?.data[0]?.total)
 		   console.log(res?.data?.data[0]?.total)
 		   })
+		   
+		   
    },[])
 
-   address=address.split(",")
 
-console.log(address)
+
   return (
     <div>
+		
       <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
 		<table width="40%"  border='1' align="center">
 			<caption>
@@ -105,22 +108,22 @@ console.log(address)
 				<td><input type="text" name="billing_name" value={user?.name} /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing Address:{address}</td>
+				<td>Billing Address:</td>
 				<td><input type="text" name="billing_address"
-					value={`${address}`}  /></td>
+					value={`${""}`}  /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing City:{address[3]}</td>
-				<td><input type="text" name="billing_city" value={`${address[3]}`}  /></td>
+				<td>Billing City:{address?.city}</td>
+				<td><input type="text" name="billing_city" value={`${address?.city}`}  /></td>
 			</tr>
 			{/* ['C-3/7 ', ' garima garden', 'Irshad Garden ', ' Ghaziabad ', ' Uttar pradesh ', ' 201005'] */}
 			<tr className='cctr'>
-				<td>Billing State:{address[4]}</td>
-				<td><input type="text" name="billing_state" value={`${address[4]}`}  /></td>
+				<td>Billing State:{address?.state}</td>
+				<td><input type="text" name="billing_state" value={`${address?.state}`}  /></td>
 			</tr>
 			<tr className='cctr'>
-				<td>Billing Zip:{address[5]}</td>
-				<td><input type="text"  name="billing_zip" value={`${address[5]}`} /></td>
+				<td>Billing Zip:{address?.postalcode}</td>
+				<td><input type="text"  name="billing_zip" value={`${address?.postalcode}`} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td>Billing Country:India</td>
@@ -129,7 +132,7 @@ console.log(address)
 			</tr>
 			<tr className='cctr'>
 				<td>Billing Tel:</td>
-				<td><input type="text" name="billing_tel" value="" />
+				<td><input type="text" name="billing_tel" value={`${address?.mobileno}`} />
 				</td>
 			</tr>
 			<tr className='cctr'>
@@ -152,12 +155,12 @@ console.log(address)
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping City:</td>
-				<td><input type="text" name="delivery_city" value={`${address[3]}`} />
+				<td><input type="text" name="delivery_city" value={`${address?.city}`} />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping State:</td>
-				<td><input type="text" name="delivery_state" value="Maharashtra" />
+				<td><input type="text" name="delivery_state" value={`${address?.state}`} />
 				</td>
 			</tr>
 			<tr className='cctr'>

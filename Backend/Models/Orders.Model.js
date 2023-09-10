@@ -21,6 +21,7 @@ const OrderSchema  =  mongoose.Schema({
     status: { type: String, required: true },
     userID: { type: String, required: true },
     orderDate: { type: Array, required: false },
+    productMessage:{type:String, required: false},
 
 })
 

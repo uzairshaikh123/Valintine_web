@@ -21,6 +21,7 @@ const CartSchema  =  mongoose.Schema({
     productID: { type: String, required: true },
     quantity:{type:Number, required: true},
     orderDate:{type:Array, required: false},
+    productMessage:{type:String, required: false},
 
 })
 

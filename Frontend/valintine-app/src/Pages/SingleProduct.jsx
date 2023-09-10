@@ -295,12 +295,6 @@ const SingleProductPage = () => {
                 >
                   Book Now
                 </button>
-                <button
-                  style={{ marginBottom: "20px" }}
-                  onClick={handleaddtocart}
-                >
-                  Add to Cart
-                </button>
               </div>
 
             </div>
