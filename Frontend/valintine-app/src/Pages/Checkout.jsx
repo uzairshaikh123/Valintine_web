@@ -63,8 +63,8 @@ axios.get(`${process.env.REACT_APP_Backend_url}/total/${user?._id}`).then((res)=
     </div>
     </div>
 <div>
-<Pay />
 <Paywithcc address={user?.address}/>
+<Pay />
 </div>
         </div>
     </>

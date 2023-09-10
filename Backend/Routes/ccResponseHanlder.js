@@ -57,30 +57,7 @@ exports.postRes = async function(request,response){
 			response.end()
 			return
         }
-
-
-		// getting products from cart
-		let allorders = await CartModel.find({userID:customer_identifier})
-		try {
-			// adding products to orders
-			let orders= await OrdersModel.insertMany(allorders)
-			 console.log(orders,userID,"line59")
-		} catch (error) {
-			console.log(error.message)
-			return res.status(500).send({"msg":error.message})
-			}
-
-
-			try {
-				// deleting products from cart
-				await CartModel.deleteMany({userID:customer_identifier})
-				console.log("product deleted successfully")
-				
-			} catch (error) {
-				console.log(error.message)
-				
-		
-			}
+	
 
 	    var pData = '';
 	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	

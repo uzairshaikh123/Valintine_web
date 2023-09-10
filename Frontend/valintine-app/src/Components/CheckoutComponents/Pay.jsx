@@ -87,10 +87,7 @@ const Pay = () => {
 					 </Text>
 		<Text textAlign={"center"}>Coming Soon...</Text>
 			<Button isDisabled={true} bg={"green"} color={"white"} _hover={{color:"black"}} onClick={handle_payments}>{`Pay Now ₹${amt}`}</Button>
-			<Text size="4" color="blue" textAlign={"center"} marginTop={"20px"}><b>
-					or
-					</b> 
-					 </Text>
+			
 		</div>
 		
 		</>

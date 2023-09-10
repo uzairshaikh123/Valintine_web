@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 // import SortComp from "../Components/ProductComponents/SortComp";
 import { Hearts } from "react-loader-spinner";
 import { handlegetfilterproducts, handlegetproducts } from "../Redux/action";
+import DummyProduct from "../Components/HomeComponents/dummyProduct";
 const Products = () => {
   const store = useSelector((store) => store);
   const [prodData,setProdData]=useState([])

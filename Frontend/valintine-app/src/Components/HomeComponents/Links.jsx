@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handlegetfilterproducts, handlegetproducts } from '../../Redux/action';
 import { Link } from 'react-router-dom';
 import {useSearchParams} from "react-router-dom"
+import DummyProduct from './dummyProduct';
 
 const Links = () => {
   const dispatch = useDispatch();
@@ -21,19 +22,21 @@ const Links = () => {
     const truncatedString = truncatedWords.join(' ');
     return <p>{truncatedString}{words.length > 3 ? '...' : ''}</p>;
   };
+  // <div key={index} className='items'>
+//   <img src={link.image[0]} alt={link.name}/>
+//   <div>
+//     <a href='/'>{TruncatedString(link.name)}</a>
+//     <h3>₹ {link.price}</h3>
+//   </div>
+// </div>
   return (
     <div id='links-cont'>
       <div>
         <h1>LATEST</h1>
         <div>
           {allproducts?.reverse()?.map((link, index) => (
-            index <= 3 && <Link to={`/products/${link._id}`}><div key={index} className='items'>
-              <img src={link.image[0]} alt={link.name}/>
-              <div>
-                <a href='/'>{TruncatedString(link.name)}</a>
-                <h3>₹ {link.price}</h3>
-              </div>
-            </div>
+            index <= 3 && <Link to={`/products/${link._id}`}>
+              <DummyProduct image={link?.image[0]} price={link?.price} name={link?.name}/>
             </Link>
           ))}
         </div>

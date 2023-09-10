@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './paycc.css'
+import { Text } from '@chakra-ui/react'
 const Paywithcc = () => {
 	let user =JSON.parse(sessionStorage.getItem("userdetails")) 
 	const [amt , setamt ] = useState(0)
@@ -52,6 +53,7 @@ useEffect(()=>{
 
 
   return (
+	<>
     <div>
 		
       <form method="POST" name="customerData" action={`${process.env.REACT_APP_Backend_url}/ccavRequestHandler`}>
@@ -379,6 +381,11 @@ useEffect(()=>{
 	</form> */}
 
     </div>
+	<Text size="4" color="blue" textAlign={"center"} marginTop={"20px"}><b>
+	or
+	</b> 
+	 </Text>
+	 </>
   )
 }
 
