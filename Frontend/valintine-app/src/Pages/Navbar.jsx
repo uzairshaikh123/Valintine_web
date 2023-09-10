@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
-import { Avatar, Button, Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList } from "@chakra-ui/react";
+import { Avatar, Button, Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Spinner, Text } from "@chakra-ui/react";
 import { HiShoppingCart } from 'react-icons/hi'
 import { useSearchParams } from "react-router-dom";
 import SearchResults from "./SearchResults";
@@ -27,6 +27,7 @@ function Navbar({ cartcount }) {
   const navigate = useNavigate();
   const [items, setitems] = useState(cart.length);
   const [text, setText] = useState("")
+  const [loading,setloading] = useState(false)
   const [results, setResults] = useState([])
   const user=JSON.parse(sessionStorage.getItem("userdetails"))
   const toggleMenu = () => {
@@ -92,14 +93,17 @@ function Navbar({ cartcount }) {
   function handleSearchClick() {
     setflag(true)
     if (text.trim() !== '') {
+      setloading(true)
       fetch(`${process.env.REACT_APP_Backend_url}/products/search?q=${encodeURIComponent(text)}`)
         .then((response) => response.json())
         .then((data) => {
           const searchResults = data.results;
           setResults(searchResults)
+          setloading(false)
         })
         .catch((error) => {
           console.error('Error fetching search results:', error);
+          setloading(false)
         });
     }
   }
@@ -136,6 +140,7 @@ function Navbar({ cartcount }) {
               onClick={handleSearchClick}
             />
           </div>
+           
           {/* <div id="search-mob">
           <input
             type="text"
@@ -211,14 +216,18 @@ function Navbar({ cartcount }) {
       </div> */}
       </div>
       {
-        flag && <div id="search-results" ref={searchResultsRef}>
+       flag && loading?<Spinner color='red.500' />: flag && <div id="search-results" ref={searchResultsRef}>
          {results.map((result) => (
            <Link key={result._id} to={`/products/${result._id}`}>
            <div
              className="search-result-item"
              onClick={handleAddClassname}
+             style={{display:"flex",margin:"auto",gap:"10px"}}             
            >
-             {result.name}
+            <img style={{height:"30px",width:"30px"}} src={result?.image[0]} alt="" />
+            <Text>
+              {result.name}
+              </Text> 
            </div>
            </Link>
          ))}

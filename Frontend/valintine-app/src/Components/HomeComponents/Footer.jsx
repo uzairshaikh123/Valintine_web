@@ -73,8 +73,8 @@ export default function Footer() {
             <Text fontSize={'sm'}>Email id : support@velentinesaga.com</Text>
             <Text fontSize={'sm'}>Mobile No : +91 8210005030</Text>
             <Stack direction={'row'} spacing={6}>
-              <SocialButton label={'Twitter'} href={'https://twitter.com/RaviJha63438448'}>
-                <FaTwitter />
+              <SocialButton  label={'Twitter'} href={'https://twitter.com/RaviJha63438448'}>
+                <FaTwitter  _hover={{background:"rgb(255, 65, 139)"}} />
               </SocialButton>
               <SocialButton label={'YouTube'} href={'https://www.youtube.com/@ValentineSaga'}>
                 <FaYoutube />
@@ -94,31 +94,31 @@ export default function Footer() {
             </Stack>
             <Box width="50px">
             <Button colorScheme='blue'>
-              <Link to="/contact">Contact Us</Link>
+              <Link  to="/contact">Contact Us</Link>
             </Button>
             </Box>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Connect With Us</ListHeader>
-            <Box as={RouterLink} to="/">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/">
             Home
             </Box>
-            <Box as={RouterLink} to="/about">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/about">
             About us
             </Box>
-            <Box as={RouterLink} to="/products">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/products">
             Shop
             </Box>
-            <Box as={RouterLink} to="/blogs">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/blogs">
             Blogs
             </Box>
-            <Box as={RouterLink} to="/faq">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/faq">
             Faq
             </Box>
-            <Box as={RouterLink} to="/terms">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/terms">
             Term And Conditions
             </Box>
-            <Box as={RouterLink} to="/policy">
+            <Box _hover={{color:"rgb(255, 65, 139)"}} as={RouterLink} to="/policy">
             Privacy Policy
             </Box>
           </Stack>

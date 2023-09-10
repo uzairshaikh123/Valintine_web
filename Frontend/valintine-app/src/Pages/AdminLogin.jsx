@@ -11,6 +11,7 @@ import {
 } from "../Redux/action";
 import { Hearts } from "react-loader-spinner";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 
 function AdminLogin() {
   const [showLogin, setShowLogin] = useState(true);
@@ -111,7 +112,13 @@ function AdminLogin() {
               />
             </div>
             <button className="registerbtn" type="submit">
-              Login
+            { loading?<Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='sm'
+/>:"Login"}
             </button>
             <p className="toggle-text">
               Don't have an account?{" "}
@@ -177,7 +184,13 @@ function AdminLogin() {
               />
             </div>
             <button className="registerbtn" type="submit">
-              Register
+            { loading?<Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='sm'
+/>:"Register"}
             </button>
             <p className="toggle-text">
               Already have an account?{" "}

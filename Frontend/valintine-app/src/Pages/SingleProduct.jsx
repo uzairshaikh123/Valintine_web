@@ -43,6 +43,7 @@ const SingleProductPage = () => {
   const params = useParams();
   const id = params.id;
   const dispatch = useDispatch();
+  const [message,setmessage] = useState("")
   useEffect(() => {
     dispatch(handlegetfilterproducts());
 
@@ -62,7 +63,8 @@ const SingleProductPage = () => {
       quantity: 1,
       productID: product[0]._id,
       userID: user?._id,
-      price:selectedPrice || initialPrice
+      price:selectedPrice || initialPrice,
+      productMessage:message,
     };
 
 
@@ -254,7 +256,7 @@ const SingleProductPage = () => {
 
               {
                 product[0]?.category === "cakes" && <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                  <input type="text" placeholder="Product Message" />
+                  <input type="text" placeholder="Product Message" onChange={(e)=>setmessage(e?.target?.value)} />
                 </div>
               }
               {
@@ -291,9 +293,9 @@ const SingleProductPage = () => {
                   style={{ marginBottom: "20px" }}
                   onClick={handleByNow}
                   disabled={product[0]?.category !== "candlelight dinner" && !isDatePickerEnabled}
-                  className={product[0]?.category !== "candlelight dinner" && !isDatePickerEnabled ? "disable-button" : ""}
+                  className={product[0]?.category !== "candlelight dinner booknow" && !isDatePickerEnabled ? "disable-button booknow" : "booknow"}
                 >
-                  Book Now
+                 <span>Book Now </span>
                 </button>
               </div>
 
