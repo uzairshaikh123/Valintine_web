@@ -3,8 +3,10 @@ var http = require('http'),
     ccav = require('./ccutils.js'),
     crypto = require('crypto'),
     qs = require('querystring');
+const CartModel = require('../Models/CartModel.js');
+const OrdersModel = require('../Models/Orders.Model.js');
 
-exports.postRes = function(request,response){
+exports.postRes = async function(request,response){
     var ccavEncResponse='',
 	ccavResponse='',	
 	workingKey = process.env.Working_Key,	//Put in the 32-Bit key shared by CCAvenues.
@@ -22,7 +24,11 @@ exports.postRes = function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status} = ccavEncResponse
+		const {order_status,merchant_param1} = ccavEncResponse
+
+console.log(merchant_param1)
+
+
 		console.log(order_status)
 		
 		if (
@@ -38,7 +44,7 @@ exports.postRes = function(request,response){
 			pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
 			pData = pData.replace(/&/gi,'</td></tr><tr><td>')
 			pData = pData + '</td></tr></table>'+ `<button>
-			<a href="https://valentinesaga.com/orders">
+			<a href="https://valentinesaga.com">
 			Return To Mernchant Site
 			</a>
 		  </button>`
@@ -46,10 +52,26 @@ exports.postRes = function(request,response){
 		// 	response.writeHeader(200, {"Content-Type": "text/html"});
 		// 	response.write(htmlcode);
         //    response.status(400).send({msg:"Transaction is failed",order_status});
+		let userID = merchant_param1
+		let allorders = await CartModel.find({userID:id})
+		try {
+			 await OrdersModel.insertMany(allorders)
+		} catch (error) {
+			return res.status(500).send({"msg":error.message})
+			}
+
+
+			try {
+				let delproduct = await CartModel.deleteMany({userID:id})
+				
+			} catch (error) {
+				return res.status(500).send({"msg":error.message})
+		
+			}
 		response.sendFile(htmlcode)
 		   return
         }
-
+		
 
 	    var pData = '';
 	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	
@@ -57,13 +79,12 @@ exports.postRes = function(request,response){
 	    pData = pData.replace(/&/gi,'</td></tr><tr><td>')
 		pData = pData + '</td></tr></table>'+ `<button>
 		<a href="https://valentinesaga.com/orders">
-		Return To Mernchant Site
+		See Your Orders
 		</a>
 	  </button>`
         htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
-        response.writeHeader(200, {"Content-Type": "text/html"});
-	    response.write(htmlcode);
-		return response.end();
+        response.sendFile(htmlcode)
+		   return
 		
 	
 };

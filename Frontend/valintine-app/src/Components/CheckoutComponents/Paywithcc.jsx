@@ -145,13 +145,13 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping Name</td>
-				<td><input type="text" name="delivery_name" value="Sam" />
+				<td><input type="text" name="delivery_name" value={address?.name} />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping Address:</td>
 				<td><input type="text" name="delivery_address"
-					value="Vile Parle" /></td>
+					value={`${address?.state}`} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping City:</td>
@@ -165,7 +165,7 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping Zip:</td>
-				<td><input type="text" name="delivery_zip" value="400038" /></td>
+				<td><input type="text" name="delivery_zip" value={`${address?.postalcode}`} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping Country:</td>
@@ -174,13 +174,13 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Shipping Tel:</td>
-				<td><input type="text" name="delivery_tel" value="0123456789" />
+				<td><input type="text" name="delivery_tel" value={`${address?.mobileno}`} />
 				</td>
 			</tr>
 			<tr className='cctr'>
 				<td>Merchant Param1</td>
 				<td><input type="text" name="merchant_param1"
-					value="additional Info." /></td>
+					value={user?._id} /></td>
 			</tr>
 			<tr className='cctr'>
 				<td>Merchant Param2</td>
@@ -208,7 +208,7 @@ useEffect(()=>{
 			</tr>
 			<tr className='cctr'>
 				<td>Customer Id:</td>
-				<td><input type="text" name="customer_identifier" value=""/></td>
+				<td><input type="text" name="customer_identifier" value={user?._id}/></td>
 			</tr>
 			<tr style={{border:"none"}}>
 				{/* <td></td> */}

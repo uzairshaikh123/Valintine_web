@@ -3,6 +3,7 @@ const OrdersModel = require('../Models/Orders.Model');
 const AdminMiddleware = require('../Middlewares/Admin.middleware');
 const AuthMiddleware = require('../Middlewares/Auth.middleware');
 const AdminRouter = require('./Admin.route');
+const CartModel = require('../Models/CartModel');
 
 const OrdersRoute = express.Router()
 
@@ -33,6 +34,7 @@ OrdersRoute.get('/all', AdminMiddleware, async (req, res) => {
 
 
 OrdersRoute.post('/add', AuthMiddleware, async (req, res) => {
+  
 
     try {
         let newproduct = await OrdersModel.insertMany(req.body)
