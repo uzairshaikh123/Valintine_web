@@ -35,7 +35,7 @@ function AdminLogin() {
     dispatch(handle_admin_register(obj)).then((res) => {
       // console.log(res.response.status);
       if (res.status === 200 || res.status === 201) {
-        Swal.fire("Good job!", "Signup Successful", "success");
+        Swal.fire("", "Signup Successful", "success");
         return navigate("/admin");
       } else {
         Swal.fire(
@@ -59,7 +59,7 @@ function AdminLogin() {
       .then((res) => {
 
         if (res.status === 201) {
-          Swal.fire("Good job!", "You have successfully logged in", "success");
+          Swal.fire("", "You have successfully logged in", "success");
           return navigate("/admin");
         } else {
           Swal.fire("Email or Password Wrong", "couldn't log in", "error");

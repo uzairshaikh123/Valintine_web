@@ -32,7 +32,7 @@ function Login() {
       // console.log(res.response.status);
       if(res.status===200 || res.status===201){
           Swal.fire(
-              'Good job!',
+              '',
               'Signup Successful',
               'success'
             )
@@ -59,7 +59,7 @@ function Login() {
       .then((res) => {
         console.log(res.data)
         if (res.status === 201) {
-          Swal.fire("Good job!", "You have successfully logged in", "success");
+          Swal.fire("", "You have successfully logged in", "success");
           return navigate("/");
         } else {
           Swal.fire("Email or Password Wrong", "couldn't log in", "error");
