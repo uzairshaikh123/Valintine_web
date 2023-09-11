@@ -89,7 +89,7 @@ useEffect(()=>{
 			<tr className='cctr'>
 				<td>Redirect URL</td>
 				<td><input type="text" name="redirect_url"
-					value="https://valentinesaga.com/orders" />
+					value={`${process.env.REACT_APP_Backend_url}/ccavResponseHandler`} />
 				</td>
 			</tr>
 			<tr className='cctr'>

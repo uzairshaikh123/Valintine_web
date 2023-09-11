@@ -73,8 +73,8 @@ const Bookeh = () => {
     <div>
       <h1 style={{ marginBottom: "30px", marginTop: "30px" }}>{heading}</h1>
       <Carousel
-        swipeable={false}
-        draggable={false}
+        swipeable={true}
+        draggable={true}
         // showDots={true}
         // customRightArrow={<CustomRightArrow />}
         responsive={responsive}

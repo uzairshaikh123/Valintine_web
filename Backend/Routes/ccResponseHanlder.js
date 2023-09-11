@@ -26,7 +26,7 @@ exports.postRes = async function(request,response){
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
 		const {order_status,merchant_param1,customer_identifier} = ccavResponse
 
-		console.log('order_status',order_status)
+		console.log('order_status',order_status,ccavResponse)
 		
 		let userID = customer_identifier || merchant_param1 
 		if (

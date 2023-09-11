@@ -53,7 +53,7 @@
 /* Media Query for 2 cards per row */
 @media (min-width: 768px) and (max-width: 1224px) {
   #links-cont {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .items{
     height: 380px;
