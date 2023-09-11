@@ -24,10 +24,7 @@ exports.postRes = async function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status,merchant_param1,customer_identifier} = ccavEncResponse
-
-
-
+		const {order_status,merchant_param1,customer_identifier} = ccavResponse
 
 		console.log('order_status',order_status)
 		

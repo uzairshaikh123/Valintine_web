@@ -120,7 +120,7 @@ exports.postReq = function(request,response){
     const stringify_payload = qs.stringify({
                     ...request.body
                 })
-                console.log(stringify_payload)
+               
         
                 const encryptionResponseData = ccav.encrypt(stringify_payload, keyBase64, ivBase64);
         
