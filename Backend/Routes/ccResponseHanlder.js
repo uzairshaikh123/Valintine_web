@@ -40,7 +40,7 @@ const queryParams = parseQueryString(ccavResponse);
 
 // Get the value of the 'order_status' parameter
 const order_status = queryParams['order_status'];
-const customer_identifier = queryParams['customer_identifier']
+const customer_identifier = queryParams['merchant_param1']
 console.log('Order Status:', order_status,customer_identifier);
 
 		
