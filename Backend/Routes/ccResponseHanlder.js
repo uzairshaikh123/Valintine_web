@@ -24,9 +24,25 @@ exports.postRes = async function(request,response){
 	    ccavPOST =  qs.parse(ccavEncResponse);
 	    var encryption = ccavPOST.encResp;
 	    ccavResponse = ccav.decrypt(encryption, keyBase64, ivBase64);
-		const {order_status,merchant_param1,customer_identifier} = ccavResponse
+       // The input string containing the URL query parameters
+// Function to parse the query string into an object
+function parseQueryString(ccavResponse) {
+  const params = {};
+  queryString.split('&').forEach((param) => {
+    const [key, value] = param.split('=');
+    params[key] = decodeURIComponent(value || '');
+  });
+  return params;
+}
 
-		console.log(typeof ccavResponse,ccavResponse)
+// Parse the query string
+const queryParams = parseQueryString(ccavResponse);
+
+// Get the value of the 'order_status' parameter
+const order_status = queryParams['order_status'];
+const customer_identifier = queryParams['customer_identifier']
+console.log('Order Status:', order_status,customer_identifier);
+
 		
 		let userID = customer_identifier || merchant_param1 
 		if (
