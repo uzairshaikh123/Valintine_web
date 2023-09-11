@@ -28,7 +28,7 @@ exports.postRes = async function(request,response){
 // Function to parse the query string into an object
 function parseQueryString(ccavResponse) {
   const params = {};
-  queryString.split('&').forEach((param) => {
+  ccavResponse.split('&').forEach((param) => {
     const [key, value] = param.split('=');
     params[key] = decodeURIComponent(value || '');
   });
