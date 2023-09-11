@@ -7,20 +7,17 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
-  Input,
   useDisclosure,
   Image,
-  Text,
   Box,
 } from '@chakra-ui/react'
 import './hamburger.css'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import MegaMenu from './MegaMenu'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function TemporaryDrawer() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+ 
   const user = JSON.parse(sessionStorage.getItem("userdetails"))
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()

@@ -4,13 +4,10 @@ import Swal from "sweetalert2";
 import { CSSTransition } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  handleLogin,
-  handleSignup,
   handle_admin_login,
   handle_admin_register,
 } from "../Redux/action";
-import { Hearts } from "react-loader-spinner";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
 
 function AdminLogin() {
@@ -25,7 +22,7 @@ function AdminLogin() {
   const [adminID, setadminID] = useState("");
   const [adminPass, setadminPass] = useState("");
   const handleregister = (e) => {
-   
+
     e.preventDefault();
     let obj = {
       name: username,
@@ -60,7 +57,7 @@ function AdminLogin() {
 
     dispatch(handle_admin_login(obj))
       .then((res) => {
-        
+
         if (res.status === 201) {
           Swal.fire("Good job!", "You have successfully logged in", "success");
           return navigate("/admin");
@@ -73,10 +70,6 @@ function AdminLogin() {
         alert(err.message);
       });
   };
-
-  //   if (token) {
-  //     return <Navigate to="/" />;
-  //   }
 
   const handleToggle = () => {
     setShowLogin(!showLogin);
@@ -112,13 +105,13 @@ function AdminLogin() {
               />
             </div>
             <button className="registerbtn" type="submit">
-            { loading?<Spinner
-  thickness='4px'
-  speed='0.65s'
-  emptyColor='gray.200'
-  color='blue.500'
-  size='sm'
-/>:"Login"}
+              {loading ? <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='sm'
+              /> : "Login"}
             </button>
             <p className="toggle-text">
               Don't have an account?{" "}
@@ -184,13 +177,13 @@ function AdminLogin() {
               />
             </div>
             <button className="registerbtn" type="submit">
-            { loading?<Spinner
-  thickness='4px'
-  speed='0.65s'
-  emptyColor='gray.200'
-  color='blue.500'
-  size='sm'
-/>:"Register"}
+              {loading ? <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='sm'
+              /> : "Register"}
             </button>
             <p className="toggle-text">
               Already have an account?{" "}

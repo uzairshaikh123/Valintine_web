@@ -15,11 +15,9 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
-import { ReactNode } from 'react'
 import { FaFacebook, FaInstagram, FaLinkedin, FaPinterest, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { BiMailSend } from 'react-icons/bi'
 import {Link as RouterLink} from "react-router-dom"
-import DummyProduct from './dummyProduct';
 const SocialButton = ({
   children,
   label,

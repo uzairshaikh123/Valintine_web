@@ -49,7 +49,7 @@ const ProductCard = ({
       </div>
       <Link to={`/products/${id}`} onClick={handlepage} style={{ textDecoration: "none" }} preventScrollReset={false}>
         <div className="card-body">
-          <h4 className="card-description">{category.toUpperCase()}</h4>
+          {/* <h4 className="card-description">{category.toUpperCase()}</h4> */}
           <p className="card-title">{name.slice(0,15).toUpperCase()}...</p>
           <div
             style={{ display: "flex", flexWrap: "wrap" }}

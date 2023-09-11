@@ -9,11 +9,9 @@ import { handlegetcartproducts } from "../Redux/action";
 import logo from './logo3.png'
 import { Avatar, Button, Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Spinner, Text } from "@chakra-ui/react";
 import { HiShoppingCart } from 'react-icons/hi'
-import { useSearchParams } from "react-router-dom";
 import SearchResults from "./SearchResults";
 import Swal from "sweetalert2";
 function Navbar({ cartcount }) {
-  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch()
 
   const initialCity = sessionStorage.getItem("cityname")?.toLowerCase()
@@ -80,10 +78,10 @@ function Navbar({ cartcount }) {
       window.removeEventListener("click", handleClickOutside);
     };
   }, [])
-  useEffect(() => {
-    setitems(cart?.length);
-    setSearchParams({ city: initialCity })
-  }, [cart, initialCity,flag]);
+  // useEffect(() => {
+  //   setitems(cart?.length);
+  //   setSearchParams({ city: initialCity })
+  // }, [cart, initialCity,flag]);
 
   const handlevalue = (e) => {
     setText(e.target.value)
@@ -114,7 +112,7 @@ function Navbar({ cartcount }) {
           <TemporaryDrawer />
         </div>
         <div className="navbar-logo">
-          <Link to={`/?city=${initialCity}`}>
+          <Link to={`/`}>
             <img
               className="logo"
               id={"comp-logo"}

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./headers.css"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from 'react-router-dom';
-import { useSearchParams } from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const responsive = {
@@ -61,7 +61,8 @@ const Header = () => {
     // },
     {
       image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Slider_images/cd.webp",
-      title: "Candlelight Dinner",
+      title: "candlelightdinner",
+      vtitle: "Candlelight Dinner",
       subtitles: [
         "Candlelight Dinners in NCR",
         "Private Candlelight Dinners",
@@ -76,7 +77,8 @@ const Header = () => {
     },
     {
       image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/balloon_decoration-removebg-preview-1.png",
-      title: "Decorations",
+      title: "decorations",
+      vtitle: "Decorations",
       subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
@@ -93,7 +95,7 @@ const Header = () => {
       ],
     },
     {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/couple.png", title: "Anniversary Celebrations", subtitles: [
+      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/couple.png", title: "anniversarycelebrations", vtitle: "Anniversary Celebrations", subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -123,7 +125,7 @@ const Header = () => {
     //     "Ganesh Chaturthi Decorations"
     //   ],},
     {
-      image: "https://cdn.togetherv.com/romantic-stays-icon_1682410730.webp", title: "Room Decorations", subtitles: [
+      image: "https://cdn.togetherv.com/romantic-stays-icon_1682410730.webp", vtitle: "Room Decorations", title: "roomdecorations", subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -140,7 +142,8 @@ const Header = () => {
     },
     {
       image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/cake_icon_1_-_Copy-removebg-preview.png",
-      title: "Cakes",
+      title: "cakes",
+      vtitle: "Cakes",
       subtitles: [
         "Kids Birthday Decoration",
         "Welcome Baby Decorations",
@@ -155,7 +158,8 @@ const Header = () => {
     },
     {
       image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/flower.jfif",
-      title: "Flowers",
+      title: "flowers",
+      vtitle: "Flowers",
       subtitles: [
         "Kids Birthday Decoration",
         "Welcome Baby Decorations",
@@ -169,7 +173,10 @@ const Header = () => {
       ],
     },
     {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png", title: "Gifts And Surprises", subtitles: [
+      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Menu/gifts_icon_1-removebg-preview.png", 
+      title: "giftsandsurprises",
+      vtitle: "Gifts And Surprises",
+       subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -186,7 +193,10 @@ const Header = () => {
     },
 
     {
-      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Please+(1).png", title: "Occasions", subtitles: [
+      image: "https://valentinesagaassets.s3.ap-south-1.amazonaws.com/Please+(1).png", 
+      title: "occasions", 
+      vtitle: "Occasions", 
+      subtitles: [
         "Balloon Decorations",
         "Welcome Baby Decorations",
         "Baby Shower Decorations",
@@ -202,47 +212,34 @@ const Header = () => {
       ],
     },
   ];
-  const [searchParams, setSearchParams] = useSearchParams()
-  // const firstcity=sessionStorage.getItem("cityname")
-  const cityname = searchParams.get("city")
-  const initialCategory = searchParams.get("category")
-  const [city, setCity] = useState(cityname || "delhi")
-  const [category, setcategory] = useState(initialCategory || "")
-  useEffect(() => {
-    let params = {
-      city
-    }
-    if (category) {
-      params.category = category;
-    }
-    setSearchParams(params)
-  }, [city, category])
+  const { city } = useSelector(store => store)
 
-  const handleClick = (cat) => {
-    setcategory(cat)
-  }
+
+
+
+
   return (
     <div id='header'>
       <Carousel
-    swipeable={true}
-    draggable={true}
-    // showDots={true}
-    responsive={responsive}
-    // containerClass="carousel-container abc"
-    autoPlay={true}
-    infinite={true}
-    arrows={false}
-    
-    >
-      {titles?.map((el)=>{
-        return <Link to={`products?city=${cityname}&category=${el.title}`} style={{textDecoration:"none",color:"black"}}>
-    <div className='headers-div' onClick={()=>handleClick(el.title)} >
-        <img style={{height:"50%",width:"30%",cursor:"pointer"}} src={el.image} alt="" />
-        <p>{el.title}</p>
-      </div>
-    </Link>  
-      })}
-    </Carousel>
+        swipeable={true}
+        draggable={true}
+        // showDots={true}
+        responsive={responsive}
+        // containerClass="carousel-container abc"
+        autoPlay={true}
+        infinite={true}
+        arrows={false}
+
+      >
+        {titles?.map((el) => {
+          return <Link to={`products?city=${city}&category=${el.title}`} style={{ textDecoration: "none", color: "black" }}>
+            <div className='headers-div'  >
+              <img style={{ height: "50%", width: "30%", cursor: "pointer" }} src={el.image} alt="" />
+              <p>{el.vtitle}</p>
+            </div>
+          </Link>
+        })}
+      </Carousel>
 
     </div>
   )

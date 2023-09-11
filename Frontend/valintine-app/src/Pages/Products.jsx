@@ -2,73 +2,54 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../Components/ProductComponents/ProductCard";
 import "../Styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import {useSearchParams} from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-// import SliderComp from "../Components/ProductComponents/Slidercomp";
-// import SelectSmall from "../Components/ProductComponents/SelectComp";
-// import SortComp from "../Components/ProductComponents/SortComp";
 import { Hearts } from "react-loader-spinner";
 import { handlegetfilterproducts, handlegetproducts } from "../Redux/action";
 import DummyProduct from "../Components/HomeComponents/dummyProduct";
+import { Button, Text } from "@chakra-ui/react";
+
 const Products = () => {
   const store = useSelector((store) => store);
-  const [prodData,setProdData]=useState([])
+  const [prodData, setProdData] = useState([])
   const dispatch = useDispatch();
-  const { loading, error, products } = store;
-  const [searchParams,setSearchParams]=useSearchParams()
-  const cityname=searchParams.get("city")
-  const initialCategory=searchParams.get("category")
-  console.log(cityname,initialCategory)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const { loading, error, products, city } = store;
+ const [refresh,setrefresh] = useState(true)
+  const initialCategory = searchParams.get("category");
+
+  // Conditionally set search parameters only when the component mounts
   useEffect(() => {
-    dispatch(handlegetfilterproducts(cityname, initialCategory)).then((res)=>(setProdData(res?.data?.data)))
-    let params={
-      city:cityname,
-      category:initialCategory
+    if (!searchParams.get("city") || !searchParams.get("category")) {
+      const params = {
+        city: city,
+        category: initialCategory
+      };
+      setSearchParams(params);
     }
-    setSearchParams(params)
-   
-  }, [cityname, initialCategory]);
+  }, [city, initialCategory, searchParams, setSearchParams]);
 
-  
-  useEffect(()=>{
+  useEffect(() => {
+    dispatch(handlegetfilterproducts(city, initialCategory)).then((res) => (setProdData(res?.data?.data)))
     window.scrollTo(0, 0);
-  },[])
+  }, [city, initialCategory,refresh]);
 
 
-
-
+  useEffect(() => {
+    dispatch(handlegetfilterproducts(city, initialCategory)).then((res) => (setProdData(res?.data?.data)))
+    window.scrollTo(0, 0);
+  }, []);
+  
+ 
   
   return (
     <div>
       <h1 style={{ textAlign: "start", marginTop: "20px", marginLeft: "20px" }}>
         All Experience
       </h1>
-      {/* <hr /> */}
 
       <div id="filters">
-        {/* <h1>filters</h1> */}
-
-        <div id="filter-cont">
-          {/* <div id='filterbyprice'>
-      <h3>
-        Filter By Price
-      </h3>
-        <SliderComp/>
-    </div> */}
-          {/* <div id='filterbycategory'>
-      <h3>
-        Filter by category
-      </h3>
-     <SelectSmall/>
-    </div> */}
-          {/* <div id='sortbyprice'>
-      <h3>
-        Sort By Price
-      </h3>
-      <SortComp/>
-    </div> */}
-        </div>
+        {/* Your filter elements */}
       </div>
 
       {loading ? (
@@ -91,15 +72,20 @@ const Products = () => {
           />
         </div>
       ) : error ? (
-        <>Error</>
+        <>
+        <Text textAlign={"center"}>
+          Some Error...
+          </Text>
+          <Button color={'hotpink'} onClick={()=>setrefresh(!refresh)}>Refresh</Button>
+          </>
       ) : (
         <div id="products">
           {prodData?.map((el) => {
             return (
-              <ProductCard
+              <DummyProduct
                 key={el._id}
                 id={el._id}
-                image={el.image}
+                image={el.image[0]}
                 name={el.name}
                 description={el.description}
                 price={el.price}
@@ -121,3 +107,4 @@ const Products = () => {
 };
 
 export default Products;
+
