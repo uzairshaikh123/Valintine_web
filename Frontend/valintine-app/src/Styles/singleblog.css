@@ -15,7 +15,7 @@ body {
   font-size: 1.15rem;
 } */
 p {
-  text-align: justify;
+  text-align: start;
 }
 a {
   color: #1746a2;

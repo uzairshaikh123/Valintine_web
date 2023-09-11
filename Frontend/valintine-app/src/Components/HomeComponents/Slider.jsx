@@ -2,25 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './slider.css'
-import { useSearchParams } from "react-router-dom"
-// import candle from './candlelight.jpg'
 import { Link } from 'react-router-dom';
-import { handle_getestimonials_Image_by_admin, handle_getsliders_Image_by_admin } from '../../Redux/action';
-import { useDispatch } from 'react-redux';
+import {  handle_getsliders_Image_by_admin } from '../../Redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 const Slider = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
   const [images, setimages] =useState([])
-  const cityname = searchParams.get("city")
-  const [city, setCity] = useState(cityname || "delhi")
+ const {city} = useSelector(store=>store)
   const dispatch = useDispatch()
-  useEffect(() => {
-    let params = {
-      city
-    }
-    setSearchParams(params)
-  }, [city])
-
-
 
   useEffect(() => {
     dispatch(handle_getsliders_Image_by_admin()).then((res) => {
@@ -55,7 +43,6 @@ const Slider = () => {
      autoPlay={true}
     infinite={true}
     containerClass="carousel-container carousel-container-2"
-  // containerClass="carousel-container"
   >
 
 
@@ -63,7 +50,7 @@ const Slider = () => {
       {
         images?.map((item) => {
           return <div className='slider-container'>
-           <Link to={`products?city=${cityname}&category=${item?.category}`}>
+           <Link to={`products?city=${city}&category=${item?.category}`}>
             <img className='slider' src={item?.images} alt="" />
           </Link>
     </div>

@@ -1,12 +1,12 @@
 import React from 'react'
 import './dummy.css'
-const DummyProduct = ({image,name,price,ratings=0}) => {
+const DummyProduct = ({id,image,name,price,ratings=0}) => {
   return (
     <div>
         <div class="react-multi-carousel-list  ">
     <ul class="react-multi-carousel-track  style-QzB8b" id="style-QzB8b">
       <li data-index="0" aria-hidden="false" class="react-multi-carousel-item react-multi-carousel-item--active  style-neOfX" id="style-neOfX">
-        <a href="/experience/3084/pune/pastel-and-rosegold-birthay-decor?tag_source=balloon-room-decorations">
+        <a href={`/products/${id}`}>
           <div style={{minWidth:"280px",maxWidth:"280px"}} class="_product-card-small scale-on-hover material-shadow-card-light">
             <div class="square-image">
               <div id="style-Vo739" class="style-Vo739">

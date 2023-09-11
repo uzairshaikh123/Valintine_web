@@ -9,6 +9,7 @@ const initstate = {
   allproducts:[],
   token: sessionStorage.getItem("token") || "",
   orders:[],
+  city:sessionStorage.getItem("cityname") || "delhi",
   blogs:[],
   admin_token:sessionStorage.getItem("admin_token") || "",
 };
@@ -110,6 +111,9 @@ export const reducer = (state = initstate, { type, payload }) => {
     }
     case types.HANDLE_GET_BLOGS: {
       return { ...state,error:false,loading:false,blogs:payload};
+    }
+    case types.SETCITY: {
+      return { ...state,error:false,loading:false,city:payload};
     }
     default: {
       return { ...state };

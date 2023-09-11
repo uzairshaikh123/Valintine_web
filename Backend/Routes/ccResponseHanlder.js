@@ -54,10 +54,30 @@ exports.postRes = async function(request,response){
 			
 			response.writeHeader(200, {"Content-Type": "text/html"});
 			response.write(htmlcode);
+			try {
+	
+				let allorders = await CartModel.find({userID:customer_identifier})
+				console.log(allorders,"allorders")
+					// adding products to orders
+					 await OrdersModel.insertMany(allorders)
+
+					await CartModel.deleteMany({userID:customer_identifier})
+			} catch (error) {
+				return response.send("error")
+			}
 			response.end()
 			return
         }
+try {
 	
+	let allorders = await CartModel.find({userID:customer_identifier})
+	console.log(allorders,"allorders")
+		// adding products to orders
+		let orders= await OrdersModel.insertMany(allorders)
+		await CartModel.deleteMany({userID:customer_identifier})
+} catch (error) {
+	return response.send("error")
+}
 
 	    var pData = '';
 	    pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'	

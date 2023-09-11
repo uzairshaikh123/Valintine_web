@@ -23,6 +23,26 @@ export const handleLogin = (data) => (dispatch) => {
       return error;
     });
 };
+export const handlesetcity = (city) => (dispatch) => {
+  dispatch({ type: types.LOADING });
+
+  return axios
+    .get(`${process.env.REACT_APP_Backend_url}/products/?city=${city}`)
+
+    .then((res) => {
+      // console.log(res);
+     sessionStorage.setItem("cityname",city)
+      dispatch({ type: types.GETALLPRODUCTS, payload: res.data.data });
+      dispatch({ type: types.SETCITY,payload:city });
+      return res;
+    })
+    .catch((error) => {
+      dispatch({ type: types.ERROR });
+      return error;
+    });
+};
+
+
 export const handleSignup = (data) => (dispatch) => {
   dispatch({ type: types.LOADING });
 

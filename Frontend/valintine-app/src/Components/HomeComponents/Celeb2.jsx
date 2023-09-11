@@ -2,7 +2,7 @@ import React from 'react'
 import "./cel2.css"
 import {Link} from 'react-router-dom'
 const Celeb2 = ({img}) => {
-  console.log(img)
+  
   return (
     <div>
         <div id='celebrate2-cont'>

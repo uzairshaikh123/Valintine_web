@@ -3,14 +3,12 @@ import BookehCard from './BookehCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { handlegetfilterproducts, handlegetproducts } from '../../Redux/action';
+import { handlegetfilterproducts } from '../../Redux/action';
 import { Hearts } from 'react-loader-spinner';
-import {useSearchParams} from "react-router-dom"
+import DummyProduct from './dummyProduct';
 
 const Walls = () => {
   const [decoration , setdecoration ] = useState([])
-  const [searchParams,setSearchParams]=useSearchParams()
-  const cityname=searchParams.get("city")
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1124 },
@@ -47,12 +45,11 @@ const Walls = () => {
     }
   };
   const store = useSelector(store=>store)
-const {products,loading} = store
-const [bookeh ,setbookeh] = useState([])
+const {products,loading,city} = store
 const dispatch = useDispatch()
 useEffect(()=>{
 
-dispatch(handlegetfilterproducts(cityname)).then((res)=>{
+dispatch(handlegetfilterproducts(city)).then((res)=>{
   let filterdata = res?.data?.data?.filter((el)=>{
     return el.category==="decorations"
 
@@ -60,7 +57,7 @@ dispatch(handlegetfilterproducts(cityname)).then((res)=>{
   setdecoration(filterdata)
 })
 
-},[cityname])
+},[city])
 
 
     let heading="DECORATION PRODUCTS"
@@ -91,7 +88,7 @@ dispatch(handlegetfilterproducts(cityname)).then((res)=>{
     />
       </div>:decoration?.map((e)=>{
 
-        return <BookehCard id={e._id} heading={heading} img={e.image[0]} name={e.name} desc={e.category.toUpperCase()} price={e.price} />
+        return <DummyProduct id={e._id} heading={heading} image={e.image[0]} name={e.name} desc={e.category.toUpperCase()} price={e.price} />
     })}
   </Carousel>
     </div>
