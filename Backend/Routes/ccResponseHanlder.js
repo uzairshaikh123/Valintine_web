@@ -41,10 +41,10 @@ const queryParams = parseQueryString(ccavResponse);
 // Get the value of the 'order_status' parameter
 const order_status = queryParams['order_status'];
 const customer_identifier = queryParams['merchant_param1']
-console.log('Order Status:', order_status,customer_identifier);
+
 
 		
-		let userID = customer_identifier || merchant_param1 
+		 
 		if (
             order_status == 'Invalid'
             || order_status == 'Aborted'
@@ -76,7 +76,7 @@ console.log('Order Status:', order_status,customer_identifier);
 
 					await CartModel.deleteMany({userID:customer_identifier})
 			} catch (error) {
-				return response.send("error")
+				return response.end("error")
 			}
 			response.end()
 			return

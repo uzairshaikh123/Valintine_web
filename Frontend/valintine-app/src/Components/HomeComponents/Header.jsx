@@ -228,8 +228,8 @@ const Header = () => {
         // containerClass="carousel-container abc"
         autoPlay={true}
         infinite={true}
-        arrows={false}
-
+        arrows={true}
+        removeArrowOnDeviceType={['mobile']}
       >
         {titles?.map((el) => {
           return <Link to={`products?city=${city}&category=${el.title}`} style={{ textDecoration: "none", color: "black" }}>
