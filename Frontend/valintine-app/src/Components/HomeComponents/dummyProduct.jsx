@@ -7,7 +7,7 @@ const DummyProduct = ({id,image,name,price,ratings=0}) => {
     <ul class="react-multi-carousel-track  style-QzB8b" id="style-QzB8b">
       <li data-index="0" aria-hidden="false" class="react-multi-carousel-item react-multi-carousel-item--active  style-neOfX" id="style-neOfX">
         <a href={`/products/${id}`}>
-          <div style={{minWidth:"300px",maxWidth:"300px"}} class="_product-card-small scale-on-hover material-shadow-card-light">
+          <div style={{minWidth:"350px",maxWidth:"350px"}} class="_product-card-small scale-on-hover material-shadow-card-light">
             <div class="square-image">
               <div id="style-Vo739" class="style-Vo739">
                 <img alt={name} src={image} decoding="async" data-nimg="fill" id="style-yhDKw" class="style-yhDKw" />
