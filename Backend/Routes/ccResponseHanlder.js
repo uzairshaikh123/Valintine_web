@@ -75,49 +75,50 @@ exports.postRes = async function (request, response) {
     //   console.log(allorders, "allorders");
     //   // adding products to orders
     //   let hala=await OrdersModel.insertMany(allorders);
-	// 	console.log(hala,"hello")
+    // 	console.log(hala,"hello")
     // //   await CartModel.deleteMany({ userID: customer_identifier });
     // } catch (error) {
     //   return response.end("error");
     // }
-	const cartOrders = await CartModel.find({ userID: customer_identifier });
-	const ordersToInsert = cartOrders.map((order) => ({
-		// Map the fields from CartModel to OrdersModel as needed
-		userID: order.userID,
-		productID: order.productID,
-		name: order.name,
-		category:order.category,
-		image: order.image,
-		price: order.price,
-		city: order.city,
-		prod_details: order.prod_details,
-		description: order.description,
-		delivery_info: order.delivery_info,
-		quantity: order.quantity,
-		status: "pending",
-		orderDate: order.orderDate	,
-		productMessage:order.productMessage,
-		reviews: order.reviews,
-		booked_dates: order.booked_dates,
-	  }));
-	  
-	  try {
-		// 3. Use insertMany to insert multiple orders at once into OrdersModel
-		const insertedOrders = await OrdersModel.insertMany(ordersToInsert);
-		console.log('Orders inserted successfully:', insertedOrders);
-		
-		// Optionally, you can remove the orders from the CartModel if needed
-		// await CartModel.deleteMany({ _id: { $in: cartOrders.map(order => order._id) } });
-	  } catch (error) {
-		console.error('Error inserting orders:', error);
-	  }
+    const cartOrders = await CartModel.find({ userID: customer_identifier });
+    const ordersToInsert = cartOrders.map((order) => ({
+      // Map the fields from CartModel to OrdersModel as needed
+      userID: order.userID,
+      productID: order.productID,
+      name: order.name,
+      category: order.category,
+      image: order.image,
+      price: order.price,
+      city: order.city,
+      prod_details: order.prod_details,
+      description: order.description,
+      delivery_info: order.delivery_info,
+      quantity: order.quantity,
+      status: "pending",
+      orderDate: order.orderDate,
+      productMessage: order.productMessage,
+      reviews: order.reviews,
+      booked_dates: order.booked_dates,
+    }));
+
+    try {
+      // 3. Use insertMany to insert multiple orders at once into OrdersModel
+      const insertedOrders = await OrdersModel.insertMany(ordersToInsert);
+      console.log("Orders inserted successfully:", insertedOrders);
+
+      await CartModel.deleteMany({ userID: customer_identifier });
+      console.log("Products removed from CartModel.");
+      // Optionally, you can remove the orders from the CartModel if needed
+      // await CartModel.deleteMany({ _id: { $in: cartOrders.map(order => order._id) } });
+    } catch (error) {
+      console.error("Error inserting orders:", error);
+    }
     response.end();
     return;
   } else {
     // try {
 
     // 	let allorders = await CartModel.find({userID:customer_identifier})
-    // 	console.log(allorders,"allorders")
     // 		// adding products to orders
     // 		let orders= await OrdersModel.insertMany(allorders)
     // 		await CartModel.deleteMany({userID:customer_identifier})
@@ -142,6 +143,38 @@ See Your Orders
       "</center><br></body></html>";
     response.writeHeader(200, { "Content-Type": "text/html" });
     response.write(htmlcode);
+
+    const cartOrders = await CartModel.find({ userID: customer_identifier });
+    const ordersToInsert = cartOrders.map((order) => ({
+      // Map the fields from CartModel to OrdersModel as needed
+      userID: order.userID,
+      productID: order.productID,
+      name: order.name,
+      category: order.category,
+      image: order.image,
+      price: order.price,
+      city: order.city,
+      prod_details: order.prod_details,
+      description: order.description,
+      delivery_info: order.delivery_info,
+      quantity: order.quantity,
+      status: "pending",
+      orderDate: order.orderDate,
+      productMessage: order.productMessage,
+      reviews: order.reviews,
+      booked_dates: order.booked_dates,
+    }));
+
+    try {
+      // 3. Use insertMany to insert multiple orders at once into OrdersModel
+      const insertedOrders = await OrdersModel.insertMany(ordersToInsert);
+      console.log("Orders inserted successfully:", insertedOrders);
+
+      await CartModel.deleteMany({ userID: customer_identifier });
+      console.log("Products removed from CartModel.");
+    } catch (error) {
+      console.error("Error inserting orders:", error);
+    }
     response.end();
     return;
   }
