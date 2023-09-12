@@ -58,7 +58,7 @@ dispatch(handle_edit_orders_by_admin(id,data)).then((res)=>{
 
 }
 
-
+console.log(orders,"orders")
   return (
     <TableContainer style={{minWidth:"100%"}}>
       <Table>

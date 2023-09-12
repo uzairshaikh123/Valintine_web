@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const OrderSchema  =  mongoose.Schema({
-
     name: { type: String, required: true },
     category:{type: String,required: true},
     image: { type: Array, required: true },
@@ -22,7 +21,6 @@ const OrderSchema  =  mongoose.Schema({
     userID: { type: String, required: true },
     orderDate: { type: Array, required: false },
     productMessage:{type:String, required: false},
-
 })
 
 const OrdersModel = mongoose.model("orders",OrderSchema)
