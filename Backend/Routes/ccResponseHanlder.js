@@ -85,8 +85,20 @@ exports.postRes = async function (request, response) {
 		// Map the fields from CartModel to OrdersModel as needed
 		userID: order.userID,
 		productID: order.productID,
-		// Add other fields as necessary
-		// Example: orderDate: new Date(),
+		name: order.name,
+		category:order.category,
+		image: order.image,
+		price: order.price,
+		city: order.city,
+		prod_details: order.prod_details,
+		description: order.description,
+		delivery_info: order.delivery_info,
+		quantity: order.quantity,
+		status: "pending",
+		orderDate: order.orderDate	,
+		productMessage:order.productMessage,
+		reviews: order.reviews,
+		booked_dates: order.booked_dates,
 	  }));
 	  
 	  try {
