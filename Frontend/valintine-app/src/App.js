@@ -71,7 +71,6 @@ const App = React.memo(() => {
       <div style={{ minHeight: "80vh" }}>
         <AllRoutes />
       </div>
-
       <ToastContainer />
       {admin.length == 0 && <Footer />}
     </div>
