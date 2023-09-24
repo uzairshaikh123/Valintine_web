@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React from 'react';
+import React from "react";
+import ReactGA from "react-ga";
 import { ToastContainer, toast } from "react-toastify";
 import AllRoutes from "./Routes/AllRoutes";
 import Navbar from "./Pages/Navbar";
@@ -12,7 +13,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { handlegetcartproducts } from "./Redux/action";
 import Whatsapp from "./Components/HomeComponents/Whatsapp";
 // import handleOpe
-const App =React.memo(()=>{
+const App = React.memo(() => {
+  const TRACKING_ID = "UA-XXXXX-X"; // OUR_TRACKING_ID
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const Msg = ({ closeToast, toastProps }) => (
     <div>
       <img
@@ -53,12 +61,11 @@ const App =React.memo(()=>{
   useEffect(() => {
     setadmin(admin_token);
   }, [admin_token]);
-console.log('hello from js')
+  console.log("hello from js");
   // console.log(admin)
 
   return (
     <div className="App">
-      
       {admin.length == 0 && <Navbar cartcount={cart?.length} />}
       {admin.length == 0 && <Whatsapp />}
       <div style={{ minHeight: "80vh" }}>
@@ -69,7 +76,6 @@ console.log('hello from js')
       {admin.length == 0 && <Footer />}
     </div>
   );
-}
-)
+});
 
 export default App;
