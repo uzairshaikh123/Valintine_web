@@ -14,7 +14,7 @@ import { handlegetcartproducts } from "./Redux/action";
 import Whatsapp from "./Components/HomeComponents/Whatsapp";
 // import handleOpe
 const App = React.memo(() => {
-  const TRACKING_ID = "UA-XXXXX-X"; // OUR_TRACKING_ID
+  const TRACKING_ID = "UA-257594728-1"; // OUR_TRACKING_ID
   ReactGA.initialize(TRACKING_ID);
 
   useEffect(() => {
