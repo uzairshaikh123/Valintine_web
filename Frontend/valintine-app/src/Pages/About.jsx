@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 
 const About = () => {
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0);
-  },[])
+  }, []);
+
   return (
     <div>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
         Love is a lovely emotion that should be honored every day. Yet other
         occasions, like Valentine’s Day, birthdays, anniversaries, or even
         simply a surprise date to show your significant other how much you care,
@@ -16,7 +25,15 @@ const About = () => {
         the ideal party
       </p>
       <h1>Candlelight Dinner For Two:</h1>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
         Nothing is more romantic than a candle-lit meal. Spending time with your
         significant other in an intimate and cosy setting is made possible by
         the soft glow of the candles. You can prepare the table with a lovely
@@ -27,7 +44,15 @@ const About = () => {
         companion feel special and adored.
       </p>
       <h1>Decorations For Birthdays:</h1>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
         Birthdays are significant occasions that call for a lavish celebration.
         With balloons, banners, and other birthday decorations, you can
         pleasantly surprise your sweetheart with a nicely adorned space. To make
@@ -36,7 +61,15 @@ const About = () => {
         and the element of surprise will make them feel cherished and loved.
       </p>
       <h1>Surprises:</h1>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
         Surprises are a great way to express your love for your mate. You can
         arrange a surprise outing for your lover or a weekend break to a
         location they’ve always wanted to go to. A surprise delivery of their
@@ -46,17 +79,32 @@ const About = () => {
         with them.
       </p>
       <h1>Cakes:</h1>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
-
-      Cakes are a crucial component of every celebration. A cake is a necessity
-      for each celebration, be it a birthday, an anniversary, or simply a
-      candlelight meal. You can place an order for a cake in the flavor of your
-      partner’s choice and add a personalized message to it. Also, you may
-      astonish them with a customized cake that captures their interests and
-      personality.
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
+        Cakes are a crucial component of every celebration. A cake is a
+        necessity for each celebration, be it a birthday, an anniversary, or
+        simply a candlelight meal. You can place an order for a cake in the
+        flavor of your partner’s choice and add a personalized message to it.
+        Also, you may astonish them with a customized cake that captures their
+        interests and personality.
       </p>
       <h1>Flowers:</h1>
-      <p style={{textAlign:"center",width:"80%",margin:"auto",marginBottom:"50px",marginTop:"30px"}}>
+      <p
+        style={{
+          textAlign: "center",
+          width: "80%",
+          margin: "auto",
+          marginBottom: "50px",
+          marginTop: "30px",
+        }}
+      >
         Flowers have long been used as a sign of love and adoration. For a
         romantic ambiance, you can fill the room with fresh flowers or surprise
         your lover with a stunning bouquet of their preferred flowers. Also, you
